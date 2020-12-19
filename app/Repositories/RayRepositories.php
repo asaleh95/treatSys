@@ -24,4 +24,30 @@ class RayRepositories
         })
         ->paginate(15);
     }
+
+    public function store($data)
+    {
+        $this->ray = $this->ray->create($data);
+    }
+
+    public function saveAvatar($link)
+    {
+        $this->ray->image()->create(['image' => $link]);
+    }
+
+    public function updateAvatar($link, $ray)
+    {
+        $ray->image()->update(['image' => $link]);
+    }
+
+    public function update($data, $ray)
+    {
+        $ray->update($data);
+    }
+
+    public function destroy($ray)
+    {
+        $ray->image()->delete();
+        $ray->delete();
+    }
 }

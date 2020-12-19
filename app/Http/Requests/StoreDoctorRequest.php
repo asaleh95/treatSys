@@ -27,7 +27,7 @@ class StoreDoctorRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:150',
-            'phone' => ['required', 'unique:doctors', 'regex:/^(0|\+)?(201)(\d{9})$/'],
+            'phone' => ['required', 'regex:/^(0|\+)?(201)(\d{9})$/'],
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],
             'address' => 'required|min:3|max:150',
             'position' => 'required|min:3|max:150',

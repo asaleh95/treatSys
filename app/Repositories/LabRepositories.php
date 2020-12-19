@@ -24,4 +24,30 @@ class LabRepositories
         })
         ->paginate(15);
     }
+
+    public function store($data)
+    {
+        $this->lab = $this->lab->create($data);
+    }
+
+    public function saveAvatar($link)
+    {
+        $this->lab->image()->create(['image' => $link]);
+    }
+
+    public function updateAvatar($link, $lab)
+    {
+        $lab->image()->update(['image' => $link]);
+    }
+
+    public function update($data, $lab)
+    {
+        $lab->update($data);
+    }
+
+    public function destroy($lab)
+    {
+        $lab->image()->delete();
+        $lab->delete();
+    }
 }

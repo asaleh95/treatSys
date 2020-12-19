@@ -51,6 +51,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::prefix('admins')->group(function () {
             Route::resource('doctors', 'DoctorController');
             Route::resource('hospitals', 'HospitalController');
+            Route::resource('labs', 'LabController');
+            Route::resource('pharmacies', 'PharmacyController');
+            Route::resource('rays', 'RayController');
+            Route::resource('users', 'UserController');
         });
     });
 });

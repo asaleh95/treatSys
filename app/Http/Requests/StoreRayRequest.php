@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\ImageValidationRule;
-use Illuminate\Validation\Rule;
 
-class UpdateHospitalRequest extends FormRequest
+class StoreRayRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +27,7 @@ class UpdateHospitalRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:150',
-            'email' => ['required', 'email:rfc,dns', Rule::unique('hospitals')->ignore($this->hospital->id)],
+            'email' => ['required', 'email:rfc,dns', 'unique:rays'],
             'phone' => ['required', 'regex:/^(0|\+)?(201)(\d{9})$/'],
             'dicount' => 'required|numeric',
             'region' => 'required|min:3|max:150',

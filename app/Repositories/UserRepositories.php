@@ -98,4 +98,11 @@ class UserRepositories implements AuthInterface
     {
         auth()->user()->hospitals()->detach($data['hospital_id']);
     }
+
+    public function destroy($user)
+    {
+        $user->image()->delete();
+        $user->delete();
+    }
+
 }
