@@ -36976,6 +36976,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/css/dash-app.css":
+/*!************************************!*\
+  !*** ./resources/css/dash-app.css ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37911,14 +37922,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/app.css ./resources/css/dash-app.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })
