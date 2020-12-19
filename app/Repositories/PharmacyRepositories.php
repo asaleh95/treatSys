@@ -24,4 +24,30 @@ class PharmacyRepositories
         })
         ->paginate(15);
     }
+
+    public function store($data)
+    {
+        $this->pharmacy = $this->pharmacy->create($data);
+    }
+
+    public function saveAvatar($link)
+    {
+        $this->pharmacy->image()->create(['image' => $link]);
+    }
+
+    public function updateAvatar($link, $pharmacy)
+    {
+        $pharmacy->image()->update(['image' => $link]);
+    }
+
+    public function update($data, $pharmacy)
+    {
+        $pharmacy->update($data);
+    }
+
+    public function destroy($pharmacy)
+    {
+        $pharmacy->image()->delete();
+        $pharmacy->delete();
+    }
 }

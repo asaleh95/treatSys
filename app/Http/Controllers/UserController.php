@@ -84,4 +84,11 @@ class UserController extends Controller
         $this->userService->logout();
         return response()->json(["message" => "success"]);
     }
+
+    public function destroy(User $user)
+    {
+        //
+        $this->userService->destroy($user);
+        return response()->json(["message" => "success"]);
+    }
 }

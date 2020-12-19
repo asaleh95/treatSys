@@ -99,4 +99,9 @@ class UserService
     {
         $this->userRepo->dislike($data);
     }
+
+    public function destroy($user)
+    {
+        $this->userRepo->destroy($user);
+    }
 }
