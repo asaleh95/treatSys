@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorFilterRequest;
 use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
 use App\Services\DoctorService;
@@ -64,7 +65,7 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
         //
         $this->doctorService->update($request->all(), $doctor);

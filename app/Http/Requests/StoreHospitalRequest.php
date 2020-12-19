@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ImageValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ImageValidationRule;
 
-class StoreDoctorRequest extends FormRequest
+class StoreHospitalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,15 +27,20 @@ class StoreDoctorRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:150',
+            'email' => ['required', 'email:rfc,dns', 'unique:hospitals'],
             'phone' => ['required', 'unique:doctors', 'regex:/^(0|\+)?(201)(\d{9})$/'],
+            'dicount' => 'required|numeric',
+            'region' => 'required|min:3|max:150',
+            'distance' => 'required|numeric',
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],
             'address' => 'required|min:3|max:150',
-            'position' => 'required|min:3|max:150',
             'rate' => 'required|numeric',
-            'basic_price' => 'required|numeric',
-            'treat_price' => 'required|numeric',
+            'number_of_raters' => 'required|numeric',
+            'number_of_views' => 'required|numeric',
             'about' => 'required|min:3|max:150',
-            'image' => ['required', new ImageValidationRule]
+            'logo' => ['required', new ImageValidationRule],
+            'images' => ['required', 'array'],
+            'images.*' => ['required', new ImageValidationRule]
         ];
     }
 }

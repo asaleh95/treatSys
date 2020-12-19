@@ -24,4 +24,30 @@ class HospitalRepositories
         })
         ->paginate(15);
     }
+
+    public function store($data)
+    {
+        $this->hospital = $this->hospital->create($data);
+    }
+
+    public function saveAvatar($link)
+    {
+        $this->hospital->image()->create(['image' => $link]);
+    }
+
+    public function updateAvatar($link, $hospital)
+    {
+        $hospital->image()->update(['image' => $link]);
+    }
+
+    public function update($data, $hospital)
+    {
+        $hospital->update($data);
+    }
+
+    public function destroy($hospital)
+    {
+        $hospital->image()->delete();
+        $hospital->delete();
+    }
 }

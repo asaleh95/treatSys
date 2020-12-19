@@ -40,12 +40,17 @@ Route::namespace('App\Http\Controllers')->group(function () {
                 Route::get('/', 'LabController@index');
                 Route::get('/{lab}', 'LabController@show');
             });
+            Route::prefix('pharmacy')->group(function () {
+                Route::get('/', 'PharmacyController@index');
+                Route::get('/{pharmacy}', 'PharmacyController@show');
+            });
         });
     });
 
     Route::middleware('auth:admin')->group(function () {
         Route::prefix('admins')->group(function () {
             Route::resource('doctors', 'DoctorController');
+            Route::resource('hospitals', 'HospitalController');
         });
     });
 });
