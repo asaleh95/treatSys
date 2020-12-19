@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Multicolore;
+    src: url('./font/Multicolore_Pro.otf');
+  }
+
+.font-multicolor{
+    font-family: Multicolore;
+font-weight: bold;
+font-size: 60px;
+text-align: left;
+color: #0782bd;
+
+}
+
+.font-poppins{
+    font-family: Poppins;
+    font-weight: normal;
+    font-size: 25px;
+    text-align: left;
+    color: #000;
+    
+}
+
+p{
+    width: 435px;
+height: 63px;
+font-family: Almarai;
+font-weight: normal;
+font-size: 17px;
+line-height: 22px;
+text-align: left;
+color: #adadad;
+}
+
+.text-input{
+    width: 435px;
+height: 76px;
+background: transparent;
+border-radius: 10%;
+margin-top: 33px;
+}
+.checkbox{
+    width: 19px;
+height: 19px;
+background: transparent;
+font-family: Almarai;
+font-weight: normal;
+font-size: 16px;
+line-height: 29px;
+text-align: center;
+color:  #0782bd;
+margin-top: 33px;
+
+}
+.submit{
+    width: 381px;
+height: 74px;
+background: transparent;
+background-color: #0782bd;
+margin-top: 33px;
+
+}
+.check{
+    width: 228px;
+height: 21px;
+background: transparent;
+margin-top: 33px;
+text-align: center !important;
+
+
+}
+
+
+.img
+{
+    width: 166%;
+height: 895px;
+background-color: #0782bd;
+}
+
+.far-from-top{
+    margin-top: 100px;
+
+}
+.contain {
+    position: relative;
+  text-align: center;
+  color: white;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    margin-bottom: 90% !important; 
+    left: 100%;
+    width: 132%;
+    transform: translate(-50%, -50%);
+  }  
+

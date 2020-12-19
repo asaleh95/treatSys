@@ -1,0 +1,16 @@
+.footer-b{
+    /* width: 139%; */
+    background-color: #0782bd;
+    /* margin-top: 90px; */
+    /* margin-left: -18%; */
+     /* height: 200px; */
+}
+.marg{
+    margin-left: 10%;
+}
+@media only screen and (max-width: 600px) {
+    .footer-b{
+        max-width: 130%;
+        width: 120%;
+    }
+  }

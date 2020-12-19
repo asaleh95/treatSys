@@ -1,0 +1,36 @@
+body{
+    overflow: scroll;
+}
+
+.container-left{
+    margin-left: -134px;
+}
+
+.img{
+    width: 1497px;
+    height: 694px;
+    background-color: #0782bd;
+}
+
+.land{
+    width: 1500px;
+    height: 648px;
+    margin-left: -195px;
+    background-color: #0782bd;
+}
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.img-g{
+    position: absolute;
+    top: 42%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+}
