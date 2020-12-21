@@ -28,7 +28,7 @@ class StoreRayRequest extends FormRequest
             //
             'name' => 'required|min:3|max:150',
             'email' => ['required', 'email:rfc,dns', 'unique:rays'],
-            'phone' => ['required', 'regex:/^(0|\+)?(201)(\d{9})$/'],
+            'phone' => ['required', 'phone:AUTO,EG'],
             'dicount' => 'required|numeric',
             'region' => 'required|min:3|max:150',
             'distance' => 'required|numeric',

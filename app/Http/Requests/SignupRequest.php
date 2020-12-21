@@ -26,7 +26,7 @@ class SignupRequest extends FormRequest
         return [
             //
             'email' => 'required|email:rfc,dns|unique:users',
-            'phone' => ['required','regex:/^(0|\+)?(201)(\d{9})$/'],
+            'phone' => ['required', 'phone:AUTO,EG'],
             'password' => 'required|min:8',
         ];
     }

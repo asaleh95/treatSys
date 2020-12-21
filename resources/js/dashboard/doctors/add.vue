@@ -106,6 +106,7 @@
                   accept="image/jpeg"
                   class="uploading-image"
                   @change="sendImage"
+                  multiple
                 />
                 ارفق صوره
               </label>

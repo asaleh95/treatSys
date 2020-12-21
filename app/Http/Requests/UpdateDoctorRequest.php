@@ -28,7 +28,7 @@ class UpdateDoctorRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:150',
-            'phone' => ['required', 'regex:/^(0|\+)?(201)(\d{9})$/'],
+            'phone' => ['required', 'phone:AUTO,EG'],
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],
             'address' => 'required|min:3|max:150',
             'position' => 'required|min:3|max:150',
