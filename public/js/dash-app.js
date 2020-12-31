@@ -3949,7 +3949,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/search").then(function (result) {
+    axios.get("/admins/labs").then(function (result) {
       _this.drs = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
@@ -4318,7 +4318,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/search/" + this.$route.params.id).then(function (result) {
+    axios.get("/admins/labs/" + this.$route.params.id).then(function (result) {
       _this.dr = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
@@ -5091,7 +5091,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/hospitals/" + this.$route.params.id).then(function (result) {
+    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
       _this.dr = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
@@ -5266,24 +5266,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6598,7 +6580,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/xray").then(function (result) {
+    axios.get("/admins/rays").then(function (result) {
       _this.drs = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
@@ -26859,7 +26841,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور العميل")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور الطبيب")])]
     )
   },
   function() {
@@ -27133,7 +27115,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("dial", {
-          attrs: { type: "عميل", id: _vm.id, index: _vm.index },
+          attrs: { type: "طبيب", id: _vm.id, index: _vm.index },
           on: { del: _vm.deleteItem }
         })
       ],
@@ -27608,7 +27590,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور العميل")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور الدكتور")])]
     )
   },
   function() {
@@ -27673,7 +27655,7 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "mb-25", staticStyle: { "text-align": "right" } },
-              [_vm._v("تفاصيل العميل")]
+              [_vm._v("تفاصيل الطبيب")]
             ),
             _vm._v(" "),
             _c("ul", [
@@ -27763,8 +27745,8 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
           _c("div", { staticClass: "page-heading" }, [
             _c("h3", [
-              _vm._v("العملاء "),
-              _c("span", [_vm._v("/ تفاصيل العميل ")])
+              _vm._v("الاطباء  "),
+              _c("span", [_vm._v("/ تفاصيل الطبيب")])
             ])
           ])
         ])
@@ -27812,7 +27794,7 @@ var render = function() {
         _c(
           "h4",
           { staticClass: "title", staticStyle: { "text-align": "right" } },
-          [_vm._v("معلومات عن الطبيب")]
+          [_vm._v("معلومات عن المستشفي")]
         ),
         _vm._v(" "),
         _c(
@@ -27845,7 +27827,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "آسم الطبيب" },
+                  attrs: { type: "text", placeholder: "آسم المستشفي" },
                   domProps: { value: _vm.name },
                   on: {
                     input: function($event) {
@@ -28185,7 +28167,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور العميل")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور المستشفي")])]
     )
   },
   function() {
@@ -28250,7 +28232,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
+            attrs: { to: "/hospitals/add" }
           },
           [_c("span", [_vm._v("آضافه مستشفي جديد")])]
         ),
@@ -28340,7 +28322,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                                    attrs: { to: "/hospitals/show/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -28350,7 +28332,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
+                                    attrs: { to: "/hospitals/edit/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -28459,7 +28441,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("dial", {
-          attrs: { type: "عميل", id: _vm.id, index: _vm.index },
+          attrs: { type: "مستشفي", id: _vm.id, index: _vm.index },
           on: { del: _vm.deleteItem }
         })
       ],
@@ -28934,7 +28916,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور العميل")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور المستشفي")])]
     )
   },
   function() {
@@ -28999,7 +28981,7 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "mb-25", staticStyle: { "text-align": "right" } },
-              [_vm._v("تفاصيل العميل")]
+              [_vm._v("تفاصيل المستشفي")]
             ),
             _vm._v(" "),
             _c("ul", [
@@ -29071,7 +29053,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.image.image }
+          attrs: { src: _vm.dr.images[0].image }
         })
       ])
     ])
@@ -29089,8 +29071,8 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
           _c("div", { staticClass: "page-heading" }, [
             _c("h3", [
-              _vm._v("العملاء "),
-              _c("span", [_vm._v("/ تفاصيل العميل ")])
+              _vm._v("المستشفيات "),
+              _c("span", [_vm._v("/ تفاصيل المستشفيات")])
             ])
           ])
         ])
@@ -29576,7 +29558,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
+            attrs: { to: "/laps/add" }
           },
           [_c("span", [_vm._v("آضافه معمل جديد")])]
         ),
@@ -29632,7 +29614,7 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
+                              attrs: { src: dr.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
@@ -29666,7 +29648,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                                    attrs: { to: "/laps/show/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -29676,7 +29658,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
+                                    attrs: { to: "/laps/edit/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -29876,7 +29858,7 @@ var render = function() {
         _c(
           "h4",
           { staticClass: "title", staticStyle: { "text-align": "right" } },
-          [_vm._v("معلومات عن المستشفي")]
+          [_vm._v("معلومات عن المعمل")]
         ),
         _vm._v(" "),
         _c(
@@ -29911,7 +29893,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "آسم البحث " },
+                  attrs: { type: "text", placeholder: "آسم المعمل " },
                   domProps: { value: _vm.dr.name },
                   on: {
                     input: function($event) {
@@ -30249,7 +30231,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
       _c("div", { staticClass: "page-heading" }, [
-        _c("h3", [_vm._v("\n       تعديل بحث\n        ")])
+        _c("h3", [_vm._v("\n       تعديل معمل\n        ")])
       ])
     ])
   },
@@ -30260,7 +30242,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور العميل")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور المعمل")])]
     )
   },
   function() {
@@ -30397,7 +30379,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.image.image }
+          attrs: { src: _vm.dr.images[0].image }
         })
       ])
     ])
@@ -30926,7 +30908,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
+            attrs: { to: "/pharmcy/add" }
           },
           [_c("span", [_vm._v("آضافه صيدليه جديد")])]
         ),
@@ -31016,7 +30998,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                                    attrs: { to: "/pharmcy/show/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -31026,7 +31008,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
+                                    attrs: { to: "/pharmcy/edit/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -31967,24 +31949,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-body" }, [
-    _c(
-      "div",
-      { staticClass: "row justify-content-between align-items-center mb-10" },
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "button button-primary",
-            staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
-          },
-          [_c("span", [_vm._v("آضافه ]دعم جديد")])]
-        ),
-        _vm._v(" "),
-        _vm._m(0)
-      ],
-      1
-    ),
+    _vm._m(0),
     _vm._v(" "),
     _vm.success
       ? _c(
@@ -32057,50 +32022,25 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("td", [
-                            _c(
-                              "div",
-                              { staticClass: "table-action-buttons" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass:
-                                      "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                            _c("div", { staticClass: "table-action-buttons" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "delete button button-box button-xs button-danger",
+                                  attrs: {
+                                    "data-toggle": "modal",
+                                    "data-target": "#basicExampleModal"
                                   },
-                                  [_c("i", { staticClass: "zmdi zmdi-more" })]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass:
-                                      "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
-                                  },
-                                  [_c("i", { staticClass: "zmdi zmdi-edit" })]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "delete button button-box button-xs button-danger",
-                                    attrs: {
-                                      "data-toggle": "modal",
-                                      "data-target": "#basicExampleModal"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.setDel(dr.id, i)
-                                      }
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.setDel(dr.id, i)
                                     }
-                                  },
-                                  [_c("i", { staticClass: "zmdi zmdi-delete" })]
-                                )
-                              ],
-                              1
-                            )
+                                  }
+                                },
+                                [_c("i", { staticClass: "zmdi zmdi-delete" })]
+                              )
+                            ])
                           ])
                         ])
                       }),
@@ -32198,9 +32138,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
-      _c("div", { staticClass: "page-heading" }, [_c("h3", [_vm._v("الدعم")])])
-    ])
+    return _c(
+      "div",
+      { staticClass: "row justify-content-between align-items-center mb-10" },
+      [
+        _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
+          _c("div", { staticClass: "page-heading" }, [
+            _c("h3", [_vm._v("الدعم")])
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -32705,7 +32653,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
+            attrs: { to: "/users/add" }
           },
           [_c("span", [_vm._v("آضافه مستخدم جديد")])]
         ),
@@ -32795,7 +32743,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                                    attrs: { to: "/users/show/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -32805,7 +32753,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
+                                    attrs: { to: "/users/edit/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -33454,12 +33402,12 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "mb-25", staticStyle: { "text-align": "right" } },
-              [_vm._v("تفاصيل العميل")]
+              [_vm._v("تفاصيل المستخدم")]
             ),
             _vm._v(" "),
             _c("ul", [
               _c("li", [
-                _c("span", [_vm._v("اسم الطبيب")]),
+                _c("span", [_vm._v("اسم المستخدم")]),
                 _vm._v(" "),
                 _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
               ]),
@@ -33544,8 +33492,8 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
           _c("div", { staticClass: "page-heading" }, [
             _c("h3", [
-              _vm._v("العملاء "),
-              _c("span", [_vm._v("/ تفاصيل العميل ")])
+              _vm._v("المستخدمين "),
+              _c("span", [_vm._v("/ تفاصيل المستخدمين ")])
             ])
           ])
         ])
@@ -34031,7 +33979,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/doctors/add" }
+            attrs: { to: "/xray/add" }
           },
           [_c("span", [_vm._v("آضافه الاشاعه جديد")])]
         ),
@@ -34087,7 +34035,7 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
+                              attrs: { src: dr.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
@@ -34121,7 +34069,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/doctors/show/" + dr.id }
+                                    attrs: { to: "/xray/show/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -34131,7 +34079,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/doctors/edit/" + dr.id }
+                                    attrs: { to: "/xray/edit/" + dr.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),

@@ -9,7 +9,7 @@
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
       <router-link
-        to="/doctors/add"
+        to="/xray/add"
         style="position: absolute; left: 31px"
         class="button button-primary"
       >
@@ -79,7 +79,7 @@
                   <td style="font-family: sans-serif">#{{ dr.id }}</td>
                   <td>
                     <img
-                      :src="dr.image.image"
+                      :src="dr.images[0].image"
                       alt
                       class="table-product-image rounded-circle"
                     />
@@ -97,13 +97,13 @@
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/doctors/show/' + dr.id"
+                        :to="'/xray/show/' + dr.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/doctors/edit/' + dr.id"
+                        :to="'/xray/edit/' + dr.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -144,7 +144,7 @@
 export default {
   mounted() {
     axios
-      .get("/admins/xray")
+      .get("/admins/rays")
       .then((result) => {
         this.drs = result.data.data;
         this.prevUrl = result.data.links.prev;

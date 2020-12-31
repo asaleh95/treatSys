@@ -25,10 +25,10 @@ export default {
             path: '/new-password',
             component: require('./components/new-password').default,
         },
-        // {
-        //     path: '/hospitals',
-        //     component: require('./components/hospitals').default,
-        // },
+        {
+            path: '/hospitals',
+            component: require('./components/hospitals').default,
+        },
         {
             path: '/doctors',
             component: require('./components/doctors').default,
@@ -53,10 +53,10 @@ export default {
             path: '/contactus',
             component: require('./components/contactus').default,
         },
-        // {
-        //     path: '/landingpage',
-        //     component: require('./components/landingpage').default,
-        // },
+        {
+            path: '/landingpage',
+            component: require('./components/landingpage').default,
+        },
         {
             path: '/news',
             component: require('./components/news').default,

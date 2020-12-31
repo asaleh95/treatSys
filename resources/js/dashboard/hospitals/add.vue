@@ -30,7 +30,7 @@
     <!-- Add or Edit Product Start -->
     <div class="add-edit-product-wrap col-12">
       <div class="add-edit-product-form">
-        <h4 class="title" style="text-align: right;">معلومات عن الطبيب</h4>
+        <h4 class="title" style="text-align: right;">معلومات عن المستشفي</h4>
         <form
           action="#"
           @submit.prevent="submit"
@@ -39,7 +39,7 @@
         >
           <div class="row">
             <div class="col-lg-6 col-12 mb-30">
-              <input class="form-control" type="text" v-model="name" placeholder="آسم الطبيب" />
+              <input class="form-control" type="text" v-model="name" placeholder="آسم المستشفي" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('name')"></span>
               </div>
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="head" style="text-align: right">
-            <h4 class="title">صور العميل</h4>
+            <h4 class="title">صور المستشفي</h4>
           </div>
 
           <div class="product-upload-gallery row flex-wrap">

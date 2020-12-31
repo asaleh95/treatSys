@@ -9,7 +9,7 @@
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
       <router-link
-        to="/doctors/add"
+        to="/hospitals/add"
         style="position: absolute; left: 31px"
         class="button button-primary"
       >
@@ -97,13 +97,13 @@
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/doctors/show/' + dr.id"
+                        :to="'/hospitals/show/' + dr.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/doctors/edit/' + dr.id"
+                        :to="'/hospitals/edit/' + dr.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -133,7 +133,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="عميل" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="مستشفي" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <!-- Content Body Start -->
+  <!-- Content Body Start --> 
   <div class="content-body">
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="head" style="text-align: right">
-            <h4 class="title">صور العميل</h4>
+            <h4 class="title">صور الطبيب</h4>
           </div>
 
           <div class="product-upload-gallery row flex-wrap">

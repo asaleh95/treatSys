@@ -72,7 +72,7 @@
 export default {
   mounted() {
     axios
-      .get("/admins/hospitals/" + this.$route.params.id)
+      .get("/admins/doctors/" + this.$route.params.id)
       .then((result) => {
         this.dr = result.data.data;
         console.log(result.data.data);

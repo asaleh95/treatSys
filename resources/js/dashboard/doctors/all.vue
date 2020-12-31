@@ -133,7 +133,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="عميل" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="طبيب" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>

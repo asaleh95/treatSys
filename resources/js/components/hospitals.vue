@@ -23,41 +23,36 @@
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
         </div>
@@ -65,41 +60,38 @@
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
+                            <p class="card-text text-paragraph-login">(15,250)</p>
+
             </div>
           </div>
           <div class="card col-2 hospital">
             <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Cairo,ain shams</h5>
-              <p class="card-text">Some</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Dar Al Fouad Hospital</h5>
+              <p class="card-text text-paragraph-login">(15,250)</p>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ label{
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
           <h3>
-         تعديل بحث
+         تعديل معمل
           </h3>
         </div>
       </div>
@@ -34,7 +34,7 @@ label{
     <!-- Add or Edit Product Start -->
     <div class="add-edit-product-wrap col-12">
       <div class="add-edit-product-form">
-        <h4 class="title" style="text-align: right;">معلومات عن المستشفي</h4>
+        <h4 class="title" style="text-align: right;">معلومات عن المعمل</h4>
         <form
           action="#"
           @submit.prevent="submit"
@@ -44,7 +44,7 @@ label{
           <div class="row">
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">الاسم</label>
-              <input class="form-control" type="text" v-model="dr.name" placeholder="آسم البحث " />
+              <input class="form-control" type="text" v-model="dr.name" placeholder="آسم المعمل " />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('name')"></span>
               </div>
@@ -107,7 +107,7 @@ label{
             </div>
           </div>
           <div class="head" style="text-align: right">
-            <h4 class="title">صور العميل</h4>
+            <h4 class="title">صور المعمل</h4>
           </div>
 
           <div class="product-upload-gallery row flex-wrap">
