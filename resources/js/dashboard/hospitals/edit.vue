@@ -107,7 +107,7 @@ label{
             </div>
           </div>
           <div class="head" style="text-align: right">
-            <h4 class="title">صور العميل</h4>
+            <h4 class="title">صور المستشفي</h4>
           </div>
 
           <div class="product-upload-gallery row flex-wrap">

@@ -8,13 +8,6 @@
   <div class="content-body">
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
-      <router-link
-        to="/doctors/add"
-        style="position: absolute; left: 31px"
-        class="button button-primary"
-      >
-        <span>آضافه ]دعم جديد</span>
-      </router-link>
       <!-- Page Heading Start -->
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
@@ -95,18 +88,7 @@
                   </td>
                   <td>
                     <div class="table-action-buttons">
-                      <router-link
-                        class="view button button-box button-xs button-primary"
-                        :to="'/doctors/show/' + dr.id"
-                      >
-                        <i class="zmdi zmdi-more"></i>
-                      </router-link>
-                      <router-link
-                        class="edit button button-box button-xs button-info"
-                        :to="'/doctors/edit/' + dr.id"
-                      >
-                        <i class="zmdi zmdi-edit"></i>
-                      </router-link>
+                      
                       <a
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"

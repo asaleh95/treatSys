@@ -5,7 +5,7 @@
       <!-- Page Heading Start -->
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
-          <h3>العملاء <span>/ تفاصيل العميل </span></h3>
+          <h3>المستشفيات <span>/ تفاصيل المستشفيات</span></h3>
         </div>
       </div>
       <!-- Page Heading End -->
@@ -20,7 +20,7 @@
         <div class="order-details-customer-info row mbn-20">
           <!--Billing Info Start-->
           <div class="col-lg-12 col-md-12 col-12 mb-20">
-            <h4 class="mb-25" style="text-align: right">تفاصيل العميل</h4>
+            <h4 class="mb-25" style="text-align: right">تفاصيل المستشفي</h4>
 
             <ul>
               <li>
@@ -54,7 +54,7 @@
       </div>
       <div class="col-8">
         <img
-          :src="dr.image.image"
+          :src="dr.images[0].image"
           style="
             display: block;
             margin-left: auto;

@@ -20674,6 +20674,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20681,6 +20682,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20693,6 +20701,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20700,6 +20709,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20712,6 +20728,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20719,6 +20736,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20731,6 +20755,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20738,6 +20763,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20750,6 +20782,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20757,6 +20790,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ])
@@ -20771,6 +20811,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20778,6 +20819,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20790,6 +20838,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20797,6 +20846,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20809,6 +20865,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20816,6 +20873,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20828,6 +20892,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20835,6 +20900,17 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ]),
@@ -20847,6 +20923,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title" }, [
+<<<<<<< HEAD
               _vm._v("Cairo,ain shams")
             ]),
             _vm._v(" "),
@@ -20854,6 +20931,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
               _vm._v("Go somewhere")
+=======
+              _vm._v("Dar Al Fouad Hospital")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text text-paragraph-login" }, [
+              _vm._v("(15,250)")
+>>>>>>> 2d542e6bb5120cde9885547d84465bd563852aa1
             ])
           ])
         ])

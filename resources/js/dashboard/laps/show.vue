@@ -54,7 +54,7 @@
       </div>
       <div class="col-8">
         <img
-          :src="dr.image.image"
+          :src="dr.images[0].image"
           style="
             display: block;
             margin-left: auto;
@@ -72,7 +72,7 @@
 export default {
   mounted() {
     axios
-      .get("/admins/search/" + this.$route.params.id)
+      .get("/admins/labs/" + this.$route.params.id)
       .then((result) => {
         this.dr = result.data.data;
         console.log(result.data.data);
