@@ -20,5 +20,10 @@ class Errors {
         console.log("clear");
         delete this.errors[field];
     }
+
+    clearAll(){
+        this.errors = {};
+    }
 }
 window.obj = new Errors();
+

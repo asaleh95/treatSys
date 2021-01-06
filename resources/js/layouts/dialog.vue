@@ -32,7 +32,7 @@
             >
               الغاء
             </button>
-            <button type="button" class="btn btn-primary" @click="$emit('del', id, index)" data-dismiss="modal">حذف</button>
+            <button type="button" class="button button-primary" @click="$emit('del', id, index)" data-dismiss="modal">حذف</button>
           </div>
         </div>
       </div>

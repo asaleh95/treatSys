@@ -33,7 +33,8 @@ class DoctorService
     public function uploadAvatar($image, $phone)
     {
         if (!empty($image)) {
-            $link = $this->uploadFile($image, "doctors/". $phone. '.png');
+            $link = "doctors/". $phone. '.png';
+            $this->uploadFile($image, $link);
             $this->saveAvatar($link);
         }
     }

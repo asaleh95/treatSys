@@ -2,6 +2,9 @@
 .row {
   margin-bottom: 5%;
 }
+.zmdi:hover {
+  cursor: pointer;
+}
 </style>
 <template>
   <!-- Content Body Start -->
@@ -50,10 +53,11 @@
                     <span>#</span>
                   </th>
                   <th>
-                    <span>صوره الطبيب</span>
+                    <span> صوره الطبيب</span
+                    >
                   </th>
-                  <th>
-                    <span>اسم الطبيب</span>
+                  <th @click="sort()">
+                    <span><i class="zmdi zmdi-swap-vertical text-muted"></i> اسم الطبيب </span>
                   </th>
                   <th>
                     <span>العنوان</span>
@@ -122,12 +126,18 @@
               <!-- Table Body End -->
             </table>
           </div>
-          <ul style="margin-bottom: 2%" class="pagination justify-content-center">
+          <ul
+            style="margin-bottom: 2%"
+            class="pagination justify-content-center"
+          >
             <li class="page-item" v-show="nextUrl">
-              <a class="page-link" href="#" @click.prevent="getDoctors(nextUrl)">Next</a>
+              <a class="page-link" href="#" @click.prevent="getDoctors(nextUrl)"
+                >Next</a
+              >
             </li>
             <li class="page-item" v-show="prevUrl">
-              <a class="page-link" href="#" @click.prevent="getDoctors(prevUrl)">Previous</a
+              <a class="page-link" href="#" @click.prevent="getDoctors(prevUrl)"
+                >Previous</a
               >
             </li>
           </ul>
@@ -163,7 +173,8 @@ export default {
       success: false,
       errors: window.obj,
       prevUrl: false,
-      nextUrl: false
+      nextUrl: false,
+      sorted: 1,
     };
   },
   computed: {
@@ -176,7 +187,7 @@ export default {
             .every(
               (v) =>
                 item.name.toLowerCase().includes(v) ||
-                item.phone.toLowerCase().includes(v)||
+                item.phone.toLowerCase().includes(v) ||
                 item.address.toLowerCase().includes(v)
             );
         });
@@ -204,19 +215,30 @@ export default {
       this.id = id;
       this.index = index;
     },
-    getDoctors(url){
+    getDoctors(url) {
       axios
-      .get(url)
-      .then((result) => {
-        this.drs = result.data.data;
-        this.prevUrl = result.data.links.prev;
-        this.nextUrl = result.data.links.next;
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+        .get(url)
+        .then((result) => {
+          this.drs = result.data.data;
+          this.prevUrl = result.data.links.prev;
+          this.nextUrl = result.data.links.next;
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    sort() {
+      function compare(sorted) {
+        return function (a, b) {
+          if (a.name < b.name) return sorted;
+          if (a.name > b.name) return -sorted;
+          return 0;
+        };
+      }
+      this.sorted = - (this.sorted);
+      return this.drs.sort(compare(this.sorted));
+    },
   },
 };
 </script>

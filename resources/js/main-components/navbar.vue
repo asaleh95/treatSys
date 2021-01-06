@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-md fixed-top d-flex flex-md-row p-3 px-md-4 mb-3 bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md fixed-top d-flex flex-md-row p-0 px-md-4 mb-3 bg-white shadow-sm">
         <a class="navbar-brand" href="#"><img src="web/treat2.png" alt="" /></a>
         <button
           class="navbar-toggler bg-dark"

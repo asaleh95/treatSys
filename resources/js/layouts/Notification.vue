@@ -114,7 +114,7 @@
           <div class="body">
             <ul>
               <li>
-                <router-link to="/profile/admin"> <i class="zmdi zmdi-account"></i>الملف الشخصي </router-link>
+                <router-link to="/profile/admin"><i class="zmdi zmdi-account"></i>الملف الشخصي </router-link>
               </li>
               <!-- <li>
                 <a href="#"> <i class="zmdi zmdi-email-open"></i>التنبيهات </a>

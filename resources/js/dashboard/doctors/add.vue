@@ -33,6 +33,7 @@
         <h4 class="title" style="text-align: right;">معلومات عن الطبيب</h4>
         <form
           action="#"
+          @load.prevent="errors.clearAll()"
           @submit.prevent="submit"
           @keydown="errors.clear($event.target.name)"
           @change="errors.clear($event.target.name)"
@@ -69,7 +70,7 @@
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
-              <input class="form-control" type="number" min="0" max="5" v-model="rate" placeholder="التقييم" />
+              <input class="form-control" type="number" step="0.01" min="0" max="5" v-model="rate" placeholder="التقييم" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('rate')"></span>
               </div>
@@ -99,14 +100,13 @@
 
           <div class="product-upload-gallery row flex-wrap">
             <div class="col-12 mb-30">
-              <img :src="previewImage" class="uploading-image" />
+              <img :src="previewImage" class="w-25 img-thumbnail" />
               <label class="custom-file-upload">
                 <input
                   type="file"
                   accept="image/jpeg"
                   class="uploading-image"
                   @change="sendImage"
-                  multiple
                 />
                 ارفق صوره
               </label>
@@ -134,6 +134,9 @@
 </template>
  <script>
 export default {
+  mounted(){
+    this.errors.clearAll();
+  },
   data() {
     return {
       name: "",

@@ -20571,6 +20571,855 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("treat-nav"),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(3)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
+    _vm._m(5)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row head" }, [
+      _c("h4", [_vm._v("Hospital")]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "head2" }, [
+        _vm._v("\n        | "),
+        _c("a", { staticClass: "user", attrs: { href: "#" } }, [
+          _c("img", { attrs: { src: "Web/home.png", alt: "" } })
+        ]),
+        _vm._v(">>\n        Many results found\n      ")
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("img", { attrs: { src: "Web/search+.png", alt: "" } })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("img", { attrs: { src: "Web/search+.png", alt: "" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h3", { staticClass: "log mr-auto" }, [
+        _c("span", [_vm._v("Ex : Doctor Name")])
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "search", attrs: { href: "#" } }, [
+        _c("img", { attrs: { src: "Web/gro.png", alt: "" } })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "search", attrs: { href: "#" } }, [
+        _c("img", { attrs: { src: "Web/gro2.png", alt: "" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-2 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")]),
+            _vm._v(" "),
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Go somewhere")
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mb-5" }, [
+      _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-light rounded-circle", attrs: { href: "#" } },
+          [_vm._v("<")]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn rounded-circle", attrs: { href: "#" } }, [
+          _vm._v("4")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn rounded-circle", attrs: { href: "#" } }, [
+          _vm._v("3")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn rounded-circle", attrs: { href: "#" } }, [
+          _vm._v("2")
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary rounded-circle mr-2",
+            attrs: { href: "#" }
+          },
+          [_vm._v("1")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "btn btn-light rounded-circle", attrs: { href: "#" } },
+          [_vm._v(">")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "footer-b" }, [
+      _c("div", { staticClass: "row footer-row" }, [
+        _c("div", { staticClass: "offset-md-1 col-2" }, [
+          _c("img", { attrs: { src: "Web/treat.png", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2" }, [
+          _c("ul", { staticClass: "list-unstyled text-small" }, [
+            _c("li", [_vm._v("Commuinity")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Create Account")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Go to Premium")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Prefer A Friend")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Get Coupon Code")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2" }, [
+          _c("ul", { staticClass: "list-unstyled text-small" }, [
+            _c("li", [_vm._v("Support")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Terms Condition")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Privacy & Policy")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Copyright Issue")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Get Help")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2" }, [
+          _c("ul", { staticClass: "list-unstyled text-small" }, [
+            _c("li", [_vm._v("Join Us")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Become Teacher")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Become Student")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Become Both")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Partnership")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2" }, [
+          _c("ul", { staticClass: "list-unstyled text-small" }, [
+            _c("li", [_vm._v("download app")]),
+            _vm._v(" "),
+            _c("li")
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-info", attrs: { type: "button" } },
+            [_vm._v("google play")]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-info", attrs: { type: "button" } },
+            [_vm._v("app ios")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("small", { staticClass: "d-block mb-3 text-muted offset-md-2" }, [
+        _vm._v("© Copyright © 2010-2019 Pro.skill")
+      ]),
+      _vm._v(" "),
+      _c("small", { staticClass: "d-block mb-3 text-muted offset-md-6" }, [
+        _vm._v("Go to To")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("treat-nav"),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(7),
+          _vm._v(" "),
+          _vm._m(8)
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("treat-footer")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mb-5 mt-5" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "contain" }, [
+          _c("img", {
+            staticClass: "img img-responsive land",
+            attrs: { src: "/Web/5.png", alt: "main-image" }
+          }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "centered img-g",
+            attrs: { src: "/Web/55.png", alt: "over-image" }
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c("h2", { staticClass: "text-center" }, [_vm._v("learn new")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "ten" }, [_vm._v("everyday")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-2 border rounded-sm border-corner" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/sma3a.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("doctors")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 border rounded-sm border-corner" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/mico.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 border rounded-sm border-corner" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/x-ray.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centers")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 border rounded-sm border-corner" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/hospital.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Hospitals")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 border rounded-sm border-corner" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/Path 202.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [
+        _c("img", { attrs: { src: "Web/View other.png", alt: "" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row head" }, [
+      _c("h3", { staticClass: "font-b" }, [
+        _vm._v("Recommended "),
+        _c("span", { staticClass: "head2" }, [_vm._v("Hospitals")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "card col-3 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-3 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card col-3 hospital" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "Web/hos.png", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Cairo,ain shams")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v("Some")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-8" }, [
+        _c("img", {
+          staticClass: "w-100",
+          attrs: { src: "Web/nurs.png", alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _c("p", { staticClass: "nur" }),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Why You Should")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h3", [_vm._v("choose us")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [
+          _vm._v(
+            "\n          There are many variations of passages of Lorem Ipsum available, some\n          form, by injected humour.\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-24000+ Online Course")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-Expert Instruction")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-Unlimited Access")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-Comfortable Prices")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-Free 2 Month Trail")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "parg" }, [_vm._v("-Review System")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row head" }, [
+        _c("h3", [
+          _vm._v("\n          Top Rated "),
+          _c("span", { staticClass: "head2" }, [_vm._v("doctors")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "offset-md-12",
+            attrs: { src: "Web/assest.png", alt: "" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-2 hospital" }, [
+          _c("img", {
+            staticClass: "doctor",
+            attrs: { src: "Web/11.png", alt: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2 hospital" }, [
+          _c("img", {
+            staticClass: "doctor",
+            attrs: { src: "Web/14.png", alt: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2 hospital" }, [
+          _c("img", {
+            staticClass: "doctor",
+            attrs: { src: "Web/13.png", alt: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2 hospital" }, [
+          _c("img", {
+            staticClass: "doctor",
+            attrs: { src: "Web/12.png", alt: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2 hospital" }, [
+          _c("img", {
+            staticClass: "doctor",
+            attrs: { src: "Web/20.png", alt: "" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row head" }, [
+      _c("h3", { staticClass: "feedback" }, [
+        _vm._v("Enroll Student's Feedback")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "offset-12 view",
+        attrs: { type: "submit", value: "view more" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row offset-md-2" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("h6", { staticClass: "paragraph-news" }, [
+          _vm._v(
+            "\n          It has survived not only five centuries, but also the leap into\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news" }, [
+          _vm._v(
+            "\n          electronic typesetting, remaining essentially unchanged. It was\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news offset-md-1" }, [
+          _vm._v(
+            "\n          popularised in the 1960s with the race.\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "offset-md-3",
+          attrs: { src: "Web/gray.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-md-2" }, [_vm._v("Amanda Jackson")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news offset-md-2" }, [
+          _vm._v("CEO, NRD Group")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
+        _c("h6", { staticClass: "paragraph-news" }, [
+          _vm._v(
+            "\n          It has survived not only five centuries, but also the leap into\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news" }, [
+          _vm._v(
+            "\n          electronic typesetting, remaining essentially unchanged. It was\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news offset-md-1" }, [
+          _vm._v(
+            "\n          popularised in the 1960s with the race.\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "offset-md-3",
+          attrs: { src: "Web/gray.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-md-2" }, [_vm._v("Amanda Jackson")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "paragraph-news offset-md-2" }, [
+          _vm._v("CEO, NRD Group")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "paragraph-news offset-md-3" }, [
+      _c("h3", { staticClass: "offset-md-1" }, [
+        _vm._v("To Get Latest News & Further Update")
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "offset-md-2" }, [
+        _vm._v("Subscribe Our Newsletter")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary rounded", attrs: { type: "button" } },
+        [_vm._v("Primary")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/login.vue?vue&type=template&id=172b28a4&":
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/login.vue?vue&type=template&id=172b28a4& ***!
@@ -21625,7 +22474,7 @@ var staticRenderFns = [
       "nav",
       {
         staticClass:
-          "navbar navbar-expand-md fixed-top d-flex flex-md-row p-3 px-md-4 mb-3 bg-white shadow-sm"
+          "navbar navbar-expand-md fixed-top d-flex flex-md-row p-0 px-md-4 mb-3 bg-white shadow-sm"
       },
       [
         _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
@@ -36976,6 +37825,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/css/dash-app.css":
+/*!************************************!*\
+  !*** ./resources/css/dash-app.css ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37462,6 +38322,112 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/hospitals.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/hospitals.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hospitals.vue?vue&type=template&id=af4e4184& */ "./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/hospitals.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./hospitals.vue?vue&type=template&id=af4e4184& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/hospitals.vue?vue&type=template&id=af4e4184&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_hospitals_vue_vue_type_template_id_af4e4184___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/landingpage.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/landingpage.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./landingpage.vue?vue&type=template&id=0572f92b& */ "./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/landingpage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./landingpage.vue?vue&type=template&id=0572f92b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/landingpage.vue?vue&type=template&id=0572f92b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_landingpage_vue_vue_type_template_id_0572f92b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/login.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/login.vue ***!
@@ -37876,11 +38842,10 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: '/new-password',
     component: __webpack_require__(/*! ./components/new-password */ "./resources/js/components/new-password.vue")["default"]
-  }, // {
-  //     path: '/hospitals',
-  //     component: require('./components/hospitals').default,
-  // },
-  {
+  }, {
+    path: '/hospitals',
+    component: __webpack_require__(/*! ./components/hospitals */ "./resources/js/components/hospitals.vue")["default"]
+  }, {
     path: '/doctors',
     component: __webpack_require__(/*! ./components/doctors */ "./resources/js/components/doctors.vue")["default"]
   }, {
@@ -37898,11 +38863,10 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: '/contactus',
     component: __webpack_require__(/*! ./components/contactus */ "./resources/js/components/contactus.vue")["default"]
-  }, // {
-  //     path: '/landingpage',
-  //     component: require('./components/landingpage').default,
-  // },
-  {
+  }, {
+    path: '/landingpage',
+    component: __webpack_require__(/*! ./components/landingpage */ "./resources/js/components/landingpage.vue")["default"]
+  }, {
     path: '/news',
     component: __webpack_require__(/*! ./components/news */ "./resources/js/components/news.vue")["default"]
   }]
@@ -37911,14 +38875,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/app.css ./resources/css/dash-app.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

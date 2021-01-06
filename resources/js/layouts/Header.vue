@@ -19,38 +19,45 @@
             <router-link to="/doctors/all"><i class="ti-home"></i> <span>الاطباء</span></router-link>
           </li>
           <li>
-            <router-link to="#"
+            <router-link to="/hospitals/all"
               ><i class="ti-palette"></i> <span>المستشفيات</span></router-link
             >
           </li>
           <li class="has-sub-menu">
-            <router-link to="#"
+            <router-link to="/users/all"
               ><i class="ti-package"></i> <span>المستخدمين </span></router-link
             >
           </li>
           <li class="has-sub-menu">
-            <router-link to="#"
+            <router-link to="/support/all"
               ><i class="ti-crown"></i> <span>الدعم </span></router-link
             >
           </li>
-           <li class="has-sub-menu">
-            <router-link to="#"
-              ><i class="ti-crown"></i> <span>الاشعه </span></router-link>
+          <li class="has-sub-menu">
+            <router-link to="/xray/all"
+              ><i class="ti-crown"></i> <span>الاشعه </span></router-link
+            >
           </li>
           <li class="has-sub-menu">
-            <router-link to="#"
-              ><i class="ti-stamp"></i> <span>البحوث</span></router-link
+            <router-link to="/laps/all"
+              ><i class="ti-stamp"></i> <span>المعامل</span></router-link
             >
           </li>
           <li>
-            <router-link to="#"
+            <router-link to="/pharmcy/all"
               ><i class="ti-layout"></i>
-              <span>الفواتير</span>
+              <span>الصيدليات</span>
             </router-link>
           </li>
         </ul>
       </nav>
-      <div class="ps__rail-x" style="left: 0px; bottom: 3px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>
+      <div class="ps__rail-x" style="left: 0px; bottom: 3px">
+        <div
+          class="ps__thumb-x"
+          tabindex="0"
+          style="left: 0px; width: 0px"
+        ></div>
+      </div>
     </div>
     <!-- Side Header Inner End -->
   </div>

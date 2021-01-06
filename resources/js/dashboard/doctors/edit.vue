@@ -79,7 +79,7 @@ label{
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">التقييم</label>
-              <input class="form-control" type="number" v-model="dr.rate" placeholder="التقييم" />
+              <input class="form-control" type="number" step="0.01" v-model="dr.rate" placeholder="التقييم" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('rate')"></span>
               </div>
@@ -112,7 +112,7 @@ label{
 
           <div class="product-upload-gallery row flex-wrap">
             <div class="col-12 mb-30">
-              <img :src="previewImage" class="uploading-image" />
+              <img :src="previewImage" class="w-25 img-thumbnail" />
               <label class="custom-file-upload">
                 <input
                   type="file"
@@ -175,8 +175,6 @@ export default {
       reader.onload = (e) => {
         this.previewImage = e.target.result;
         this.dr.image = this.previewImage;
-        console.log(this.image);
-        console.log("ssssssssssssssssssss");
       };
     },
     submit() {

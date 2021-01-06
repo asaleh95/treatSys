@@ -5,7 +5,8 @@
  */
 
 require('./bootstrap');
-import Vue from 'vue';
+require('./errors');
+// import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './dash-routes';
 window.axios = require('axios');
@@ -14,7 +15,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('token'));
 window.axios.defaults.baseURL = '/api';
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -25,28 +26,6 @@ Vue.component('header-section', require('./layouts/Header-section.vue').default)
 Vue.component('footer-bottom', require('./layouts/Footer.vue').default);
 Vue.component('dashboard', require('./dashboard/dashboard.vue').default);
 Vue.component('dial', require('./layouts/dialog.vue').default);
-
-class Errors {
-    constructor() {
-        this.errors = {};
-    }
-
-    get(field) {
-        if (this.errors[field]) {
-            return this.errors[field][0];
-        }
-    }
-
-    record(errors) {
-        this.errors = errors;
-    }
-
-    clear(field) {
-        delete this.errors[field];
-    }
-}
-
-window.obj = new Errors();
 
 Vue.use(VueRouter);
 

@@ -35,7 +35,7 @@ class UpdateDoctorRequest extends FormRequest
             'rate' => 'required|numeric',
             'basic_price' => 'required|numeric',
             'treat_price' => 'required|numeric',
-            'about' => 'required|min:3|max:150',
+            'about' => 'required|min:3|max:250',
             'image' => ['required', new ImageValidationRule]
         ];
     }
