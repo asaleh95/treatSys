@@ -1,7 +1,6 @@
 <style scoped>
-label{
-      text-align: right;
-
+label {
+  text-align: right;
 }
 </style>
 <template>
@@ -19,9 +18,7 @@ label{
       </div>
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
-          <h3>
-         تعديل مستشفي
-          </h3>
+          <h3>تعديل مستشفي</h3>
         </div>
       </div>
       <!-- Page Heading End -->
@@ -34,7 +31,7 @@ label{
     <!-- Add or Edit Product Start -->
     <div class="add-edit-product-wrap col-12">
       <div class="add-edit-product-form">
-        <h4 class="title" style="text-align: right;">معلومات عن المستشفي</h4>
+        <h4 class="title" style="text-align: right">معلومات عن المستشفي</h4>
         <form
           action="#"
           @submit.prevent="submit"
@@ -44,63 +41,149 @@ label{
           <div class="row">
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">الاسم</label>
-              <input class="form-control" type="text" v-model="dr.name" placeholder="آسم المستشفي " />
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.name"
+                placeholder="آسم المستشفي "
+              />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('name')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
+              <label for="name">البريد الابكترونى</label>
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.email"
+                placeholder="آسم المستشفي "
+              />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('email')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
               <label for="name">رقم الهاتف</label>
-              <input class="form-control" type="number" v-model="dr.phone" placeholder="رقم الهاتف" />
+              <input
+                class="form-control"
+                type="number"
+                v-model="hospital.phone"
+                placeholder="رقم الهاتف"
+              />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('phone')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">العنوان</label>
-              <input class="form-control" type="text" v-model="dr.address" placeholder="العنوان" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.address"
+                placeholder="العنوان"
+              />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('address')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
+              <label for="name">المنطقه</label>
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.region"
+                placeholder="العنوان"
+              />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('region')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
               <label for="name">الاحداثيات</label>
-              <input class="form-control" type="text" v-model="dr.location" placeholder="الاحداثيات" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.location"
+                placeholder="الاحداثيات"
+              />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('location')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
-              <label for="name">الوظيفه</label>
-              <input class="form-control" type="text" v-model="dr.position" placeholder="الوظيفه" />
+              <label for="name">المسافه</label>
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.distance"
+                placeholder="الوظيفه"
+              />
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('position')"></span>
+                <span style="color: red" v-text="errors.get('distance')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
+              <label for="name">التخفيض</label>
+              <input
+                class="form-control"
+                type="text"
+                v-model="hospital.discount"
+                placeholder="الوظيفه"
+              />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('discount')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">التقييم</label>
-              <input class="form-control" type="number" v-model="dr.rate" placeholder="التقييم" />
+              <input
+                class="form-control"
+                type="number"
+                v-model="hospital.rate"
+                placeholder="التقييم"
+              />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('rate')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
-              <label for="name">السعر الاولى</label>
-              <input class="form-control" type="number" v-model="dr.basic_price" placeholder="السعر الاولى" />
+              <label for="name">عدد المصوتين</label>
+              <input
+                class="form-control"
+                type="number"
+                v-model="hospital.number_of_raters"
+                placeholder="السعر الاولى"
+              />
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('basic_price')"></span>
+                <span
+                  style="color: red"
+                  v-text="errors.get('number_of_raters')"
+                ></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
-              <label for="name">سعر التعامل</label>
-              <input class="form-control" type="number" v-model="dr.treat_price" placeholder="سعر التعامل" />
+              <label for="name">عدد المشاهدين</label>
+              <input
+                class="form-control"
+                type="number"
+                v-model="hospital.number_of_views"
+                placeholder="سعر التعامل"
+              />
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('treat_price')"></span>
+                <span
+                  style="color: red"
+                  v-text="errors.get('number_of_views')"
+                ></span>
               </div>
             </div>
             <div class="col-12 mb-30">
               <label for="name">الملاحظات</label>
-              <textarea class="form-control" v-model="dr.about" placeholder=" الملاحظات"></textarea>
+              <textarea
+                class="form-control"
+                v-model="hospital.about"
+                placeholder=" الملاحظات"
+              ></textarea>
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('about')"></span>
               </div>
@@ -112,28 +195,58 @@ label{
 
           <div class="product-upload-gallery row flex-wrap">
             <div class="col-12 mb-30">
-              <img :src="previewImage" class="uploading-image" />
+              <img :src="previewLogo" class="w-25 img-thumbnail" />
+              <label class="custom-file-upload">
+                <input
+                  type="file"
+                  accept="image/jpeg"
+                  class="uploading-image"
+                  @change="sendLogo"
+                />
+                ارفق شعار
+              </label>
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('logo')"></span>
+              </div>
+            </div>
+          </div>
+          <div class="product-upload-gallery row flex-wrap">
+            <div class="col-12 mb-30">
+              <div class="row">
+                <div class="col-md-2" v-for="previewImage in previewImages">
+                  <img :src="previewImage" class="w-100 img-thumbnail" />
+                </div>
+              </div>
+
               <label class="custom-file-upload">
                 <input
                   type="file"
                   accept="image/jpeg"
                   class="uploading-image"
                   @change="sendImage"
+                  multiple
                 />
                 ارفق صوره
               </label>
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('image')"></span>
+                <span style="color: red" v-text="errors.get('images')"></span>
               </div>
             </div>
           </div>
-
           <!-- Button Group Start -->
           <div class="row">
             <div class="d-flex flex-wrap justify-content-end col mbn-10">
-              <button class="button button-outline button-primary mb-10 ml-10 mr-0">تعديل</button>
+              <button
+                class="button button-outline button-primary mb-10 ml-10 mr-0"
+              >
+                تعديل
+              </button>
 
-              <button class="button button-outline button-danger mb-10 ml-10 mr-0">حذف</button>
+              <button
+                class="button button-outline button-danger mb-10 ml-10 mr-0"
+              >
+                حذف
+              </button>
             </div>
           </div>
           <!-- Button Group End -->
@@ -148,11 +261,19 @@ label{
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/hospitals/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
-        this.previewImage = result.data.data.image.image;
-        this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+        this.hospital = result.data.data;
+        this.previewLogo = result.data.data.logo;
+        this.previewImages = result.data.data.images.map(({ image }) => ({ image })).map(({ image }) => image);
+        console.log(this.previewImages);
+        console.log(result.data.data.images);
+        this.hospital.location =
+          result.data.data.location.coordinates[0] +
+          "," +
+          result.data.data.location.coordinates[1];
+          this.hospital.images = [];
+          this.hospital.logo = "";
         console.log(result.data.data);
       })
       .catch((error) => {
@@ -161,32 +282,46 @@ export default {
   },
   data() {
     return {
-      previewImage: [],
-      dr: {},
+      previewLogo: "",
+      previewImages: [],
+      hospital: {},
       errors: window.obj,
       success: false,
     };
   },
   methods: {
     sendImage(e) {
+      this.hospital.images = [];
+      this.previewImages = [];
+      let images = e.target.files;
+      for (let index = 0; index < images.length; index++) {
+        const reader = new FileReader();
+        reader.readAsDataURL(images[index]);
+        reader.onload = (e) => {
+          this.previewImages.push(e.target.result);
+          this.hospital.images.push(e.target.result);
+        };
+      }
+    },
+    sendLogo(e) {
       const image = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = (e) => {
-        this.previewImage = e.target.result;
-        this.dr.image = this.previewImage;
-        console.log(this.image);
+        this.previewLogo = e.target.result;
+        this.hospital.logo = this.previewLogo;
+        console.log(this.logo);
         console.log("ssssssssssssssssssss");
       };
     },
     submit() {
       axios
-        .put("/admins/doctors/" + this.dr.id, this.dr)
+        .put("/admins/hospitals/" + this.hospital.id, this.hospital)
         .then((result) => {
           console.log(result.data);
           //
-          this.success = true
-          setTimeout(() => this.$router.push("/doctors/all"), 2000);
+          this.success = true;
+          setTimeout(() => this.$router.push("/hospitals/all"), 2000);
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors)

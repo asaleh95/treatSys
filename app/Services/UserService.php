@@ -90,14 +90,44 @@ class UserService
         $this->userRepo->logout();
     }
 
-    public function like($data)
+    public function likeHospital($data)
     {
-        $this->userRepo->like($data);
+        $this->userRepo->likeHospital($data);
     }
 
-    public function dislike($data)
+    public function likeRay($data)
     {
-        $this->userRepo->dislike($data);
+        $this->userRepo->likeRay($data);
+    }
+
+    public function likeLab($data)
+    {
+        $this->userRepo->likeLab($data);
+    }
+
+    public function likePharmacy($data)
+    {
+        $this->userRepo->likePharmacy($data);
+    }
+
+    public function dislikeHospital($data)
+    {
+        $this->userRepo->dislikeHospital($data);
+    }
+
+    public function dislikeRay($data)
+    {
+        $this->userRepo->dislikeRay($data);
+    }
+
+    public function dislikeLab($data)
+    {
+        $this->userRepo->dislikeLab($data);
+    }
+
+    public function dislikePharmacy($data)
+    {
+        $this->userRepo->dislikePharmacy($data);
     }
 
     public function destroy($user)

@@ -29,11 +29,6 @@
             >
           </li>
           <li class="has-sub-menu">
-            <router-link to="/support/all"
-              ><i class="ti-crown"></i> <span>الدعم </span></router-link
-            >
-          </li>
-          <li class="has-sub-menu">
             <router-link to="/xray/all"
               ><i class="ti-crown"></i> <span>الاشعه </span></router-link
             >

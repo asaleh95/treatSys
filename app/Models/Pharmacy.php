@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Illuminate\Support\Facades\Storage;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 class Pharmacy extends Model
 {
     use HasFactory, SpatialTrait, SoftDeletes;
 
-    protected $with = ['images','workingHours','vacations'];
+    protected $with = ['images','users','workingHours','vacations'];
 
     protected $fillable = [
         'name','email','phone','discount','region','address','distance','rate','number_of_raters',
@@ -44,5 +45,16 @@ class Pharmacy extends Model
     public function vacations()
     {
         return $this->morphMany(Vacation::class, 'vacationable');
+    }
+
+    public function users()
+    {
+        return $this->morphToMany(User::class, 'favourites');
+    }
+
+    public function setLocationAttribute($value)
+    {
+        $arr = explode(',', $value);
+        $this->attributes['location'] = new Point($arr[0], $arr[1]);
     }
 }

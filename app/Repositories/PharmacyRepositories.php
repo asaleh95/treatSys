@@ -47,7 +47,7 @@ class PharmacyRepositories
 
     public function destroy($pharmacy)
     {
-        $pharmacy->image()->delete();
+        $pharmacy->images()->delete();
         $pharmacy->delete();
     }
 }

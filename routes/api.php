@@ -9,8 +9,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('signup', 'UserController@store')->name('register-user');
     Route::post('forget-password', 'UserController@forgetPassword')->name('forget-password');
     Route::post('reset-password', 'UserController@resetPassword')->name('reset-password');
+    Route::post('code', 'UserController@code')->name('code');
     Route::post('contact-us', 'ContactUsController@store')->name('contactUs');
     Route::post('admin/login', 'AdminController@login')->name('admin-login');
+    Route::get('countries', 'CountryController@all');
 
 
     Route::middleware('auth:api')->group(function () {
@@ -21,8 +23,14 @@ Route::namespace('App\Http\Controllers')->group(function () {
         });
 
         Route::prefix('users')->group(function (){
-            Route::post('/like', 'UserController@like');
-            Route::post('/dislike', 'UserController@dislike');
+            Route::post('/like-hospital', 'UserController@likeHospital');
+            Route::post('/like-lab', 'UserController@likeLab');
+            Route::post('/like-ray', 'UserController@likeRay');
+            Route::post('/like-pharmacy', 'UserController@likePharmacy');
+            Route::post('/dislike-hospital', 'UserController@dislikeHospital');
+            Route::post('/dislike-lab', 'UserController@dislikeLab');
+            Route::post('/dislike-ray', 'UserController@dislikeRay');
+            Route::post('/dislike-pharmacy', 'UserController@dislikePharmacy');
             Route::post('logout', 'UserController@logout')->name('logout-user');
             Route::prefix('hospitals')->group(function () {
                 Route::get('/', 'HospitalController@index');

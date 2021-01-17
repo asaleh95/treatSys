@@ -14,6 +14,8 @@ class RayResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $arr = parent::toArray($request);
+        $arr['like'] = $this->when($this->users->contains($request->user()), true);
+        return $arr;
     }
 }

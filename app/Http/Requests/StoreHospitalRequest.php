@@ -29,7 +29,7 @@ class StoreHospitalRequest extends FormRequest
             'name' => 'required|min:3|max:150',
             'email' => ['required', 'email:rfc,dns', 'unique:hospitals'],
             'phone' => ['required', 'phone:AUTO,EG'],
-            'dicount' => 'required|numeric',
+            'discount' => 'required|numeric',
             'region' => 'required|min:3|max:150',
             'distance' => 'required|numeric',
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],

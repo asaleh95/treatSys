@@ -8,6 +8,7 @@ use App\Repositories\UserRepositories;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Controllers\AdminController;
 use App\Repositories\AdminRepositories;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Schema::defaultStringLength(191);
     }
 }

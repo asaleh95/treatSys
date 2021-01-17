@@ -14,8 +14,13 @@ use App\Interfaces\AuthInterface;
 use App\Models\User;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ForgetPasswordRequest;
+use App\Http\Requests\LikeHospitalRequest;
+use App\Http\Requests\LikeLabRequest;
+use App\Http\Requests\LikePharmacyRequest;
+use App\Http\Requests\LikeRayRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\ValidateUserCodeRequest;
 
 class UserController extends Controller
 {
@@ -55,15 +60,51 @@ class UserController extends Controller
         return response()->json(["message" => "success"]);
     }
 
-    public function like(FavouriteRequest $request)
+    public function likeHospital(LikeHospitalRequest $request)
     {
-        $this->userService->like($request->all());
+        $this->userService->likeHospital($request->all());
         return response()->json(["message" => "success"]);
     }
 
-    public function dislike(FavouriteRequest $request)
+    public function likeRay(LikeRayRequest $request)
     {
-        $this->userService->dislike($request->all());
+        $this->userService->likeRay($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function likeLab(LikeLabRequest $request)
+    {
+        $this->userService->likeLab($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function likePharmacy(LikePharmacyRequest $request)
+    {
+        $this->userService->likePharmacy($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function dislikeHospital(LikeHospitalRequest $request)
+    {
+        $this->userService->dislikeHospital($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function dislikeRay(LikeRayRequest $request)
+    {
+        $this->userService->dislikeRay($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function dislikeLab(LikeLabRequest $request)
+    {
+        $this->userService->dislikeLab($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function dislikePharmacy(LikePharmacyRequest $request)
+    {
+        $this->userService->dislikePharmacy($request->all());
         return response()->json(["message" => "success"]);
     }
 
@@ -89,6 +130,11 @@ class UserController extends Controller
     {
         //
         $this->userService->destroy($user);
+        return response()->json(["message" => "success"]);
+    }
+
+    public function code(ValidateUserCodeRequest $request)
+    {
         return response()->json(["message" => "success"]);
     }
 }

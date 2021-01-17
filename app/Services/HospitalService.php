@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\HospitalRepositories;
 use App\Traits\FileTrait;
+use Illuminate\Support\Str;
 
 class HospitalService
 {
@@ -24,46 +25,44 @@ class HospitalService
 
     public function store($data)
     {
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
         $this->hospitalRepo->store($data);
-        $this->uploadAvatar($data['image'], $data['phone']);
-
     }
 
-    public function uploadAvatar($image, $phone)
+    public function update($data, $hospital)
     {
-        if (!empty($image)) {
-            $link = $this->uploadFile($image, "hospitals/". $phone. '.png');
-            $this->saveAvatar($link);
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        if (empty($data['logo'])) {
+            unset($data['logo']);
         }
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
+        $this->hospitalRepo->update($data, $hospital);
     }
 
-    public function updateAvatar($image, $phone, $hospital)
+    public function uploadLogo($image, $phone)
     {
         if (!empty($image)) {
-            $link = "hospitals/". $phone. '.png';
+            $link = "hospitals/". $phone.'/'.Str::random(10). '.png';
             $this->uploadFile($image, $link);
-            $this->editAvatar($link, $hospital);
+            return $link;
         }
     }
 
-    public function saveAvatar($link)
+    public function uploadImages($images, $phone)
     {
-        $this->hospitalRepo->saveAvatar($link);
-    }
-
-    public function editAvatar($link, $hospital)
-    {
-        $this->hospitalRepo->updateAvatar($link, $hospital);
+        if (!empty($images)) {
+            foreach ($images as $image) {
+                $link = "hospitals/". $phone.'/'.Str::random(10). '.png';
+                $this->uploadFile($image, $link);
+                $links[]['image'] = $link;
+            }
+            return $links;
+        }
     }
 
     public function destroy($hospital)
     {
         $this->hospitalRepo->destroy($hospital);
-    }
-
-    public function update($data, $hospital)
-    {
-        $this->hospitalRepo->update($data, $hospital);
-        $this->updateAvatar($data['image'], $data['phone'], $hospital);
     }
 }

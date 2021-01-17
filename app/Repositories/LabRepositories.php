@@ -28,26 +28,21 @@ class LabRepositories
     public function store($data)
     {
         $this->lab = $this->lab->create($data);
-    }
-
-    public function saveAvatar($link)
-    {
-        $this->lab->image()->create(['image' => $link]);
-    }
-
-    public function updateAvatar($link, $lab)
-    {
-        $lab->image()->update(['image' => $link]);
+        $this->lab->images()->createMany($data['images']);
     }
 
     public function update($data, $lab)
     {
         $lab->update($data);
+        if (!empty($data['images'])) {
+            $lab->images()->delete();
+            $lab->images()->createMany($data['images']);
+        }
     }
-
+    
     public function destroy($lab)
     {
-        $lab->image()->delete();
+        $lab->images()->delete();
         $lab->delete();
     }
 }

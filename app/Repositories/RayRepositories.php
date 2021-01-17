@@ -47,7 +47,7 @@ class RayRepositories
 
     public function destroy($ray)
     {
-        $ray->image()->delete();
+        $ray->images()->delete();
         $ray->delete();
     }
 }

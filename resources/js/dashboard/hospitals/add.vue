@@ -43,6 +43,12 @@
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
+              <input class="form-control" type="text" v-model="email" placeholder="البريد الابكترونى" />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('email')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
               <input
                 class="form-control"
                 type="number"
@@ -68,6 +74,17 @@
               <input
                 class="form-control"
                 type="text"
+                v-model="region"
+                placeholder="المنطقه"
+              />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('region')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
+              <input
+                class="form-control"
+                type="text"
                 v-model="location"
                 placeholder="الاحداثيات"
               />
@@ -79,11 +96,22 @@
               <input
                 class="form-control"
                 type="text"
-                v-model="position"
-                placeholder="الوظيفه"
+                v-model="distance"
+                placeholder="المسافه"
               />
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('position')"></span>
+                <span style="color: red" v-text="errors.get('distance')"></span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mb-30">
+              <input
+                class="form-control"
+                type="number"
+                v-model="discount"
+                placeholder="التخفيض"
+              />
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('discount')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
@@ -103,13 +131,13 @@
               <input
                 class="form-control"
                 type="number"
-                v-model="basic_price"
-                placeholder="السعر الاولى"
+                v-model="number_of_raters"
+                placeholder="عدد المصوتين"
               />
               <div class="animated bounce infinite rtl">
                 <span
                   style="color: red"
-                  v-text="errors.get('basic_price')"
+                  v-text="errors.get('number_of_raters')"
                 ></span>
               </div>
             </div>
@@ -117,13 +145,13 @@
               <input
                 class="form-control"
                 type="number"
-                v-model="treat_price"
-                placeholder="سعر التعامل"
+                v-model="number_of_views"
+                placeholder="عدد المشاهدين"
               />
               <div class="animated bounce infinite rtl">
                 <span
                   style="color: red"
-                  v-text="errors.get('treat_price')"
+                  v-text="errors.get('number_of_views')"
                 ></span>
               </div>
             </div>
@@ -140,6 +168,24 @@
           </div>
           <div class="head" style="text-align: right">
             <h4 class="title">صور المستشفي</h4>
+          </div>
+
+          <div class="product-upload-gallery row flex-wrap">
+            <div class="col-12 mb-30">
+              <img :src="previewLogo" class="w-25 img-thumbnail" />
+              <label class="custom-file-upload">
+                <input
+                  type="file"
+                  accept="image/jpeg"
+                  class="uploading-image"
+                  @change="sendLogo"
+                />
+                ارفق شعار
+              </label>
+              <div class="animated bounce infinite rtl">
+                <span style="color: red" v-text="errors.get('logo')"></span>
+              </div>
+            </div>
           </div>
 
           <div class="product-upload-gallery row flex-wrap">
@@ -164,7 +210,7 @@
                 ارفق صوره
               </label>
               <div class="animated bounce infinite rtl">
-                <span style="color: red" v-text="errors.get('image')"></span>
+                <span style="color: red" v-text="errors.get('images')"></span>
               </div>
             </div>
           </div>
@@ -198,15 +244,20 @@ export default {
   data() {
     return {
       name: "",
+      email: "",
       phone: "",
       location: "",
       address: "",
-      position: "",
+      region: "",
+      distance: "",
+      discount: "",
       rate: "",
-      basic_price: "",
-      treat_price: "",
+      number_of_raters: "",
+      number_of_views: "",
       about: "",
       images: [],
+      logo: "",
+      previewLogo: "",
       previewImages: [],
       errors: window.obj,
       success: false,
@@ -226,18 +277,33 @@ export default {
         };
       }
     },
+    sendLogo(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.previewLogo = e.target.result;
+        this.logo = this.previewLogo;
+        console.log(this.logo);
+        console.log("ssssssssssssssssssss");
+      };
+    },
     submit() {
       let all = {
         name: this.name,
+        email: this.email,
         phone: this.phone,
         location: this.location,
         address: this.address,
-        position: this.position,
+        region: this.region,
+        distance: this.distance,
+        discount: this.discount,
         rate: this.rate,
-        basic_price: this.basic_price,
-        treat_price: this.treat_price,
+        number_of_raters: this.number_of_raters,
+        number_of_views: this.number_of_views,
         about: this.about,
         images: this.images,
+        logo: this.logo
       };
       console.log(all);
       axios

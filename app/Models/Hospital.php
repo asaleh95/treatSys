@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Illuminate\Support\Facades\Storage;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 class Hospital extends Model
 {
@@ -43,7 +44,7 @@ class Hospital extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'favourites');
+        return $this->morphToMany(User::class, 'favourites');
     }
 
     public function workingHours()
@@ -54,5 +55,11 @@ class Hospital extends Model
     public function vacations()
     {
         return $this->morphMany(Vacation::class, 'vacationable');
+    }
+
+    public function setLocationAttribute($value)
+    {
+        $arr = explode(',', $value);
+        $this->attributes['location'] = new Point($arr[0], $arr[1]);
     }
 }

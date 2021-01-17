@@ -89,14 +89,44 @@ class UserRepositories implements AuthInterface
         $user->update($data);
     }
 
-    public function like($data)
+    public function likeHospital($data)
     {
         auth()->user()->hospitals()->attach($data['hospital_id']);
     }
 
-    public function dislike($data)
+    public function likeRay($data)
+    {
+        auth()->user()->rays()->attach($data['ray_id']);
+    }
+
+    public function likeLab($data)
+    {
+        auth()->user()->labs()->attach($data['lab_id']);
+    }
+
+    public function likePharmacy($data)
+    {
+        auth()->user()->pharmacies()->attach($data['pharmacy_id']);
+    }
+
+    public function dislikeHospital($data)
     {
         auth()->user()->hospitals()->detach($data['hospital_id']);
+    }
+
+    public function dislikeRay($data)
+    {
+        auth()->user()->rays()->detach($data['ray_id']);
+    }
+
+    public function dislikeLab($data)
+    {
+        auth()->user()->labs()->detach($data['lab_id']);
+    }
+
+    public function dislikePharmacy($data)
+    {
+        auth()->user()->pharmacies()->detach($data['pharmacy_id']);
     }
 
     public function destroy($user)

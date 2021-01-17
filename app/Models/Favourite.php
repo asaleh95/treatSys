@@ -11,6 +11,6 @@ class Favourite extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id','hospital_id'
+        'user_id','favourable_type','favourable_id'
     ];
 }

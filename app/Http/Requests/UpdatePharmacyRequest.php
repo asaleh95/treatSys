@@ -30,7 +30,7 @@ class UpdatePharmacyRequest extends FormRequest
             'name' => 'required|min:3|max:150',
             'email' => ['required', 'email:rfc,dns', Rule::unique('pharmacies')->ignore($this->pharmacy->id)],
             'phone' => ['required', 'phone:AUTO,EG'],
-            'dicount' => 'required|numeric',
+            'discount' => 'required|numeric',
             'region' => 'required|min:3|max:150',
             'distance' => 'required|numeric',
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],
@@ -38,10 +38,10 @@ class UpdatePharmacyRequest extends FormRequest
             'rate' => 'required|numeric',
             'number_of_raters' => 'required|numeric',
             'number_of_views' => 'required|numeric',
-            'about' => 'required|min:3|max:150',
-            'logo' => ['required', new ImageValidationRule],
-            'images' => ['required', 'array'],
-            'images.*' => ['required', new ImageValidationRule]
+            'about' => 'required|min:3|max:250',
+            'logo' => ['nullable', new ImageValidationRule],
+            'images' => ['nullable', 'array'],
+            'images.*' => ['nullable', new ImageValidationRule]
         ];
     }
 }

@@ -9,7 +9,7 @@
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
       <router-link
-        to="/pharmcy/add"
+        to="/pharmacy/add"
         style="position: absolute; left: 31px"
         class="button button-primary"
       >
@@ -74,36 +74,36 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(dr, i) in resultQuery">
+                <tr v-for="(pharmacy, i) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ dr.id }}</td>
+                  <td style="font-family: sans-serif">#{{ pharmacy.id }}</td>
                   <td>
                     <img
-                      :src="dr.image.image"
+                      :src="pharmacy.images[0].image"
                       alt
                       class="table-product-image rounded-circle"
                     />
                   </td>
                   <td>
-                    <a href="#">{{ dr.name }}</a>
+                    <a href="#">{{ pharmacy.name }}</a>
                   </td>
 
-                  <td>{{ dr.address }}</td>
-                  <td style="font-family: sans-serif">{{ dr.phone }}</td>
+                  <td>{{ pharmacy.address }}</td>
+                  <td style="font-family: sans-serif">{{ pharmacy.phone }}</td>
                   <td>
-                    <span class="badge badge-success">{{ dr.rate }}</span>
+                    <span class="badge badge-success">{{ pharmacy.rate }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/pharmcy/show/' + dr.id"
+                        :to="'/pharmacy/show/' + pharmacy.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/pharmcy/edit/' + dr.id"
+                        :to="'/pharmacy/edit/' + pharmacy.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +111,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(dr.id, i)"
+                        @click="setDel(pharmacy.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -133,7 +133,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="عميل" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="صيدليه" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>
@@ -144,9 +144,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors")
+      .get("/admins/pharmacies")
       .then((result) => {
-        this.drs = result.data.data;
+        this.pharmacies = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -157,7 +157,7 @@ export default {
   },
   data() {
     return {
-      drs: [],
+      pharmacies: [],
       id: null,
       index: null,
       success: false,
@@ -169,7 +169,7 @@ export default {
   computed: {
     resultQuery() {
       if (this.$root.search) {
-        return this.drs.filter((item) => {
+        return this.pharmacies.filter((item) => {
           return this.$root.search
             .toLowerCase()
             .split(" ")
@@ -181,19 +181,18 @@ export default {
             );
         });
       } else {
-        return this.drs;
+        return this.pharmacies;
       }
     },
   },
   methods: {
     deleteItem(id, index) {
       axios
-        .delete("/admins/doctors/" + id)
+        .delete("/admins/pharmacies/" + id)
         .then((result) => {
-          this.drs.splice(index, 1);
-          console.log(this.drs);
+          this.pharmacies.splice(index, 1);
+          console.log(this.pharmacies);
           // console.log(result.data);
-          console.log("clients");
           //
           this.success = true;
           setTimeout(() => (this.success = false), 2000);
@@ -208,7 +207,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.drs = result.data.data;
+        this.hospitals = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);

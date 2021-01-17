@@ -30,7 +30,7 @@ class UpdateLabRequest extends FormRequest
             'name' => 'required|min:3|max:150',
             'email' => ['required', 'email:rfc,dns', Rule::unique('labs')->ignore($this->lab->id)],
             'phone' => ['required', 'phone:AUTO,EG'],
-            'dicount' => 'required|numeric',
+            'discount' => 'required|numeric',
             'region' => 'required|min:3|max:150',
             'distance' => 'required|numeric',
             'location' => ['required', 'regex:/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/'],
@@ -39,9 +39,9 @@ class UpdateLabRequest extends FormRequest
             'number_of_raters' => 'required|numeric',
             'number_of_views' => 'required|numeric',
             'about' => 'required|min:3|max:150',
-            'logo' => ['required', new ImageValidationRule],
-            'images' => ['required', 'array'],
-            'images.*' => ['required', new ImageValidationRule]
+            'logo' => ['nullable', new ImageValidationRule],
+            'images' => ['nullable', 'array'],
+            'images.*' => ['nullable', new ImageValidationRule]
         ];
     }
 }

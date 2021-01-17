@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 require('./errors');
-// import Vue from 'vue';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './dash-routes';
 window.axios = require('axios');

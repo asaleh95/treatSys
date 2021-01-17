@@ -24,28 +24,45 @@
 
             <ul>
               <li>
-                <span>اسم المستشفي</span> <span> {{ dr.name }} </span>
+                <span>اسم المستشفي</span> <span> {{ hospital.name }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ dr.address }}</span>
+                <span>البريد الالكترونى</span>
+                <span> {{ hospital.email }} </span>
               </li>
               <li>
-                <span>رقم الموبايل</span> <span>{{ dr.phone }} </span>
+                <span>رقم الموبايل</span> <span>{{ hospital.phone }} </span>
               </li>
               <li>
-                <span>التخصص</span> <span>{{ dr.position }}</span>
+                <span>العنوان</span> <span>{{ hospital.address }}</span>
               </li>
               <li>
-                <span>الملاحظات</span> <span>{{ dr.about }}</span>
+                <span>المنطقه</span> <span>{{ hospital.region }}</span>
               </li>
               <li>
-                <span>التقييم</span> <span class="btn badge-success">{{dr.rate}}</span>
+                <span>المسافه</span> <span>{{ hospital.distance }}</span>
               </li>
               <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{dr.basic_price}}</span>
+                <span>المسافه</span> <span>{{ hospital.distance }}</span>
               </li>
               <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{dr.treat_price}}</span>
+                <span>الملاحظات</span> <span>{{ hospital.about }}</span>
+              </li>
+              <li>
+                <span>التقييم</span>
+                <span class="btn badge-success">{{ hospital.rate }}</span>
+              </li>
+              <li>
+                <span>عدد المصوتين</span
+                ><span class="btn badge-warning">{{
+                  hospital.number_of_raters
+                }}</span>
+              </li>
+              <li>
+                <span>عدد المشاهدين</span>
+                <span class="btn badge-warning">{{
+                  hospital.number_of_views
+                }}</span>
               </li>
             </ul>
           </div>
@@ -53,17 +70,25 @@
         </div>
       </div>
       <div class="col-8">
-        <img
-          :src="dr.images[0].image"
-          style="
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            max-width: 50%;
-            height: auto;
-          "
-        />
+        <div class="row">
+          <img
+          class="rounded-circle"
+            :src="hospital.logo"
+            style="
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              width: 20%;
+              max-width: 50%;
+              height: auto;
+            "
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-2" v-for="image in hospital.images">
+            <img :src="image.image" class="w-100 img-thumbnail" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +99,7 @@ export default {
     axios
       .get("/admins/hospitals/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.hospital = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +109,7 @@ export default {
   },
   data() {
     return {
-      dr: {},
+      hospital: {},
     };
   },
 };

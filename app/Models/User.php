@@ -47,6 +47,21 @@ class User extends Authenticatable
 
     public function hospitals()
     {
-        return $this->belongsToMany(Hospital::class, 'favourites');
+        return $this->morphedByMany(Hospital::class, 'favourites');
+    }
+
+    public function rays()
+    {
+        return $this->morphedByMany(Ray::class, 'favourites');
+    }
+
+    public function labs()
+    {
+        return $this->morphedByMany(Lab::class, 'favourites');
+    }
+
+    public function pharmacies()
+    {
+        return $this->morphedByMany(Pharmacy::class, 'favourites');
     }
 }
