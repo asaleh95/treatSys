@@ -11,16 +11,28 @@
         form .
       </p>
       <br>
-      <form action="">
+<form action="#" @submit.prevent="submit" @keydown="error.clear($event.target.name)" @change="error.clear($event.target.name)">
           <div>
-              <input type="password" class="form-control-lg input font-b" placeholder="New Password">
-          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
+<input
+          type="text"
+          v-model="password"
+          id="password"
+          name="password"
+          class="form-control-lg input font-b"
+          placeholder="password"
+        />          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
           </div>
 		  <div>
-              <input type="password" class="form-control-lg input font-b" placeholder="New Re- Password">
-          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
+<input
+          type="text"
+          v-model="password"
+          id="password"
+          name="password"
+          class="form-control-lg input font-b"
+          placeholder="password"
+        />          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
           </div>
-          <button type="button" class="submit text-white font-weight-bold">Change Password </button>
+          <button type="submit" class="submit text-white font-weight-bold">Change Password </button>
       </form>
       <br>
       <br>
@@ -45,3 +57,35 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      password: "",
+      error: window.obj,
+    };
+  },
+  methods: {
+    submit() {
+      //this.products = JSON.parse(localStorage.getItem('products'));
+      let all = {
+        password: this.password,
+        email: sessionStorage.getItem('code-email')
+      };
+      console.log(all);
+      axios
+        .post("/reset-password", all)
+        .then((result) => {
+          console.log(result.data);
+                sessionStorage.removeItem('code-email');
+          this.$router.push("/login");
+        })
+        .catch((err) => {
+          // this.error = "خطأ فى الباسورد او الايميل"
+          console.log(err.error);
+        });
+    },
+  },
+};
+</script>

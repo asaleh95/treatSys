@@ -74,36 +74,36 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(dr, i) in resultQuery">
+                <tr v-for="(pharm, i) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ dr.id }}</td>
+                  <td style="font-family: sans-serif">#{{ pharm.id }}</td>
                   <td>
                     <img
-                      :src="dr.image.image"
+                      :src="pharm.image.image"
                       alt
                       class="table-product-image rounded-circle"
                     />
                   </td>
                   <td>
-                    <a href="#">{{ dr.name }}</a>
+                    <a href="#">{{ pharm.name }}</a>
                   </td>
 
-                  <td>{{ dr.address }}</td>
-                  <td style="font-family: sans-serif">{{ dr.phone }}</td>
+                  <td>{{ pharm.address }}</td>
+                  <td style="font-family: sans-serif">{{ pharm.phone }}</td>
                   <td>
-                    <span class="badge badge-success">{{ dr.rate }}</span>
+                    <span class="badge badge-success">{{ pharm.rate }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/pharmcy/show/' + dr.id"
+                        :to="'/pharmcy/show/' + pharm.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/pharmcy/edit/' + dr.id"
+                        :to="'/pharmcy/edit/' + pharm.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +111,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(dr.id, i)"
+                        @click="setDel(pharm.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -144,9 +144,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors")
+      .get("/admins/pharmacies")
       .then((result) => {
-        this.drs = result.data.data;
+        this.pharm = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -157,7 +157,7 @@ export default {
   },
   data() {
     return {
-      drs: [],
+      pharm: [],
       id: null,
       index: null,
       success: false,
@@ -169,7 +169,7 @@ export default {
   computed: {
     resultQuery() {
       if (this.$root.search) {
-        return this.drs.filter((item) => {
+        return this.pharm.filter((item) => {
           return this.$root.search
             .toLowerCase()
             .split(" ")
@@ -181,17 +181,17 @@ export default {
             );
         });
       } else {
-        return this.drs;
+        return this.pharm;
       }
     },
   },
   methods: {
     deleteItem(id, index) {
       axios
-        .delete("/admins/doctors/" + id)
+        .delete("/admins/pharmacies/" + id)
         .then((result) => {
-          this.drs.splice(index, 1);
-          console.log(this.drs);
+          this.pharm.splice(index, 1);
+          console.log(this.pharm);
           // console.log(result.data);
           console.log("clients");
           //
@@ -208,7 +208,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.drs = result.data.data;
+        this.pharm = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);

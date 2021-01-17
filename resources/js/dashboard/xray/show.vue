@@ -24,28 +24,28 @@
 
             <ul>
               <li>
-                <span>اسم الاشاعه</span> <span> {{ dr.name }} </span>
+                <span>اسم الاشاعه</span> <span> {{ ray.name }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ dr.address }}</span>
+                <span>العنوان</span> <span>{{ ray.address }}</span>
               </li>
               <li>
-                <span>رقم الموبايل</span> <span>{{ dr.phone }} </span>
+                <span>رقم الموبايل</span> <span>{{ ray.phone }} </span>
               </li>
               <li>
-                <span>التخصص</span> <span>{{ dr.position }}</span>
+                <span>التخصص</span> <span>{{ ray.position }}</span>
               </li>
               <li>
-                <span>الملاحظات</span> <span>{{ dr.about }}</span>
+                <span>الملاحظات</span> <span>{{ ray.about }}</span>
               </li>
               <li>
-                <span>التقييم</span> <span class="btn badge-success">{{dr.rate}}</span>
+                <span>التقييم</span> <span class="btn badge-success">{{ray.rate}}</span>
               </li>
               <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{dr.basic_price}}</span>
+                <span>السعر الاولى</span> <span class="btn badge-warning">{{ray.basic_price}}</span>
               </li>
               <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{dr.treat_price}}</span>
+                <span>سعر التعامل</span> <span class="btn badge-warning">{{ray.treat_price}}</span>
               </li>
             </ul>
           </div>
@@ -54,7 +54,7 @@
       </div>
       <div class="col-8">
         <img
-          :src="dr.image.image"
+          :src="ray.image.image"
           style="
             display: block;
             margin-left: auto;
@@ -72,9 +72,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/rays/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.ray = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      dr: {},
+      ray: {},
     };
   },
 };

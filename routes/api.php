@@ -9,6 +9,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('signup', 'UserController@store')->name('register-user');
     Route::post('forget-password', 'UserController@forgetPassword')->name('forget-password');
     Route::post('reset-password', 'UserController@resetPassword')->name('reset-password');
+    Route::post('code', 'UserController@code')->name('code');
     Route::post('contact-us', 'ContactUsController@store')->name('contactUs');
     Route::post('admin/login', 'AdminController@login')->name('admin-login');
 

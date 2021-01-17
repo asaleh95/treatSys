@@ -24,28 +24,28 @@
 
             <ul>
               <li>
-                <span>اسم المعمل</span> <span> {{ dr.name }} </span>
+                <span>اسم المعمل</span> <span> {{ lab.name }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ dr.address }}</span>
+                <span>العنوان</span> <span>{{ lab.address }}</span>
               </li>
               <li>
-                <span>رقم الموبايل</span> <span>{{ dr.phone }} </span>
+                <span>رقم الموبايل</span> <span>{{ lab.phone }} </span>
               </li>
               <li>
-                <span>التخصص</span> <span>{{ dr.position }}</span>
+                <span>التخصص</span> <span>{{ lab.position }}</span>
               </li>
               <li>
-                <span>الملاحظات</span> <span>{{ dr.about }}</span>
+                <span>الملاحظات</span> <span>{{ lab.about }}</span>
               </li>
               <li>
-                <span>التقييم</span> <span class="btn badge-success">{{dr.rate}}</span>
+                <span>التقييم</span> <span class="btn badge-success">{{lab.rate}}</span>
               </li>
               <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{dr.basic_price}}</span>
+                <span>السعر الاولى</span> <span class="btn badge-warning">{{lab.basic_price}}</span>
               </li>
               <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{dr.treat_price}}</span>
+                <span>سعر التعامل</span> <span class="btn badge-warning">{{lab.treat_price}}</span>
               </li>
             </ul>
           </div>
@@ -54,7 +54,7 @@
       </div>
       <div class="col-8">
         <img
-          :src="dr.images[0].image"
+          :src="lab.images[0].image"
           style="
             display: block;
             margin-left: auto;
@@ -74,7 +74,7 @@ export default {
     axios
       .get("/admins/labs/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.lab = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      dr: {},
+      lab: {},
     };
   },
 };

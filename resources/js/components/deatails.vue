@@ -4,52 +4,51 @@
       <treat-nav></treat-nav>
       <treat-header
         name="Hospitals"
-        header="Dar Al Fouad Hospital 
-"
+        :header="hospital.name"
       ></treat-header>
       <div class="row">
         <div class="col-md-8 col-sm-8">
-          <img src="Web/hos.png" alt="" class="img0" />
+          <img :src="hospital.images[0].image" alt="" class="img0" />
           <div class="row maxWidth">
-            <img src="Web/22.png" alt="" class="col-md-2 col-sm-2" />
-            <img src="Web/77.png" alt="" class="col-md-2 col-sm-2" />
-            <img src="Web/88.png" alt="" class="col-md-2 col-sm-2" />
-            <img src="Web/99.png" alt="" class="col-md-2 col-sm-2" />
-            <img src="Web/99.png" alt="" class="col-md-2 col-sm-2" />
+            <img :src="hospital.images[1].image" alt="" class="col-md-2 col-sm-2" />
+            <img :src="hospital.images[2].image" alt="" class="col-md-2 col-sm-2" />
+            <img :src="hospital.images[3].image" alt="" class="col-md-2 col-sm-2" />
+            <img :src="hospital.images[4].image" alt="" class="col-md-2 col-sm-2" />
+            <img :src="hospital.images[5].image" alt="" class="col-md-2 col-sm-2" />
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
-          <p class="font-b">Cairo , Ain Shams</p>
-          <h4 class="font-weight-bold">Dar Al Fouad Hospital</h4>
+          <p class="font-d">{{hospital.address}}</p>
+          <h4 class="font-weight-bold">{{hospital.name}}</h4>
           <p class="set0">(15,250)</p>
           <h6 class="font-weight-bold">
-            <img src="Web/images.png" alt="" class="logo0" />
-            <span> Dar Al Fouad Hospital Logo</span>
+            <img :src="hospital.logo" alt="" class="logo0" />
+            <span> {{hospital.name}}</span>
           </h6>
 
           <br /><br />
           <h6 class="font-weight-bold">
-          <img src="Web/gwab.png" alt="" />
-          <span> DarAlFouad@gmail.com</span>
+          <img src="/Web/gwab.png" alt="" />
+          <span> {{hospital.email}}</span>
           </h6>
           <br /><br />
           <h6 class="font-weight-bold">
-            <img src="Web/phone.png" alt="" /><span class="num">+20</span>
-            1019917043
+            <img src="/Web/phone.png" alt="" /><span class="num">+{{hospital.phone.substring(0, 3)}}</span>
+            {{ hospital.phone.substring(3, hospital.phone.length) }}
           </h6>
           <br />
           <div>
             <h6 class="font-weight-bold">
-              <img src="Web/pin.png" alt="" /> Mozia Art Space and Cafe
+              <img src="/Web/pin.png" alt="" /> {{hospital.region}}
             </h6>
-            <p class="font-b">14 Phan huy ich, Bo Durh, Hanai</p>
+            <p class="font-d">{{hospital.address}}</p>
           </div>
         </div>
       </div>
       <br />
       <div class="row">
         <h3 class="font-weight-bold">about</h3>
-        <p class="font-b">
+        <p class="font-d">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -66,3 +65,24 @@
     <treat-footer></treat-footer>
   </div>
 </template>
+<script>
+export default {
+  mounted() {
+    axios
+      .get("/users/hospitals/" + this.$route.params.id)
+      .then((result) => {
+        this.hospital = result.data.data;
+        console.log(result.data.data);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  data() {
+    return {
+      hospital: {},
+    };
+  },
+};
+</script>

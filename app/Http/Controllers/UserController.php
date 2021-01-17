@@ -16,6 +16,7 @@ use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ForgetPasswordRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\CodeRequest;
 
 class UserController extends Controller
 {
@@ -52,6 +53,11 @@ class UserController extends Controller
     public function resetPassword(ResetPasswordRequest $request)
     {
         $this->userService->resetPassword($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function code(CodeRequest $request)
+    {
         return response()->json(["message" => "success"]);
     }
 

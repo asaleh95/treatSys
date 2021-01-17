@@ -2463,6 +2463,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -3067,11 +3069,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3297,8 +3294,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors").then(function (result) {
-      _this.drs = result.data.data;
+    axios.get("/admins/hospitals").then(function (result) {
+      _this.hosp = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -3308,7 +3305,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      hosp: [],
       id: null,
       index: null,
       success: false,
@@ -3322,13 +3319,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.hosp.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.hosp;
       }
     }
   },
@@ -3336,10 +3333,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(id, index) {
       var _this3 = this;
 
-      axios["delete"]("/admins/doctors/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+      axios["delete"]("/admins/hospitals/" + id).then(function (result) {
+        _this3.hosp.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.hosp); // console.log(result.data);
 
         console.log("clients"); //
 
@@ -3359,7 +3356,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.hosp = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -3531,10 +3528,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/hospitals/" + this.$route.params.id).then(function (result) {
+      _this.hospital = result.data.data;
       _this.previewImage = result.data.data.image.image;
-      _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      _this.hospital.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -3543,7 +3540,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      hospital: {},
       errors: window.obj,
       success: false
     };
@@ -3558,7 +3555,7 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.onload = function (e) {
         _this2.previewImage = e.target.result;
-        _this2.dr.image = _this2.previewImage;
+        _this2.hospital.image = _this2.previewImage;
         console.log(_this2.image);
         console.log("ssssssssssssssssssss");
       };
@@ -3566,12 +3563,12 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      axios.put("/admins/hospitals/" + this.hospital.id, this.hospital).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/hospitals/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -3667,7 +3664,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/hospitals/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+      _this.hospital = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -3675,7 +3672,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      hospital: {}
     };
   }
 });
@@ -3873,12 +3870,12 @@ __webpack_require__.r(__webpack_exports__);
         image: this.image
       };
       console.log(all);
-      axios.post("/admins/search", all).then(function (result) {
+      axios.post("/admins/labs", all).then(function (result) {
         console.log(result.data); //
 
         _this2.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/search/all");
+          return _this2.$router.push("/labs/all");
         }, 2000);
       })["catch"](function (err) {
         return _this2.errors.record(err.response.data.errors);
@@ -4046,7 +4043,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/labs").then(function (result) {
-      _this.drs = result.data.data;
+      _this.labs = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -4056,7 +4053,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      labs: [],
       id: null,
       index: null,
       success: false,
@@ -4070,13 +4067,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.labs.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.labs;
       }
     }
   },
@@ -4084,10 +4081,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(id, index) {
       var _this3 = this;
 
-      axios["delete"]("/admins/search/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+      axios["delete"]("/admins/labs/" + id).then(function (result) {
+        _this3.labs.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.labs); // console.log(result.data);
 
         console.log("clients"); //
 
@@ -4107,7 +4104,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.labs = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -4279,10 +4276,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/labs/" + this.$route.params.id).then(function (result) {
+      _this.lab = result.data.data;
       _this.previewImage = result.data.data.image.image;
-      _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      _this.lab.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -4291,7 +4288,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      lab: {},
       errors: window.obj,
       success: false
     };
@@ -4306,7 +4303,7 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.onload = function (e) {
         _this2.previewImage = e.target.result;
-        _this2.dr.image = _this2.previewImage;
+        _this2.lab.image = _this2.previewImage;
         console.log(_this2.image);
         console.log("ssssssssssssssssssss");
       };
@@ -4314,12 +4311,12 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      axios.put("/admins/labs/" + this.lab.id, this.lab).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/labs/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -4415,7 +4412,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/labs/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+      _this.lab = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -4423,7 +4420,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      lab: {}
     };
   }
 });
@@ -4646,12 +4643,12 @@ __webpack_require__.r(__webpack_exports__);
         image: this.image
       };
       console.log(all);
-      axios.post("/admins/doctors", all).then(function (result) {
+      axios.post("/admins/pharmcy", all).then(function (result) {
         console.log(result.data); //
 
         _this2.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/doctors/all");
+          return _this2.$router.push("/pharmcy/all");
         }, 2000);
       })["catch"](function (err) {
         return _this2.errors.record(err.response.data.errors);
@@ -4818,8 +4815,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors").then(function (result) {
-      _this.drs = result.data.data;
+    axios.get("/admins/pharmacies").then(function (result) {
+      _this.pharm = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -4829,7 +4826,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      pharm: [],
       id: null,
       index: null,
       success: false,
@@ -4843,13 +4840,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.pharm.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.pharm;
       }
     }
   },
@@ -4857,10 +4854,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(id, index) {
       var _this3 = this;
 
-      axios["delete"]("/admins/doctors/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+      axios["delete"]("/admins/pharmacies/" + id).then(function (result) {
+        _this3.pharm.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.pharm); // console.log(result.data);
 
         console.log("clients"); //
 
@@ -4880,7 +4877,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.pharm = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -5052,10 +5049,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/pharmacies/" + this.$route.params.id).then(function (result) {
+      _this.pharm = result.data.data;
       _this.previewImage = result.data.data.image.image;
-      _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      _this.pharm.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -5064,7 +5061,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      pharm: {},
       errors: window.obj,
       success: false
     };
@@ -5079,7 +5076,7 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.onload = function (e) {
         _this2.previewImage = e.target.result;
-        _this2.dr.image = _this2.previewImage;
+        _this2.pharm.image = _this2.previewImage;
         console.log(_this2.image);
         console.log("ssssssssssssssssssss");
       };
@@ -5087,12 +5084,12 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      axios.put("/admins/pharmcies/" + this.pharm.id, this.pharm).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/pharmcies/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -5187,8 +5184,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/pharmcies/" + this.$route.params.id).then(function (result) {
+      _this.pharm = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -5196,7 +5193,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      pharm: {}
     };
   }
 });
@@ -6504,12 +6501,12 @@ __webpack_require__.r(__webpack_exports__);
         image: this.image
       };
       console.log(all);
-      axios.post("/admins/xray", all).then(function (result) {
+      axios.post("/admins/rays", all).then(function (result) {
         console.log(result.data); //
 
         _this2.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/doctors/all");
+          return _this2.$router.push("/rays/all");
         }, 2000);
       })["catch"](function (err) {
         return _this2.errors.record(err.response.data.errors);
@@ -6687,7 +6684,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      rays: [],
       id: null,
       index: null,
       success: false,
@@ -6701,13 +6698,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.rays.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.rays;
       }
     }
   },
@@ -6716,9 +6713,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios["delete"]("/admins/xray/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+        _this3.rays.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.rays); // console.log(result.data);
 
         console.log("clients"); //
 
@@ -6738,7 +6735,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.rays = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -6910,8 +6907,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
+      _this.ray = result.data.data;
       _this.previewImage = result.data.data.image.image;
       _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
@@ -6922,7 +6919,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      ray: {},
       errors: window.obj,
       success: false
     };
@@ -6945,12 +6942,12 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      axios.put("/admins/rays/" + this.ray.id, this.ray).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/rays/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -7045,8 +7042,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
+      _this.ray = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -7054,7 +7051,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      ray: {}
     };
   }
 });
@@ -27008,7 +27005,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _c("i", { staticClass: "zmdi zmdi-swap-vertical text-muted" }),
-      _vm._v(" اسم الطبيب ")
+      _vm._v(" اسم\n                    الطبيب\n                  ")
     ])
   },
   function() {
@@ -28167,38 +28164,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(hospital, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(hospital.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
+                              attrs: { src: hospital.image.image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(hospital.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(hospital.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(hospital.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(hospital.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -28212,7 +28209,9 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/hospitals/show/" + dr.id }
+                                    attrs: {
+                                      to: "/hospitals/show/" + hospital.id
+                                    }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -28222,7 +28221,9 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/hospitals/edit/" + dr.id }
+                                    attrs: {
+                                      to: "/hospitals/edit/" + hospital.id
+                                    }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -28238,7 +28239,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(hospital.id, i)
                                       }
                                     }
                                   },
@@ -28452,19 +28453,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.name,
-                      expression: "dr.name"
+                      value: _vm.hospital.name,
+                      expression: "hospital.name"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "آسم المستشفي " },
-                  domProps: { value: _vm.dr.name },
+                  domProps: { value: _vm.hospital.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "name", $event.target.value)
+                      _vm.$set(_vm.hospital, "name", $event.target.value)
                     }
                   }
                 }),
@@ -28485,19 +28486,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.phone,
-                      expression: "dr.phone"
+                      value: _vm.hospital.phone,
+                      expression: "hospital.phone"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "رقم الهاتف" },
-                  domProps: { value: _vm.dr.phone },
+                  domProps: { value: _vm.hospital.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "phone", $event.target.value)
+                      _vm.$set(_vm.hospital, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -28518,19 +28519,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.address,
-                      expression: "dr.address"
+                      value: _vm.hospital.address,
+                      expression: "hospital.address"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.dr.address },
+                  domProps: { value: _vm.hospital.address },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "address", $event.target.value)
+                      _vm.$set(_vm.hospital, "address", $event.target.value)
                     }
                   }
                 }),
@@ -28551,19 +28552,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.location,
-                      expression: "dr.location"
+                      value: _vm.hospital.location,
+                      expression: "hospital.location"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.dr.location },
+                  domProps: { value: _vm.hospital.location },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "location", $event.target.value)
+                      _vm.$set(_vm.hospital, "location", $event.target.value)
                     }
                   }
                 }),
@@ -28586,19 +28587,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.position,
-                      expression: "dr.position"
+                      value: _vm.hospital.position,
+                      expression: "hospital.position"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.dr.position },
+                  domProps: { value: _vm.hospital.position },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "position", $event.target.value)
+                      _vm.$set(_vm.hospital, "position", $event.target.value)
                     }
                   }
                 }),
@@ -28621,19 +28622,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.rate,
-                      expression: "dr.rate"
+                      value: _vm.hospital.rate,
+                      expression: "hospital.rate"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "التقييم" },
-                  domProps: { value: _vm.dr.rate },
+                  domProps: { value: _vm.hospital.rate },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "rate", $event.target.value)
+                      _vm.$set(_vm.hospital, "rate", $event.target.value)
                     }
                   }
                 }),
@@ -28656,19 +28657,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.basic_price,
-                      expression: "dr.basic_price"
+                      value: _vm.hospital.basic_price,
+                      expression: "hospital.basic_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.dr.basic_price },
+                  domProps: { value: _vm.hospital.basic_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "basic_price", $event.target.value)
+                      _vm.$set(_vm.hospital, "basic_price", $event.target.value)
                     }
                   }
                 }),
@@ -28693,19 +28694,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.treat_price,
-                      expression: "dr.treat_price"
+                      value: _vm.hospital.treat_price,
+                      expression: "hospital.treat_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.dr.treat_price },
+                  domProps: { value: _vm.hospital.treat_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "treat_price", $event.target.value)
+                      _vm.$set(_vm.hospital, "treat_price", $event.target.value)
                     }
                   }
                 }),
@@ -28728,19 +28729,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
+                      value: _vm.hospital.about,
+                      expression: "hospital.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
+                  domProps: { value: _vm.hospital.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
+                      _vm.$set(_vm.hospital, "about", $event.target.value)
                     }
                   }
                 }),
@@ -28878,38 +28879,38 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم المستشفي")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.hospital.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
+                _c("span", [_vm._v(_vm._s(_vm.hospital.address))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.hospital.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التخصص")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
+                _c("span", [_vm._v(_vm._s(_vm.hospital.position))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
+                _c("span", [_vm._v(_vm._s(_vm.hospital.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
+                  _vm._v(_vm._s(_vm.hospital.rate))
                 ])
               ]),
               _vm._v(" "),
@@ -28917,7 +28918,7 @@ var render = function() {
                 _c("span", [_vm._v("السعر الاولى")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
+                  _vm._v(_vm._s(_vm.hospital.basic_price))
                 ])
               ]),
               _vm._v(" "),
@@ -28925,7 +28926,7 @@ var render = function() {
                 _c("span", [_vm._v("سعر التعامل")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
+                  _vm._v(_vm._s(_vm.hospital.treat_price))
                 ])
               ])
             ])
@@ -28943,7 +28944,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.images[0].image }
+          attrs: { src: _vm.hospital.images[0].image }
         })
       ])
     ])
@@ -29493,38 +29494,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(lab, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(lab.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.images[0].image, alt: "" }
+                              attrs: { src: lab.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(lab.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(lab.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(lab.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(lab.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -29538,7 +29539,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/laps/show/" + dr.id }
+                                    attrs: { to: "/laps/show/" + lab.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -29548,7 +29549,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/laps/edit/" + dr.id }
+                                    attrs: { to: "/laps/edit/" + lab.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -29564,7 +29565,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(lab.id, i)
                                       }
                                     }
                                   },
@@ -29778,19 +29779,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.name,
-                      expression: "dr.name"
+                      value: _vm.lab.name,
+                      expression: "lab.name"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "آسم المعمل " },
-                  domProps: { value: _vm.dr.name },
+                  domProps: { value: _vm.lab.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "name", $event.target.value)
+                      _vm.$set(_vm.lab, "name", $event.target.value)
                     }
                   }
                 }),
@@ -29811,19 +29812,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.phone,
-                      expression: "dr.phone"
+                      value: _vm.lab.phone,
+                      expression: "lab.phone"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "رقم الهاتف" },
-                  domProps: { value: _vm.dr.phone },
+                  domProps: { value: _vm.lab.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "phone", $event.target.value)
+                      _vm.$set(_vm.lab, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -29844,19 +29845,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.address,
-                      expression: "dr.address"
+                      value: _vm.lab.address,
+                      expression: "lab.address"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.dr.address },
+                  domProps: { value: _vm.lab.address },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "address", $event.target.value)
+                      _vm.$set(_vm.lab, "address", $event.target.value)
                     }
                   }
                 }),
@@ -29877,19 +29878,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.location,
-                      expression: "dr.location"
+                      value: _vm.lab.location,
+                      expression: "lab.location"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.dr.location },
+                  domProps: { value: _vm.lab.location },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "location", $event.target.value)
+                      _vm.$set(_vm.lab, "location", $event.target.value)
                     }
                   }
                 }),
@@ -29912,19 +29913,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.position,
-                      expression: "dr.position"
+                      value: _vm.lab.position,
+                      expression: "lab.position"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.dr.position },
+                  domProps: { value: _vm.lab.position },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "position", $event.target.value)
+                      _vm.$set(_vm.lab, "position", $event.target.value)
                     }
                   }
                 }),
@@ -29947,19 +29948,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.rate,
-                      expression: "dr.rate"
+                      value: _vm.lab.rate,
+                      expression: "lab.rate"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "التقييم" },
-                  domProps: { value: _vm.dr.rate },
+                  domProps: { value: _vm.lab.rate },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "rate", $event.target.value)
+                      _vm.$set(_vm.lab, "rate", $event.target.value)
                     }
                   }
                 }),
@@ -29982,19 +29983,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.basic_price,
-                      expression: "dr.basic_price"
+                      value: _vm.lab.basic_price,
+                      expression: "lab.basic_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.dr.basic_price },
+                  domProps: { value: _vm.lab.basic_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "basic_price", $event.target.value)
+                      _vm.$set(_vm.lab, "basic_price", $event.target.value)
                     }
                   }
                 }),
@@ -30019,19 +30020,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.treat_price,
-                      expression: "dr.treat_price"
+                      value: _vm.lab.treat_price,
+                      expression: "lab.treat_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.dr.treat_price },
+                  domProps: { value: _vm.lab.treat_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "treat_price", $event.target.value)
+                      _vm.$set(_vm.lab, "treat_price", $event.target.value)
                     }
                   }
                 }),
@@ -30054,19 +30055,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
+                      value: _vm.lab.about,
+                      expression: "lab.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
+                  domProps: { value: _vm.lab.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
+                      _vm.$set(_vm.lab, "about", $event.target.value)
                     }
                   }
                 }),
@@ -30204,38 +30205,38 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم المعمل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.lab.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
+                _c("span", [_vm._v(_vm._s(_vm.lab.address))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.lab.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التخصص")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
+                _c("span", [_vm._v(_vm._s(_vm.lab.position))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
+                _c("span", [_vm._v(_vm._s(_vm.lab.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
+                  _vm._v(_vm._s(_vm.lab.rate))
                 ])
               ]),
               _vm._v(" "),
@@ -30243,7 +30244,7 @@ var render = function() {
                 _c("span", [_vm._v("السعر الاولى")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
+                  _vm._v(_vm._s(_vm.lab.basic_price))
                 ])
               ]),
               _vm._v(" "),
@@ -30251,7 +30252,7 @@ var render = function() {
                 _c("span", [_vm._v("سعر التعامل")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
+                  _vm._v(_vm._s(_vm.lab.treat_price))
                 ])
               ])
             ])
@@ -30269,7 +30270,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.images[0].image }
+          attrs: { src: _vm.lab.images[0].image }
         })
       ])
     ])
@@ -30843,38 +30844,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(pharm, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(pharm.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
+                              attrs: { src: pharm.image.image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(pharm.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(pharm.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(pharm.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(pharm.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -30888,7 +30889,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/pharmcy/show/" + dr.id }
+                                    attrs: { to: "/pharmcy/show/" + pharm.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -30898,7 +30899,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/pharmcy/edit/" + dr.id }
+                                    attrs: { to: "/pharmcy/edit/" + pharm.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -30914,7 +30915,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(pharm.id, i)
                                       }
                                     }
                                   },
@@ -31128,19 +31129,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.name,
-                      expression: "dr.name"
+                      value: _vm.pharm.name,
+                      expression: "pharm.name"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "آسم الصيدليه " },
-                  domProps: { value: _vm.dr.name },
+                  domProps: { value: _vm.pharm.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "name", $event.target.value)
+                      _vm.$set(_vm.pharm, "name", $event.target.value)
                     }
                   }
                 }),
@@ -31161,19 +31162,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.phone,
-                      expression: "dr.phone"
+                      value: _vm.pharm.phone,
+                      expression: "pharm.phone"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "رقم الهاتف" },
-                  domProps: { value: _vm.dr.phone },
+                  domProps: { value: _vm.pharm.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "phone", $event.target.value)
+                      _vm.$set(_vm.pharm, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -31194,19 +31195,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.address,
-                      expression: "dr.address"
+                      value: _vm.pharm.address,
+                      expression: "pharm.address"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.dr.address },
+                  domProps: { value: _vm.pharm.address },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "address", $event.target.value)
+                      _vm.$set(_vm.pharm, "address", $event.target.value)
                     }
                   }
                 }),
@@ -31227,19 +31228,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.location,
-                      expression: "dr.location"
+                      value: _vm.pharm.location,
+                      expression: "pharm.location"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.dr.location },
+                  domProps: { value: _vm.pharm.location },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "location", $event.target.value)
+                      _vm.$set(_vm.pharm, "location", $event.target.value)
                     }
                   }
                 }),
@@ -31262,19 +31263,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.position,
-                      expression: "dr.position"
+                      value: _vm.pharm.position,
+                      expression: "pharm.position"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.dr.position },
+                  domProps: { value: _vm.pharm.position },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "position", $event.target.value)
+                      _vm.$set(_vm.pharm, "position", $event.target.value)
                     }
                   }
                 }),
@@ -31297,19 +31298,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.rate,
-                      expression: "dr.rate"
+                      value: _vm.pharm.rate,
+                      expression: "pharm.rate"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "التقييم" },
-                  domProps: { value: _vm.dr.rate },
+                  domProps: { value: _vm.pharm.rate },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "rate", $event.target.value)
+                      _vm.$set(_vm.pharm, "rate", $event.target.value)
                     }
                   }
                 }),
@@ -31332,19 +31333,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.basic_price,
-                      expression: "dr.basic_price"
+                      value: _vm.pharm.basic_price,
+                      expression: "pharm.basic_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.dr.basic_price },
+                  domProps: { value: _vm.pharm.basic_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "basic_price", $event.target.value)
+                      _vm.$set(_vm.pharm, "basic_price", $event.target.value)
                     }
                   }
                 }),
@@ -31369,19 +31370,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.treat_price,
-                      expression: "dr.treat_price"
+                      value: _vm.pharm.treat_price,
+                      expression: "pharm.treat_price"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.dr.treat_price },
+                  domProps: { value: _vm.pharm.treat_price },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "treat_price", $event.target.value)
+                      _vm.$set(_vm.pharm, "treat_price", $event.target.value)
                     }
                   }
                 }),
@@ -31404,19 +31405,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
+                      value: _vm.pharm.about,
+                      expression: "pharm.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
+                  domProps: { value: _vm.pharm.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
+                      _vm.$set(_vm.pharm, "about", $event.target.value)
                     }
                   }
                 }),
@@ -31554,38 +31555,38 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم الصيدليه")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.pharm.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
+                _c("span", [_vm._v(_vm._s(_vm.pharm.address))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.pharm.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التخصص")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
+                _c("span", [_vm._v(_vm._s(_vm.pharm.position))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
+                _c("span", [_vm._v(_vm._s(_vm.pharm.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
+                  _vm._v(_vm._s(_vm.pharm.rate))
                 ])
               ]),
               _vm._v(" "),
@@ -31593,7 +31594,7 @@ var render = function() {
                 _c("span", [_vm._v("السعر الاولى")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
+                  _vm._v(_vm._s(_vm.pharm.basic_price))
                 ])
               ]),
               _vm._v(" "),
@@ -31601,7 +31602,7 @@ var render = function() {
                 _c("span", [_vm._v("سعر التعامل")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
+                  _vm._v(_vm._s(_vm.pharm.treat_price))
                 ])
               ])
             ])
@@ -31619,7 +31620,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.image.image }
+          attrs: { src: _vm.pharm.image.image }
         })
       ])
     ])
@@ -33914,38 +33915,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(ray, id) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(ray.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.images[0].image, alt: "" }
+                              attrs: { src: ray.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(ray.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(ray.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(ray.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(ray.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -33959,7 +33960,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/xray/show/" + dr.id }
+                                    attrs: { to: "/xray/show/" + ray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -33969,7 +33970,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/xray/edit/" + dr.id }
+                                    attrs: { to: "/xray/edit/" + ray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -33985,7 +33986,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(ray.id, _vm.i)
                                       }
                                     }
                                   },
@@ -34475,19 +34476,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
+                      value: _vm.ray.about,
+                      expression: "ray.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
+                  domProps: { value: _vm.ray.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
+                      _vm.$set(_vm.ray, "about", $event.target.value)
                     }
                   }
                 }),
@@ -34625,38 +34626,38 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم الاشاعه")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.ray.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.address))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.ray.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التخصص")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.position))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
+                  _vm._v(_vm._s(_vm.ray.rate))
                 ])
               ]),
               _vm._v(" "),
@@ -34664,7 +34665,7 @@ var render = function() {
                 _c("span", [_vm._v("السعر الاولى")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
+                  _vm._v(_vm._s(_vm.ray.basic_price))
                 ])
               ]),
               _vm._v(" "),
@@ -34672,7 +34673,7 @@ var render = function() {
                 _c("span", [_vm._v("سعر التعامل")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
+                  _vm._v(_vm._s(_vm.ray.treat_price))
                 ])
               ])
             ])
@@ -34690,7 +34691,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.image.image }
+          attrs: { src: _vm.ray.image.image }
         })
       ])
     ])
@@ -41601,7 +41602,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\dash-app.js */"./resources/js/dash-app.js");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\js\dash-app.js */"./resources/js/dash-app.js");
 
 
 /***/ })

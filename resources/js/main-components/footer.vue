@@ -3,7 +3,7 @@
     <footer class="py-5 footer-b">
       <div class="row marg">
         <div class="col-12 col-md">
-          <img src="Web/treat.png" alt="" />
+          <img src="/Web/treat.png" alt="" />
         </div>
         <div class="col-6 col-md text-white">
           <h5>Commuinity</h5>
@@ -34,6 +34,7 @@
         </div>
         <div class="col-6 col-md text-white">
           <h5>Download App</h5>
+          <br>
           <ul class="list-unstyled text-small">
             <li>
               <a
@@ -55,7 +56,7 @@
     </footer>
     <div class="row">
       <small class="d-block mb-3 text-muted offset-md-2"
-        >&copy; Copyright © 2010-2019 Pro.skill</small
+        >&copy; Copyright © 2017-2021 Pro.skill</small
       >
       <small class="d-block mb-3 text-muted offset-md-6">Go to To</small>
     </div>

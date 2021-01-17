@@ -41,8 +41,7 @@ class UserRepositories implements AuthInterface
 
     public function resetPassword($data)
     {
-        $user = $this->user->where('email', $data['email'])
-        ->where('remember_token', $data['code'])->first();
+        $user = $this->user->where('email', $data['email'])->first();
         if (!$user) {
             return abort(response()->json(["error" => ["invalid credentials"]]));
         }

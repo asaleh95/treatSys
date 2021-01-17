@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
     {
         //
         $this->reportable(function (OAuthServerException $exception) {
-            return abort(response()->json(["error" => 'Unauthorized'], 401));
+            return abort(response()->json(["error" => 'Invalid Email or Password'], 401));
         });
     }
 }

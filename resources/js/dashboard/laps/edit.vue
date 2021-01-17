@@ -44,63 +44,63 @@ label{
           <div class="row">
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">الاسم</label>
-              <input class="form-control" type="text" v-model="dr.name" placeholder="آسم المعمل " />
+              <input class="form-control" type="text" v-model="lab.name" placeholder="آسم المعمل " />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('name')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">رقم الهاتف</label>
-              <input class="form-control" type="number" v-model="dr.phone" placeholder="رقم الهاتف" />
+              <input class="form-control" type="number" v-model="lab.phone" placeholder="رقم الهاتف" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('phone')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">العنوان</label>
-              <input class="form-control" type="text" v-model="dr.address" placeholder="العنوان" />
+              <input class="form-control" type="text" v-model="lab.address" placeholder="العنوان" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('address')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">الاحداثيات</label>
-              <input class="form-control" type="text" v-model="dr.location" placeholder="الاحداثيات" />
+              <input class="form-control" type="text" v-model="lab.location" placeholder="الاحداثيات" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('location')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">الوظيفه</label>
-              <input class="form-control" type="text" v-model="dr.position" placeholder="الوظيفه" />
+              <input class="form-control" type="text" v-model="lab.position" placeholder="الوظيفه" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('position')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">التقييم</label>
-              <input class="form-control" type="number" v-model="dr.rate" placeholder="التقييم" />
+              <input class="form-control" type="number" v-model="lab.rate" placeholder="التقييم" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('rate')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">السعر الاولى</label>
-              <input class="form-control" type="number" v-model="dr.basic_price" placeholder="السعر الاولى" />
+              <input class="form-control" type="number" v-model="lab.basic_price" placeholder="السعر الاولى" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('basic_price')"></span>
               </div>
             </div>
             <div class="col-lg-6 col-12 mb-30">
               <label for="name">سعر التعامل</label>
-              <input class="form-control" type="number" v-model="dr.treat_price" placeholder="سعر التعامل" />
+              <input class="form-control" type="number" v-model="lab.treat_price" placeholder="سعر التعامل" />
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('treat_price')"></span>
               </div>
             </div>
             <div class="col-12 mb-30">
               <label for="name">الملاحظات</label>
-              <textarea class="form-control" v-model="dr.about" placeholder=" الملاحظات"></textarea>
+              <textarea class="form-control" v-model="lab.about" placeholder=" الملاحظات"></textarea>
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('about')"></span>
               </div>
@@ -148,11 +148,11 @@ label{
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/labs/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.lab = result.data.data;
         this.previewImage = result.data.data.image.image;
-        this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+        this.lab.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
         console.log(result.data.data);
       })
       .catch((error) => {
@@ -162,7 +162,7 @@ export default {
   data() {
     return {
       previewImage: [],
-      dr: {},
+      lab: {},
       errors: window.obj,
       success: false,
     };
@@ -174,19 +174,19 @@ export default {
       reader.readAsDataURL(image);
       reader.onload = (e) => {
         this.previewImage = e.target.result;
-        this.dr.image = this.previewImage;
+        this.lab.image = this.previewImage;
         console.log(this.image);
         console.log("ssssssssssssssssssss");
       };
     },
     submit() {
       axios
-        .put("/admins/doctors/" + this.dr.id, this.dr)
+        .put("/admins/labs/" + this.lab.id, this.lab)
         .then((result) => {
           console.log(result.data);
           //
           this.success = true
-          setTimeout(() => this.$router.push("/doctors/all"), 2000);
+          setTimeout(() => this.$router.push("/labs/all"), 2000);
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors)

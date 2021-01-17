@@ -24,28 +24,28 @@
 
             <ul>
               <li>
-                <span>اسم الصيدليه</span> <span> {{ dr.name }} </span>
+                <span>اسم الصيدليه</span> <span> {{ pharm.name }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ dr.address }}</span>
+                <span>العنوان</span> <span>{{ pharm.address }}</span>
               </li>
               <li>
-                <span>رقم الموبايل</span> <span>{{ dr.phone }} </span>
+                <span>رقم الموبايل</span> <span>{{ pharm.phone }} </span>
               </li>
               <li>
-                <span>التخصص</span> <span>{{ dr.position }}</span>
+                <span>التخصص</span> <span>{{ pharm.position }}</span>
               </li>
               <li>
-                <span>الملاحظات</span> <span>{{ dr.about }}</span>
+                <span>الملاحظات</span> <span>{{ pharm.about }}</span>
               </li>
               <li>
-                <span>التقييم</span> <span class="btn badge-success">{{dr.rate}}</span>
+                <span>التقييم</span> <span class="btn badge-success">{{pharm.rate}}</span>
               </li>
               <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{dr.basic_price}}</span>
+                <span>السعر الاولى</span> <span class="btn badge-warning">{{pharm.basic_price}}</span>
               </li>
               <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{dr.treat_price}}</span>
+                <span>سعر التعامل</span> <span class="btn badge-warning">{{pharm.treat_price}}</span>
               </li>
             </ul>
           </div>
@@ -54,7 +54,7 @@
       </div>
       <div class="col-8">
         <img
-          :src="dr.image.image"
+          :src="pharm.image.image"
           style="
             display: block;
             margin-left: auto;
@@ -72,9 +72,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/pharmcies/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.pharm = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      dr: {},
+      pharm: {},
     };
   },
 };

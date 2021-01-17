@@ -14,7 +14,8 @@ class HospitalRepositories
     }
 
     public function all($data)
-    {        
+    {
+        $paginate = !empty($data['paginate']) ? $data['paginate'] : 12;
         return $this->hospital->when(!empty($data['name']), function ($query) use($data){
                 $query->where('name', 'like', '%'. $data['name'].'%');
         })
@@ -22,7 +23,7 @@ class HospitalRepositories
             $arr = explode(',', $data['location']);
             $query->distance('location', new Point($arr[0], $arr[1]), 10);
         })
-        ->paginate(15);
+        ->paginate($paginate);
     }
 
     public function store($data)

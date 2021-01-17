@@ -2,19 +2,35 @@
   <div class="row">
     <div class="col-md-4 pl-5 pt-5">
       <h2 class="logi">HELP!</h2>
-      <br>
+      <br />
       <h4>Forgot Password!</h4>
-      <br>
+      <br />
       <p class="text-muted font-b">
-        There are many variations of passages of Lorem Ipsum
-available, some form . 
+        There are many variations of passages of Lorem Ipsum available, some
+        form .
       </p>
-      <form action="">
-          <input type="text" class="form-control-lg input font-b" placeholder="Email Address">
-          <button type="button" class="submit text-white font-weight-bold">NEXT</button>
+      <form
+        action="#"
+        @submit.prevent="submit"
+        @keydown="error.clear($event.target.name)"
+        @change="error.clear($event.target.name)"
+      >
+        <input
+          type="text"
+          v-model="email"
+          id="email"
+          name="email"
+          class="form-control-lg input font-b"
+          placeholder="Email Address"
+        />
+        <button type="submit" class="submit text-white font-weight-bold">
+          NEXT
+        </button>
       </form>
-      <br>
-      <p class="text-muted text-center font-b">i will try again ! <a href="#">Sign in</a></p>
+      <br />
+      <p class="text-muted text-center font-b">
+        i will try again ! <a href="#">Sign in</a>
+      </p>
     </div>
     <div class="col-md-8">
       <img
@@ -35,3 +51,35 @@ available, some form .
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      error: window.obj,
+    };
+  },
+  methods: {
+    submit() {
+      //this.products = JSON.parse(localStorage.getItem('products'));
+      let all = {
+        email: this.email,
+      };
+      console.log(all);
+      axios
+        .post("/forget-password", all)
+        .then((result) => {
+          console.log(result.data);
+          sessionStorage.setItem("code-email", this.email);
+
+          this.$router.push("/code");
+        })
+        .catch((err) => {
+          // this.error = "خطأ فى الباسورد او الايميل"
+          console.log(err.error);
+        });
+    },
+  },
+};
+</script>

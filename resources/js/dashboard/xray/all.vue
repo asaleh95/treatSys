@@ -74,36 +74,36 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(dr, i) in resultQuery">
+                <tr v-for="(ray, id) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ dr.id }}</td>
+                  <td style="font-family: sans-serif">#{{ ray.id }}</td>
                   <td>
                     <img
-                      :src="dr.images[0].image"
+                      :src="ray.images[0].image"
                       alt
                       class="table-product-image rounded-circle"
                     />
                   </td>
                   <td>
-                    <a href="#">{{ dr.name }}</a>
+                    <a href="#">{{ ray.name }}</a>
                   </td>
 
-                  <td>{{ dr.address }}</td>
-                  <td style="font-family: sans-serif">{{ dr.phone }}</td>
+                  <td>{{ ray.address }}</td>
+                  <td style="font-family: sans-serif">{{ ray.phone }}</td>
                   <td>
-                    <span class="badge badge-success">{{ dr.rate }}</span>
+                    <span class="badge badge-success">{{ ray.rate }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/xray/show/' + dr.id"
+                        :to="'/xray/show/' + ray.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/xray/edit/' + dr.id"
+                        :to="'/xray/edit/' + ray.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +111,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(dr.id, i)"
+                        @click="setDel(ray.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -157,7 +157,7 @@ export default {
   },
   data() {
     return {
-      drs: [],
+      rays: [],
       id: null,
       index: null,
       success: false,
@@ -169,7 +169,7 @@ export default {
   computed: {
     resultQuery() {
       if (this.$root.search) {
-        return this.drs.filter((item) => {
+        return this.rays.filter((item) => {
           return this.$root.search
             .toLowerCase()
             .split(" ")
@@ -181,7 +181,7 @@ export default {
             );
         });
       } else {
-        return this.drs;
+        return this.rays;
       }
     },
   },
@@ -190,8 +190,8 @@ export default {
       axios
         .delete("/admins/xray/" + id)
         .then((result) => {
-          this.drs.splice(index, 1);
-          console.log(this.drs);
+          this.rays.splice(index, 1);
+          console.log(this.rays);
           // console.log(result.data);
           console.log("clients");
           //
@@ -208,7 +208,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.drs = result.data.data;
+        this.rays = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);

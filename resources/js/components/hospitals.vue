@@ -6,94 +6,45 @@
         <h4>Hospital</h4>
         <h5 class="head2">
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
-          Many results found
+      <span class="text-primary">    7,618 results found in 5ms</span>
         </h5>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
       </div>
       <br /><br />
       <div class="row">
-        <h3 class="log mr-auto"><span>Ex : Doctor Name</span></h3>
+        <h3 class="log mr-auto">
+          <span>hospitals</span>
+        </h3>
         <a class="search" href="#"><img src="Web/gro.png" alt="" /></a>
         <a class="search" href="#"><img src="Web/gro2.png" alt="" /></a>
       </div>
       <hr />
       <div class="content">
         <div class="row">
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
+          <div class="col-3 mb-5 hospital-click" v-for="(hospital,i) in resultQuery" @click="goTo(hospital.id)">
+            <div class="card pr-4 h-100">
+              <img
+                class="card-img-top card-hospital card-hospital-10"
+                :src="hospital.images[0].image"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title parg">
+                  <span class="d-inline">
+                  {{hospital.address}}
+                  </span>
+                  <div class="float-right d-inline">
+                    <img src="Web/179.png" alt="" />
+                    <span class="parg">{{hospital.distance}}km</span>
+                  </div>
+                </h5>
+                <p class="card-text dar">{{hospital.name}}</p>
+                <p class="card-title parg d-inline"><span class="">{{hospital.region}} </span> <span class=" float-right ">{{hospital.number_of_views}} Views</span></p>
+              </div>
             </div>
           </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-                            <p class="card-text text-paragraph-login">(15,250)</p>
 
-            </div>
-          </div>
-          <div class="card col-2 hospital">
-            <img class="card-img-top" src="Web/hos.png" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Dar Al Fouad Hospital</h5>
-              <p class="card-text text-paragraph-login">(15,250)</p>
-            </div>
-          </div>
         </div>
       </div>
       <br /><br />
@@ -108,55 +59,89 @@
         </div>
       </div>
     </div>
-    <footer class="footer-b">
-      <div class="row footer-row">
-        <div class="offset-md-1 col-2">
-          <img src="Web/treat.png" alt="" />
-        </div>
-        <div class="col-2">
-          <ul class="list-unstyled text-small">
-            <li>Commuinity</li>
-            <li>Create Account</li>
-            <li>Go to Premium</li>
-            <li>Prefer A Friend</li>
-            <li>Get Coupon Code</li>
-          </ul>
-        </div>
-        <div class="col-2">
-          <ul class="list-unstyled text-small">
-            <li>Support</li>
-            <li>Terms Condition</li>
-            <li>Privacy & Policy</li>
-            <li>Copyright Issue</li>
-            <li>Get Help</li>
-          </ul>
-        </div>
-        <div class="col-2">
-          <ul class="list-unstyled text-small">
-            <li>Join Us</li>
-            <li>Become Teacher</li>
-            <li>Become Student</li>
-            <li>Become Both</li>
-            <li>Partnership</li>
-          </ul>
-        </div>
-        <div class="col-2">
-          <ul class="list-unstyled text-small">
-            <li>download app</li>
-            <li></li>
-          </ul>
-          <button type="button" class="btn btn-info">google play</button>
-          <br /><br />
-
-          <button type="button" class="btn btn-info">app ios</button>
-        </div>
-      </div>
-    </footer>
-    <div class="row">
-      <small class="d-block mb-3 text-muted offset-md-2"
-        >&copy; Copyright © 2010-2019 Pro.skill</small
-      >
-      <small class="d-block mb-3 text-muted offset-md-6">Go to To</small>
-    </div>
+       <treat-footer></treat-footer>
   </div>
 </template>
+<script>
+export default {
+  mounted() {
+    axios
+      .get("/users/hospitals")
+      .then((result) => {
+        this.hosp = result.data.data;
+        this.prevUrl = result.data.links.prev;
+        this.nextUrl = result.data.links.next;
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  data() {
+    return {
+      hosp: [],
+      id: null,
+      index: null,
+      success: false,
+      errors: window.obj,
+      prevUrl: false,
+      nextUrl: false,
+    };
+  },
+  computed: {
+    resultQuery() {
+      if (this.$root.search) {
+        return this.hosp.filter((item) => {
+          return this.$root.search
+            .toLowerCase()
+            .split(" ")
+            .every(
+              (v) =>
+                item.name.toLowerCase().includes(v) ||
+                item.phone.toLowerCase().includes(v) ||
+                item.address.toLowerCase().includes(v)
+            );
+        });
+      } else {
+        return this.hosp;
+      }
+    },
+  },
+  methods: {
+    deleteItem(id, index) {
+      axios
+        .delete("/users/hospitals/" + id)
+        .then((result) => {
+          this.hosp.splice(index, 1);
+          console.log(this.hosp);
+          // console.log(result.data);
+          console.log("clients");
+          //
+          this.success = true;
+          setTimeout(() => (this.success = false), 2000);
+        })
+        .catch((err) => this.errors.record(err.response.data.errors));
+    },
+    setDel(id, index) {
+      this.id = id;
+      this.index = index;
+    },
+    getDoctors(url) {
+      axios
+        .get(url)
+        .then((result) => {
+          this.hosp = result.data.data;
+          this.prevUrl = result.data.links.prev;
+          this.nextUrl = result.data.links.next;
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    goTo(id){
+          this.$router.push("/details/" + id);
+    }
+  },
+};
+</script>
