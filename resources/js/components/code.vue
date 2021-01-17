@@ -12,47 +12,59 @@
       </p>
       <br />
       <br />
-      <form action="" class="form-inline">
+      <form
+        action="#"
+        @submit.prevent="submit"
+        @keydown="error.clear($event.target.name)"
+        @change="error.clear($event.target.name)"
+      >
         <div class="row">
           <input
             type="text"
+            v-model="code1"
+            id="code"
+            name="code"
             class="form-control text-center input-number ml-2 font-b"
             placeholder="0"
-            name=""
-            id=""
           />
           <input
             type="text"
+            v-model="code2"
             class="form-control text-center input-number ml-2 font-b"
             placeholder="0"
-            name=""
-            id=""
+            name="code"
+            id="code"
           />
           <input
             type="text"
+            v-model="code3"
             class="form-control text-center input-number ml-2 font-b"
             placeholder="0"
-            name=""
-            id=""
+            name="code"
+            id="code"
           />
           <input
             type="text"
+            v-model="code4"
             class="form-control text-center input-number ml-2 font-b"
             placeholder="0"
-            name=""
-            id=""
+            name="code"
+            id="code"
           />
           <input
             type="text"
+            v-model="code5"
             class="form-control text-center input-number ml-2 font-b"
             placeholder="0"
-            name=""
-            id=""
+            name="code"
+            id="code"
           />
         </div>
         <br />
         <br />
-        <button type="button" class="submit text-white font-weight-bold">Done</button>
+        <button type="submit" class="submit text-white font-weight-bold">
+          Done
+        </button>
       </form>
       <br />
       <br />
@@ -79,3 +91,38 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      code1: "",
+      code2: "",
+      code3: "",
+      code4: "",
+      code5: "",
+
+      error: window.obj,
+    };
+  },
+  methods: {
+    submit() {
+      //this.products = JSON.parse(localStorage.getItem('products'));
+      let all = {
+        code: this.code1 + this.code2 + this.code3 + this.code4 +this.code5,
+      };
+      console.log(all);
+      axios
+        .post("/code", all)
+        .then((result) => {
+          console.log(result.data);
+          this.$router.push("/new-password");
+        })
+        .catch((err) => {
+          // this.error = "خطأ فى الباسورد او الايميل"
+          console.log(err.error);
+        });
+    },
+  },
+};
+</script>

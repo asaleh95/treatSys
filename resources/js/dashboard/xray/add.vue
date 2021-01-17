@@ -177,12 +177,12 @@ export default {
       };
       console.log(all);
       axios
-        .post("/admins/xray", all)
+        .post("/admins/rays", all)
         .then((result) => {
           console.log(result.data);
           //
           this.success = true
-          setTimeout(() => this.$router.push("/doctors/all"), 2000);
+          setTimeout(() => this.$router.push("/rays/all"), 2000);
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors)

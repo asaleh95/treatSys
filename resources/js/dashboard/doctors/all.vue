@@ -53,11 +53,13 @@
                     <span>#</span>
                   </th>
                   <th>
-                    <span> صوره الطبيب</span
-                    >
+                    <span> صوره الطبيب</span>
                   </th>
                   <th @click="sort()">
-                    <span><i class="zmdi zmdi-swap-vertical text-muted"></i> اسم الطبيب </span>
+                    <span
+                      ><i class="zmdi zmdi-swap-vertical text-muted"></i> اسم
+                      الطبيب
+                    </span>
                   </th>
                   <th>
                     <span>العنوان</span>
@@ -236,7 +238,7 @@ export default {
           return 0;
         };
       }
-      this.sorted = - (this.sorted);
+      this.sorted = -this.sorted;
       return this.drs.sort(compare(this.sorted));
     },
   },

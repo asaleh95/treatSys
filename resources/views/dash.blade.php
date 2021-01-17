@@ -66,10 +66,6 @@ div {
     <script src="/assets/js/vendor/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/vendor/popper.min.js"></script>
     <script src="/assets/js/vendor/bootstrap.min.js"></script>
-    {{-- remove a5r 3 linkat --}}
-    <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="/assets/js/plugins/tippy4.min.js.js"></script>
-    <script src="/assets/js/main.js"></script>
 </body>
 
 </html>

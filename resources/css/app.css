@@ -8,6 +8,9 @@
 @import "./landingpage.css";
 @import "./contactus.css";
 @import "./details.css";
+@import "./hospitals.css";
+@import "./doctor.css";
+
 
 body{
     overflow-x: hidden;
@@ -17,8 +20,8 @@ body{
     /* overflow: hidden; */
 /* } */
 .head2{
-    margin-left: 20px;
-    color: #0782bd;
+    margin-left: -1px;
+        color: #484e52;
 }
 /* .centered { */
     /* position: absolute; */
@@ -107,14 +110,14 @@ color: #000;
 .number{
     font-family: Almarai;
 font-weight: bold;
-font-size: 19px;
+font-size: 30px;
 text-align: left;
 color: #000;
 }
 .num{
     font-family: Almarai;
 font-weight: bold;
-font-size: 20px;
+font-size: 25px;
 text-align: left;
 color: #707070;
 opacity: 0.2;
@@ -131,10 +134,18 @@ color: #000;
 .font-b{
     font-family: Almarai;
 font-weight: normal;
-font-size: 17px;
+font-size: 25px;
 text-align: left;
 color: #7b7b82;
-opacity: 0.5;
+opacity: 7.5;
+}
+.font-d{
+    font-family: Almarai;
+font-weight: normal;
+font-size: 18px;
+text-align: left;
+color: #7b7b82;
+opacity: 7.5;
 }
 .basic{
     font-family: Almarai;
@@ -154,16 +165,16 @@ text-align: left;
 color: #0883be;
 }
 .fon{
-    font-family: Multicolore;
+    font-family: auto;
 font-weight: bold;
-font-size: 30px;
+font-size: 38px;
 text-align: left;
 color: #7b7b82;
 }
 .blue{
-    font-family: Multicolore;
+    font-family: auto;
 font-weight: bold;
-font-size: 30px;
+font-size: 38px;
 text-align: left;
 color: #0883be;
 }
@@ -175,14 +186,8 @@ text-align: left;
 color: #000;
 }
 .prag{
-    width: 1615px;
-height: 220px;
-font-family: Almarai;
-font-weight: normal;
-font-size: 18px;
-line-height: 44px;
-text-align: left;
-color: #c6c6c8;
+    color:#475677;
+
 
 }
 .img0{
@@ -208,7 +213,7 @@ color: #7d8597;
     width: 30px;
 }
 .pic{
-    margin-left: 6px;
+    margin-left: 97px;
 }
 .img9{
     width:700px;
@@ -269,6 +274,8 @@ text-align: left;
 color: #e3e3e6;
 
 }
+
+
 .copy{
     margin-top:90%;
 }

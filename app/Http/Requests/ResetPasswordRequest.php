@@ -27,7 +27,6 @@ class ResetPasswordRequest extends FormRequest
             //
             "password" => 'required|min:8',
             'email' => 'required|email:rfc,dns',
-            'code' => 'required'
         ];
     }
 }

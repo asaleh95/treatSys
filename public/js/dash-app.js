@@ -2463,6 +2463,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -3067,6 +3069,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -3113,6 +3116,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3362,7 +3367,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/hospitals").then(function (result) {
+<<<<<<< HEAD
       _this.hospitals = result.data.data;
+=======
+      _this.hosp = result.data.data;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -3372,7 +3381,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       hospitals: [],
+=======
+      hosp: [],
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       id: null,
       index: null,
       success: false,
@@ -3386,13 +3399,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
+<<<<<<< HEAD
         return this.hospitals.filter(function (item) {
+=======
+        return this.hosp.filter(function (item) {
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
+<<<<<<< HEAD
         return this.hospitals;
+=======
+        return this.hosp;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       }
     }
   },
@@ -3401,7 +3422,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios["delete"]("/admins/hospitals/" + id).then(function (result) {
+<<<<<<< HEAD
         _this3.hospitals.splice(index, 1);
+=======
+        _this3.hosp.splice(index, 1);
+
+        console.log(_this3.hosp); // console.log(result.data);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 
         console.log(_this3.hospitals); // console.log(result.data);
         //
@@ -3422,7 +3449,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
+<<<<<<< HEAD
         _this4.hospitals = result.data.data;
+=======
+        _this4.hosp = result.data.data;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -3590,6 +3621,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -3633,6 +3665,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/admins/hospitals/" + this.$route.params.id).then(function (result) {
+      _this.hospital = result.data.data;
+      _this.previewImage = result.data.data.image.image;
+      _this.hospital.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      console.log(result.data.data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  data: function data() {
+    return {
+      previewImage: [],
+      hospital: {},
+      errors: window.obj,
+      success: false
+    };
+  },
+  methods: {
+    sendImage: function sendImage(e) {
+      var _this2 = this;
+
+      var image = e.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(image);
+
+      reader.onload = function (e) {
+        _this2.previewImage = e.target.result;
+        _this2.hospital.image = _this2.previewImage;
+        console.log(_this2.image);
+        console.log("ssssssssssssssssssss");
+      };
+    },
+    submit: function submit() {
+      var _this3 = this;
+
+      axios.put("/admins/hospitals/" + this.hospital.id, this.hospital).then(function (result) {
+        console.log(result.data); //
+
+        _this3.success = true;
+        setTimeout(function () {
+          return _this3.$router.push("/hospitals/all");
+        }, 2000);
+      })["catch"](function (err) {
+        return _this3.errors.record(err.response.data.errors);
+      } //   console.log(err.response.data.errors)
+      );
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dashboard/hospitals/show.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/dashboard/hospitals/show.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 //
 //
 //
@@ -3709,6 +3808,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/admins/hospitals/" + this.$route.params.id).then(function (result) {
       _this.hospital = result.data.data;
+<<<<<<< HEAD
       _this.previewLogo = result.data.data.logo;
       _this.previewImages = result.data.data.images.map(function (_ref) {
         var image = _ref.image;
@@ -3724,6 +3824,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.hospital.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
       _this.hospital.images = [];
       _this.hospital.logo = "";
+=======
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -3731,11 +3833,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       previewLogo: "",
       previewImages: [],
       hospital: {},
       errors: window.obj,
       success: false
+=======
+      hospital: {}
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
     };
   },
   methods: {
@@ -4246,7 +4352,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.success = true;
         setTimeout(function () {
+<<<<<<< HEAD
           return _this3.$router.push("/laps/all");
+=======
+          return _this2.$router.push("/labs/all");
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -4454,6 +4564,11 @@ __webpack_require__.r(__webpack_exports__);
 
       axios["delete"]("/admins/labs/" + id).then(function (result) {
         _this3.labs.splice(index, 1);
+<<<<<<< HEAD
+=======
+
+        console.log(_this3.labs); // console.log(result.data);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 
         console.log(_this3.labs); // console.log(result.data);
         //
@@ -4761,6 +4876,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/admins/labs/" + this.$route.params.id).then(function (result) {
       _this.lab = result.data.data;
+<<<<<<< HEAD
       _this.previewLogo = result.data.data.logo;
       _this.previewImages = result.data.data.images.map(function (_ref) {
         var image = _ref.image;
@@ -4774,6 +4890,10 @@ __webpack_require__.r(__webpack_exports__);
       _this.lab.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
       _this.lab.images = [];
       _this.lab.logo = "";
+=======
+      _this.previewImage = result.data.data.image.image;
+      _this.lab.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -4781,8 +4901,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       previewLogo: "",
       previewImages: [],
+=======
+      previewImage: [],
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       lab: {},
       errors: window.obj,
       success: false
@@ -4815,9 +4939,15 @@ __webpack_require__.r(__webpack_exports__);
       reader.readAsDataURL(image);
 
       reader.onload = function (e) {
+<<<<<<< HEAD
         _this3.previewLogo = e.target.result;
         _this3.lab.logo = _this3.previewLogo;
         console.log(_this3.logo);
+=======
+        _this2.previewImage = e.target.result;
+        _this2.lab.image = _this2.previewImage;
+        console.log(_this2.image);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         console.log("ssssssssssssssssssss");
       };
     },
@@ -4829,7 +4959,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.success = true;
         setTimeout(function () {
+<<<<<<< HEAD
           return _this4.$router.push("/laps/all");
+=======
+          return _this3.$router.push("/labs/all");
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         }, 2000);
       })["catch"](function (err) {
         return _this4.errors.record(err.response.data.errors);
@@ -5132,6 +5266,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -5240,10 +5375,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: "",
+<<<<<<< HEAD
       email: "",
       phone: "",
       location: "",
@@ -5259,6 +5397,18 @@ __webpack_require__.r(__webpack_exports__);
       logo: "",
       previewLogo: "",
       previewImages: [],
+=======
+      phone: "",
+      location: "",
+      address: "",
+      position: "",
+      rate: "",
+      basic_price: "",
+      treat_price: "",
+      about: "",
+      image: "",
+      previewImage: [],
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       errors: window.obj,
       success: false
     };
@@ -5267,6 +5417,7 @@ __webpack_require__.r(__webpack_exports__);
     sendImage: function sendImage(e) {
       var _this = this;
 
+<<<<<<< HEAD
       this.images = [];
       this.previewImages = [];
       var images = e.target.files;
@@ -5285,18 +5436,27 @@ __webpack_require__.r(__webpack_exports__);
     sendLogo: function sendLogo(e) {
       var _this2 = this;
 
+=======
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       var image = e.target.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(image);
 
       reader.onload = function (e) {
+<<<<<<< HEAD
         _this2.previewLogo = e.target.result;
         _this2.logo = _this2.previewLogo;
         console.log(_this2.logo);
+=======
+        _this.previewImage = e.target.result;
+        _this.image = _this.previewImage;
+        console.log(_this.image);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         console.log("ssssssssssssssssssss");
       };
     },
     submit: function submit() {
+<<<<<<< HEAD
       var _this3 = this;
 
       var all = {
@@ -5325,6 +5485,32 @@ __webpack_require__.r(__webpack_exports__);
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
+=======
+      var _this2 = this;
+
+      var all = {
+        name: this.name,
+        phone: this.phone,
+        location: this.location,
+        address: this.address,
+        position: this.position,
+        rate: this.rate,
+        basic_price: this.basic_price,
+        treat_price: this.treat_price,
+        about: this.about,
+        image: this.image
+      };
+      console.log(all);
+      axios.post("/admins/pharmcy", all).then(function (result) {
+        console.log(result.data); //
+
+        _this2.success = true;
+        setTimeout(function () {
+          return _this2.$router.push("/pharmcy/all");
+        }, 2000);
+      })["catch"](function (err) {
+        return _this2.errors.record(err.response.data.errors);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       } //   console.log(err.response.data.errors)
       );
     }
@@ -5489,7 +5675,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/pharmacies").then(function (result) {
+<<<<<<< HEAD
       _this.pharmacies = result.data.data;
+=======
+      _this.pharm = result.data.data;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -5499,7 +5689,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       pharmacies: [],
+=======
+      pharm: [],
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       id: null,
       index: null,
       success: false,
@@ -5513,13 +5707,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
+<<<<<<< HEAD
         return this.pharmacies.filter(function (item) {
+=======
+        return this.pharm.filter(function (item) {
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
+<<<<<<< HEAD
         return this.pharmacies;
+=======
+        return this.pharm;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       }
     }
   },
@@ -5528,7 +5730,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios["delete"]("/admins/pharmacies/" + id).then(function (result) {
+<<<<<<< HEAD
         _this3.pharmacies.splice(index, 1);
+=======
+        _this3.pharm.splice(index, 1);
+
+        console.log(_this3.pharm); // console.log(result.data);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
 
         console.log(_this3.pharmacies); // console.log(result.data);
         //
@@ -5549,7 +5757,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
+<<<<<<< HEAD
         _this4.hospitals = result.data.data;
+=======
+        _this4.pharm = result.data.data;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -5835,6 +6047,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/pharmacies/" + this.$route.params.id).then(function (result) {
+<<<<<<< HEAD
       _this.pharmacy = result.data.data;
       _this.previewLogo = result.data.data.logo;
       _this.previewImages = result.data.data.images.map(function (_ref) {
@@ -5851,6 +6064,11 @@ __webpack_require__.r(__webpack_exports__);
       _this.hospital.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
       _this.pharmacy.images = [];
       _this.pharmacy.logo = "";
+=======
+      _this.pharm = result.data.data;
+      _this.previewImage = result.data.data.image.image;
+      _this.pharm.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -5858,9 +6076,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       previewLogo: "",
       previewImages: [],
       pharmacy: {},
+=======
+      previewImage: [],
+      pharm: {},
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       errors: window.obj,
       success: false
     };
@@ -5892,21 +6115,35 @@ __webpack_require__.r(__webpack_exports__);
       reader.readAsDataURL(image);
 
       reader.onload = function (e) {
+<<<<<<< HEAD
         _this3.previewLogo = e.target.result;
         _this3.pharmacy.logo = _this3.previewLogo;
         console.log(_this3.logo);
+=======
+        _this2.previewImage = e.target.result;
+        _this2.pharm.image = _this2.previewImage;
+        console.log(_this2.image);
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         console.log("ssssssssssssssssssss");
       };
     },
     submit: function submit() {
       var _this4 = this;
 
+<<<<<<< HEAD
       axios.put("/admins/pharmacies/" + this.pharmacy.id, this.pharmacy).then(function (result) {
+=======
+      axios.put("/admins/pharmcies/" + this.pharm.id, this.pharm).then(function (result) {
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         console.log(result.data); //
 
         _this4.success = true;
         setTimeout(function () {
+<<<<<<< HEAD
           return _this4.$router.push("/pharmacies/all");
+=======
+          return _this3.$router.push("/pharmcies/all");
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
         }, 2000);
       })["catch"](function (err) {
         return _this4.errors.record(err.response.data.errors);
@@ -6026,8 +6263,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+<<<<<<< HEAD
     axios.get("/admins/pharmacies/" + this.$route.params.id).then(function (result) {
       _this.pharmacy = result.data.data;
+=======
+    axios.get("/admins/pharmcies/" + this.$route.params.id).then(function (result) {
+      _this.pharm = result.data.data;
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -6035,7 +6277,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       pharmacy: {}
+=======
+      pharm: {}
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
     };
   }
 });
@@ -7343,12 +7589,12 @@ __webpack_require__.r(__webpack_exports__);
         image: this.image
       };
       console.log(all);
-      axios.post("/admins/xray", all).then(function (result) {
+      axios.post("/admins/rays", all).then(function (result) {
         console.log(result.data); //
 
         _this2.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/doctors/all");
+          return _this2.$router.push("/rays/all");
         }, 2000);
       })["catch"](function (err) {
         return _this2.errors.record(err.response.data.errors);
@@ -7526,7 +7772,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      rays: [],
       id: null,
       index: null,
       success: false,
@@ -7540,13 +7786,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.rays.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.rays;
       }
     }
   },
@@ -7555,9 +7801,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios["delete"]("/admins/xray/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+        _this3.rays.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.rays); // console.log(result.data);
 
         console.log("clients"); //
 
@@ -7577,7 +7823,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.rays = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -7749,8 +7995,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
+      _this.ray = result.data.data;
       _this.previewImage = result.data.data.image.image;
       _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
@@ -7761,7 +8007,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      ray: {},
       errors: window.obj,
       success: false
     };
@@ -7784,12 +8030,12 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      axios.put("/admins/rays/" + this.ray.id, this.ray).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/rays/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -7884,8 +8130,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
+      _this.ray = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -7893,7 +8139,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      ray: {}
     };
   }
 });
@@ -28120,7 +28366,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _c("i", { staticClass: "zmdi zmdi-swap-vertical text-muted" }),
-      _vm._v(" اسم الطبيب ")
+      _vm._v(" اسم\n                    الطبيب\n                  ")
     ])
   },
   function() {
@@ -29410,7 +29656,11 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
+<<<<<<< HEAD
                               attrs: { src: hospital.images[0].image, alt: "" }
+=======
+                              attrs: { src: hospital.image.image, alt: "" }
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                             })
                           ]),
                           _vm._v(" "),
@@ -29890,19 +30140,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.hospital.distance,
                       expression: "hospital.distance"
+=======
+                      value: _vm.hospital.position,
+                      expression: "hospital.position"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
+<<<<<<< HEAD
                   domProps: { value: _vm.hospital.distance },
+=======
+                  domProps: { value: _vm.hospital.position },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.hospital, "distance", $event.target.value)
+=======
+                      _vm.$set(_vm.hospital, "position", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -29995,23 +30258,36 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.hospital.number_of_raters,
                       expression: "hospital.number_of_raters"
+=======
+                      value: _vm.hospital.basic_price,
+                      expression: "hospital.basic_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
+<<<<<<< HEAD
                   domProps: { value: _vm.hospital.number_of_raters },
+=======
+                  domProps: { value: _vm.hospital.basic_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(
                         _vm.hospital,
                         "number_of_raters",
                         $event.target.value
                       )
+=======
+                      _vm.$set(_vm.hospital, "basic_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -30036,23 +30312,36 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.hospital.number_of_views,
                       expression: "hospital.number_of_views"
+=======
+                      value: _vm.hospital.treat_price,
+                      expression: "hospital.treat_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
+<<<<<<< HEAD
                   domProps: { value: _vm.hospital.number_of_views },
+=======
+                  domProps: { value: _vm.hospital.treat_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(
                         _vm.hospital,
                         "number_of_views",
                         $event.target.value
                       )
+=======
+                      _vm.$set(_vm.hospital, "treat_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -30265,7 +30554,11 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("البريد الالكترونى")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(" " + _vm._s(_vm.hospital.email) + " ")])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.hospital.address))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
@@ -30277,6 +30570,7 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(_vm._s(_vm.hospital.address))])
               ]),
               _vm._v(" "),
@@ -30296,6 +30590,9 @@ var render = function() {
                 _c("span", [_vm._v("المسافه")]),
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(_vm.hospital.distance))])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.hospital.position))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
@@ -30315,7 +30612,11 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("عدد المصوتين")]),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.hospital.number_of_raters))
+=======
+                  _vm._v(_vm._s(_vm.hospital.basic_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ]),
               _vm._v(" "),
@@ -30323,7 +30624,11 @@ var render = function() {
                 _c("span", [_vm._v("عدد المشاهدين")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.hospital.number_of_views))
+=======
+                  _vm._v(_vm._s(_vm.hospital.treat_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ])
             ])
@@ -30332,6 +30637,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-8" }, [
+<<<<<<< HEAD
         _c("div", { staticClass: "row" }, [
           _c("img", {
             staticClass: "rounded-circle",
@@ -30360,6 +30666,19 @@ var render = function() {
           }),
           0
         )
+=======
+        _c("img", {
+          staticStyle: {
+            display: "block",
+            "margin-left": "auto",
+            "margin-right": "auto",
+            width: "100%",
+            "max-width": "50%",
+            height: "auto"
+          },
+          attrs: { src: _vm.hospital.images[0].image }
+        })
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       ])
     ])
   ])
@@ -31524,19 +31843,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.lab.distance,
                       expression: "lab.distance"
+=======
+                      value: _vm.lab.position,
+                      expression: "lab.position"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
+<<<<<<< HEAD
                   domProps: { value: _vm.lab.distance },
+=======
+                  domProps: { value: _vm.lab.position },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.lab, "distance", $event.target.value)
+=======
+                      _vm.$set(_vm.lab, "position", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -31629,19 +31961,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.lab.number_of_raters,
                       expression: "lab.number_of_raters"
+=======
+                      value: _vm.lab.basic_price,
+                      expression: "lab.basic_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
+<<<<<<< HEAD
                   domProps: { value: _vm.lab.number_of_raters },
+=======
+                  domProps: { value: _vm.lab.basic_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.lab, "number_of_raters", $event.target.value)
+=======
+                      _vm.$set(_vm.lab, "basic_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -31666,19 +32011,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.lab.number_of_views,
                       expression: "lab.number_of_views"
+=======
+                      value: _vm.lab.treat_price,
+                      expression: "lab.treat_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
+<<<<<<< HEAD
                   domProps: { value: _vm.lab.number_of_views },
+=======
+                  domProps: { value: _vm.lab.treat_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.lab, "number_of_views", $event.target.value)
+=======
+                      _vm.$set(_vm.lab, "treat_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -31891,7 +32249,11 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("البريد الالكترونى")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(" " + _vm._s(_vm.lab.email) + " ")])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.lab.address))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
@@ -31903,6 +32265,7 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(_vm._s(_vm.lab.address))])
               ]),
               _vm._v(" "),
@@ -31922,6 +32285,9 @@ var render = function() {
                 _c("span", [_vm._v("المسافه")]),
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(_vm.lab.distance))])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.lab.position))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
@@ -31941,7 +32307,11 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("عدد المصوتين")]),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.lab.number_of_raters))
+=======
+                  _vm._v(_vm._s(_vm.lab.basic_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ]),
               _vm._v(" "),
@@ -31949,7 +32319,11 @@ var render = function() {
                 _c("span", [_vm._v("عدد المشاهدين")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.lab.number_of_views))
+=======
+                  _vm._v(_vm._s(_vm.lab.treat_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ])
             ])
@@ -31958,6 +32332,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-8" }, [
+<<<<<<< HEAD
         _c("div", { staticClass: "row" }, [
           _c("img", {
             staticClass: "rounded-circle",
@@ -31986,6 +32361,19 @@ var render = function() {
           }),
           0
         )
+=======
+        _c("img", {
+          staticStyle: {
+            display: "block",
+            "margin-left": "auto",
+            "margin-right": "auto",
+            width: "100%",
+            "max-width": "50%",
+            height: "auto"
+          },
+          attrs: { src: _vm.lab.images[0].image }
+        })
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       ])
     ])
   ])
@@ -32687,38 +33075,66 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
+<<<<<<< HEAD
                       _vm._l(_vm.resultQuery, function(pharmacy, i) {
+=======
+                      _vm._l(_vm.resultQuery, function(pharm, i) {
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
+<<<<<<< HEAD
                             [_vm._v("#" + _vm._s(pharmacy.id))]
+=======
+                            [_vm._v("#" + _vm._s(pharm.id))]
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
+<<<<<<< HEAD
                               attrs: { src: pharmacy.images[0].image, alt: "" }
+=======
+                              attrs: { src: pharm.image.image, alt: "" }
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
+<<<<<<< HEAD
                               _vm._v(_vm._s(pharmacy.name))
                             ])
                           ]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(pharmacy.address))]),
+=======
+                              _vm._v(_vm._s(pharm.name))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(pharm.address))]),
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
+<<<<<<< HEAD
                             [_vm._v(_vm._s(pharmacy.phone))]
+=======
+                            [_vm._v(_vm._s(pharm.phone))]
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
+<<<<<<< HEAD
                               _vm._v(_vm._s(pharmacy.rate))
+=======
+                              _vm._v(_vm._s(pharm.rate))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                             ])
                           ]),
                           _vm._v(" "),
@@ -32732,9 +33148,13 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
+<<<<<<< HEAD
                                     attrs: {
                                       to: "/pharmacy/show/" + pharmacy.id
                                     }
+=======
+                                    attrs: { to: "/pharmcy/show/" + pharm.id }
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -32744,9 +33164,13 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
+<<<<<<< HEAD
                                     attrs: {
                                       to: "/pharmacy/edit/" + pharmacy.id
                                     }
+=======
+                                    attrs: { to: "/pharmcy/edit/" + pharm.id }
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -32762,7 +33186,11 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
+<<<<<<< HEAD
                                         return _vm.setDel(pharmacy.id, i)
+=======
+                                        return _vm.setDel(pharm.id, i)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                                       }
                                     }
                                   },
@@ -32976,6 +33404,7 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.name,
                       expression: "pharmacy.name"
                     }
@@ -32983,12 +33412,25 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "آسم الصيدله " },
                   domProps: { value: _vm.pharmacy.name },
+=======
+                      value: _vm.pharm.name,
+                      expression: "pharm.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "آسم الصيدليه " },
+                  domProps: { value: _vm.pharm.name },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "name", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "name", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33044,19 +33486,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.phone,
                       expression: "pharmacy.phone"
+=======
+                      value: _vm.pharm.phone,
+                      expression: "pharm.phone"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "رقم الهاتف" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.phone },
+=======
+                  domProps: { value: _vm.pharm.phone },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "phone", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "phone", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33077,19 +33532,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.address,
                       expression: "pharmacy.address"
+=======
+                      value: _vm.pharm.address,
+                      expression: "pharm.address"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "العنوان" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.address },
+=======
+                  domProps: { value: _vm.pharm.address },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "address", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "address", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33143,19 +33611,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.location,
                       expression: "pharmacy.location"
+=======
+                      value: _vm.pharm.location,
+                      expression: "pharm.location"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الاحداثيات" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.location },
+=======
+                  domProps: { value: _vm.pharm.location },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "location", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "location", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33178,19 +33659,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.distance,
                       expression: "pharmacy.distance"
+=======
+                      value: _vm.pharm.position,
+                      expression: "pharm.position"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.distance },
+=======
+                  domProps: { value: _vm.pharm.position },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "distance", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "position", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33248,19 +33742,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.rate,
                       expression: "pharmacy.rate"
+=======
+                      value: _vm.pharm.rate,
+                      expression: "pharm.rate"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "التقييم" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.rate },
+=======
+                  domProps: { value: _vm.pharm.rate },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "rate", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "rate", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33283,23 +33790,36 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.number_of_raters,
                       expression: "pharmacy.number_of_raters"
+=======
+                      value: _vm.pharm.basic_price,
+                      expression: "pharm.basic_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "السعر الاولى" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.number_of_raters },
+=======
+                  domProps: { value: _vm.pharm.basic_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(
                         _vm.pharmacy,
                         "number_of_raters",
                         $event.target.value
                       )
+=======
+                      _vm.$set(_vm.pharm, "basic_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33324,23 +33844,36 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.number_of_views,
                       expression: "pharmacy.number_of_views"
+=======
+                      value: _vm.pharm.treat_price,
+                      expression: "pharm.treat_price"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "سعر التعامل" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.number_of_views },
+=======
+                  domProps: { value: _vm.pharm.treat_price },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(
                         _vm.pharmacy,
                         "number_of_views",
                         $event.target.value
                       )
+=======
+                      _vm.$set(_vm.pharm, "treat_price", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33363,19 +33896,32 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+<<<<<<< HEAD
                       value: _vm.pharmacy.about,
                       expression: "pharmacy.about"
+=======
+                      value: _vm.pharm.about,
+                      expression: "pharm.about"
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
+<<<<<<< HEAD
                   domProps: { value: _vm.pharmacy.about },
+=======
+                  domProps: { value: _vm.pharm.about },
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
+<<<<<<< HEAD
                       _vm.$set(_vm.pharmacy, "about", $event.target.value)
+=======
+                      _vm.$set(_vm.pharm, "about", $event.target.value)
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                     }
                   }
                 }),
@@ -33547,24 +34093,37 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم الصيدليه")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(" " + _vm._s(_vm.pharmacy.name) + " ")])
+=======
+                _c("span", [_vm._v(" " + _vm._s(_vm.pharm.name) + " ")])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("البريد الالكترونى")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(" " + _vm._s(_vm.pharmacy.email) + " ")])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.pharm.address))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(_vm._s(_vm.pharmacy.phone) + " ")])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.pharm.phone) + " ")])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(_vm._s(_vm.pharmacy.address))])
               ]),
               _vm._v(" "),
@@ -33584,26 +34143,41 @@ var render = function() {
                 _c("span", [_vm._v("المسافه")]),
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(_vm.pharmacy.distance))])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.pharm.position))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _c("span", [_vm._v(_vm._s(_vm.pharmacy.about))])
+=======
+                _c("span", [_vm._v(_vm._s(_vm.pharm.about))])
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.pharmacy.rate))
+=======
+                  _vm._v(_vm._s(_vm.pharm.rate))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("عدد المصوتين")]),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.pharmacy.number_of_raters))
+=======
+                  _vm._v(_vm._s(_vm.pharm.basic_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ]),
               _vm._v(" "),
@@ -33611,7 +34185,11 @@ var render = function() {
                 _c("span", [_vm._v("عدد المشاهدين")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
+<<<<<<< HEAD
                   _vm._v(_vm._s(_vm.pharmacy.number_of_views))
+=======
+                  _vm._v(_vm._s(_vm.pharm.treat_price))
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
                 ])
               ])
             ])
@@ -33620,6 +34198,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-8" }, [
+<<<<<<< HEAD
         _c("div", { staticClass: "row" }, [
           _c("img", {
             staticClass: "rounded-circle",
@@ -33648,6 +34227,19 @@ var render = function() {
           }),
           0
         )
+=======
+        _c("img", {
+          staticStyle: {
+            display: "block",
+            "margin-left": "auto",
+            "margin-right": "auto",
+            width: "100%",
+            "max-width": "50%",
+            height: "auto"
+          },
+          attrs: { src: _vm.pharm.image.image }
+        })
+>>>>>>> b015910fcc3eab2fc1959cd646820a52a92de2e9
       ])
     ])
   ])
@@ -35941,38 +36533,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(ray, id) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(ray.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.images[0].image, alt: "" }
+                              attrs: { src: ray.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(ray.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(ray.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(ray.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(ray.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -35986,7 +36578,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/xray/show/" + dr.id }
+                                    attrs: { to: "/xray/show/" + ray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -35996,7 +36588,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/xray/edit/" + dr.id }
+                                    attrs: { to: "/xray/edit/" + ray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -36012,7 +36604,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(ray.id, _vm.i)
                                       }
                                     }
                                   },
@@ -36502,19 +37094,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
+                      value: _vm.ray.about,
+                      expression: "ray.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
+                  domProps: { value: _vm.ray.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
+                      _vm.$set(_vm.ray, "about", $event.target.value)
                     }
                   }
                 }),
@@ -36652,38 +37244,38 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم الاشاعه")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.ray.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.address))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.ray.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التخصص")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.position))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
+                _c("span", [_vm._v(_vm._s(_vm.ray.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
+                  _vm._v(_vm._s(_vm.ray.rate))
                 ])
               ]),
               _vm._v(" "),
@@ -36691,7 +37283,7 @@ var render = function() {
                 _c("span", [_vm._v("السعر الاولى")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
+                  _vm._v(_vm._s(_vm.ray.basic_price))
                 ])
               ]),
               _vm._v(" "),
@@ -36699,7 +37291,7 @@ var render = function() {
                 _c("span", [_vm._v("سعر التعامل")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
+                  _vm._v(_vm._s(_vm.ray.treat_price))
                 ])
               ])
             ])
@@ -36717,7 +37309,7 @@ var render = function() {
             "max-width": "50%",
             height: "auto"
           },
-          attrs: { src: _vm.dr.image.image }
+          attrs: { src: _vm.ray.image.image }
         })
       ])
     ])
@@ -55603,7 +56195,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\dash-app.js */"./resources/js/dash-app.js");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\js\dash-app.js */"./resources/js/dash-app.js");
 
 
 /***/ })

@@ -100,7 +100,7 @@ label{
             </div>
             <div class="col-12 mb-30">
               <label for="name">الملاحظات</label>
-              <textarea class="form-control" v-model="dr.about" placeholder=" الملاحظات"></textarea>
+              <textarea class="form-control" v-model="ray.about" placeholder=" الملاحظات"></textarea>
               <div class="animated bounce infinite rtl">
                 <span style="color: red" v-text="errors.get('about')"></span>
               </div>
@@ -148,9 +148,9 @@ label{
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/rays/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.ray = result.data.data;
         this.previewImage = result.data.data.image.image;
         this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
         console.log(result.data.data);
@@ -162,7 +162,7 @@ export default {
   data() {
     return {
       previewImage: [],
-      dr: {},
+      ray: {},
       errors: window.obj,
       success: false,
     };
@@ -181,12 +181,12 @@ export default {
     },
     submit() {
       axios
-        .put("/admins/doctors/" + this.dr.id, this.dr)
+        .put("/admins/rays/" + this.ray.id, this.ray)
         .then((result) => {
           console.log(result.data);
           //
           this.success = true
-          setTimeout(() => this.$router.push("/doctors/all"), 2000);
+          setTimeout(() => this.$router.push("/rays/all"), 2000);
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors)

@@ -6,7 +6,7 @@
         <h4>Doctors</h4>
         <h5 class="head2">
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
-          7,618 results found in 5ms
+          <span class="text-primary"> 7,618 results found in 5ms</span>
         </h5>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
@@ -20,37 +20,8 @@
       <hr />
       <div class="content">
         <div class="row">
-          <div class="col-md-2 hospital">
-            <img src="Web/11.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/14.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/13.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/12.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/20.png" class="doctor" alt="" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2 hospital">
-            <img src="Web/11.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/14.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/13.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/12.png" class="doctor" alt="" />
-          </div>
-          <div class="col-md-2 hospital">
-            <img src="Web/20.png" class="doctor" alt="" />
+          <div class="col-md-2 hospital-click mr-3" v-for="(dr, i) in resultQuery"  @click="goTo(dr.id)">
+            <img :src="dr.image.image" class="doctor" alt="" />
           </div>
         </div>
       </div>
@@ -69,3 +40,69 @@
     <treat-footer></treat-footer>
   </div>
 </template>
+<script>
+export default {
+  mounted() {
+    axios
+      .get("/users/doctors")
+      .then((result) => {
+        this.drs = result.data.data;
+        this.prevUrl = result.data.links.prev;
+        this.nextUrl = result.data.links.next;
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  data() {
+    return {
+      drs: [],
+      id: null,
+      index: null,
+      success: false,
+      errors: window.obj,
+      prevUrl: false,
+      nextUrl: false,
+      sorted: 1,
+    };
+  },
+  computed: {
+    resultQuery() {
+      if (this.$root.search) {
+        return this.drs.filter((item) => {
+          return this.$root.search
+            .toLowerCase()
+            .split(" ")
+            .every(
+              (v) =>
+                item.name.toLowerCase().includes(v) ||
+                item.phone.toLowerCase().includes(v) ||
+                item.address.toLowerCase().includes(v)
+            );
+        });
+      } else {
+        return this.drs;
+      }
+    },
+  },
+  methods: {
+    getDoctors(url) {
+      axios
+        .get(url)
+        .then((result) => {
+          this.drs = result.data.data;
+          this.prevUrl = result.data.links.prev;
+          this.nextUrl = result.data.links.next;
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+     goTo(id){
+          this.$router.push("/doctor/" + id);
+    }
+  },
+};
+</script>

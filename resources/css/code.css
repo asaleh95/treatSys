@@ -3,4 +3,5 @@ width: 16% !important;
 margin-left: 0.70rem!important;
 height: calc(1.5em + 2.0rem + 2px);
 border-radius: .50rem;
+z-index: 1;
 }

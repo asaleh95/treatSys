@@ -1,8 +1,14 @@
 require('./bootstrap');
+require('./errors');
+
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('token'));
+window.axios.defaults.baseURL = '/api';
 
 Vue.use(VueRouter)
 

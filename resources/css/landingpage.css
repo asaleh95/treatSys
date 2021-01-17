@@ -5,6 +5,106 @@ body{
 .container-left{
     margin-left: -134px;
 }
+.rounded-sm {
+    border-radius: .2rem!important;
+}
+.parg{
+    color: gray;
+    font-size: 0.8rem;
+}
+.toop{
+    color: gray;
+    font-weight: 100;
+}
+.foto{
+    width: 40px;
+    margin-left: 1px;
+}
+.fotoz{
+    width: 40px;
+    margin-left: 275px;
+}
+
+.paragraph-news{
+    font-size: 1.75rem;
+    font-family: Poppins;
+
+}
+.tex{
+    margin-left: 50% !important; 
+}
+.amanda{
+    margin-left:1%
+}
+
+.arrow-right{
+    margin-left: 776px;
+    cursor: pointer;
+}
+
+.view-more{
+    border-radius: 100px;
+    border: 2px solid #c9ccd0;
+    color: #4b5a61;
+    width: 165px;
+    height: 40px;
+    padding-left: 10px;
+    margin-bottom: 5%;
+    background-color: white;
+}
+.view-mo{
+    border-radius: 100px;
+    border: 2px solid #4792f3;
+    color: #2779a0;
+    width: 175px;
+    height: 40px;
+    padding-left: 23px;
+    padding-top: 4px;
+    margin-bottom: 5%;
+    background-color: white;
+}
+.borda{
+    padding-bottom: 21px;
+    border-radius: 13% !important;
+}
+.get{
+    color: gray;
+    font-family: revert;
+font-weight: 100;
+}
+.subscrib{
+    border-radius: 100px;
+    border: 2px solid #3e6ba7;
+    color: white;
+    width: 190px;
+    height: 45px;
+    margin-bottom: 5%;
+    background-color: #0782bd;
+}
+
+.whe{
+    color: #475677;
+    font-weight: bold;
+
+}
+.feedback{
+    color: #636b7e;
+   
+}
+
+.cho{
+    font-family: inherit;
+    font-weight: 100;
+    font-size: 360%;
+
+
+        color: #475677;
+    
+}
+
+.butto{
+    margin-bottom: 45px;
+}
 
 .img{
     width: 1497px;
@@ -12,9 +112,19 @@ body{
     background-color: #0782bd;
 }
 
+.bg-treat{
+    background-color: #1488c0;
+    border-radius: 2%;
+ border: 1.5px solid #7aa8ca!important;
+}
+
+.card-hospital{
+    width: 107% !important;
+}
+
 .land{
     width: 1500px;
-    height: 648px;
+    height: 734px;
     margin-left: -195px;
     background-color: #0782bd;
 }
@@ -22,15 +132,45 @@ body{
 .centered {
     position: absolute;
     top: 40%;
-    left: 66%;
+    left: 44%;
     transform: translate(-50%, -50%);
     width: 100%;
+    
+
+}
+
+.words{
+    
+font-weight: bold;
+text-align: left;
+color: #ffbe58;
+margin-left:7%;
+
+}
+.dar{
+  font-family: auto;
+font-weight: bold;
+font-size: 17px;
+text-align: left;
+color: #000;
+
+}
+.words1{
+    color: white;
+    margin-left:7%;
+    margin-top: 4%;
+
 }
 
 .img-g{
     position: absolute;
-    top: 42%;
+    top: 56%;
     left: 66%;
     transform: translate(-50%, -50%);
     width: 85%;
+    z-index: 1;
+}
+.pargra{
+    color: white;
+    margin-left:7%;
 }

@@ -21,7 +21,7 @@ class DoctorRepositories
             $arr = explode(',', $data['location']);
             $query->distance('location', new Point($arr[0], $arr[1]), 10);
         })
-        ->paginate(15);
+        ->paginate(5);
     }
 
     public function store($data)

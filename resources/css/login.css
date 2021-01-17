@@ -3,7 +3,9 @@
   .topleft {
     position: absolute;
     bottom: 1%;
-    left: -15%;
+    left: -17%;
+    width: 120%;
+
   }
   
   .center {
