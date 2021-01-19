@@ -63,19 +63,6 @@ export default {
         {
             path: '/hospitals',
             component: require('./components/hospitals').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
         {
             path: '/doctors',
@@ -97,36 +84,10 @@ export default {
         {
             path: '/aboutus',
             component: require('./components/aboutus').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
         {
             path: '/blog',
             component: require('./components/blog').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
         {
             path: '/doctor/:id',
@@ -169,36 +130,10 @@ export default {
         {
             path: '/',
             component: require('./components/landingpage').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
         {
             path: '/news',
             component: require('./components/news').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
     ],
 

@@ -12,7 +12,7 @@ import routes from './dash-routes';
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('token'));
+window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('atoken'));
 window.axios.defaults.baseURL = '/api';
 
 // window.Vue = require('vue');

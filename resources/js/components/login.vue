@@ -1,7 +1,7 @@
 
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
       <h2 class="logi">LOGIN</h2>
       <br />
       <h4>Hi there!</h4>
@@ -49,11 +49,10 @@
           <Span class="ml-2 mt-n1 checkboox-label text-muted text-center"
             >Remember Me</Span
           >
-          <a
-            href="#"
-            class="mt-n1 offset-md-4 forget-password-text text-muted text-center"
-            >Forget Password</a
-          >
+          <router-link
+            to="help"
+            class="mt-n1 offset-md-4 forget-password-text text-center"
+            >Forget Password</router-link>
         </div>
         <br />
           <span style="color: red" v-text="error.get('error')"></span>
@@ -64,7 +63,7 @@
         <br />
       </form>
       <p class="text-donthaveaccount offset-md-3 mt-5 text-muted text-center">
-        Don't have an account ? <a href="#">Sign up</a>
+        Don't have an account ? <router-link to="signup">Sign up</router-link>
       </p>
       <div class="row">
         <div class="col-md-3 mt-5">

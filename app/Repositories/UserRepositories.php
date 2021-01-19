@@ -61,7 +61,7 @@ class UserRepositories implements AuthInterface
 
     public function saveRememberToken($user)
     {
-        $token = mt_rand(100000, 999999);
+        $token = mt_rand(10000, 99999);
         $user->update(['remember_token' => $token]);
         return $token;
     }

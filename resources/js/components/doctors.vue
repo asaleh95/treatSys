@@ -8,8 +8,6 @@
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
           <span class="text-primary"> 7,618 results found in 5ms</span>
         </h5>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
       </div>
       <br /><br />
       <div class="row">
@@ -20,7 +18,7 @@
       <hr />
       <div class="content">
         <div class="row">
-          <div class="col-md-2 hospital-click mr-3" v-for="(dr, i) in resultQuery"  @click="goTo(dr.id)">
+          <div class="col-md-2 hospital-click mx-3 mb-2" v-for="(dr, i) in resultQuery"  @click="goTo(dr.id)">
             <img :src="dr.image.image" class="doctor" alt="" />
           </div>
         </div>
@@ -28,12 +26,10 @@
       <br /><br />
       <div class="row mb-5">
         <div class="col-md-12 d-flex justify-content-center">
-          <a href="#" class="btn btn-light rounded-circle"><</a>
-          <a href="#" class="btn rounded-circle">4</a>
-          <a href="#" class="btn rounded-circle">3</a>
-          <a href="#" class="btn rounded-circle">2</a>
-          <a href="#" class="btn btn-primary rounded-circle mr-2">1</a>
-          <a href="#" class="btn btn-light rounded-circle">></a>
+          <!-- <a href="#" class="btn btn-light rounded-circle" v-show="prevUrl"><</a> -->
+          <button type="button" v-for="num in numOfPages" :class="[btnRounded, (current == num) ? primary : '']" :disabled="current == num"  @click="getDoctors(num)">{{num }}</button>
+          <!-- <a href="#" class="btn btn-primary rounded-circle mr-2">1</a> -->
+          <!-- <a href="#" class="btn btn-light rounded-circle" v-show="nextUrl">></a> -->
         </div>
       </div>
     </div>
@@ -44,11 +40,14 @@
 export default {
   mounted() {
     axios
-      .get("/users/doctors")
+      .get("/users/doctors?paginate=15")
       .then((result) => {
         this.drs = result.data.data;
-        this.prevUrl = result.data.links.prev;
-        this.nextUrl = result.data.links.next;
+        // this.prevUrl = result.data.links.prev;
+        // this.nextUrl = result.data.links.next;
+        this.numOfPages = Math.ceil(result.data.meta.total / 15);
+        // this.prevUrl = this.numOfPages > 4 ? result.data.links.prev : false;
+        // this.nextUrl = this.numOfPages > 4 ? result.data.links.next : false;
         console.log(result.data.data);
       })
       .catch((error) => {
@@ -64,7 +63,11 @@ export default {
       errors: window.obj,
       prevUrl: false,
       nextUrl: false,
+      numOfPages: 0,
       sorted: 1,
+      current: 1,
+      btnRounded: 'btn rounded-circle',
+      primary: 'btn-primary'
     };
   },
   computed: {
@@ -87,14 +90,12 @@ export default {
     },
   },
   methods: {
-    getDoctors(url) {
+    getDoctors(num) {
       axios
-        .get(url)
+        .get("/users/doctors?paginate=15&page="+ num)
         .then((result) => {
           this.drs = result.data.data;
-          this.prevUrl = result.data.links.prev;
-          this.nextUrl = result.data.links.next;
-          console.log(result.data.data);
+          this.current = num;
         })
         .catch((error) => {
           console.log(error);

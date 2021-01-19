@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-2 mt-5">
           <div class="border rounded-xl border-corner borda">
-            <img src="Web/Path 202.png" class="mx-auto d-block mt-5" alt="" />
+            <img src="Web/202.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">pharmasy</h6>
           </div>
         </div>
@@ -233,7 +233,7 @@ export default {
         console.log(error);
       });
     axios
-      .get("/users/doctors")
+      .get("/users/doctors?paginate=5")
       .then((result) => {
         this.drs = result.data.data;
         this.prevUrl = result.data.links.prev;
@@ -255,7 +255,7 @@ export default {
   methods: {
     getDoctors(url) {
       axios
-        .get(url)
+        .get(url+ "&paginate=5")
         .then((result) => {
           this.drs = result.data.data;
           this.prevUrl = result.data.links.prev;

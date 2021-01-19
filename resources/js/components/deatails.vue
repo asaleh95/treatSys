@@ -8,7 +8,7 @@
       ></treat-header>
       <div class="row">
         <div class="col-md-8 col-sm-8">
-          <img :src="hospital.images[0].image" alt="" class="img0" />
+          <img :src="hospital.images[0].image" alt="" class="img0 my-2" />
           <div class="row maxWidth">
             <img :src="hospital.images[1].image" alt="" class="col-md-2 col-sm-2" />
             <img :src="hospital.images[2].image" alt="" class="col-md-2 col-sm-2" />

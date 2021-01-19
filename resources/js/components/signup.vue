@@ -1,7 +1,7 @@
 
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
       <h1 class="logi">SIGN up</h1>
       <br />
       <h4>Register new account</h4>
@@ -78,7 +78,7 @@
       </form>
       <br />
       <p class="text-muted text-center font-d">
-        have an account <a href="#"> sign in</a>
+        have an account <router-link to="login"> sign in</router-link>
       </p>
     </div>
     <div class="col-md-8">

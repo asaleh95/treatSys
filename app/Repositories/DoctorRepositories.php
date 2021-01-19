@@ -15,13 +15,14 @@ class DoctorRepositories
 
     public function all($data)
     {      
+        $paginate = !empty($data['paginate']) ? $data['paginate'] : 12;
         return $this->doctor->when(!empty($data['name']), function ($query) use($data){
             $query->where('name', 'like', '%'. $data['name'].'%');
         })->when(!empty($data['location']) ,function ($query) use($data){
             $arr = explode(',', $data['location']);
             $query->distance('location', new Point($arr[0], $arr[1]), 10);
         })
-        ->paginate(5);
+        ->paginate($paginate);
     }
 
     public function store($data)

@@ -3,12 +3,12 @@
         <div class="row head">
         <h4>{{name}}</h4>
         <h5 class="head2">
-          | <a class="user" href="#"><img src="web/home.png" alt="" /></a>>>
+          | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
           <span class="text-primary">
           {{header}}
           </span>
         </h5>
-        <a href="#"><img src="web/search+.png" alt="" /></a>
+        <a href="#"><img src="Web/search+.png" alt="" /></a>
       </div>
       <hr>
     </div>

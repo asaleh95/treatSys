@@ -6,7 +6,7 @@
         <h4>Hospital</h4>
         <h5 class="head2">
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
-      <span class="text-primary">    7,618 results found in 5ms</span>
+          <span class="text-primary"> 7,618 results found in 5ms</span>
         </h5>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
         <a href="#"><img src="Web/search+.png" alt="" /></a>
@@ -22,7 +22,11 @@
       <hr />
       <div class="content">
         <div class="row">
-          <div class="col-3 mb-5 hospital-click" v-for="(hospital,i) in resultQuery" @click="goTo(hospital.id)">
+          <div
+            class="col-3 mb-5 hospital-click"
+            v-for="(hospital, i) in resultQuery"
+            @click="goTo(hospital.id)"
+          >
             <div class="card pr-4 h-100">
               <img
                 class="card-img-top card-hospital card-hospital-10"
@@ -32,34 +36,35 @@
               <div class="card-body">
                 <h5 class="card-title parg">
                   <span class="d-inline">
-                  {{hospital.address}}
+                    {{ hospital.address }}
                   </span>
                   <div class="float-right d-inline">
                     <img src="Web/179.png" alt="" />
-                    <span class="parg">{{hospital.distance}}km</span>
+                    <span class="parg">{{ hospital.distance }}km</span>
                   </div>
                 </h5>
-                <p class="card-text dar">{{hospital.name}}</p>
-                <p class="card-title parg d-inline"><span class="">{{hospital.region}} </span> <span class=" float-right ">{{hospital.number_of_views}} Views</span></p>
+                <p class="card-text dar">{{ hospital.name }}</p>
+                <p class="card-title parg d-inline">
+                  <span class="">{{ hospital.region }} </span>
+                  <span class="float-right"
+                    >{{ hospital.number_of_views }} Views</span
+                  >
+                </p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <br /><br />
       <div class="row mb-5">
         <div class="col-md-12 d-flex justify-content-center">
-          <a href="#" class="btn btn-light rounded-circle"><</a>
-          <a href="#" class="btn rounded-circle">4</a>
-          <a href="#" class="btn rounded-circle">3</a>
-          <a href="#" class="btn rounded-circle">2</a>
-          <a href="#" class="btn btn-primary rounded-circle mr-2">1</a>
-          <a href="#" class="btn btn-light rounded-circle">></a>
+          <button type="button" v-for="num in numOfPages" :class="[btnRounded, current == num ? primary : '']" :disabled="current == num" @click="getDoctors(num)">
+            {{ num }}
+          </button>
         </div>
       </div>
     </div>
-       <treat-footer></treat-footer>
+    <treat-footer></treat-footer>
   </div>
 </template>
 <script>
@@ -69,9 +74,7 @@ export default {
       .get("/users/hospitals")
       .then((result) => {
         this.hosp = result.data.data;
-        this.prevUrl = result.data.links.prev;
-        this.nextUrl = result.data.links.next;
-        console.log(result.data.data);
+        this.numOfPages = Math.ceil(result.data.meta.total / 12);
       })
       .catch((error) => {
         console.log(error);
@@ -86,6 +89,11 @@ export default {
       errors: window.obj,
       prevUrl: false,
       nextUrl: false,
+      numOfPages: 0,
+      sorted: 1,
+      current: 1,
+      btnRounded: 'btn rounded-circle',
+      primary: 'btn-primary'
     };
   },
   computed: {
@@ -126,22 +134,20 @@ export default {
       this.id = id;
       this.index = index;
     },
-    getDoctors(url) {
+    getDoctors(num) {
       axios
-        .get(url)
+        .get("/users/hospitals?paginate=12&page="+ num)
         .then((result) => {
           this.hosp = result.data.data;
-          this.prevUrl = result.data.links.prev;
-          this.nextUrl = result.data.links.next;
-          console.log(result.data.data);
+          this.current = num;
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    goTo(id){
-          this.$router.push("/details/" + id);
-    }
+    goTo(id) {
+      this.$router.push("/details/" + id);
+    },
   },
 };
 </script>

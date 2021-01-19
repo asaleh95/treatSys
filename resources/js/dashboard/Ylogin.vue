@@ -122,7 +122,7 @@ export default {
           console.log("login");
           //
           localStorage.setItem(
-            "token",
+            "atoken",
             JSON.stringify(result.data.token.access_token)
           );
           localStorage.setItem("admin", JSON.stringify(result.data.user));

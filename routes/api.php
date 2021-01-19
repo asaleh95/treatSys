@@ -14,9 +14,25 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('admin/login', 'AdminController@login')->name('admin-login');
     Route::get('countries', 'CountryController@all');
 
+    Route::prefix('users')->group(function (){
+        Route::prefix('hospitals')->group(function () {
+            Route::get('/', 'HospitalController@index');
+        });
+        Route::prefix('doctors')->group(function () {
+            Route::get('/', 'DoctorController@index');
+        });
+        Route::prefix('rays')->group(function () {
+            Route::get('/', 'RayController@index');
+        });
+        Route::prefix('labs')->group(function () {
+            Route::get('/', 'LabController@index');
+        });
+        Route::prefix('pharmacy')->group(function () {
+            Route::get('/', 'PharmacyController@index');
+        });
+    });
 
     Route::middleware('auth:api')->group(function () {
-        // Route::resource('users', 'UserController');
         Route::prefix('user')->group(function () {
             Route::get('/{user}', 'UserController@show');
             Route::put('/{user}', 'UserController@update');
@@ -33,23 +49,18 @@ Route::namespace('App\Http\Controllers')->group(function () {
             Route::post('/dislike-pharmacy', 'UserController@dislikePharmacy');
             Route::post('logout', 'UserController@logout')->name('logout-user');
             Route::prefix('hospitals')->group(function () {
-                Route::get('/', 'HospitalController@index');
                 Route::get('/{hospital}', 'HospitalController@show');
             });
             Route::prefix('doctors')->group(function () {
-                Route::get('/', 'DoctorController@index');
                 Route::get('/{doctor}', 'DoctorController@show');
             });
             Route::prefix('rays')->group(function () {
-                Route::get('/', 'RayController@index');
                 Route::get('/{ray}', 'RayController@show');
             });
             Route::prefix('labs')->group(function () {
-                Route::get('/', 'LabController@index');
                 Route::get('/{lab}', 'LabController@show');
             });
             Route::prefix('pharmacy')->group(function () {
-                Route::get('/', 'PharmacyController@index');
                 Route::get('/{pharmacy}', 'PharmacyController@show');
             });
         });

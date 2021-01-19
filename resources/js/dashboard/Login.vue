@@ -47,8 +47,8 @@
 			console.log(all)
 			axios.post('/login',all).then((result) => {
 			console.log(result.data);
-			localStorage.setItem('token', JSON.stringify(result.data.token.access_token));
-			localStorage.setItem('user', JSON.stringify(result.data.user));
+			localStorage.setItem('atoken', JSON.stringify(result.data.token.access_token));
+			localStorage.setItem('auser', JSON.stringify(result.data.user));
 
 			this.$router.push('/');
 			}).catch((err) => {

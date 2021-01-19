@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
       <h2 class="logi">HELP!</h2>
       <br />
       <h4>Forgot Password!</h4>
@@ -29,7 +29,7 @@
       </form>
       <br />
       <p class="text-muted text-center font-b">
-        i will try again ! <a href="#">Sign in</a>
+        i will try again ! <router-link to="login">Sign in</router-link>
       </p>
     </div>
     <div class="col-md-8">
