@@ -24806,7 +24806,9 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "border bg-treat mt-5 centered w-50" },
+                  {
+                    staticClass: "border bg-treat mt-5 centered w-50 col-sm-12"
+                  },
                   [
                     _c("h1", { staticClass: "words1" }, [
                       _vm._v(_vm._s(_vm.$t("message.learn")))
@@ -24847,46 +24849,68 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row mt-5" }, [
-            _c(
-              "div",
-              {
-                staticClass: "col-md-2 mt-5 x-ray",
-                on: {
-                  click: function($event) {
-                    return _vm.goTo("doctors")
+            _c("div", { staticClass: "col-md-2 col-sm-12 mt-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "border rounded-sm border-corner borda x-ray",
+                  on: {
+                    click: function($event) {
+                      return _vm.goTo("doctors")
+                    }
                   }
-                }
-              },
-              [_vm._m(0)]
-            ),
+                },
+                [
+                  _c("img", {
+                    staticClass: "mx-auto d-block mt-5",
+                    attrs: { src: "Web/sma3a.png", alt: "" }
+                  }),
+                  _vm._v(" "),
+                  _c("h6", { staticClass: "offset-3 mt-3" }, [
+                    _vm._v("doctors")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
+            _c("div", { staticClass: "col-md-2 mt-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "border rounded-sm border-corner borda x-ray",
+                  on: {
+                    click: function($event) {
+                      return _vm.goTo("hospitals")
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "mx-auto d-block mt-5",
+                    attrs: { src: "Web/hospital.png", alt: "" }
+                  }),
+                  _vm._v(" "),
+                  _c("h6", { staticClass: "offset-3 mt-3" }, [
+                    _vm._v("Hospitals")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-md-2 mt-5 x-ray",
-                on: {
-                  click: function($event) {
-                    return _vm.goTo("hospitals")
-                  }
-                }
-              },
-              [_vm._m(3)]
-            ),
-            _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5)
+            _vm._m(3)
           ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row head" },
             [
-              _vm._m(6),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "router-link",
@@ -24906,7 +24930,7 @@ var render = function() {
               { staticClass: "row" },
               _vm._l(_vm.hosp, function(hospital, i) {
                 return _c("div", { staticClass: "col-4" }, [
-                  _c("div", { staticClass: "card pr-4" }, [
+                  _c("div", { staticClass: "card pr-4 h-100" }, [
                     _c("img", {
                       staticClass: "card-img-top card-hospital",
                       attrs: {
@@ -24956,9 +24980,9 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(7),
+            _vm._m(5),
             _vm._v(" "),
-            _vm._m(8),
+            _vm._m(6),
             _vm._v(" "),
             _c("div", { staticClass: "row head" }, [
               _c("h3", { staticClass: "pr-auto" }, [
@@ -25002,23 +25026,23 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
+          _vm._m(7),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(8),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
           _vm._m(9),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(10),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(11),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(12)
+          _vm._m(10)
         ],
         1
       ),
@@ -25037,78 +25061,64 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-      _c("img", {
-        staticClass: "mx-auto d-block mt-5",
-        attrs: { src: "Web/sma3a.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("doctors")])
+    return _c("div", { staticClass: "col-md-2 mt-5" }, [
+      _c(
+        "div",
+        { staticClass: "border rounded-sm border-corner borda x-ray" },
+        [
+          _c("img", {
+            staticClass: "mx-auto d-block mt-5",
+            attrs: { src: "Web/mico.png", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
+        ]
+      )
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
-      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-        _c("img", {
-          staticClass: "mx-auto d-block mt-5",
-          attrs: { src: "Web/mico.png", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
-      ])
+    return _c("div", { staticClass: "col-md-2 mt-5" }, [
+      _c(
+        "div",
+        { staticClass: "border rounded-sm border-corner borda x-ray" },
+        [
+          _c("img", {
+            staticClass: "mx-auto d-block mt-5",
+            attrs: { src: "Web/x-ray.png", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centerss")])
+        ]
+      )
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
-      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-        _c("img", {
-          staticClass: "mx-auto d-block mt-5",
-          attrs: { src: "Web/x-ray.png", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centerss")])
-      ])
+    return _c("div", { staticClass: "col-md-2 mt-5" }, [
+      _c(
+        "div",
+        { staticClass: "border rounded-xl border-corner borda x-ray" },
+        [
+          _c("img", {
+            staticClass: "mx-auto d-block mt-5",
+            attrs: { src: "Web/202.png", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
+        ]
+      )
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-      _c("img", {
-        staticClass: "mx-auto d-block mt-5",
-        attrs: { src: "Web/hospital.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Hospitals")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
-      _c("div", { staticClass: "border rounded-xl border-corner borda" }, [
-        _c("img", {
-          staticClass: "mx-auto d-block mt-5",
-          attrs: { src: "Web/202.png", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2" }, [
+    return _c("div", { staticClass: "col-md-2 x-ray" }, [
       _c("div", {}, [
         _c("img", {
           staticClass: "mx-auto d-block mt-5",
@@ -25130,7 +25140,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
+    return _c("div", { staticClass: "col-md-8 col-sm-12" }, [
       _c("img", {
         staticClass: "w-100",
         attrs: { src: "Web/nurs.png", alt: "" }
@@ -25141,7 +25151,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
+    return _c("div", { staticClass: "col-md-4 col-sm-12" }, [
       _c("p", { staticClass: "nur" }),
       _vm._v(" "),
       _c("h2", { staticClass: "whe" }, [_vm._v("Why You Should")]),
@@ -26397,11 +26407,11 @@ var staticRenderFns = [
     return _c("div", [
       _c("footer", { staticClass: "py-5 footer-b" }, [
         _c("div", { staticClass: "row marg" }, [
-          _c("div", { staticClass: "col-12 col-md" }, [
+          _c("div", { staticClass: "col-md-12 col-sm-12" }, [
             _c("img", { attrs: { src: "/Web/treat.png", alt: "" } })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-6 col-sm-6 text-white" }, [
             _c("h5", [_vm._v("Commuinity")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26431,7 +26441,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md text-white" }, [
+          _c("div", { staticClass: "col-sm-6 col-md-6 text-white" }, [
             _c("h5", [_vm._v("Support")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26461,7 +26471,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md text-white" }, [
+          _c("div", { staticClass: "col-sm-6 col-md-6 text-white" }, [
             _c("h5", [_vm._v("Join Us")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26491,7 +26501,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-6 col-sm-2 text-white" }, [
             _c("h5", [_vm._v("Download App")]),
             _vm._v(" "),
             _c("br"),
@@ -26502,7 +26512,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      "text-white btn btn-info bg-white text-info col-md-8 mb-2",
+                      "text-white btn btn-info bg-white text-info col-md-8 col-sm-2 mb-2",
                     attrs: { href: "#" }
                   },
                   [_vm._v("Apple IOs")]
@@ -26514,7 +26524,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      " h1 text-white btn btn-info bg-white text-info col-md-8",
+                      " h1 text-white btn btn-info bg-white text-info col-md-8 col-sm-6",
                     attrs: { href: "#" }
                   },
                   [_vm._v("Google Play")]
@@ -26569,9 +26579,7 @@ var render = function() {
         _c("span", { staticClass: "text-primary" }, [
           _vm._v("\n      " + _vm._s(_vm.header) + "\n      ")
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
+      ])
     ]),
     _vm._v(" "),
     _c("hr")
@@ -26584,14 +26592,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "user", attrs: { href: "#" } }, [
       _c("img", { attrs: { src: "Web/home.png", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("img", { attrs: { src: "Web/search+.png", alt: "" } })
     ])
   }
 ]
@@ -43432,7 +43432,13 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: '/news',
     component: __webpack_require__(/*! ./components/news */ "./resources/js/components/news.vue")["default"]
-  }]
+  }],
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    };
+  }
 });
 
 /***/ }),
@@ -43444,9 +43450,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

@@ -8,7 +8,7 @@
           {{header}}
           </span>
         </h5>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
+        <!-- <a href="#"><img src="Web/search+.png" alt="" /></a> -->
       </div>
       <hr>
     </div>

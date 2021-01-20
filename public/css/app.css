@@ -395,7 +395,23 @@ color: #000;
 .pargra{
     color: white;
     margin-left:7%;
-}textarea{
+}
+
+@media only screen and (max-width: 600px) {
+    .land{
+        width: 100%;
+    }
+    .arrow-right{
+        margin-left: 0;
+    }
+    .doctor {
+        width: 70% !important ;
+    }
+    .fotoz {
+        width: 40px;
+        margin-left: 50%;
+    }
+  }textarea{
     height: 9rem !important;
 }.maxWidth{
     width: 120%;

@@ -14,7 +14,7 @@
               alt="main-image"
             />
             <img src="/Web/55.png" class="centered img-g" alt="over-image" />
-            <div class="border bg-treat mt-5 centered w-50">
+            <div class="border bg-treat mt-5 centered w-50 col-sm-12">
               <h1 class="words1">{{$t('message.learn')}}</h1>
               <h2 class="words">{{$t('message.every')}}</h2>
               <br />
@@ -36,37 +36,37 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-2 mt-5 x-ray" @click="goTo('doctors')">
-          <div class="border rounded-sm border-corner borda">
+        <div class="col-md-2 col-sm-12 mt-5">
+          <div class="border rounded-sm border-corner borda x-ray" @click="goTo('doctors')">
             <img src="Web/sma3a.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">doctors</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray">
-          <div class="border rounded-sm border-corner borda">
+        <div class="col-md-2 mt-5">
+          <div class="border rounded-sm border-corner borda x-ray">
             <img src="Web/mico.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Laboratories</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray">
-          <div class="border rounded-sm border-corner borda">
+        <div class="col-md-2 mt-5">
+          <div class="border rounded-sm border-corner borda x-ray">
             <img  src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">x-ray centerss</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray" @click="goTo('hospitals')">
-          <div class="border rounded-sm border-corner borda">
+        <div class="col-md-2 mt-5">
+          <div class="border rounded-sm border-corner borda x-ray" @click="goTo('hospitals')">
             <img src="Web/hospital.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Hospitals</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray">
-          <div class="border rounded-xl border-corner borda">
+        <div class="col-md-2 mt-5">
+          <div class="border rounded-xl border-corner borda x-ray">
             <img src="Web/202.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">pharmasy</h6>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 x-ray">
           <div class="">
             <img src="Web/View-other.png" class="mx-auto d-block mt-5" alt="" />
           </div>
@@ -85,7 +85,7 @@
       <div class="content mb-5">
         <div class="row">
           <div class="col-4" v-for="(hospital,i) in hosp">
-            <div class="card pr-4">
+            <div class="card pr-4 h-100">
               <img
                 class="card-img-top card-hospital"
                 :src="hospital.images[0].image"
@@ -110,10 +110,10 @@
       <br />
       <br />
       <div class="row">
-        <div class="col-8">
+        <div class="col-md-8 col-sm-12">
           <img src="Web/nurs.png" class="w-100" alt="" />
         </div>
-        <div class="col-4">
+        <div class="col-md-4 col-sm-12">
           <p class="nur"></p>
           <h2 class="whe">Why You Should</h2>
           <h1 class="cho">Choose Us</h1>

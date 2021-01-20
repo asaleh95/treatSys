@@ -2,10 +2,10 @@
   <div>
     <footer class="py-5 footer-b">
       <div class="row marg">
-        <div class="col-12 col-md">
+        <div class="col-md-12 col-sm-12">
           <img src="/Web/treat.png" alt="" />
         </div>
-        <div class="col-6 col-md text-white">
+        <div class="col-md-6 col-sm-6 text-white">
           <h5>Commuinity</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-white" href="#">Create Account </a></li>
@@ -14,7 +14,7 @@
             <li><a class="text-white" href="#">Get Coupon Code</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md text-white">
+        <div class="col-sm-6 col-md-6 text-white">
           <h5>Support</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-white" href="#">Terms Condition </a></li>
@@ -23,7 +23,7 @@
             <li><a class="text-white" href="#">Get Help</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md text-white">
+        <div class="col-sm-6 col-md-6 text-white">
           <h5>Join Us</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-white" href="#">Become Teacher </a></li>
@@ -32,20 +32,20 @@
             <li><a class="text-white" href="#">Partnership</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md text-white">
+        <div class="col-md-6 col-sm-2 text-white">
           <h5>Download App</h5>
           <br>
           <ul class="list-unstyled text-small">
             <li>
               <a
-                class="text-white btn btn-info bg-white text-info col-md-8 mb-2"
+                class="text-white btn btn-info bg-white text-info col-md-8 col-sm-2 mb-2"
                 href="#"
                 >Apple IOs</a
               >
             </li>
             <li>
               <a
-                class=" h1 text-white btn btn-info bg-white text-info col-md-8"
+                class=" h1 text-white btn btn-info bg-white text-info col-md-8 col-sm-6"
                 href="#"
                 >Google Play</a
               >
