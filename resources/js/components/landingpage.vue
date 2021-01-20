@@ -51,7 +51,7 @@
         <div class="col-md-2 mt-5 x-ray">
           <div class="border rounded-sm border-corner borda">
             <img  src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
-            <h6 class="offset-3 mt-3">x-ray centers</h6>
+            <h6 class="offset-3 mt-3">x-ray centerss</h6>
           </div>
         </div>
         <div class="col-md-2 mt-5 x-ray" @click="goTo('hospitals')">

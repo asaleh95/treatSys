@@ -25072,7 +25072,7 @@ var staticRenderFns = [
           attrs: { src: "Web/x-ray.png", alt: "" }
         }),
         _vm._v(" "),
-        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centers")])
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centerss")])
       ])
     ])
   },
