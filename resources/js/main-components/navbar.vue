@@ -22,9 +22,6 @@
           <router-link class="p-2 text-blue" to="/">{{ $t('message.home') }}</router-link>
         </li>
         <li class="nav-item active">
-          <router-link class="p-2 text-blue" to="doctors">{{ $t('message.doctors') }}</router-link>
-        </li>
-        <li class="nav-item active">
           <router-link class="p-2 text-blue" to="news">{{ $t('message.blog') }}</router-link>
         </li>
         <li class="nav-item active">

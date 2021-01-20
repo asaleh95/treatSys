@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Faker\Provider\en_US\Company;
 
 class DoctorFactory extends Factory
@@ -27,7 +26,7 @@ class DoctorFactory extends Factory
             //
             "name" => $this->faker->name,
             'phone' => '9665' . $this->faker->unique()->randomNumber(5),
-            'location' => new Point($this->faker->latitude, $this->faker->longitude),
+            'location' => $this->faker->latitude.','. $this->faker->longitude,
             'address' => $this->faker->streetAddress,
             'position' => $this->faker->jobTitle,
             'rate' => 4.5,

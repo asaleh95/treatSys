@@ -259,6 +259,10 @@ body{
     margin-left: 776px;
     cursor: pointer;
 }
+.x-ray{
+    cursor: pointer;
+
+}
 
 .view-more{
     border-radius: 100px;

@@ -2941,6 +2941,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    goTo: function goTo(url) {
+      this.$router.push(url);
     }
   }
 });
@@ -3308,6 +3311,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -3335,7 +3343,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(result);
         localStorage.setItem("token", JSON.stringify([]));
 
-        _this.$router.push("/");
+        _this.$router.push("/login");
       })["catch"](function (err) {
         _this.error.record(err.response.data.errors);
 
@@ -3387,9 +3395,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -23324,7 +23329,9 @@ var render = function() {
         [
           _c("treat-nav"),
           _vm._v(" "),
-          _c("treat-header", { attrs: { name: "about us" } }),
+          _c("treat-header", {
+            attrs: { name: "About us", header: "Aboutus" }
+          }),
           _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
@@ -24784,15 +24791,102 @@ var render = function() {
         [
           _c("treat-nav"),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "row mb-5 mt-5" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("div", { staticClass: "contain" }, [
+                _c("img", {
+                  staticClass: "img img-responsive land",
+                  attrs: { src: "/Web/5.png", alt: "main-image" }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "centered img-g",
+                  attrs: { src: "/Web/55.png", alt: "over-image" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "border bg-treat mt-5 centered w-50" },
+                  [
+                    _c("h1", { staticClass: "words1" }, [
+                      _vm._v(_vm._s(_vm.$t("message.learn")))
+                    ]),
+                    _vm._v(" "),
+                    _c("h2", { staticClass: "words" }, [
+                      _vm._v(_vm._s(_vm.$t("message.every")))
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "pargra" }, [
+                      _vm._v(
+                        "\n              It is a long established fact that a reader will be distracted\n              by the there are many cats and dog tuitorial series.\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary pargra butto",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n              Start 7 Days Trail\n            "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("div", { staticClass: "row mt-5" }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-md-2 mt-5 x-ray",
+                on: {
+                  click: function($event) {
+                    return _vm.goTo("doctors")
+                  }
+                }
+              },
+              [_vm._m(0)]
+            ),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "col-md-2 mt-5 x-ray",
+                on: {
+                  click: function($event) {
+                    return _vm.goTo("hospitals")
+                  }
+                }
+              },
+              [_vm._m(3)]
+            ),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5)
+          ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row head" },
             [
-              _vm._m(2),
+              _vm._m(6),
               _vm._v(" "),
               _c(
                 "router-link",
@@ -24862,9 +24956,9 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(3),
+            _vm._m(7),
             _vm._v(" "),
-            _vm._m(4),
+            _vm._m(8),
             _vm._v(" "),
             _c("div", { staticClass: "row head" }, [
               _c("h3", { staticClass: "pr-auto" }, [
@@ -24908,11 +25002,11 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(5),
+          _vm._m(9),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(6),
+          _vm._m(10),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
@@ -24920,11 +25014,11 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(7),
+          _vm._m(11),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(8)
+          _vm._m(12)
         ],
         1
       ),
@@ -24943,50 +25037,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-5 mt-5" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "contain" }, [
-          _c("img", {
-            staticClass: "img img-responsive land",
-            attrs: { src: "/Web/5.png", alt: "main-image" }
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "centered img-g",
-            attrs: { src: "/Web/55.png", alt: "over-image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "border bg-treat mt-5 centered w-50" }, [
-            _c("h1", { staticClass: "words1" }, [
-              _vm._v("Learn Something New")
-            ]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "words" }, [
-              _vm._v("Everyday Anyday Anytime")
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("p", { staticClass: "pargra" }, [
-              _vm._v(
-                "\n              It is a long established fact that a reader will be distracted\n              by the there are many cats and dog tuitorial series.\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary pargra butto",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n              Start 7 Days Trail\n            ")]
-            )
-          ])
-        ])
+    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+      _c("img", {
+        staticClass: "mx-auto d-block mt-5",
+        attrs: { src: "Web/sma3a.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("doctors")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/mico.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
       ])
     ])
   },
@@ -24994,69 +25065,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-5" }, [
-      _c("div", { staticClass: "col-md-2 mt-5" }, [
-        _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/sma3a.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("doctors")])
-        ])
-      ]),
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/x-ray.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centers")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+      _c("img", {
+        staticClass: "mx-auto d-block mt-5",
+        attrs: { src: "Web/hospital.png", alt: "" }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 mt-5" }, [
-        _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/mico.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 mt-5" }, [
-        _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/x-ray.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centers")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 mt-5" }, [
-        _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/hospital.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Hospitals")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 mt-5" }, [
-        _c("div", { staticClass: "border rounded-xl border-corner borda" }, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/202.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("div", {}, [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/View-other.png", alt: "" }
-          })
-        ])
+      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Hospitals")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-xl border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/202.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("div", {}, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/View-other.png", alt: "" }
+        })
       ])
     ])
   },
@@ -26163,7 +26220,39 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                staticClass: "form-control-lg input font-d",
+                attrs: {
+                  type: "password",
+                  id: "pass",
+                  name: "password",
+                  placeholder: "Re-Password"
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", {
+                staticStyle: { color: "red" },
+                domProps: { textContent: _vm._s(_vm.error.get("password")) }
+              })
+            ]),
             _vm._v(" "),
             _c("div", [
               _c("input", {
@@ -26250,21 +26339,10 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("input", {
-        staticClass: "form-control-lg input font-d",
-        attrs: { type: "password", placeholder: "Re-Password" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -26565,19 +26643,6 @@ var render = function() {
                   "router-link",
                   { staticClass: "p-2 text-blue", attrs: { to: "/" } },
                   [_vm._v(_vm._s(_vm.$t("message.home")))]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item active" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "p-2 text-blue", attrs: { to: "doctors" } },
-                  [_vm._v(_vm._s(_vm.$t("message.doctors")))]
                 )
               ],
               1
@@ -43035,11 +43100,13 @@ window.obj = new Errors();
 window.messages = {
   en: {
     message: {
-      home: 'home',
-      doctors: 'doctors',
-      about: 'about us',
-      blog: 'blog/news',
-      contact: 'contact us'
+      home: 'Home',
+      doctors: 'Doctors',
+      about: 'About us',
+      blog: 'Blog/News',
+      contact: 'Contact Us',
+      learn: 'Learn Something New',
+      every: 'Everyday Anyday Anytime'
     }
   },
   ar: {
@@ -43048,7 +43115,9 @@ window.messages = {
       doctors: 'الاطباء',
       about: 'معلومات عنا',
       blog: 'مدونه/الاخبار',
-      contact: 'تواصل معنا'
+      contact: 'تواصل معنا',
+      learn: 'تعلم شئ جديد',
+      every: 'كل يوم اي يوم اي وقت'
     }
   }
 };
@@ -43313,21 +43382,7 @@ __webpack_require__.r(__webpack_exports__);
     component: __webpack_require__(/*! ./components/hospitals */ "./resources/js/components/hospitals.vue")["default"]
   }, {
     path: '/doctors',
-    component: __webpack_require__(/*! ./components/doctors */ "./resources/js/components/doctors.vue")["default"],
-    meta: {
-      requiresAuth: true
-    },
-    beforeEnter: function beforeEnter(to, from, next) {
-      if (to.matched.some(function (record) {
-        return record.meta.requiresAuth;
-      })) {
-        if (localStorage.getItem('token') == null) {
-          next('/login');
-        } else {
-          next();
-        }
-      }
-    }
+    component: __webpack_require__(/*! ./components/doctors */ "./resources/js/components/doctors.vue")["default"]
   }, {
     path: '/aboutus',
     component: __webpack_require__(/*! ./components/aboutus */ "./resources/js/components/aboutus.vue")["default"]
@@ -43389,9 +43444,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

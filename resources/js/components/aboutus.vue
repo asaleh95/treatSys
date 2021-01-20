@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <treat-nav></treat-nav>
-      <treat-header name="about us"></treat-header>
+      <treat-header name="About us" header="Aboutus"></treat-header>
       <div class="row">
         <img src="/Web/hand.png" class="img-fluid" alt="" />
       </div>

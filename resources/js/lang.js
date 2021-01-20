@@ -1,11 +1,13 @@
 window.messages = {
     en: {
       message: {
-        home: 'home',
-        doctors: 'doctors',
-        about: 'about us',
-        blog: 'blog/news',
-        contact: 'contact us',
+        home: 'Home',
+        doctors: 'Doctors',
+        about: 'About us',
+        blog: 'Blog/News',
+        contact: 'Contact Us',
+        learn: 'Learn Something New',
+        every: 'Everyday Anyday Anytime'
       }
     },
     ar: {
@@ -15,6 +17,8 @@ window.messages = {
         about: 'معلومات عنا',
         blog: 'مدونه/الاخبار',
         contact: 'تواصل معنا',
+        learn: 'تعلم شئ جديد',
+        every: 'كل يوم اي يوم اي وقت'
       }
     }
   };

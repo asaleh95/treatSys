@@ -41,9 +41,14 @@
         <div>
           <input
             type="password"
+            v-model="password"
+            id="pass"
+            name="password"
             class="form-control-lg input font-d"
             placeholder="Re-Password"
           />
+                    <span style="color: red" v-text="error.get('password')"></span>
+
           <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
         </div>
         <div>
@@ -123,7 +128,7 @@ export default {
         .then((result) => {
           console.log(result);
           localStorage.setItem("token", JSON.stringify([]));
-          this.$router.push("/");
+          this.$router.push("/login");
         })
         .catch((err) => {
           this.error.record(err.response.data.errors);

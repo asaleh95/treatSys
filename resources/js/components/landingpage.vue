@@ -15,8 +15,8 @@
             />
             <img src="/Web/55.png" class="centered img-g" alt="over-image" />
             <div class="border bg-treat mt-5 centered w-50">
-              <h1 class="words1">Learn Something New</h1>
-              <h2 class="words">Everyday Anyday Anytime</h2>
+              <h1 class="words1">{{$t('message.learn')}}</h1>
+              <h2 class="words">{{$t('message.every')}}</h2>
               <br />
               <p class="pargra">
                 It is a long established fact that a reader will be distracted
@@ -36,31 +36,31 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-2 mt-5">
+        <div class="col-md-2 mt-5 x-ray" @click="goTo('doctors')">
           <div class="border rounded-sm border-corner borda">
             <img src="Web/sma3a.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">doctors</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5">
+        <div class="col-md-2 mt-5 x-ray">
           <div class="border rounded-sm border-corner borda">
             <img src="Web/mico.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Laboratories</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5">
+        <div class="col-md-2 mt-5 x-ray">
           <div class="border rounded-sm border-corner borda">
-            <img src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
+            <img  src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">x-ray centers</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5">
+        <div class="col-md-2 mt-5 x-ray" @click="goTo('hospitals')">
           <div class="border rounded-sm border-corner borda">
             <img src="Web/hospital.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Hospitals</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5">
+        <div class="col-md-2 mt-5 x-ray">
           <div class="border rounded-xl border-corner borda">
             <img src="Web/202.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">pharmasy</h6>
@@ -266,6 +266,9 @@ export default {
           console.log(error);
         });
     },
+    goTo(url){
+          this.$router.push(url);
+    }
   },
 };
 </script>

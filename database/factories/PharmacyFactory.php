@@ -36,7 +36,7 @@ class PharmacyFactory extends Factory
             'number_of_views' => $this->faker->randomNumber(2),
             'about' => $this->faker->text(200),
             'logo' => $this->faker->imageUrl(640, 480),
-            'location' => new Point($this->faker->latitude, $this->faker->longitude)
+            'location' => $this->faker->latitude.','. $this->faker->longitude
         ];
     }
 }

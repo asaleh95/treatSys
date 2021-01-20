@@ -67,19 +67,6 @@ export default {
         {
             path: '/doctors',
             component: require('./components/doctors').default,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from, next) => {
-                if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
-                        next('/login');
-                    } else {
-                        next()
-                    }
-
-                }
-            }
         },
         {
             path: '/aboutus',
