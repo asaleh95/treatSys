@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1">
       <h2 class="logi">HELP!</h2>
       <br />
       <h4>Forgot Password!</h4>
       <br />
-      <p class="text-muted font-b">
+      <p class="text-muted font-d">
         There are many variations of passages of Lorem Ipsum available, some
         form .
       </p>
@@ -16,23 +16,25 @@
         @change="error.clear($event.target.name)"
       >
         <input
+          class="form-control form-control-lg mb-4"
           type="text"
-          v-model="email"
-          id="email"
           name="email"
-          class="form-control-lg input font-b"
-          placeholder="Email Address"
+          v-model="email"
+          placeholder="email addres"
         />
-        <button type="submit" class="submit text-white font-weight-bold">
-          NEXT
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg btn-block contactus-btn"
+        >
+          Next
         </button>
       </form>
       <br />
-      <p class="text-muted text-center font-b">
+      <p class="text-muted text-center font-d">
         i will try again ! <router-link to="login">Sign in</router-link>
       </p>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 hide-st">
       <img
         src="/Web/5.png"
         class="img-fluid w-100 back-color"

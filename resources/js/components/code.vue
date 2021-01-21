@@ -6,7 +6,7 @@
       <br />
       <h4>Forgot Password!</h4>
       <br />
-      <p class="text-muted font-b">
+      <p class="text-muted font-d">
         There are many variations of passages of Lorem Ipsum available, some
         form .
       </p>
@@ -24,13 +24,13 @@
             v-model="code1"
             id="code"
             name="code"
-            class="form-control text-center input-number ml-2 font-b"
+            class="form-control text-center input-number ml-2 font-d"
             placeholder="0"
           />
           <input
             type="text"
             v-model="code2"
-            class="form-control text-center input-number ml-2 font-b"
+            class="form-control text-center input-number ml-2 font-d"
             placeholder="0"
             name="code"
             id="code"
@@ -38,7 +38,7 @@
           <input
             type="text"
             v-model="code3"
-            class="form-control text-center input-number ml-2 font-b"
+            class="form-control text-center input-number ml-2 font-d"
             placeholder="0"
             name="code"
             id="code"
@@ -46,7 +46,7 @@
           <input
             type="text"
             v-model="code4"
-            class="form-control text-center input-number ml-2 font-b"
+            class="form-control text-center input-number ml-2 font-d"
             placeholder="0"
             name="code"
             id="code"
@@ -54,7 +54,7 @@
           <input
             type="text"
             v-model="code5"
-            class="form-control text-center input-number ml-2 font-b"
+            class="form-control text-center input-number ml-2 font-d"
             placeholder="0"
             name="code"
             id="code"
@@ -62,8 +62,11 @@
         </div>
         <br />
         <br />
-        <button type="submit" class="submit text-white font-weight-bold">
-          Done
+       <button
+          type="submit"
+          class="btn btn-primary btn-lg btn-block contactus-btn"
+        >
+          done
         </button>
       </form>
       <br />
@@ -72,7 +75,7 @@
         i don't receive emails ! <a href="#"> Resend</a>
       </p>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 hide-st">
       <img
         src="/Web/5.png"
         class="img-fluid w-100 back-color"
@@ -109,7 +112,7 @@ export default {
     submit() {
       //this.products = JSON.parse(localStorage.getItem('products'));
       let all = {
-        code: this.code1 + this.code2 + this.code3 + this.code4 +this.code5,
+        code: this.code1 + this.code2 + this.code3 + this.code4 + this.code5,
       };
       console.log(all);
       axios

@@ -8,7 +8,7 @@
           <img  class="w-100" :src="dr.image.image" alt="" />
         </div>
         <div class="col-md-8 col-sm-8">
-          <p class="font-b"> {{ dr.position }}</p>
+          <p class="font-d"> {{ dr.position }}</p>
           <h3 class="font-weight-bold ">{{ dr.name }}</h3>
           <br /><br />
           <h3 class="number">
@@ -20,7 +20,7 @@
             <h5 class="font-weight-bold ">
               <img src="/Web/pin.png" alt="" /> {{ dr.address }}
             </h5>
-            <p class="font-b">{{ dr.address }}</p>
+            <p class="font-d">{{ dr.address }}</p>
 
             <div class="row">
               <h5 class="basic col-2">Basic Price</h5>
@@ -36,7 +36,9 @@
       <br />
       <div class="row">
         <h3 class="font-weight-bold">About</h3>
-        <p class="font-b">
+      </div>
+      <div class="row">
+        <p class="font-d">
         {{dr.about}}
         </p>
         <br>

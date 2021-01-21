@@ -74,11 +74,11 @@
           >
         </div>
         <br />
-        <button
+       <button
           type="submit"
-          class="submit text-white text-white font-weight-bold"
+          class="btn btn-primary btn-lg btn-block contactus-btn"
         >
-          Sign up
+          sign up
         </button>
       </form>
       <br />
@@ -86,7 +86,7 @@
         have an account <router-link to="login"> sign in</router-link>
       </p>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 hide-st">
       <img
         src="/Web/5.png"
         class="img-fluid w-100 back-color"

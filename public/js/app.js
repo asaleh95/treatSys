@@ -2002,6 +2002,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2283,6 +2286,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2425,6 +2430,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3066,6 +3073,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.errors.clearAll();
@@ -3172,6 +3181,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3186,12 +3209,12 @@ __webpack_require__.r(__webpack_exports__);
       //this.products = JSON.parse(localStorage.getItem('products'));
       var all = {
         password: this.password,
-        email: sessionStorage.getItem('code-email')
+        email: sessionStorage.getItem("code-email")
       };
       console.log(all);
       axios.post("/reset-password", all).then(function (result) {
         console.log(result.data);
-        sessionStorage.removeItem('code-email');
+        sessionStorage.removeItem("code-email");
 
         _this.$router.push("/login");
       })["catch"](function (err) {
@@ -3395,6 +3418,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -23382,7 +23408,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6 col-sm-6" }, [
         _c("img", {
-          staticClass: "st-fo2",
+          staticClass: "st-fo2 st-small",
           attrs: { src: "\\Web\\15.png", alt: "" }
         })
       ])
@@ -23556,7 +23582,7 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("p", { staticClass: "text-muted font-b" }, [
+      _c("p", { staticClass: "text-muted font-d" }, [
         _vm._v(
           "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
         )
@@ -23594,7 +23620,7 @@ var render = function() {
                   expression: "code1"
                 }
               ],
-              staticClass: "form-control text-center input-number ml-2 font-b",
+              staticClass: "form-control text-center input-number ml-2 font-d",
               attrs: {
                 type: "text",
                 id: "code",
@@ -23621,7 +23647,7 @@ var render = function() {
                   expression: "code2"
                 }
               ],
-              staticClass: "form-control text-center input-number ml-2 font-b",
+              staticClass: "form-control text-center input-number ml-2 font-d",
               attrs: {
                 type: "text",
                 placeholder: "0",
@@ -23648,7 +23674,7 @@ var render = function() {
                   expression: "code3"
                 }
               ],
-              staticClass: "form-control text-center input-number ml-2 font-b",
+              staticClass: "form-control text-center input-number ml-2 font-d",
               attrs: {
                 type: "text",
                 placeholder: "0",
@@ -23675,7 +23701,7 @@ var render = function() {
                   expression: "code4"
                 }
               ],
-              staticClass: "form-control text-center input-number ml-2 font-b",
+              staticClass: "form-control text-center input-number ml-2 font-d",
               attrs: {
                 type: "text",
                 placeholder: "0",
@@ -23702,7 +23728,7 @@ var render = function() {
                   expression: "code5"
                 }
               ],
-              staticClass: "form-control text-center input-number ml-2 font-b",
+              staticClass: "form-control text-center input-number ml-2 font-d",
               attrs: {
                 type: "text",
                 placeholder: "0",
@@ -23728,10 +23754,10 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "submit text-white font-weight-bold",
+              staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
               attrs: { type: "submit" }
             },
-            [_vm._v("\n        Done\n      ")]
+            [_vm._v("\n        done\n      ")]
           )
         ]
       ),
@@ -23760,7 +23786,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
+    return _c("div", { staticClass: "col-md-8 hide-st" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/5.png", alt: "Cinque Terre" }
@@ -23815,7 +23841,7 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _c("div", { staticClass: "col-md-4 col-sm-12" }, [
               _c("h5", { staticClass: "font-weight-bold" }, [
                 _vm._v("contact us")
               ]),
@@ -23857,7 +23883,7 @@ var render = function() {
                         expression: "first_name"
                       }
                     ],
-                    staticClass: "input log",
+                    staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       type: "text",
                       name: "first_name",
@@ -23890,7 +23916,7 @@ var render = function() {
                         expression: "last_name"
                       }
                     ],
-                    staticClass: "input log",
+                    staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       type: "text",
                       name: "last_name",
@@ -23923,7 +23949,7 @@ var render = function() {
                         expression: "email"
                       }
                     ],
-                    staticClass: "input log",
+                    staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       type: "text",
                       name: "email",
@@ -23954,7 +23980,7 @@ var render = function() {
                         expression: "message"
                       }
                     ],
-                    staticClass: "input log",
+                    staticClass: "form-control form-control-lg mb-4",
                     attrs: { name: "message", placeholder: "massege" },
                     domProps: { value: _vm.message },
                     on: {
@@ -23972,10 +23998,15 @@ var render = function() {
                     domProps: { textContent: _vm._s(_vm.errors.get("message")) }
                   }),
                   _vm._v(" "),
-                  _c("input", {
-                    staticClass: "submit text-white",
-                    attrs: { type: "submit", value: "SEND" }
-                  })
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-primary btn-lg btn-block contactus-btn",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("SEND")]
+                  )
                 ]
               )
             ])
@@ -23996,9 +24027,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
+    return _c("div", { staticClass: "col-md-8 col-sm-12" }, [
       _c("img", {
-        staticClass: "img9",
+        staticClass: "img-fluid",
         attrs: { src: "Web/main.png", alt: "" }
       })
     ])
@@ -24207,7 +24238,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-8 col-sm-8" }, [
-              _c("p", { staticClass: "font-b" }, [
+              _c("p", { staticClass: "font-d" }, [
                 _vm._v(" " + _vm._s(_vm.dr.position))
               ]),
               _vm._v(" "),
@@ -24238,7 +24269,7 @@ var render = function() {
                   _vm._v(" " + _vm._s(_vm.dr.address) + "\n          ")
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "font-b" }, [
+                _c("p", { staticClass: "font-d" }, [
                   _vm._v(_vm._s(_vm.dr.address))
                 ]),
                 _vm._v(" "),
@@ -24259,10 +24290,10 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("About")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-b" }, [
+            _c("p", { staticClass: "font-d" }, [
               _vm._v("\n      " + _vm._s(_vm.dr.about) + "\n      ")
             ]),
             _vm._v(" "),
@@ -24286,6 +24317,14 @@ var staticRenderFns = [
       _c("h5", { staticClass: "basic col-2" }, [_vm._v("Basic Price")]),
       _vm._v(" "),
       _c("h5", { staticClass: "black col-2" }, [_vm._v("Treat Price")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("About")])
     ])
   }
 ]
@@ -24465,7 +24504,7 @@ var render = function() {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("p", { staticClass: "text-muted font-b" }, [
+        _c("p", { staticClass: "text-muted font-d" }, [
           _vm._v(
             "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
           )
@@ -24498,12 +24537,11 @@ var render = function() {
                   expression: "email"
                 }
               ],
-              staticClass: "form-control-lg input font-b",
+              staticClass: "form-control form-control-lg mb-4",
               attrs: {
                 type: "text",
-                id: "email",
                 name: "email",
-                placeholder: "Email Address"
+                placeholder: "email addres"
               },
               domProps: { value: _vm.email },
               on: {
@@ -24519,10 +24557,10 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "submit text-white font-weight-bold",
+                staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        NEXT\n      ")]
+              [_vm._v("\n        Next\n      ")]
             )
           ]
         ),
@@ -24531,7 +24569,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "text-muted text-center font-b" },
+          { staticClass: "text-muted text-center font-d" },
           [
             _vm._v("\n      i will try again ! "),
             _c("router-link", { attrs: { to: "login" } }, [_vm._v("Sign in")])
@@ -24549,7 +24587,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
+    return _c("div", { staticClass: "col-md-8 hide-st" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/5.png", alt: "Cinque Terre" }
@@ -24806,9 +24844,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    staticClass: "border bg-treat mt-5 centered w-50 col-sm-12"
-                  },
+                  { staticClass: "border bg-treat mt-5 centered w-50" },
                   [
                     _c("h1", { staticClass: "words1" }, [
                       _vm._v(_vm._s(_vm.$t("message.learn")))
@@ -24849,68 +24885,46 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row mt-5" }, [
-            _c("div", { staticClass: "col-md-2 col-sm-12 mt-5" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "border rounded-sm border-corner borda x-ray",
-                  on: {
-                    click: function($event) {
-                      return _vm.goTo("doctors")
-                    }
+            _c(
+              "div",
+              {
+                staticClass: "col-md-2 mt-5 x-ray",
+                on: {
+                  click: function($event) {
+                    return _vm.goTo("doctors")
                   }
-                },
-                [
-                  _c("img", {
-                    staticClass: "mx-auto d-block mt-5",
-                    attrs: { src: "Web/sma3a.png", alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "offset-3 mt-3" }, [
-                    _vm._v("doctors")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
+                }
+              },
+              [_vm._m(0)]
+            ),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-2 mt-5" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "border rounded-sm border-corner borda x-ray",
-                  on: {
-                    click: function($event) {
-                      return _vm.goTo("hospitals")
-                    }
-                  }
-                },
-                [
-                  _c("img", {
-                    staticClass: "mx-auto d-block mt-5",
-                    attrs: { src: "Web/hospital.png", alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "offset-3 mt-3" }, [
-                    _vm._v("Hospitals")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
-            _vm._m(3)
+            _c(
+              "div",
+              {
+                staticClass: "col-md-2 mt-5 x-ray",
+                on: {
+                  click: function($event) {
+                    return _vm.goTo("hospitals")
+                  }
+                }
+              },
+              [_vm._m(3)]
+            ),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5)
           ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row head" },
             [
-              _vm._m(4),
+              _vm._m(6),
               _vm._v(" "),
               _c(
                 "router-link",
@@ -24930,7 +24944,7 @@ var render = function() {
               { staticClass: "row" },
               _vm._l(_vm.hosp, function(hospital, i) {
                 return _c("div", { staticClass: "col-4" }, [
-                  _c("div", { staticClass: "card pr-4 h-100" }, [
+                  _c("div", { staticClass: "card pr-4" }, [
                     _c("img", {
                       staticClass: "card-img-top card-hospital",
                       attrs: {
@@ -24980,9 +24994,9 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(5),
+            _vm._m(7),
             _vm._v(" "),
-            _vm._m(6),
+            _vm._m(8),
             _vm._v(" "),
             _c("div", { staticClass: "row head" }, [
               _c("h3", { staticClass: "pr-auto" }, [
@@ -25026,23 +25040,23 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(7),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(8),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
           _vm._m(9),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(10)
+          _vm._m(10),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(11),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(12)
         ],
         1
       ),
@@ -25061,64 +25075,78 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5" }, [
-      _c(
-        "div",
-        { staticClass: "border rounded-sm border-corner borda x-ray" },
-        [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/mico.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
-        ]
-      )
+    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+      _c("img", {
+        staticClass: "mx-auto d-block mt-5",
+        attrs: { src: "Web/sma3a.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("doctors")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5" }, [
-      _c(
-        "div",
-        { staticClass: "border rounded-sm border-corner borda x-ray" },
-        [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/x-ray.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centerss")])
-        ]
-      )
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/mico.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Laboratories")])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 mt-5" }, [
-      _c(
-        "div",
-        { staticClass: "border rounded-xl border-corner borda x-ray" },
-        [
-          _c("img", {
-            staticClass: "mx-auto d-block mt-5",
-            attrs: { src: "Web/202.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
-        ]
-      )
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/x-ray.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("x-ray centers")])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 x-ray" }, [
+    return _c("div", { staticClass: "border rounded-sm border-corner borda" }, [
+      _c("img", {
+        staticClass: "mx-auto d-block mt-5",
+        attrs: { src: "Web/hospital.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("Hospitals")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 mt-5 x-ray" }, [
+      _c("div", { staticClass: "border rounded-xl border-corner borda" }, [
+        _c("img", {
+          staticClass: "mx-auto d-block mt-5",
+          attrs: { src: "Web/202.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "offset-3 mt-3" }, [_vm._v("pharmasy")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
       _c("div", {}, [
         _c("img", {
           staticClass: "mx-auto d-block mt-5",
@@ -25383,12 +25411,11 @@ var render = function() {
                   expression: "email"
                 }
               ],
-              staticClass: "form-control-lg input font-d",
+              staticClass: "form-control form-control-lg mb-4",
               attrs: {
                 type: "text",
-                id: "email",
                 name: "email",
-                placeholder: "Email Address"
+                placeholder: "email addres"
               },
               domProps: { value: _vm.email },
               on: {
@@ -25418,14 +25445,11 @@ var render = function() {
                     expression: "password"
                   }
                 ],
-                staticClass: "form-control-lg input font-d",
+                staticClass: "form-control form-control-lg mb-4",
                 attrs: {
                   type: "password",
-                  id: "pass",
                   name: "password",
-                  minlength: "8",
-                  required: "",
-                  placeholder: "Password"
+                  placeholder: "password"
                 },
                 domProps: { value: _vm.password },
                 on: {
@@ -25491,10 +25515,10 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "submit text-white font-weight-bold",
+                staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        Login\n      ")]
+              [_vm._v("\n        login\n      ")]
             ),
             _vm._v(" "),
             _c("br")
@@ -25566,7 +25590,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
+    return _c("div", { staticClass: "col-md-8 hidd" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/511.png", alt: "Cinque Terre" }
@@ -25616,9 +25640,9 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("p", { staticClass: "text-muted font-b" }, [
+      _c("p", { staticClass: "text-muted font-d" }, [
         _vm._v(
-          "\n        There are many variations of passages of Lorem Ipsum available, some\n        form .\n      "
+          "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
         )
       ]),
       _vm._v(" "),
@@ -25652,12 +25676,12 @@ var render = function() {
                   expression: "password"
                 }
               ],
-              staticClass: "form-control-lg input font-b",
+              staticClass: "form-control-lg input font-d",
               attrs: {
-                type: "text",
-                id: "password",
+                type: "password",
+                id: "pass",
                 name: "password",
-                placeholder: "password"
+                placeholder: "Password"
               },
               domProps: { value: _vm.password },
               on: {
@@ -25681,12 +25705,12 @@ var render = function() {
                   expression: "password"
                 }
               ],
-              staticClass: "form-control-lg input font-b",
+              staticClass: "form-control-lg input font-d",
               attrs: {
-                type: "text",
-                id: "password",
+                type: "password",
+                id: "pass",
                 name: "password",
-                placeholder: "password"
+                placeholder: "Re-Password"
               },
               domProps: { value: _vm.password },
               on: {
@@ -25703,10 +25727,10 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "submit text-white font-weight-bold",
+              staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
               attrs: { type: "submit" }
             },
-            [_vm._v("Change Password ")]
+            [_vm._v("\n        change password\n      ")]
           )
         ]
       ),
@@ -25726,8 +25750,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-muted text-center font-b" }, [
-      _vm._v("i remember my password !"),
+    return _c("p", { staticClass: "text-muted text-center font-d" }, [
+      _vm._v("\n      i remember my password !"),
       _c("a", { attrs: { href: "#" } }, [_vm._v("Sing in")])
     ])
   },
@@ -25735,7 +25759,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
+    return _c("div", { staticClass: "col-md-8 hide-st" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/5.png", alt: "Cinque Terre" }
@@ -25815,7 +25839,7 @@ var staticRenderFns = [
           attrs: { src: "/Web/hero.png", alt: "" }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "carousel-caption caption mb-2" }, [
+        _c("div", { staticClass: "carousel-caption caption mb-2 carosal-sm" }, [
           _c("h4", { staticClass: "text-left text-WHITE" }, [
             _vm._v("WORLD NEWS")
           ]),
@@ -26327,10 +26351,10 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "submit text-white text-white font-weight-bold",
+                staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        Sign up\n      ")]
+              [_vm._v("\n        sign up\n      ")]
             )
           ]
         ),
@@ -26357,7 +26381,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
+    return _c("div", { staticClass: "col-md-8 hide-st" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/5.png", alt: "Cinque Terre" }
@@ -26407,11 +26431,11 @@ var staticRenderFns = [
     return _c("div", [
       _c("footer", { staticClass: "py-5 footer-b" }, [
         _c("div", { staticClass: "row marg" }, [
-          _c("div", { staticClass: "col-md-12 col-sm-12" }, [
+          _c("div", { staticClass: "col-12 col-sm-12 col-md" }, [
             _c("img", { attrs: { src: "/Web/treat.png", alt: "" } })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-sm-6 text-white" }, [
+          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
             _c("h5", [_vm._v("Commuinity")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26441,7 +26465,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6 col-md-6 text-white" }, [
+          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
             _c("h5", [_vm._v("Support")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26471,7 +26495,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6 col-md-6 text-white" }, [
+          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
             _c("h5", [_vm._v("Join Us")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -26501,7 +26525,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-sm-2 text-white" }, [
+          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
             _c("h5", [_vm._v("Download App")]),
             _vm._v(" "),
             _c("br"),
@@ -26512,7 +26536,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      "text-white btn btn-info bg-white text-info col-md-8 col-sm-2 mb-2",
+                      "text-white btn btn-info bg-white text-info col-md-8 mb-2",
                     attrs: { href: "#" }
                   },
                   [_vm._v("Apple IOs")]
@@ -26524,7 +26548,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      " h1 text-white btn btn-info bg-white text-info col-md-8 col-sm-6",
+                      " h1 text-white btn btn-info bg-white text-info col-md-8",
                     attrs: { href: "#" }
                   },
                   [_vm._v("Google Play")]
@@ -26654,8 +26678,21 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-blue", attrs: { to: "news" } },
+                  { staticClass: "p-2 text-blue", attrs: { to: "blog" } },
                   [_vm._v(_vm._s(_vm.$t("message.blog")))]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item active" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "p-2 text-blue", attrs: { to: "news" } },
+                  [_vm._v(_vm._s(_vm.$t("message.news")))]
                 )
               ],
               1
@@ -43103,7 +43140,8 @@ window.messages = {
       home: 'Home',
       doctors: 'Doctors',
       about: 'About us',
-      blog: 'Blog/News',
+      blog: 'Blog',
+      news: 'News',
       contact: 'Contact Us',
       learn: 'Learn Something New',
       every: 'Everyday Anyday Anytime'
@@ -43114,7 +43152,8 @@ window.messages = {
       home: 'الرئيسيه',
       doctors: 'الاطباء',
       about: 'معلومات عنا',
-      blog: 'مدونه/الاخبار',
+      blog: 'مدونه',
+      news: 'الاخبار',
       contact: 'تواصل معنا',
       learn: 'تعلم شئ جديد',
       every: 'كل يوم اي يوم اي وقت'
@@ -43450,9 +43489,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-9 col-sm-8">
           <img src="/Web/hero.png" class="img-fluid" alt="" />
-          <div class="carousel-caption caption mb-2">
+          <div class="carousel-caption caption mb-2 carosal-sm">
             <h4 class="text-left text-WHITE">WORLD NEWS</h4>
             <!-- <hr class="mt-5 text-white" /> -->
             <div class="mt-5 border-top"></div>

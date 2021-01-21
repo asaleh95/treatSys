@@ -36,6 +36,12 @@
 }
 .lon{
     color: #007bff;
+}
+
+@media only screen and (max-width: 600px) {
+    .st-small{
+        opacity: 80%
+    }
 }.news-top-img{
 width: 100%;
 }
@@ -46,6 +52,13 @@ width: 100%;
     font-size: 0.9rem;
     color: #6c757d;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .carosal-sm{
+        padding-bottom: 0;
+    }
+    }
   
   .topleft {
     position: absolute;
@@ -54,6 +67,12 @@ width: 100%;
     width: 120%;
 
   }
+  @media only screen and (max-width: 600px) {
+
+    .hidd{
+        display: none;
+    }
+    }
   
   .center {
     position: absolute;
@@ -398,21 +417,36 @@ color: #000;
 }
 
 @media only screen and (max-width: 600px) {
-    .land{
-        width: 100%;
-    }
-    .arrow-right{
+    .arrow-right {
         margin-left: 0;
+        cursor: pointer;
     }
     .doctor {
-        width: 70% !important ;
-    }
+        width: 100% !important;
+    }   
     .fotoz {
-        width: 40px;
-        margin-left: 50%;
+        margin-left: 100px;
+    } 
+    .land{
+        width: 188%;
     }
-  }textarea{
+    .hospital {
+        width: 100%;
+    }
+    .img-g{
+        display: none;
+    }
+    .bg-treat{
+        width: 100% !important;
+        margin-left: 20% !important;
+    }
+}textarea{
     height: 9rem !important;
+}
+
+.contactus-btn{
+    border-radius: 0.9rem;
+    background-color: #0782bd;
 }.maxWidth{
     width: 120%;
 }.card-hospital-10{
@@ -426,6 +460,11 @@ color: #000;
     cursor: pointer;
 }.doc{
     
+}@media only screen and (max-width: 600px) {
+
+.hide-st{
+    display: none;
+}
 }body{
     overflow-x: hidden;
 }

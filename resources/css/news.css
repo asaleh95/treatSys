@@ -8,3 +8,10 @@ width: 100%;
     font-size: 0.9rem;
     color: #6c757d;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .carosal-sm{
+        padding-bottom: 0;
+    }
+    }

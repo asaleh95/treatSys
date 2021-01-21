@@ -27,7 +27,7 @@
           </p>
         </div>
         <div class="col-md-6 col-sm-6">
-        <img src="\Web\15.png" class="st-fo2" alt="">
+        <img src="\Web\15.png" class="st-fo2 st-small" alt="">
         </div>
       </div>
     </div>

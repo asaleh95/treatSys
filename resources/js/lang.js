@@ -4,7 +4,9 @@ window.messages = {
         home: 'Home',
         doctors: 'Doctors',
         about: 'About us',
-        blog: 'Blog/News',
+        blog: 'Blog',
+        news: 'News',
+
         contact: 'Contact Us',
         learn: 'Learn Something New',
         every: 'Everyday Anyday Anytime'
@@ -15,7 +17,8 @@ window.messages = {
         home: 'الرئيسيه',
         doctors: 'الاطباء',
         about: 'معلومات عنا',
-        blog: 'مدونه/الاخبار',
+        blog: 'مدونه',
+        news: 'الاخبار',
         contact: 'تواصل معنا',
         learn: 'تعلم شئ جديد',
         every: 'كل يوم اي يوم اي وقت'

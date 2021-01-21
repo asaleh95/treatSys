@@ -1,7 +1,7 @@
 
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1">
       <h2 class="logi">LOGIN</h2>
       <br />
       <h4>Hi there!</h4>
@@ -18,25 +18,22 @@
         @change="error.clear($event.target.name)"
       >
         <input
+          class="form-control form-control-lg mb-4"
           type="text"
-          v-model="email"
-          id="email"
           name="email"
-          class="form-control-lg input font-d"
-          placeholder="Email Address"
+          v-model="email"
+          placeholder="email addres"
         />
+
         <span style="color: red" v-text="error.get('email')"></span>
-        <br>
+        <br />
         <div>
           <input
+            class="form-control form-control-lg mb-4"
             type="password"
-            v-model="password"
-            id="pass"
             name="password"
-            minlength="8"
-            required
-            class="form-control-lg input font-d"
-            placeholder="Password"
+            v-model="password"
+            placeholder="password"
           />
           <span style="color: red" v-text="error.get('password')"></span>
 
@@ -52,14 +49,19 @@
           <router-link
             to="help"
             class="mt-n1 offset-md-4 forget-password-text text-center"
-            >Forget Password</router-link>
+            >Forget Password</router-link
+          >
         </div>
         <br />
-          <span style="color: red" v-text="error.get('error')"></span>
+        <span style="color: red" v-text="error.get('error')"></span>
 
-        <button type="submit" class="submit text-white font-weight-bold">
-          Login
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg btn-block contactus-btn"
+        >
+          login
         </button>
+
         <br />
       </form>
       <p class="text-donthaveaccount offset-md-3 mt-5 text-muted text-center">
@@ -90,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 hidd">
       <img
         src="/Web/511.png"
         class="img-fluid w-100 back-color"
@@ -107,7 +109,7 @@
 
 <script>
 export default {
-    mounted() {
+  mounted() {
     this.errors.clearAll();
   },
   data() {
