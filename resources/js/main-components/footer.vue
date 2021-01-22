@@ -56,9 +56,8 @@
     </footer>
     <div class="row">
       <small class="d-block mb-3 text-muted offset-md-2"
-        >&copy; Copyright © 2017-2021 Pro.skill</small
+        >&copy;© 2017-2021 appcore </small
       >
-      <small class="d-block mb-3 text-muted offset-md-6">Go to To</small>
     </div>
   </div>
 </template>

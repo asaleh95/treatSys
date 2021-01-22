@@ -43,12 +43,12 @@
           </div>
         </div>
         <div class="col-md-2 mt-5 x-ray">
-          <div class="border rounded-sm border-corner borda">
+          <div class="border rounded-sm border-corner borda" @click="goTo('Laboratories')">
             <img src="Web/mico.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Laboratories</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray">
+        <div class="col-md-2 mt-5 x-ray" @click="goTo('xrays')">
           <div class="border rounded-sm border-corner borda">
             <img  src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">x-ray centers</h6>
@@ -60,7 +60,7 @@
             <h6 class="offset-3 mt-3">Hospitals</h6>
           </div>
         </div>
-        <div class="col-md-2 mt-5 x-ray">
+        <div class="col-md-2 mt-5 x-ray" @click="goTo('pharmacies')">
           <div class="border rounded-xl border-corner borda">
             <img src="Web/202.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">pharmasy</h6>

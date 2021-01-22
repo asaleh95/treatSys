@@ -65,6 +65,18 @@ export default {
             component: require('./components/hospitals').default,
         },
         {
+            path: '/xrays',
+            component: require('./components/xrays').default,
+        },
+        {
+            path: '/pharmacies',
+            component: require('./components/pharmacies').default,
+        },
+        {
+            path: '/Laboratories',
+            component: require('./components/Laboratories').default,
+        },
+        {
             path: '/doctors',
             component: require('./components/doctors').default,
         },
