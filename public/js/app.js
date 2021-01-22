@@ -27639,7 +27639,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("small", { staticClass: "d-block mb-3 text-muted offset-md-2" }, [
-          _vm._v("©© 2017-2021 appcore ")
+          _vm._v("© Copyright © 2017-2021 Appcore")
         ])
       ])
     ])

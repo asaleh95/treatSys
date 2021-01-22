@@ -56,7 +56,7 @@
     </footer>
     <div class="row">
       <small class="d-block mb-3 text-muted offset-md-2"
-        >&copy;© 2017-2021 appcore </small
+        >&copy; Copyright © 2017-2021 Appcore</small
       >
     </div>
   </div>
