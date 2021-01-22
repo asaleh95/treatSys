@@ -28,7 +28,7 @@ class UpdateHospitalRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:150',
-            'email' => ['required', 'email:rfc,dns', Rule::unique('hospitals')->ignore($this->hospital->id)],
+            'email' => ['required', 'email:rfc', Rule::unique('hospitals')->ignore($this->hospital->id)],
             'phone' => ['required', 'phone:AUTO,EG'],
             'discount' => 'required|numeric',
             'region' => 'required|min:3|max:150',

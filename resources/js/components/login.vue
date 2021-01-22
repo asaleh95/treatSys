@@ -30,11 +30,12 @@
         <div>
           <input
             class="form-control form-control-lg mb-4"
-            type="password"
+            :type="passwordType"
             name="password"
             v-model="password"
             placeholder="password"
           />
+          <span toggle="#password-field" :class="'fa fa-fw fa-eye field-icon toggle-password ' + seePassword" @click="see()"></span>
           <span style="color: red" v-text="error.get('password')"></span>
 
           <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
@@ -117,6 +118,8 @@ export default {
       email: "",
       password: "",
       error: window.obj,
+      seePassword: '',
+      passwordType: 'password'
     };
   },
   methods: {
@@ -131,6 +134,8 @@ export default {
         .post("/login", all)
         .then((result) => {
           console.log(result.data);
+          window.axios.defaults.headers.common["Authorization"] =
+            "Bearer " + result.data.token.access_token;
           localStorage.setItem(
             "token",
             JSON.stringify(result.data.token.access_token)
@@ -144,6 +149,15 @@ export default {
           // this.error = "خطأ فى الباسورد او الايميل"
         );
     },
+    see(){
+      if (this.seePassword == '') {
+        this.seePassword = 'text-primary';
+        this.passwordType = 'text';
+      } else {
+        this.seePassword = '';
+        this.passwordType = 'password';
+      }
+    }
   },
 };
 </script>

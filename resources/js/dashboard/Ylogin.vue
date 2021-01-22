@@ -34,9 +34,6 @@
                           style="color: red"
                           v-text="errors.get('email')"
                         ></span>
-                        <div class="alert alert-solid-danger" v-if="errors.get('email')" role="alert" v-text="errors.get('email')">
-                          
-                        </div>
                       </div>
                       <div class="col-12 mb-20">
                         <input
@@ -130,9 +127,13 @@ export default {
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors),
-          setTimeout(function(scope) {
-            scope.errors = null;
-        }, 5000, this)
+          setTimeout(
+            function (scope) {
+              scope.errors = null;
+            },
+            5000,
+            this
+          )
           //   console.log(err.response.data.errors)
         );
     },

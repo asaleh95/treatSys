@@ -14,7 +14,7 @@ class Doctor extends Model
 {
     use HasFactory, SpatialTrait, SoftDeletes;
 
-    protected $with = ['image'];
+    protected $with = ['image','users'];
 
     protected $fillable = [
         'name','phone','location','address','position','rate','basic_price','treat_price','about'
@@ -38,6 +38,11 @@ class Doctor extends Model
     {
         $arr = explode(',', $value);
         $this->attributes['location'] = new Point($arr[0], $arr[1]);
+    }
+
+    public function users()
+    {
+        return $this->morphToMany(User::class, 'favourites');
     }
     
 }

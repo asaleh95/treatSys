@@ -28,21 +28,16 @@ class RayRepositories
     public function store($data)
     {
         $this->ray = $this->ray->create($data);
-    }
-
-    public function saveAvatar($link)
-    {
-        $this->ray->image()->create(['image' => $link]);
-    }
-
-    public function updateAvatar($link, $ray)
-    {
-        $ray->image()->update(['image' => $link]);
+        $this->ray->images()->createMany($data['images']);
     }
 
     public function update($data, $ray)
     {
         $ray->update($data);
+        if (!empty($data['images'])) {
+            $ray->images()->delete();
+            $ray->images()->createMany($data['images']);
+        }
     }
 
     public function destroy($ray)

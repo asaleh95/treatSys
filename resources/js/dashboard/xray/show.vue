@@ -5,7 +5,7 @@
       <!-- Page Heading Start -->
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
-          <h3>الاشاعات <span>/ تفاصيل الاشاعه </span></h3>
+          <h3>الاشاعات <span>/ تفاصيل الاشاعه</span></h3>
         </div>
       </div>
       <!-- Page Heading End -->
@@ -24,28 +24,45 @@
 
             <ul>
               <li>
-                <span>اسم الاشاعه</span> <span> {{ ray.name }} </span>
+                <span>اسم الاشاعه</span> <span> {{ xray.name }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ ray.address }}</span>
+                <span>البريد الالكترونى</span>
+                <span> {{ xray.email }} </span>
               </li>
               <li>
-                <span>رقم الموبايل</span> <span>{{ ray.phone }} </span>
+                <span>رقم الموبايل</span> <span>{{ xray.phone }} </span>
               </li>
               <li>
-                <span>التخصص</span> <span>{{ ray.position }}</span>
+                <span>العنوان</span> <span>{{ xray.address }}</span>
               </li>
               <li>
-                <span>الملاحظات</span> <span>{{ ray.about }}</span>
+                <span>المنطقه</span> <span>{{ xray.region }}</span>
               </li>
               <li>
-                <span>التقييم</span> <span class="btn badge-success">{{ray.rate}}</span>
+                <span>المسافه</span> <span>{{ xray.distance }}</span>
               </li>
               <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{ray.basic_price}}</span>
+                <span>المسافه</span> <span>{{ xray.distance }}</span>
               </li>
               <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{ray.treat_price}}</span>
+                <span>الملاحظات</span> <span>{{ xray.about }}</span>
+              </li>
+              <li>
+                <span>التقييم</span>
+                <span class="btn badge-success">{{ xray.rate }}</span>
+              </li>
+              <li>
+                <span>عدد المصوتين</span
+                ><span class="btn badge-warning">{{
+                  xray.number_of_raters
+                }}</span>
+              </li>
+              <li>
+                <span>عدد المشاهدين</span>
+                <span class="btn badge-warning">{{
+                  xray.number_of_views
+                }}</span>
               </li>
             </ul>
           </div>
@@ -53,17 +70,25 @@
         </div>
       </div>
       <div class="col-8">
-        <img
-          :src="ray.image.image"
-          style="
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            max-width: 50%;
-            height: auto;
-          "
-        />
+        <div class="row">
+          <img
+          class="rounded-circle"
+            :src="xray.logo"
+            style="
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              width: 20%;
+              max-width: 50%;
+              height: auto;
+            "
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-2" v-for="image in xray.images">
+            <img :src="image.image" class="w-100 img-thumbnail" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +99,7 @@ export default {
     axios
       .get("/admins/rays/" + this.$route.params.id)
       .then((result) => {
-        this.ray = result.data.data;
+        this.xray = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +109,7 @@ export default {
   },
   data() {
     return {
-      ray: {},
+      xray: {},
     };
   },
 };

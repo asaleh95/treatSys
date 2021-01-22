@@ -14,6 +14,7 @@ use App\Interfaces\AuthInterface;
 use App\Models\User;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ForgetPasswordRequest;
+use App\Http\Requests\LikeDoctorRequest;
 use App\Http\Requests\LikeHospitalRequest;
 use App\Http\Requests\LikeLabRequest;
 use App\Http\Requests\LikePharmacyRequest;
@@ -60,6 +61,12 @@ class UserController extends Controller
         return response()->json(["message" => "success"]);
     }
 
+    public function likeDoctor(LikeDoctorRequest $request)
+    {
+        $this->userService->likeDoctor($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
     public function likeHospital(LikeHospitalRequest $request)
     {
         $this->userService->likeHospital($request->all());
@@ -81,6 +88,12 @@ class UserController extends Controller
     public function likePharmacy(LikePharmacyRequest $request)
     {
         $this->userService->likePharmacy($request->all());
+        return response()->json(["message" => "success"]);
+    }
+
+    public function dislikeDoctor(LikeDoctorRequest $request)
+    {
+        $this->userService->dislikeDoctor($request->all());
         return response()->json(["message" => "success"]);
     }
 
@@ -136,5 +149,11 @@ class UserController extends Controller
     public function code(ValidateUserCodeRequest $request)
     {
         return response()->json(["message" => "success"]);
+    }
+
+    public function index()
+    {
+        $users = $this->userService->all();
+        return UserResource::collection($users);
     }
 }

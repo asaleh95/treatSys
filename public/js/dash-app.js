@@ -1998,9 +1998,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -2720,6 +2717,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.dr = result.data.data;
       _this.previewImage = result.data.data.image.image;
       _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      _this.dr.image = '';
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -5551,7 +5549,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.hospitals = result.data.data;
+        _this4.pharmacies = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -5850,7 +5848,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(_this.previewImages);
       console.log(result.data.data.images);
-      _this.hospital.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
+      _this.pharmacy.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
       _this.pharmacy.images = [];
       _this.pharmacy.logo = "";
       console.log(result.data.data);
@@ -5908,7 +5906,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.success = true;
         setTimeout(function () {
-          return _this4.$router.push("/pharmacies/all");
+          return _this4.$router.push("/pharmcy/all");
         }, 2000);
       })["catch"](function (err) {
         return _this4.errors.record(err.response.data.errors);
@@ -6745,32 +6743,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors").then(function (result) {
-      _this.drs = result.data.data;
+    axios.get("/admins/users").then(function (result) {
+      _this.users = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -6780,7 +6758,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      drs: [],
+      users: [],
       id: null,
       index: null,
       success: false,
@@ -6794,13 +6772,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.drs.filter(function (item) {
+        return this.users.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.drs;
+        return this.users;
       }
     }
   },
@@ -6809,11 +6787,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios["delete"]("/admins/users/" + id).then(function (result) {
-        _this3.drs.splice(index, 1);
+        _this3.users.splice(index, 1);
 
-        console.log(_this3.drs); // console.log(result.data);
+        console.log(_this3.users); // console.log(result.data);
 
-        console.log("clients"); //
+        console.log("users"); //
 
         _this3.success = true;
         setTimeout(function () {
@@ -6831,7 +6809,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.drs = result.data.data;
+        _this4.users = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -7296,20 +7274,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: "",
+      email: "",
       phone: "",
       location: "",
       address: "",
-      position: "",
+      region: "",
+      distance: "",
+      discount: "",
       rate: "",
-      basic_price: "",
-      treat_price: "",
+      number_of_raters: "",
+      number_of_views: "",
       about: "",
-      image: "",
-      previewImage: [],
+      images: [],
+      logo: "",
+      previewLogo: "",
+      previewImages: [],
       errors: window.obj,
       success: false
     };
@@ -7318,42 +7409,64 @@ __webpack_require__.r(__webpack_exports__);
     sendImage: function sendImage(e) {
       var _this = this;
 
+      this.images = [];
+      this.previewImages = [];
+      var images = e.target.files;
+
+      for (var index = 0; index < images.length; index++) {
+        var reader = new FileReader();
+        reader.readAsDataURL(images[index]);
+
+        reader.onload = function (e) {
+          _this.previewImages.push(e.target.result);
+
+          _this.images.push(e.target.result);
+        };
+      }
+    },
+    sendLogo: function sendLogo(e) {
+      var _this2 = this;
+
       var image = e.target.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(image);
 
       reader.onload = function (e) {
-        _this.previewImage = e.target.result;
-        _this.image = _this.previewImage;
-        console.log(_this.image);
+        _this2.previewLogo = e.target.result;
+        _this2.logo = _this2.previewLogo;
+        console.log(_this2.logo);
         console.log("ssssssssssssssssssss");
       };
     },
     submit: function submit() {
-      var _this2 = this;
+      var _this3 = this;
 
       var all = {
         name: this.name,
+        email: this.email,
         phone: this.phone,
         location: this.location,
         address: this.address,
-        position: this.position,
+        region: this.region,
+        distance: this.distance,
+        discount: this.discount,
         rate: this.rate,
-        basic_price: this.basic_price,
-        treat_price: this.treat_price,
+        number_of_raters: this.number_of_raters,
+        number_of_views: this.number_of_views,
         about: this.about,
-        image: this.image
+        images: this.images,
+        logo: this.logo
       };
       console.log(all);
       axios.post("/admins/rays", all).then(function (result) {
         console.log(result.data); //
 
-        _this2.success = true;
+        _this3.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/rays/all");
+          return _this3.$router.push("/xray/all");
         }, 2000);
       })["catch"](function (err) {
-        return _this2.errors.record(err.response.data.errors);
+        return _this3.errors.record(err.response.data.errors);
       } //   console.log(err.response.data.errors)
       );
     }
@@ -7518,7 +7631,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("/admins/rays").then(function (result) {
-      _this.drs = result.data.data;
+      _this.xrays = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
@@ -7528,7 +7641,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      rays: [],
+      xrays: [],
       id: null,
       index: null,
       success: false,
@@ -7542,13 +7655,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.$root.search) {
-        return this.rays.filter(function (item) {
+        return this.xrays.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
       } else {
-        return this.rays;
+        return this.xrays;
       }
     }
   },
@@ -7556,12 +7669,11 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(id, index) {
       var _this3 = this;
 
-      axios["delete"]("/admins/xray/" + id).then(function (result) {
-        _this3.rays.splice(index, 1);
+      axios["delete"]("/admins/rays/" + id).then(function (result) {
+        _this3.xrays.splice(index, 1);
 
-        console.log(_this3.rays); // console.log(result.data);
-
-        console.log("clients"); //
+        console.log(_this3.xrays); // console.log(result.data);
+        //
 
         _this3.success = true;
         setTimeout(function () {
@@ -7579,7 +7691,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get(url).then(function (result) {
-        _this4.rays = result.data.data;
+        _this4.xrays = result.data.data;
         _this4.prevUrl = result.data.links.prev;
         _this4.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -7747,14 +7859,140 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
     axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
-      _this.ray = result.data.data;
-      _this.previewImage = result.data.data.image.image;
-      _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+      _this.xray = result.data.data;
+      _this.previewLogo = result.data.data.logo;
+      _this.previewImages = result.data.data.images.map(function (_ref) {
+        var image = _ref.image;
+        return {
+          image: image
+        };
+      }).map(function (_ref2) {
+        var image = _ref2.image;
+        return image;
+      });
+      console.log(_this.previewImages);
+      console.log(result.data.data.images);
+      _this.xray.location = result.data.data.location.coordinates[0] + "," + result.data.data.location.coordinates[1];
+      _this.xray.images = [];
+      _this.xray.logo = "";
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -7762,8 +8000,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      previewImage: [],
-      ray: {},
+      previewLogo: "",
+      previewImages: [],
+      xray: {},
       errors: window.obj,
       success: false
     };
@@ -7772,29 +8011,47 @@ __webpack_require__.r(__webpack_exports__);
     sendImage: function sendImage(e) {
       var _this2 = this;
 
+      this.xray.images = [];
+      this.previewImages = [];
+      var images = e.target.files;
+
+      for (var index = 0; index < images.length; index++) {
+        var reader = new FileReader();
+        reader.readAsDataURL(images[index]);
+
+        reader.onload = function (e) {
+          _this2.previewImages.push(e.target.result);
+
+          _this2.xray.images.push(e.target.result);
+        };
+      }
+    },
+    sendLogo: function sendLogo(e) {
+      var _this3 = this;
+
       var image = e.target.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(image);
 
       reader.onload = function (e) {
-        _this2.previewImage = e.target.result;
-        _this2.dr.image = _this2.previewImage;
-        console.log(_this2.image);
+        _this3.previewLogo = e.target.result;
+        _this3.xray.logo = _this3.previewLogo;
+        console.log(_this3.logo);
         console.log("ssssssssssssssssssss");
       };
     },
     submit: function submit() {
-      var _this3 = this;
+      var _this4 = this;
 
-      axios.put("/admins/rays/" + this.ray.id, this.ray).then(function (result) {
+      axios.put("/admins/rays/" + this.xray.id, this.xray).then(function (result) {
         console.log(result.data); //
 
-        _this3.success = true;
+        _this4.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/rays/all");
+          return _this4.$router.push("/xray/all");
         }, 2000);
       })["catch"](function (err) {
-        return _this3.errors.record(err.response.data.errors);
+        return _this4.errors.record(err.response.data.errors);
       } //   console.log(err.response.data.errors)
       );
     }
@@ -7882,12 +8139,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
     axios.get("/admins/rays/" + this.$route.params.id).then(function (result) {
-      _this.ray = result.data.data;
+      _this.xray = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -7895,7 +8177,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      ray: {}
+      xray: {}
     };
   }
 });
@@ -8436,7 +8718,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nlabel[data-v-1cc94f04]{\r\n      text-align: right;\n}\r\n", ""]);
+exports.push([module.i, "\nlabel[data-v-1cc94f04] {\r\n  text-align: right;\n}\r\n", ""]);
 
 // exports
 
@@ -27192,17 +27474,7 @@ var render = function() {
                               domProps: {
                                 textContent: _vm._s(_vm.errors.get("email"))
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.get("email")
-                              ? _c("div", {
-                                  staticClass: "alert alert-solid-danger",
-                                  attrs: { role: "alert" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.errors.get("email"))
-                                  }
-                                })
-                              : _vm._e()
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-12 mb-20" }, [
@@ -32644,7 +32916,7 @@ var render = function() {
           {
             staticClass: "button button-primary",
             staticStyle: { position: "absolute", left: "31px" },
-            attrs: { to: "/pharmacy/add" }
+            attrs: { to: "/pharmcy/add" }
           },
           [_c("span", [_vm._v("آضافه صيدليه جديد")])]
         ),
@@ -32689,38 +32961,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(pharmacy, i) {
+                      _vm._l(_vm.resultQuery, function(pharmcy, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(pharmacy.id))]
+                            [_vm._v("#" + _vm._s(pharmcy.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: pharmacy.images[0].image, alt: "" }
+                              attrs: { src: pharmcy.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(pharmacy.name))
+                              _vm._v(_vm._s(pharmcy.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(pharmacy.address))]),
+                          _c("td", [_vm._v(_vm._s(pharmcy.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(pharmacy.phone))]
+                            [_vm._v(_vm._s(pharmcy.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(pharmacy.rate))
+                              _vm._v(_vm._s(pharmcy.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -32734,9 +33006,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: {
-                                      to: "/pharmacy/show/" + pharmacy.id
-                                    }
+                                    attrs: { to: "/pharmcy/show/" + pharmcy.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -32746,9 +33016,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: {
-                                      to: "/pharmacy/edit/" + pharmacy.id
-                                    }
+                                    attrs: { to: "/pharmcy/edit/" + pharmcy.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -32764,7 +33032,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(pharmacy.id, i)
+                                        return _vm.setDel(pharmcy.id, i)
                                       }
                                     }
                                   },
@@ -32857,7 +33125,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("dial", {
-          attrs: { type: "صيدليه", id: _vm.id, index: _vm.index },
+          attrs: { type: "صيدلية", id: _vm.id, index: _vm.index },
           on: { del: _vm.deleteItem }
         })
       ],
@@ -33051,7 +33319,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "رقم الهاتف" },
+                  attrs: { type: "text", placeholder: "رقم الهاتف" },
                   domProps: { value: _vm.pharmacy.phone },
                   on: {
                     input: function($event) {
@@ -34617,40 +34885,25 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(dr, i) {
+                      _vm._l(_vm.resultQuery, function(user, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(dr.id))]
+                            [_vm._v("#" + _vm._s(user.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
-                            _c("img", {
-                              staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(_vm.dr.email))
                             ])
                           ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(_vm.dr.phone))]
                           ),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
-                            ])
-                          ]),
                           _vm._v(" "),
                           _c("td", [
                             _c(
@@ -34662,7 +34915,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/users/show/" + dr.id }
+                                    attrs: { to: "/users/show/" + user.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -34672,7 +34925,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/users/edit/" + dr.id }
+                                    attrs: { to: "/users/edit/" + user.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -34688,7 +34941,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(dr.id, i)
+                                        return _vm.setDel(user.id, i)
                                       }
                                     }
                                   },
@@ -34781,7 +35034,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("dial", {
-          attrs: { type: "عميل", id: _vm.id, index: _vm.index },
+          attrs: { type: "مستخدم", id: _vm.id, index: _vm.index },
           on: { del: _vm.deleteItem }
         })
       ],
@@ -34808,15 +35061,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_c("span", [_vm._v("#")])]),
         _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("صوره المستخدم")])]),
-        _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("اسم المستخدم")])]),
-        _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("العنوان")])]),
+        _c("th", [_c("span", [_vm._v("بريد المستخدم")])]),
         _vm._v(" "),
         _c("th", [_c("span", [_vm._v("رقم الهاتف")])]),
-        _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("التقييم")])]),
         _vm._v(" "),
         _c("th", [_c("span", [_vm._v("التفاصيل")])]),
         _vm._v(" "),
@@ -35451,7 +35698,7 @@ var render = function() {
             staticClass: "alert alert-solid-success alrt animated slideInUp",
             attrs: { role: "alert" }
           },
-          [_vm._v("\n      تم اضافه هذا العنصر بنجاح\n    ")]
+          [_vm._v("\n    تم اضافه هذا العنصر بنجاح\n  ")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -35493,7 +35740,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "آسم الاشعه" },
+                  attrs: { type: "text", placeholder: "آسم الاشاعة" },
                   domProps: { value: _vm.name },
                   on: {
                     input: function($event) {
@@ -35509,6 +35756,37 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: { textContent: _vm._s(_vm.errors.get("name")) }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "البريد الابكترونى" },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
                   })
                 ])
               ]),
@@ -35581,6 +35859,37 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+                      value: _vm.region,
+                      expression: "region"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "المنطقه" },
+                  domProps: { value: _vm.region },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.region = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("region")) }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
                       value: _vm.location,
                       expression: "location"
                     }
@@ -35614,19 +35923,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.position,
-                      expression: "position"
+                      value: _vm.distance,
+                      expression: "distance"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.position },
+                  attrs: { type: "text", placeholder: "المسافه" },
+                  domProps: { value: _vm.distance },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.position = $event.target.value
+                      _vm.distance = $event.target.value
                     }
                   }
                 }),
@@ -35635,7 +35944,40 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("position"))
+                      textContent: _vm._s(_vm.errors.get("distance"))
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.discount,
+                      expression: "discount"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "number", placeholder: "التخفيض" },
+                  domProps: { value: _vm.discount },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.discount = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: {
+                      textContent: _vm._s(_vm.errors.get("discount"))
                     }
                   })
                 ])
@@ -35683,19 +36025,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.basic_price,
-                      expression: "basic_price"
+                      value: _vm.number_of_raters,
+                      expression: "number_of_raters"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.basic_price },
+                  attrs: { type: "number", placeholder: "عدد المصوتين" },
+                  domProps: { value: _vm.number_of_raters },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.basic_price = $event.target.value
+                      _vm.number_of_raters = $event.target.value
                     }
                   }
                 }),
@@ -35704,7 +36046,7 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("basic_price"))
+                      textContent: _vm._s(_vm.errors.get("number_of_raters"))
                     }
                   })
                 ])
@@ -35716,19 +36058,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.treat_price,
-                      expression: "treat_price"
+                      value: _vm.number_of_views,
+                      expression: "number_of_views"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.treat_price },
+                  attrs: { type: "number", placeholder: "عدد المشاهدين" },
+                  domProps: { value: _vm.number_of_views },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.treat_price = $event.target.value
+                      _vm.number_of_views = $event.target.value
                     }
                   }
                 }),
@@ -35737,7 +36079,7 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("treat_price"))
+                      textContent: _vm._s(_vm.errors.get("number_of_views"))
                     }
                   })
                 ])
@@ -35780,14 +36122,48 @@ var render = function() {
             _c("div", { staticClass: "product-upload-gallery row flex-wrap" }, [
               _c("div", { staticClass: "col-12 mb-30" }, [
                 _c("img", {
-                  staticClass: "uploading-image",
-                  attrs: { src: _vm.previewImage }
+                  staticClass: "w-25 img-thumbnail",
+                  attrs: { src: _vm.previewLogo }
                 }),
                 _vm._v(" "),
                 _c("label", { staticClass: "custom-file-upload" }, [
                   _c("input", {
                     staticClass: "uploading-image",
                     attrs: { type: "file", accept: "image/jpeg" },
+                    on: { change: _vm.sendLogo }
+                  }),
+                  _vm._v("\n              ارفق شعار\n            ")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("logo")) }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "product-upload-gallery row flex-wrap" }, [
+              _c("div", { staticClass: "col-12 mb-30" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.previewImages, function(previewImage) {
+                    return _c("div", { staticClass: "col-md-2" }, [
+                      _c("img", {
+                        staticClass: "w-100 img-thumbnail",
+                        attrs: { src: previewImage }
+                      })
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("label", { staticClass: "custom-file-upload" }, [
+                  _c("input", {
+                    staticClass: "uploading-image",
+                    attrs: { type: "file", accept: "image/jpeg", multiple: "" },
                     on: { change: _vm.sendImage }
                   }),
                   _vm._v("\n              ارفق صوره\n            ")
@@ -35796,7 +36172,7 @@ var render = function() {
                 _c("div", { staticClass: "animated bounce infinite rtl" }, [
                   _c("span", {
                     staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("image")) }
+                    domProps: { textContent: _vm._s(_vm.errors.get("images")) }
                   })
                 ])
               ])
@@ -35820,7 +36196,7 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
           _c("div", { staticClass: "page-heading" }, [
-            _c("h3", [_vm._v("\n         انشاء الاشعه جديد\n        ")])
+            _c("h3", [_vm._v("انشاء اشاعه جديده")])
           ])
         ])
       ]
@@ -35833,7 +36209,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور الاشاعه")])]
+      [_c("h4", { staticClass: "title" }, [_vm._v("صور الاشاعة")])]
     )
   },
   function() {
@@ -35851,7 +36227,7 @@ var staticRenderFns = [
               staticClass:
                 "button button-outline button-primary mb-10 ml-10 mr-0"
             },
-            [_vm._v("حفظ")]
+            [_vm._v("\n              حفظ\n            ")]
           ),
           _vm._v(" "),
           _c(
@@ -35860,7 +36236,7 @@ var staticRenderFns = [
               staticClass:
                 "button button-outline button-danger mb-10 ml-10 mr-0"
             },
-            [_vm._v("حذف")]
+            [_vm._v("\n              حذف\n            ")]
           )
         ]
       )
@@ -35900,7 +36276,7 @@ var render = function() {
             staticStyle: { position: "absolute", left: "31px" },
             attrs: { to: "/xray/add" }
           },
-          [_c("span", [_vm._v("آضافه الاشاعه جديد")])]
+          [_c("span", [_vm._v("آضافه اشاعة جديده")])]
         ),
         _vm._v(" "),
         _vm._m(0)
@@ -35943,38 +36319,38 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.resultQuery, function(ray, id) {
+                      _vm._l(_vm.resultQuery, function(xray, i) {
                         return _c("tr", [
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v("#" + _vm._s(ray.id))]
+                            [_vm._v("#" + _vm._s(xray.id))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("img", {
                               staticClass: "table-product-image rounded-circle",
-                              attrs: { src: ray.images[0].image, alt: "" }
+                              attrs: { src: xray.images[0].image, alt: "" }
                             })
                           ]),
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(ray.name))
+                              _vm._v(_vm._s(xray.name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(ray.address))]),
+                          _c("td", [_vm._v(_vm._s(xray.address))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(ray.phone))]
+                            [_vm._v(_vm._s(xray.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(ray.rate))
+                              _vm._v(_vm._s(xray.rate))
                             ])
                           ]),
                           _vm._v(" "),
@@ -35988,7 +36364,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "view button button-box button-xs button-primary",
-                                    attrs: { to: "/xray/show/" + ray.id }
+                                    attrs: { to: "/xray/show/" + xray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-more" })]
                                 ),
@@ -35998,7 +36374,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "edit button button-box button-xs button-info",
-                                    attrs: { to: "/xray/edit/" + ray.id }
+                                    attrs: { to: "/xray/edit/" + xray.id }
                                   },
                                   [_c("i", { staticClass: "zmdi zmdi-edit" })]
                                 ),
@@ -36014,7 +36390,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.setDel(ray.id, _vm.i)
+                                        return _vm.setDel(xray.id, i)
                                       }
                                     }
                                   },
@@ -36107,7 +36483,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("dial", {
-          attrs: { type: "عميل", id: _vm.id, index: _vm.index },
+          attrs: { type: "اشاعة", id: _vm.id, index: _vm.index },
           on: { del: _vm.deleteItem }
         })
       ],
@@ -36122,7 +36498,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
       _c("div", { staticClass: "page-heading" }, [
-        _c("h3", [_vm._v("الأشاعه")])
+        _c("h3", [_vm._v("الاشاعات")])
       ])
     ])
   },
@@ -36228,19 +36604,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.name,
-                      expression: "dr.name"
+                      value: _vm.xray.name,
+                      expression: "xray.name"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "آسم الاشاعه " },
-                  domProps: { value: _vm.dr.name },
+                  domProps: { value: _vm.xray.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "name", $event.target.value)
+                      _vm.$set(_vm.xray, "name", $event.target.value)
                     }
                   }
                 }),
@@ -36254,6 +36630,41 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v("البريد الابكترونى")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.xray.email,
+                      expression: "xray.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "آسم الاشاعه " },
+                  domProps: { value: _vm.xray.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.xray, "email", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
                 _c("label", { attrs: { for: "name" } }, [_vm._v("رقم الهاتف")]),
                 _vm._v(" "),
                 _c("input", {
@@ -36261,19 +36672,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.phone,
-                      expression: "dr.phone"
+                      value: _vm.xray.phone,
+                      expression: "xray.phone"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "رقم الهاتف" },
-                  domProps: { value: _vm.dr.phone },
+                  attrs: { type: "text", placeholder: "رقم الهاتف" },
+                  domProps: { value: _vm.xray.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "phone", $event.target.value)
+                      _vm.$set(_vm.xray, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -36294,19 +36705,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.address,
-                      expression: "dr.address"
+                      value: _vm.xray.address,
+                      expression: "xray.address"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.dr.address },
+                  domProps: { value: _vm.xray.address },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "address", $event.target.value)
+                      _vm.$set(_vm.xray, "address", $event.target.value)
                     }
                   }
                 }),
@@ -36320,6 +36731,39 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("المنطقه")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.xray.region,
+                      expression: "xray.region"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "العنوان" },
+                  domProps: { value: _vm.xray.region },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.xray, "region", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("region")) }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
                 _c("label", { attrs: { for: "name" } }, [_vm._v("الاحداثيات")]),
                 _vm._v(" "),
                 _c("input", {
@@ -36327,19 +36771,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.location,
-                      expression: "dr.location"
+                      value: _vm.xray.location,
+                      expression: "xray.location"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.dr.location },
+                  domProps: { value: _vm.xray.location },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "location", $event.target.value)
+                      _vm.$set(_vm.xray, "location", $event.target.value)
                     }
                   }
                 }),
@@ -36355,26 +36799,26 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("الوظيفه")]),
+                _c("label", { attrs: { for: "name" } }, [_vm._v("المسافه")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.position,
-                      expression: "dr.position"
+                      value: _vm.xray.distance,
+                      expression: "xray.distance"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.dr.position },
+                  domProps: { value: _vm.xray.distance },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "position", $event.target.value)
+                      _vm.$set(_vm.xray, "distance", $event.target.value)
                     }
                   }
                 }),
@@ -36383,7 +36827,42 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("position"))
+                      textContent: _vm._s(_vm.errors.get("distance"))
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("التخفيض")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.xray.discount,
+                      expression: "xray.discount"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "الوظيفه" },
+                  domProps: { value: _vm.xray.discount },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.xray, "discount", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: {
+                      textContent: _vm._s(_vm.errors.get("discount"))
                     }
                   })
                 ])
@@ -36397,19 +36876,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.rate,
-                      expression: "dr.rate"
+                      value: _vm.xray.rate,
+                      expression: "xray.rate"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "number", placeholder: "التقييم" },
-                  domProps: { value: _vm.dr.rate },
+                  domProps: { value: _vm.xray.rate },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "rate", $event.target.value)
+                      _vm.$set(_vm.xray, "rate", $event.target.value)
                     }
                   }
                 }),
@@ -36424,7 +36903,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
                 _c("label", { attrs: { for: "name" } }, [
-                  _vm._v("السعر الاولى")
+                  _vm._v("عدد المصوتين")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -36432,19 +36911,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.basic_price,
-                      expression: "dr.basic_price"
+                      value: _vm.xray.number_of_raters,
+                      expression: "xray.number_of_raters"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.dr.basic_price },
+                  attrs: { type: "number", placeholder: "عدد المصوتين" },
+                  domProps: { value: _vm.xray.number_of_raters },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "basic_price", $event.target.value)
+                      _vm.$set(
+                        _vm.xray,
+                        "number_of_raters",
+                        $event.target.value
+                      )
                     }
                   }
                 }),
@@ -36453,7 +36936,7 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("basic_price"))
+                      textContent: _vm._s(_vm.errors.get("number_of_raters"))
                     }
                   })
                 ])
@@ -36461,7 +36944,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
                 _c("label", { attrs: { for: "name" } }, [
-                  _vm._v("سعر التعامل")
+                  _vm._v("عدد المشاهدين")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -36469,19 +36952,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.treat_price,
-                      expression: "dr.treat_price"
+                      value: _vm.xray.number_of_views,
+                      expression: "xray.number_of_views"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.dr.treat_price },
+                  attrs: { type: "number", placeholder: "عدد المشاهدين" },
+                  domProps: { value: _vm.xray.number_of_views },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "treat_price", $event.target.value)
+                      _vm.$set(_vm.xray, "number_of_views", $event.target.value)
                     }
                   }
                 }),
@@ -36490,7 +36973,7 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("treat_price"))
+                      textContent: _vm._s(_vm.errors.get("number_of_views"))
                     }
                   })
                 ])
@@ -36504,19 +36987,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.ray.about,
-                      expression: "ray.about"
+                      value: _vm.xray.about,
+                      expression: "xray.about"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.ray.about },
+                  domProps: { value: _vm.xray.about },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.ray, "about", $event.target.value)
+                      _vm.$set(_vm.xray, "about", $event.target.value)
                     }
                   }
                 }),
@@ -36535,14 +37018,48 @@ var render = function() {
             _c("div", { staticClass: "product-upload-gallery row flex-wrap" }, [
               _c("div", { staticClass: "col-12 mb-30" }, [
                 _c("img", {
-                  staticClass: "uploading-image",
-                  attrs: { src: _vm.previewImage }
+                  staticClass: "w-25 img-thumbnail",
+                  attrs: { src: _vm.previewLogo }
                 }),
                 _vm._v(" "),
                 _c("label", { staticClass: "custom-file-upload" }, [
                   _c("input", {
                     staticClass: "uploading-image",
                     attrs: { type: "file", accept: "image/jpeg" },
+                    on: { change: _vm.sendLogo }
+                  }),
+                  _vm._v("\n              ارفق شعار\n            ")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: { textContent: _vm._s(_vm.errors.get("logo")) }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "product-upload-gallery row flex-wrap" }, [
+              _c("div", { staticClass: "col-12 mb-30" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.previewImages, function(previewImage) {
+                    return _c("div", { staticClass: "col-md-2" }, [
+                      _c("img", {
+                        staticClass: "w-100 img-thumbnail",
+                        attrs: { src: previewImage }
+                      })
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("label", { staticClass: "custom-file-upload" }, [
+                  _c("input", {
+                    staticClass: "uploading-image",
+                    attrs: { type: "file", accept: "image/jpeg", multiple: "" },
                     on: { change: _vm.sendImage }
                   }),
                   _vm._v("\n              ارفق صوره\n            ")
@@ -36551,7 +37068,7 @@ var render = function() {
                 _c("div", { staticClass: "animated bounce infinite rtl" }, [
                   _c("span", {
                     staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("image")) }
+                    domProps: { textContent: _vm._s(_vm.errors.get("images")) }
                   })
                 ])
               ])
@@ -36571,7 +37088,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 col-lg-auto mb-20" }, [
       _c("div", { staticClass: "page-heading" }, [
-        _c("h3", [_vm._v("\n         تعديل اشاعه\n        ")])
+        _c("h3", [_vm._v("تعديل الاشاعه")])
       ])
     ])
   },
@@ -36600,7 +37117,7 @@ var staticRenderFns = [
               staticClass:
                 "button button-outline button-primary mb-10 ml-10 mr-0"
             },
-            [_vm._v("تعديل")]
+            [_vm._v("\n              تعديل\n            ")]
           ),
           _vm._v(" "),
           _c(
@@ -36609,7 +37126,7 @@ var staticRenderFns = [
               staticClass:
                 "button button-outline button-danger mb-10 ml-10 mr-0"
             },
-            [_vm._v("حذف")]
+            [_vm._v("\n              حذف\n            ")]
           )
         ]
       )
@@ -36654,54 +37171,71 @@ var render = function() {
               _c("li", [
                 _c("span", [_vm._v("اسم الاشاعه")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.ray.name) + " ")])
+                _c("span", [_vm._v(" " + _vm._s(_vm.xray.name) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("span", [_vm._v("العنوان")]),
+                _c("span", [_vm._v("البريد الالكترونى")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.ray.address))])
+                _c("span", [_vm._v(" " + _vm._s(_vm.xray.email) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.ray.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.xray.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("span", [_vm._v("التخصص")]),
+                _c("span", [_vm._v("العنوان")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.ray.position))])
+                _c("span", [_vm._v(_vm._s(_vm.xray.address))])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", [_vm._v("المنطقه")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.xray.region))])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", [_vm._v("المسافه")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.xray.distance))])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", [_vm._v("المسافه")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.xray.distance))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("الملاحظات")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.ray.about))])
+                _c("span", [_vm._v(_vm._s(_vm.xray.about))])
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("span", [_vm._v("التقييم")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.ray.rate))
+                  _vm._v(_vm._s(_vm.xray.rate))
                 ])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("span", [_vm._v("السعر الاولى")]),
-                _vm._v(" "),
+                _c("span", [_vm._v("عدد المصوتين")]),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.ray.basic_price))
+                  _vm._v(_vm._s(_vm.xray.number_of_raters))
                 ])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("span", [_vm._v("سعر التعامل")]),
+                _c("span", [_vm._v("عدد المشاهدين")]),
                 _vm._v(" "),
                 _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.ray.treat_price))
+                  _vm._v(_vm._s(_vm.xray.number_of_views))
                 ])
               ])
             ])
@@ -36710,17 +37244,34 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-8" }, [
-        _c("img", {
-          staticStyle: {
-            display: "block",
-            "margin-left": "auto",
-            "margin-right": "auto",
-            width: "100%",
-            "max-width": "50%",
-            height: "auto"
-          },
-          attrs: { src: _vm.ray.image.image }
-        })
+        _c("div", { staticClass: "row" }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            staticStyle: {
+              display: "block",
+              "margin-left": "auto",
+              "margin-right": "auto",
+              width: "20%",
+              "max-width": "50%",
+              height: "auto"
+            },
+            attrs: { src: _vm.xray.logo }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.xray.images, function(image) {
+            return _c("div", { staticClass: "col-md-6 mt-2" }, [
+              _c("img", {
+                staticClass: "w-100 img-thumbnail",
+                attrs: { src: image.image }
+              })
+            ])
+          }),
+          0
+        )
       ])
     ])
   ])
@@ -36738,7 +37289,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "page-heading" }, [
             _c("h3", [
               _vm._v("الاشاعات "),
-              _c("span", [_vm._v("/ تفاصيل الاشاعه ")])
+              _c("span", [_vm._v("/ تفاصيل الاشاعه")])
             ])
           ])
         ])
@@ -52712,7 +53263,7 @@ __webpack_require__.r(__webpack_exports__);
     path: '/login',
     component: __webpack_require__(/*! ./dashboard/YLogin */ "./resources/js/dashboard/YLogin.vue")["default"],
     beforeEnter: function beforeEnter(to, from, next) {
-      if (localStorage.getItem('token') != null) {
+      if (localStorage.getItem('atoken') != null) {
         next('/doctors/all');
       } else {
         next();
@@ -52728,7 +53279,7 @@ __webpack_require__.r(__webpack_exports__);
       if (to.matched.some(function (record) {
         return record.meta.requiresAuth;
       })) {
-        if (localStorage.getItem('token') == null) {
+        if (localStorage.getItem('atoken') == null) {
           next('/login');
         } else {
           next();
@@ -55605,7 +56156,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\treatSys\resources\js\dash-app.js */"./resources/js/dash-app.js");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\dash-app.js */"./resources/js/dash-app.js");
 
 
 /***/ })

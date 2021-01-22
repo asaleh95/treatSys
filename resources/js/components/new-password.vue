@@ -19,25 +19,26 @@
       >
         <div>
           <input
-            type="password"
+            class="form-control form-control-lg mb-4"
+            :type="passwordType"
             v-model="password"
             id="pass"
             name="password"
-            class="form-control-lg input font-d"
             placeholder="Password"
           />
-          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
+          <span toggle="#password-field" :class="'fa fa-fw fa-eye field-icon toggle-password ' + seePassword" @click="see()"></span>
+          <span style="color: red" v-text="error.get('password')"></span>
         </div>
         <div>
           <input
-            type="password"
+            class="form-control form-control-lg mb-4"
+            :type="passwordType"
             v-model="password"
             id="pass"
             name="password"
-            class="form-control-lg input font-d"
             placeholder="Re-Password"
           />
-          <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
+          <span style="color: red" v-text="error.get('password')"></span>
         </div>
        <button
           type="submit"
@@ -52,21 +53,23 @@
         i remember my password !<a href="#">Sing in</a>
       </p>
     </div>
-    <div class="col-md-8 hide-st">
+    <div class="hide-st col-md-8">
       <img
-        src="/Web/5.png"
-        class="img-fluid w-100 back-color"
-        alt="Cinque Terre"
-      />
-      <img
+            src="/Web/5.png"
+            class="back-color"
+            alt="Cinque Terre"
+                height="625"
+                width="904"
+          />
+          <img
         src="/Web/55.png"
-        class="topleft"
+        class="topleft-help"
         style="width: 110%"
         alt="over-image"
       />
       <div>
-        <h1 class="center">We Trust</h1>
-        <h1 class="center text-t7t">We Care</h1>
+        <h1 class="center-help">We Trust</h1>
+        <h1 class="center-help text-t7t">We Care</h1>
       </div>
     </div>
   </div>
@@ -78,6 +81,8 @@ export default {
     return {
       password: "",
       error: window.obj,
+      seePassword: '',
+      passwordType: 'password'
     };
   },
   methods: {
@@ -100,6 +105,15 @@ export default {
           console.log(err.error);
         });
     },
+    see(){
+      if (this.seePassword == '') {
+        this.seePassword = 'text-primary';
+        this.passwordType = 'text';
+      } else {
+        this.seePassword = '';
+        this.passwordType = 'password';
+      }
+    }
   },
 };
 </script>

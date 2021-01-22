@@ -12,7 +12,7 @@ export default {
             path: '/login',
             component: require('./dashboard/YLogin').default,
             beforeEnter: (to, from, next) => {
-                if (localStorage.getItem('token') != null) {
+                if (localStorage.getItem('atoken') != null) {
                     next('/doctors/all');
                 } else {
                     next()
@@ -27,7 +27,7 @@ export default {
             },
             beforeEnter: (to, from, next) => {
                 if (to.matched.some(record => record.meta.requiresAuth)) {
-                    if (localStorage.getItem('token') == null) {
+                    if (localStorage.getItem('atoken') == null) {
                         next('/login');
                     } else {
                         next()

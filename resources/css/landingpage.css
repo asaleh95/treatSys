@@ -201,6 +201,7 @@ color: #000;
     }
     .bg-treat{
         margin-left: 20% !important;
+        width: 100% !important;
     }
     
 }

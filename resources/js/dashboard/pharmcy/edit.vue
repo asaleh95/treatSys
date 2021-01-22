@@ -67,7 +67,7 @@ label {
               <label for="name">رقم الهاتف</label>
               <input
                 class="form-control"
-                type="number"
+                type="text"
                 v-model="pharmacy.phone"
                 placeholder="رقم الهاتف"
               />
@@ -268,7 +268,7 @@ export default {
         this.previewImages = result.data.data.images.map(({ image }) => ({ image })).map(({ image }) => image);
         console.log(this.previewImages);
         console.log(result.data.data.images);
-        this.hospital.location =
+        this.pharmacy.location =
           result.data.data.location.coordinates[0] +
           "," +
           result.data.data.location.coordinates[1];
@@ -321,7 +321,7 @@ export default {
           console.log(result.data);
           //
           this.success = true;
-          setTimeout(() => this.$router.push("/pharmacies/all"), 2000);
+          setTimeout(() => this.$router.push("/pharmcy/all"), 2000);
         })
         .catch(
           (err) => this.errors.record(err.response.data.errors)

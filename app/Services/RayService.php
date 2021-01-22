@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\RayRepositories;
 use App\Traits\FileTrait;
+use Illuminate\Support\Str;
 
 class RayService
 {
@@ -24,35 +25,30 @@ class RayService
 
     public function store($data)
     {
-        $this->pharmacyRepositories->store($data);
-        $this->uploadAvatar($data['image'], $data['phone']);
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
+        $this->rayRepositories->store($data);
     }
 
-    public function uploadAvatar($image, $phone)
+    public function uploadLogo($image, $phone)
     {
         if (!empty($image)) {
-            $link = $this->uploadFile($image, "rays/". $phone. '.png');
-            $this->saveAvatar($link);
-        }
-    }
-
-    public function updateAvatar($image, $phone, $ray)
-    {
-        if (!empty($image)) {
-            $link = "rays/". $phone. '.png';
+            $link = "rays/". $phone.'/'.Str::random(10). '.png';
             $this->uploadFile($image, $link);
-            $this->editAvatar($link, $ray);
+            return $link;
         }
     }
 
-    public function saveAvatar($link)
+    public function uploadImages($images, $phone)
     {
-        $this->rayRepositories->saveAvatar($link);
-    }
-
-    public function editAvatar($link, $ray)
-    {
-        $this->rayRepositories->updateAvatar($link, $ray);
+        if (!empty($images)) {
+            foreach ($images as $image) {
+                $link = "rays/". $phone.'/'.Str::random(10). '.png';
+                $this->uploadFile($image, $link);
+                $links[]['image'] = $link;
+            }
+            return $links;
+        }
     }
 
     public function destroy($ray)
@@ -60,9 +56,13 @@ class RayService
         $this->rayRepositories->destroy($ray);
     }
 
-    public function update($data, $ray)
+    public function update($data, $hospital)
     {
-        $this->rayRepositories->update($data, $ray);
-        $this->updateAvatar($data['image'], $data['phone'], $ray);
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        if (empty($data['logo'])) {
+            unset($data['logo']);
+        }
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
+        $this->rayRepositories->update($data, $hospital);
     }
 }

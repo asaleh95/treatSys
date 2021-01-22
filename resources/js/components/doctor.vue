@@ -9,7 +9,11 @@
         </div>
         <div class="col-md-8 col-sm-8">
           <p class="font-d"> {{ dr.position }}</p>
-          <h3 class="font-weight-bold ">{{ dr.name }}</h3>
+          <h3 class="font-weight-bold ">
+            {{ dr.name }}
+            <i class="fas fa-heart float-right" v-if="fav"  @click="favourite('dislike')"></i>
+            <i class="far fa-heart float-right" v-else  @click="favourite('like')"></i>
+          </h3>
           <br /><br />
           <h3 class="number">
             <img src="/Web/phone.png" alt="" /><span class="num">+{{dr.phone.substring(0, 3)}}</span>
@@ -55,6 +59,7 @@ export default {
       .get("/users/doctors/" + this.$route.params.id)
       .then((result) => {
         this.dr = result.data.data;
+        this.fav = result.data.data.like == true ? true : false;
         console.log(result.data.data);
       })
 
@@ -65,7 +70,21 @@ export default {
   data() {
     return {
       dr: {},
+      fav: false,
     };
   },
+  methods: {
+    favourite(route){
+      axios
+      .post("/users/"+ route+"-doctor", {'doctor_id': this.$route.params.id})
+      .then((result) => {
+        this.fav = !this.fav;
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+  }
 };
 </script>
