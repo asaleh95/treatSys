@@ -88,6 +88,11 @@ class UserRepositories implements AuthInterface
         $user->update($data);
     }
 
+    public function likeDoctor($data)
+    {
+        auth()->user()->doctors()->attach($data['doctor_id']);
+    }
+
     public function likeHospital($data)
     {
         auth()->user()->hospitals()->attach($data['hospital_id']);
@@ -106,6 +111,11 @@ class UserRepositories implements AuthInterface
     public function likePharmacy($data)
     {
         auth()->user()->pharmacies()->attach($data['pharmacy_id']);
+    }
+
+    public function dislikeDoctor($data)
+    {
+        auth()->user()->doctors()->detach($data['doctor_id']);
     }
 
     public function dislikeHospital($data)

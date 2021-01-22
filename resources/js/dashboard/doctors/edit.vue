@@ -153,6 +153,7 @@ export default {
         this.dr = result.data.data;
         this.previewImage = result.data.data.image.image;
         this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
+          this.dr.image = '';
         console.log(result.data.data);
       })
       .catch((error) => {

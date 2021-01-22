@@ -28,21 +28,16 @@ class PharmacyRepositories
     public function store($data)
     {
         $this->pharmacy = $this->pharmacy->create($data);
-    }
-
-    public function saveAvatar($link)
-    {
-        $this->pharmacy->image()->create(['image' => $link]);
-    }
-
-    public function updateAvatar($link, $pharmacy)
-    {
-        $pharmacy->image()->update(['image' => $link]);
+        $this->pharmacy->images()->createMany($data['images']);
     }
 
     public function update($data, $pharmacy)
     {
         $pharmacy->update($data);
+        if (!empty($data['images'])) {
+            $pharmacy->images()->delete();
+            $pharmacy->images()->createMany($data['images']);
+        }
     }
 
     public function destroy($pharmacy)

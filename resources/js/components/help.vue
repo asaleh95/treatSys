@@ -22,6 +22,7 @@
           v-model="email"
           placeholder="email addres"
         />
+          <span style="color: red" v-text="error.get('email')"></span>
         <button
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
@@ -34,23 +35,28 @@
         i will try again ! <router-link to="login">Sign in</router-link>
       </p>
     </div>
-    <div class="col-md-8 hide-st">
+    <div class="hide-st col-md-8">
       <img
-        src="/Web/5.png"
-        class="img-fluid w-100 back-color"
-        alt="Cinque Terre"
-      />
-      <img
+            src="/Web/5.png"
+            class="back-color"
+            alt="Cinque Terre"
+                height="625"
+                width="904"
+          />
+          <img
         src="/Web/55.png"
-        class="topleft"
+        class="topleft-help"
         style="width: 110%"
         alt="over-image"
       />
       <div>
-        <h1 class="center">We Trust</h1>
-        <h1 class="center text-t7t">We Care</h1>
+        <h1 class="center-help">We Trust</h1>
+        <h1 class="center-help text-t7t">We Care</h1>
       </div>
     </div>
+    <!-- <div class="col-md-8 hide-st"> -->
+      
+    <!-- </div> -->
   </div>
 </template>
 

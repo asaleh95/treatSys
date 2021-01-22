@@ -39,10 +39,12 @@ Route::namespace('App\Http\Controllers')->group(function () {
         });
 
         Route::prefix('users')->group(function (){
+            Route::post('/like-doctor', 'UserController@likeDoctor');
             Route::post('/like-hospital', 'UserController@likeHospital');
             Route::post('/like-lab', 'UserController@likeLab');
             Route::post('/like-ray', 'UserController@likeRay');
             Route::post('/like-pharmacy', 'UserController@likePharmacy');
+            Route::post('/dislike-doctor', 'UserController@dislikeDoctor');
             Route::post('/dislike-hospital', 'UserController@dislikeHospital');
             Route::post('/dislike-lab', 'UserController@dislikeLab');
             Route::post('/dislike-ray', 'UserController@dislikeRay');

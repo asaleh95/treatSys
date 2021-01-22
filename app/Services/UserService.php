@@ -90,6 +90,11 @@ class UserService
         $this->userRepo->logout();
     }
 
+    public function likeDoctor($data)
+    {
+        $this->userRepo->likeDoctor($data);
+    }
+
     public function likeHospital($data)
     {
         $this->userRepo->likeHospital($data);
@@ -108,6 +113,11 @@ class UserService
     public function likePharmacy($data)
     {
         $this->userRepo->likePharmacy($data);
+    }
+
+    public function dislikeDoctor($data)
+    {
+        $this->userRepo->dislikeDoctor($data);
     }
 
     public function dislikeHospital($data)

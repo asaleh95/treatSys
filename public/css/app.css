@@ -67,6 +67,13 @@ width: 100%;
     width: 120%;
 
   }
+  .field-icon {
+    float: right;
+    margin-top: -60px;
+    right: 5%;
+    position: absolute;
+    z-index: 2;
+  }
   @media only screen and (max-width: 600px) {
 
     .hidd{
@@ -438,6 +445,7 @@ color: #000;
     }
     .bg-treat{
         margin-left: 20% !important;
+        width: 100% !important;
     }
 }textarea{
     height: 9rem !important;
@@ -448,6 +456,10 @@ color: #000;
     background-color: #0782bd;
 }.maxWidth{
     width: 120%;
+}
+
+.fa-heart{
+    cursor: pointer;
 }.card-hospital-10{
     width: 110% !important;
 }
@@ -464,7 +476,26 @@ color: #000;
 .hide-st{
     display: none;
 }
-}body{
+}
+
+.topleft-help {
+    position: absolute;
+    bottom: 1%;
+    /* left: -17%; */
+    right: 2%;
+    width: 87% !important;
+
+  }
+
+  .center-help {
+    position: absolute;
+    top: 30%;
+    /* left: 32%; */
+    right: 33%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    color: white;
+  }body{
     overflow-x: hidden;
 }
 

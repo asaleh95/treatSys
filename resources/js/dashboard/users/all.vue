@@ -50,19 +50,10 @@
                     <span>#</span>
                   </th>
                   <th>
-                    <span>صوره المستخدم</span>
-                  </th>
-                  <th>
-                    <span>اسم المستخدم</span>
-                  </th>
-                  <th>
-                    <span>العنوان</span>
+                    <span>بريد المستخدم</span>
                   </th>
                   <th>
                     <span>رقم الهاتف</span>
-                  </th>
-                  <th>
-                    <span>التقييم</span>
                   </th>
                   <th>
                     <span>التفاصيل</span>
@@ -74,36 +65,25 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(dr, i) in resultQuery">
+                <tr v-for="(user, i) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ dr.id }}</td>
+                  <td style="font-family: sans-serif">#{{ user.id }}</td>
                   <td>
-                    <img
-                      :src="dr.image.image"
-                      alt
-                      class="table-product-image rounded-circle"
-                    />
-                  </td>
-                  <td>
-                    <a href="#">{{ dr.name }}</a>
+                    <a href="#">{{ dr.email }}</a>
                   </td>
 
-                  <td>{{ dr.address }}</td>
                   <td style="font-family: sans-serif">{{ dr.phone }}</td>
-                  <td>
-                    <span class="badge badge-success">{{ dr.rate }}</span>
-                  </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/users/show/' + dr.id"
+                        :to="'/users/show/' + user.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/users/edit/' + dr.id"
+                        :to="'/users/edit/' + user.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +91,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(dr.id, i)"
+                        @click="setDel(user.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -133,7 +113,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="عميل" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="مستخدم" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>
@@ -144,9 +124,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors")
+      .get("/admins/users")
       .then((result) => {
-        this.drs = result.data.data;
+        this.users = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -157,7 +137,7 @@ export default {
   },
   data() {
     return {
-      drs: [],
+      users: [],
       id: null,
       index: null,
       success: false,
@@ -169,7 +149,7 @@ export default {
   computed: {
     resultQuery() {
       if (this.$root.search) {
-        return this.drs.filter((item) => {
+        return this.users.filter((item) => {
           return this.$root.search
             .toLowerCase()
             .split(" ")
@@ -181,7 +161,7 @@ export default {
             );
         });
       } else {
-        return this.drs;
+        return this.users;
       }
     },
   },
@@ -190,10 +170,10 @@ export default {
       axios
         .delete("/admins/users/" + id)
         .then((result) => {
-          this.drs.splice(index, 1);
-          console.log(this.drs);
+          this.users.splice(index, 1);
+          console.log(this.users);
           // console.log(result.data);
-          console.log("clients");
+          console.log("users");
           //
           this.success = true;
           setTimeout(() => (this.success = false), 2000);
@@ -208,7 +188,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.drs = result.data.data;
+        this.users = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);

@@ -44,6 +44,11 @@ class User extends Authenticatable
             ->orWhere('phone', $username)->first();
     }
 
+    public function doctors()
+    {
+        return $this->morphedByMany(Doctor::class, 'favourites');
+    }
+
     public function hospitals()
     {
         return $this->morphedByMany(Hospital::class, 'favourites');

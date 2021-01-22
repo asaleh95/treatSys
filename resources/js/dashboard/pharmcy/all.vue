@@ -9,7 +9,7 @@
     <!-- Page Headings Start -->
     <div class="row justify-content-between align-items-center mb-10">
       <router-link
-        to="/pharmacy/add"
+        to="/pharmcy/add"
         style="position: absolute; left: 31px"
         class="button button-primary"
       >
@@ -74,36 +74,36 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(pharmacy, i) in resultQuery">
+                <tr v-for="(pharmcy, i) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ pharmacy.id }}</td>
+                  <td style="font-family: sans-serif">#{{ pharmcy.id }}</td>
                   <td>
                     <img
-                      :src="pharmacy.images[0].image"
+                      :src="pharmcy.images[0].image"
                       alt
                       class="table-product-image rounded-circle"
                     />
                   </td>
                   <td>
-                    <a href="#">{{ pharmacy.name }}</a>
+                    <a href="#">{{ pharmcy.name }}</a>
                   </td>
 
-                  <td>{{ pharmacy.address }}</td>
-                  <td style="font-family: sans-serif">{{ pharmacy.phone }}</td>
+                  <td>{{ pharmcy.address }}</td>
+                  <td style="font-family: sans-serif">{{ pharmcy.phone }}</td>
                   <td>
-                    <span class="badge badge-success">{{ pharmacy.rate }}</span>
+                    <span class="badge badge-success">{{ pharmcy.rate }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/pharmacy/show/' + pharmacy.id"
+                        :to="'/pharmcy/show/' + pharmcy.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/pharmacy/edit/' + pharmacy.id"
+                        :to="'/pharmcy/edit/' + pharmcy.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +111,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(pharmacy.id, i)"
+                        @click="setDel(pharmcy.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -133,7 +133,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="صيدليه" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="صيدلية" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>
@@ -207,7 +207,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.hospitals = result.data.data;
+        this.pharmacies = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);

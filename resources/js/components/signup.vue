@@ -1,7 +1,7 @@
 
 <template>
   <div class="row">
-    <div class="col-md-4 pl-5 pt-5" style="z-index: 1;">
+    <div class="col-md-4 pl-5 pt-5" style="z-index: 1">
       <h1 class="logi">SIGN up</h1>
       <br />
       <h4>Register new account</h4>
@@ -22,32 +22,32 @@
           v-model="email"
           id="email"
           name="email"
-          class="form-control-lg input font-d"
+          class="form-control form-control-lg mb-4"
           placeholder="Email Address"
         />
         <span style="color: red" v-text="error.get('email')"></span>
         <div>
           <input
-            type="password"
+            :type="passwordType"
             v-model="password"
             id="pass"
             name="password"
-            class="form-control-lg input font-d"
+            class="form-control form-control-lg mb-4"
             placeholder="Password"
           />
+          <span toggle="#password-field" :class="'fa fa-fw fa-eye field-icon toggle-password ' + seePassword" @click="see()"></span>
           <span style="color: red" v-text="error.get('password')"></span>
           <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
         </div>
         <div>
           <input
-            type="password"
-            v-model="password"
-            id="pass"
+            class="form-control form-control-lg mb-4"
+            :type="passwordType"
             name="password"
-            class="form-control-lg input font-d"
-            placeholder="Re-Password"
+            v-model="password"
+            placeholder="Re-password"
           />
-                    <span style="color: red" v-text="error.get('password')"></span>
+          <span style="color: red" v-text="error.get('password')"></span>
 
           <!-- <span class="input-icon"><i class="fa fa-eye info"></i></span> -->
         </div>
@@ -57,9 +57,10 @@
             v-model="phone"
             id="pass"
             name="phone"
-            class="form-control-lg input font-d"
+            class="form-control form-control-lg mb-4"
             placeholder="Phone"
           />
+          <span toggle="#password-field" class="field-icon toggle-password text-primary">|+201</span>
           <span style="color: red" v-text="error.get('phone')"></span>
           <!-- <span class="input-icon"><i>+966</i></span> -->
         </div>
@@ -74,7 +75,7 @@
           >
         </div>
         <br />
-       <button
+        <button
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
         >
@@ -112,6 +113,8 @@ export default {
       password: "",
       phone: "",
       error: window.obj,
+      seePassword: '',
+      passwordType: 'password'
     };
   },
   methods: {
@@ -120,7 +123,7 @@ export default {
       let all = {
         email: this.email,
         password: this.password,
-        phone: this.phone,
+        phone: '+201' + this.phone,
       };
       console.log(all);
       axios
@@ -135,6 +138,15 @@ export default {
           console.log(err);
         });
     },
+    see(){
+      if (this.seePassword == '') {
+        this.seePassword = 'text-primary';
+        this.passwordType = 'text';
+      } else {
+        this.seePassword = '';
+        this.passwordType = 'password';
+      }
+    }
   },
 };
 </script>

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\PharmacyRepositories;
 use App\Repositories\RayRepositories;
 use App\Traits\FileTrait;
+use Illuminate\Support\Str;
 
 class PharmacyService
 {
@@ -25,45 +26,44 @@ class PharmacyService
 
     public function store($data)
     {
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
         $this->pharmacyRepositories->store($data);
-        $this->uploadAvatar($data['image'], $data['phone']);
     }
 
-    public function uploadAvatar($image, $phone)
+    public function update($data, $pharmacy)
     {
-        if (!empty($image)) {
-            $link = $this->uploadFile($image, "pharmacies/". $phone. '.png');
-            $this->saveAvatar($link);
+        $data['logo'] = $this->uploadLogo($data['logo'], $data['phone']);
+        if (empty($data['logo'])) {
+            unset($data['logo']);
         }
+        $data['images'] = $this->uploadImages($data['images'], $data['phone']);
+        $this->pharmacyRepositories->update($data, $pharmacy);
     }
 
-    public function updateAvatar($image, $phone, $pharmacy)
+    public function uploadLogo($image, $phone)
     {
         if (!empty($image)) {
-            $link = "pharmacies/". $phone. '.png';
+            $link = "pharmacies/". $phone.'/'.Str::random(10). '.png';
             $this->uploadFile($image, $link);
-            $this->editAvatar($link, $pharmacy);
+            return $link;
         }
     }
 
-    public function saveAvatar($link)
+    public function uploadImages($images, $phone)
     {
-        $this->pharmacyRepositories->saveAvatar($link);
-    }
-
-    public function editAvatar($link, $pharmacy)
-    {
-        $this->pharmacyRepositories->updateAvatar($link, $pharmacy);
+        if (!empty($images)) {
+            foreach ($images as $image) {
+                $link = "pharmacies/". $phone.'/'.Str::random(10). '.png';
+                $this->uploadFile($image, $link);
+                $links[]['image'] = $link;
+            }
+            return $links;
+        }
     }
 
     public function destroy($pharmacy)
     {
         $this->pharmacyRepositories->destroy($pharmacy);
-    }
-
-    public function update($data, $pharmacy)
-    {
-        $this->pharmacyRepositories->update($data, $pharmacy);
-        $this->updateAvatar($data['image'], $data['phone'], $pharmacy);
     }
 }

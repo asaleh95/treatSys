@@ -13,12 +13,12 @@
         style="position: absolute; left: 31px"
         class="button button-primary"
       >
-        <span>آضافه الاشاعه جديد</span>
+        <span>آضافه اشاعة جديده</span>
       </router-link>
       <!-- Page Heading Start -->
       <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
-          <h3>الأشاعه</h3>
+          <h3>الاشاعات</h3>
         </div>
       </div>
       <!-- Page Heading End -->
@@ -74,36 +74,36 @@
 
               <!-- Table Body Start -->
               <tbody>
-                <tr v-for="(ray, id) in resultQuery">
+                <tr v-for="(xray, i) in resultQuery">
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
-                  <td style="font-family: sans-serif">#{{ ray.id }}</td>
+                  <td style="font-family: sans-serif">#{{ xray.id }}</td>
                   <td>
                     <img
-                      :src="ray.images[0].image"
+                      :src="xray.images[0].image"
                       alt
                       class="table-product-image rounded-circle"
                     />
                   </td>
                   <td>
-                    <a href="#">{{ ray.name }}</a>
+                    <a href="#">{{ xray.name }}</a>
                   </td>
 
-                  <td>{{ ray.address }}</td>
-                  <td style="font-family: sans-serif">{{ ray.phone }}</td>
+                  <td>{{ xray.address }}</td>
+                  <td style="font-family: sans-serif">{{ xray.phone }}</td>
                   <td>
-                    <span class="badge badge-success">{{ ray.rate }}</span>
+                    <span class="badge badge-success">{{ xray.rate }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
                         class="view button button-box button-xs button-primary"
-                        :to="'/xray/show/' + ray.id"
+                        :to="'/xray/show/' + xray.id"
                       >
                         <i class="zmdi zmdi-more"></i>
                       </router-link>
                       <router-link
                         class="edit button button-box button-xs button-info"
-                        :to="'/xray/edit/' + ray.id"
+                        :to="'/xray/edit/' + xray.id"
                       >
                         <i class="zmdi zmdi-edit"></i>
                       </router-link>
@@ -111,7 +111,7 @@
                         class="delete button button-box button-xs button-danger"
                         data-toggle="modal"
                         data-target="#basicExampleModal"
-                        @click="setDel(ray.id, i)"
+                        @click="setDel(xray.id, i)"
                       >
                         <i class="zmdi zmdi-delete"></i>
                       </a>
@@ -133,7 +133,7 @@
           </ul>
         </div>
       </div>
-      <dial @del="deleteItem" type="عميل" :id="id" :index="index"></dial>
+      <dial @del="deleteItem" type="اشاعة" :id="id" :index="index"></dial>
 
       <!--Timeline / Activities End-->
     </div>
@@ -146,7 +146,7 @@ export default {
     axios
       .get("/admins/rays")
       .then((result) => {
-        this.drs = result.data.data;
+        this.xrays = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);
@@ -157,7 +157,7 @@ export default {
   },
   data() {
     return {
-      rays: [],
+      xrays: [],
       id: null,
       index: null,
       success: false,
@@ -169,7 +169,7 @@ export default {
   computed: {
     resultQuery() {
       if (this.$root.search) {
-        return this.rays.filter((item) => {
+        return this.xrays.filter((item) => {
           return this.$root.search
             .toLowerCase()
             .split(" ")
@@ -181,19 +181,18 @@ export default {
             );
         });
       } else {
-        return this.rays;
+        return this.xrays;
       }
     },
   },
   methods: {
     deleteItem(id, index) {
       axios
-        .delete("/admins/xray/" + id)
+        .delete("/admins/rays/" + id)
         .then((result) => {
-          this.rays.splice(index, 1);
-          console.log(this.rays);
+          this.xrays.splice(index, 1);
+          console.log(this.xrays);
           // console.log(result.data);
-          console.log("clients");
           //
           this.success = true;
           setTimeout(() => (this.success = false), 2000);
@@ -208,7 +207,7 @@ export default {
       axios
       .get(url)
       .then((result) => {
-        this.rays = result.data.data;
+        this.xrays = result.data.data;
         this.prevUrl = result.data.links.prev;
         this.nextUrl = result.data.links.next;
         console.log(result.data.data);
