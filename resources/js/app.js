@@ -29,5 +29,10 @@ Vue.component('treat-header', require('./main-components/header.vue').default);
 let app = new Vue({
     el: '#app',
     router: new VueRouter(routes),
-    i18n
+    i18n,
+    data(){
+        return {
+            active: ''
+        }
+    }
 });

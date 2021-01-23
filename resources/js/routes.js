@@ -123,6 +123,57 @@ export default {
             }
         },
         {
+            path: '/ray/:id',
+            component: require('./components/xray').default,
+            meta: {
+                requiresAuth: true
+            },
+            beforeEnter: (to, from, next) => {
+                if (to.matched.some(record => record.meta.requiresAuth)) {
+                    if (localStorage.getItem('token') == null) {
+                        next('/login');
+                    } else {
+                        next()
+                    }
+
+                }
+            }
+        },
+        {
+            path: '/pharmacy/:id',
+            component: require('./components/pharmacy').default,
+            meta: {
+                requiresAuth: true
+            },
+            beforeEnter: (to, from, next) => {
+                if (to.matched.some(record => record.meta.requiresAuth)) {
+                    if (localStorage.getItem('token') == null) {
+                        next('/login');
+                    } else {
+                        next()
+                    }
+
+                }
+            }
+        },
+        {
+            path: '/lab/:id',
+            component: require('./components/lab').default,
+            meta: {
+                requiresAuth: true
+            },
+            beforeEnter: (to, from, next) => {
+                if (to.matched.some(record => record.meta.requiresAuth)) {
+                    if (localStorage.getItem('token') == null) {
+                        next('/login');
+                    } else {
+                        next()
+                    }
+
+                }
+            }
+        },
+        {
             path: '/contactus',
             component: require('./components/contactus').default,
         },
