@@ -15,8 +15,8 @@
             />
             <img src="/Web/55.png" class="centered img-g" alt="over-image" />
             <div class="border bg-treat mt-5 centered w-50">
-              <h1 class="words1">{{$t('message.learn')}}</h1>
-              <h2 class="words">{{$t('message.every')}}</h2>
+              <h1 class="words1">{{ $t("message.learn") }}</h1>
+              <h2 class="words">{{ $t("message.every") }}</h2>
               <br />
               <p class="pargra">
                 It is a long established fact that a reader will be distracted
@@ -43,14 +43,17 @@
           </div>
         </div>
         <div class="col-md-2 mt-5 x-ray">
-          <div class="border rounded-sm border-corner borda" @click="goTo('Laboratories')">
+          <div
+            class="border rounded-sm border-corner borda"
+            @click="goTo('Laboratories')"
+          >
             <img src="Web/mico.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">Laboratories</h6>
           </div>
         </div>
         <div class="col-md-2 mt-5 x-ray" @click="goTo('xrays')">
           <div class="border rounded-sm border-corner borda">
-            <img  src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
+            <img src="Web/x-ray.png" class="mx-auto d-block mt-5" alt="" />
             <h6 class="offset-3 mt-3">x-ray centers</h6>
           </div>
         </div>
@@ -74,15 +77,11 @@
       </div>
       <div class="row head">
         <h3 class="font-b">Recommended <span class="head2">Hospitals</span></h3>
-        <router-link
-        to="hospitals"
-          type="submit"
-          class="offset-6 view view-mo"
-        >
-        Browse Hospitals
+        <router-link to="hospitals" type="submit" class="offset-6 view view-mo">
+          Browse Hospitals
         </router-link>
       </div>
-      <div class="content mb-5">
+      <!-- <div class="content mb-5">
         <div class="row">
           <div class="col-4" v-for="(hospital,i) in hosp">
             <div class="card pr-4">
@@ -102,6 +101,46 @@
                 <p class="card-text dar">{{hospital.name}}</p>
                 <p class="card-title parg">{{hospital.region}} <span class="float-right ">{{hospital.number_of_views}} Views</span></p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="card-deck">
+        <div class="card" v-for="(hospital, i) in hosp">
+          <div @click="goTo('/details/' + hospital.id )">
+          <div class="overlay">
+            <div class="text">Preview Hospital</div>
+          </div>
+          <img
+            class="card-img-top"
+            :src="hospital.images[0].image"
+            alt="Card image cap"
+          />
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <p class="card-title text-muted">
+                {{ hospital.address }}
+              </p>
+              <p class="card-title text-muted ml-auto">
+                <img src="Web/179.png" alt="" />
+                 {{ hospital.distance }}km
+              </p>
+            </div>
+            <div class="row">
+            <h5 class="card-title">{{ hospital.name }}</h5>
+            </div>
+            <div class="row">
+              <p class="card-title text-muted">
+                <div v-for="star in 5">
+                  <i class="fas fa-star text-warning" v-if="hospital.rate >= star"></i>
+                  <i class="far fa-star text-warning" v-else></i>
+                </div>
+                ({{ hospital.rate }})
+              </p>
+              <p class="card-title text-muted ml-auto">
+                 {{ hospital.number_of_views }} views
+              </p>
             </div>
           </div>
         </div>
@@ -225,8 +264,6 @@ export default {
         this.hosp[0] = result.data.data[0];
         this.hosp[1] = result.data.data[1];
         this.hosp[2] = result.data.data[2];
-        this.prevUrl = result.data.links.prev;
-        this.nextUrl = result.data.links.next;
         console.log(result.data.data);
       })
       .catch((error) => {
@@ -250,12 +287,13 @@ export default {
       hosp: [],
       prevUrl: false,
       nextUrl: false,
+      star: [],
     };
   },
   methods: {
     getDoctors(url) {
       axios
-        .get(url+ "&paginate=5")
+        .get(url + "&paginate=5")
         .then((result) => {
           this.drs = result.data.data;
           this.prevUrl = result.data.links.prev;
@@ -266,9 +304,9 @@ export default {
           console.log(error);
         });
     },
-    goTo(url){
-          this.$router.push(url);
-    }
+    goTo(url) {
+      this.$router.push(url);
+    },
   },
 };
 </script>

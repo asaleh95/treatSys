@@ -2,13 +2,12 @@
 <template>
   <div class="row">
     <div class="col-md-4 pl-5 pt-5">
-      <h1 class="logi">HELP!</h1>
+      <h1 class="logi">{{$t('message.help')}}!</h1>
       <br />
-      <h4>Forgot Password!</h4>
+      <h4>{{$t('message.forget')}}!</h4>
       <br />
       <p class="text-muted font-d">
-        There are many variations of passages of Lorem Ipsum available, some
-        form .
+        {{$t('message.help_paragraph')}}
       </p>
       <br />
       <form
@@ -24,7 +23,7 @@
             v-model="password"
             id="pass"
             name="password"
-            placeholder="Password"
+            :placeholder="$t('message.new_password')"
           />
           <span toggle="#password-field" :class="'fa fa-fw fa-eye field-icon toggle-password ' + seePassword" @click="see()"></span>
           <span style="color: red" v-text="error.get('password')"></span>
@@ -36,7 +35,7 @@
             v-model="password"
             id="pass"
             name="password"
-            placeholder="Re-Password"
+            :placeholder="$t('message.re_new_password')"
           />
           <span style="color: red" v-text="error.get('password')"></span>
         </div>
@@ -44,13 +43,13 @@
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
         >
-          change password
+          {{$t('message.change_password')}}
         </button>
       </form>
       <br />
       <br />
       <p class="text-muted text-center font-d">
-        i remember my password !<a href="#">Sing in</a>
+        {{$t('message.i_remember_my_password')}} !<a href="#">{{$t('message.signin')}}</a>
       </p>
     </div>
     <div class="hide-st col-md-8">
@@ -68,8 +67,8 @@
         alt="over-image"
       />
       <div>
-        <h1 class="center-help">We Trust</h1>
-        <h1 class="center-help text-t7t">We Care</h1>
+        <h1 class="center-help">{{$t('message.trust')}}</h1>
+        <h1 class="center-help text-t7t">{{$t('message.care')}}</h1>
       </div>
     </div>
   </div>

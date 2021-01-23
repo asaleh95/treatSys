@@ -8,8 +8,6 @@
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
           <span class="text-primary"> 7,618 results found in 5ms</span>
         </h5>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
       </div>
       <br /><br />
       <div class="row">
@@ -19,41 +17,52 @@
         <a class="search" href="#"><img src="Web/gro.png" alt="" /></a>
         <a class="search" href="#"><img src="Web/gro2.png" alt="" /></a>
       </div>
-      <hr />
-      <div class="content">
-        <div class="row">
-          <div
-            class="col-3 mb-5 hospital-click"
-            v-for="(hospital, i) in resultQuery"
-            @click="goTo(hospital.id)"
-          >
-            <div class="card pr-4 h-100">
-              <img
-                class="card-img-top card-hospital card-hospital-10"
-                :src="hospital.images[0].image"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title parg">
-                  <span class="d-inline">
-                    {{ hospital.address }}
-                  </span>
-                  <div class="float-right d-inline">
-                    <img src="Web/179.png" alt="" />
-                    <span class="parg">{{ hospital.distance }}km</span>
-                  </div>
-                </h5>
-                <p class="card-text dar">{{ hospital.name }}</p>
-                <p class="card-title parg d-inline">
-                  <span class="">{{ hospital.region }} </span>
-                  <span class="float-right"
-                    >{{ hospital.number_of_views }} Views</span
-                  >
-                </p>
-              </div>
+      <!-- <hr /> -->
+      <div class="row">
+        <input type="text" class="col-md-12 form-control border-top-0 border-left-0 border-right-0" name="" id="">
+      </div>
+
+      <div class="row">
+      <div class="card-deck col-md-4" v-for="(hospital, i) in hosp">
+        <div class="card">
+          <div @click="goTo(hospital.id )">
+          <div class="overlay">
+            <div class="text">Preview Hospital</div>
+          </div>
+          <img
+            class="card-img-top"
+            :src="hospital.images[0].image"
+            alt="Card image cap"
+          />
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <p class="card-title text-muted">
+                {{ hospital.address }}
+              </p>
+              <p class="card-title text-muted ml-auto">
+                <img src="Web/179.png" alt="" />
+                 {{ hospital.distance }}km
+              </p>
+            </div>
+            <div class="row">
+            <h5 class="card-title">{{ hospital.name }}</h5>
+            </div>
+            <div class="row">
+              <p class="card-title text-muted">
+                <div v-for="star in 5">
+                  <i class="fas fa-star text-warning" v-if="hospital.rate >= star"></i>
+                  <i class="far fa-star text-warning" v-else></i>
+                </div>
+                ({{ hospital.rate }})
+              </p>
+              <p class="card-title text-muted ml-auto">
+                 {{ hospital.number_of_views }} views
+              </p>
             </div>
           </div>
         </div>
+      </div>
       </div>
       <br /><br />
       <div class="row mb-5">

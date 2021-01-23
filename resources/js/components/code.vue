@@ -2,13 +2,12 @@
 <template>
   <div class="row">
     <div class="col-md-4 pl-5 pt-5">
-      <h1 class="logi">HELP!</h1>
+      <h1 class="logi">{{ $t("message.help") }}!</h1>
       <br />
-      <h4>Forgot Password!</h4>
+      <h4>{{ $t("message.forget") }}!</h4>
       <br />
       <p class="text-muted font-d">
-        There are many variations of passages of Lorem Ipsum available, some
-        form .
+        {{ $t("message.help_paragraph") }}
       </p>
       <br />
       <br />
@@ -60,39 +59,40 @@
             id="code"
           />
         </div>
-          <span style="color: red" v-text="error.get('code')"></span>
+        <span style="color: red" v-text="error.get('code')"></span>
         <br />
         <br />
-       <button
+        <button
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
         >
-          done
+          {{ $t("message.done") }}
         </button>
       </form>
       <br />
       <br />
       <p class="text-muted text-center">
-        i don't receive emails ! <a href="#"> Resend</a>
+        {{ $t("message.i_dont_recieve_emails") }} !
+        <a href="#" @click="resend()"> {{ $t("message.resend") }}</a>
       </p>
     </div>
     <div class="hide-st col-md-8">
       <img
-            src="/Web/5.png"
-            class="back-color"
-            alt="Cinque Terre"
-                height="625"
-                width="904"
-          />
-          <img
+        src="/Web/5.png"
+        class="back-color"
+        alt="Cinque Terre"
+        height="625"
+        width="904"
+      />
+      <img
         src="/Web/55.png"
         class="topleft-help"
         style="width: 110%"
         alt="over-image"
       />
       <div>
-        <h1 class="center-help">We Trust</h1>
-        <h1 class="center-help text-t7t">We Care</h1>
+        <h1 class="center-help">{{ $t("message.trust") }}</h1>
+        <h1 class="center-help text-t7t">{{ $t("message.care") }}</h1>
       </div>
     </div>
   </div>
@@ -126,6 +126,21 @@ export default {
         })
         .catch((err) => {
           // this.error = "خطأ فى الباسورد او الايميل"
+          console.log(err.error);
+        });
+    },
+    resend() {
+      let all = {
+        email: sessionStorage.getItem("code-email"),
+      };
+      console.log(all);
+      axios
+        .post("/forget-password", all)
+        .then((result) => {
+          console.log(result.data);
+          this.$router.push("/code");
+        })
+        .catch((err) => {
           console.log(err.error);
         });
     },

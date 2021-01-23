@@ -2,13 +2,12 @@
 <template>
   <div class="row">
     <div class="col-md-4 pl-5 pt-5" style="z-index: 1">
-      <h2 class="logi">LOGIN</h2>
+      <h2 class="logi">{{$t('message.login')}}</h2>
       <br />
-      <h4>Hi there!</h4>
+      <h4>{{$t('message.hi')}}!</h4>
       <br />
       <p class="text-paragraph-login">
-        There are many variations of passages of Lorem Ipsum available, some
-        form .
+        {{$t('message.login_paragraph')}}
       </p>
       <form
         action="#"
@@ -22,7 +21,7 @@
           type="text"
           name="email"
           v-model="email"
-          placeholder="email addres"
+          :placeholder="$t('message.email')"
         />
 
         <span style="color: red" v-text="error.get('email')"></span>
@@ -33,7 +32,7 @@
             :type="passwordType"
             name="password"
             v-model="password"
-            placeholder="password"
+            :placeholder="$t('message.password')"
           />
           <span toggle="#password-field" :class="'fa fa-fw fa-eye field-icon toggle-password ' + seePassword" @click="see()"></span>
           <span style="color: red" v-text="error.get('password')"></span>
@@ -45,12 +44,12 @@
           <input type="checkbox" name="thing" value="valuable" id="thing" />
           <label for="thing" class="ml-3"></label>
           <Span class="ml-2 mt-n1 checkboox-label text-muted text-center"
-            >Remember Me</Span
+            >{{$t('message.remember_me')}}</Span
           >
           <router-link
             to="help"
             class="mt-n1 offset-md-4 forget-password-text text-center"
-            >Forget Password</router-link
+            >{{$t('message.forget')}}</router-link
           >
         </div>
         <br />
@@ -60,13 +59,13 @@
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
         >
-          login
+          {{ $t('message.login') }}
         </button>
 
         <br />
       </form>
       <p class="text-donthaveaccount offset-md-3 mt-5 text-muted text-center">
-        Don't have an account ? <router-link to="signup">Sign up</router-link>
+        {{$t('message.no_account')}} <router-link to="signup">{{$t('message.sign_up')}}</router-link>
       </p>
       <div class="row">
         <div class="col-md-3 mt-5">
@@ -74,7 +73,7 @@
         </div>
 
         <div class="col-md-6 mt-5">
-          <p class="text-muted text-center">Or continue with</p>
+          <p class="text-muted text-center">{{$t('message.or_continue_with')}}</p>
         </div>
         <div class="col-md-3 mt-5">
           <br />
@@ -101,8 +100,8 @@
       />
       <img src="/Web/55.png" class="topleft" alt="over-image" />
       <div>
-        <h1 class="center">We Trust</h1>
-        <h1 class="center text-t7t">We Care</h1>
+        <h1 class="center">{{$t('message.trust')}}</h1>
+        <h1 class="center text-t7t">{{$t('message.care')}}</h1>
       </div>
     </div>
   </div>

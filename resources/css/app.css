@@ -12,10 +12,27 @@
 @import "./doctor.css";
 @import "./help.css";
 
-
+.active{
+    color: #0782bd !important;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }  
 body{
     overflow-x: hidden;
 }
+.pr-6 {
+    padding-right: 10% !important;
+  }
 
  /* body{ */
     /* overflow: hidden; */

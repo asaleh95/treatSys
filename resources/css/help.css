@@ -1,25 +1,23 @@
-@media only screen and (max-width: 600px) {
-
-.hide-st{
+@media only screen and (max-width: 1300px) {
+  .hide-st {
     display: none;
-}
+  }
 }
 
 .topleft-help {
-    position: absolute;
-    bottom: 1%;
-    /* left: -17%; */
-    right: 2%;
-    width: 87% !important;
+  position: absolute;
+  bottom: 1%;
+  /* left: -17%; */
+  right: 2%;
+  width: 87% !important;
+}
 
-  }
-
-  .center-help {
-    position: absolute;
-    top: 30%;
-    /* left: 32%; */
-    right: 33%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
-    color: white;
-  }
+.center-help {
+  position: absolute;
+  top: 30%;
+  /* left: 32%; */
+  right: 33%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  color: white;
+}

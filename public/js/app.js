@@ -2197,6 +2197,21 @@ __webpack_require__.r(__webpack_exports__);
         // this.error = "خطأ فى الباسورد او الايميل"
         console.log(err.error);
       });
+    },
+    resend: function resend() {
+      var _this2 = this;
+
+      var all = {
+        email: sessionStorage.getItem("code-email")
+      };
+      console.log(all);
+      axios.post("/forget-password", all).then(function (result) {
+        console.log(result.data);
+
+        _this2.$router.push("/code");
+      })["catch"](function (err) {
+        console.log(err.error);
+      });
     }
   }
 });
@@ -2718,6 +2733,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2729,7 +2745,6 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      //this.products = JSON.parse(localStorage.getItem('products'));
       var all = {
         email: this.email
       };
@@ -2740,7 +2755,6 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$router.push("/code");
       })["catch"](function (err) {
-        // this.error = "خطأ فى الباسورد او الايميل"
         console.log(err.error);
       });
     }
@@ -2758,6 +2772,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3275,6 +3298,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -3283,8 +3345,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.hosp[0] = result.data.data[0];
       _this.hosp[1] = result.data.data[1];
       _this.hosp[2] = result.data.data[2];
-      _this.prevUrl = result.data.links.prev;
-      _this.nextUrl = result.data.links.next;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -3303,7 +3363,8 @@ __webpack_require__.r(__webpack_exports__);
       drs: [],
       hosp: [],
       prevUrl: false,
-      nextUrl: false
+      nextUrl: false,
+      star: []
     };
   },
   methods: {
@@ -3336,7 +3397,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -3504,7 +3564,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -3932,7 +3991,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -24776,18 +24834,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-4 pl-5 pt-5" }, [
-      _c("h1", { staticClass: "logi" }, [_vm._v("HELP!")]),
+      _c("h1", { staticClass: "logi" }, [
+        _vm._v(_vm._s(_vm.$t("message.help")) + "!")
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("h4", [_vm._v("Forgot Password!")]),
+      _c("h4", [_vm._v(_vm._s(_vm.$t("message.forget")) + "!")]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _c("p", { staticClass: "text-muted font-d" }, [
-        _vm._v(
-          "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
-        )
+        _vm._v("\n      " + _vm._s(_vm.$t("message.help_paragraph")) + "\n    ")
       ]),
       _vm._v(" "),
       _c("br"),
@@ -24964,7 +25022,7 @@ var render = function() {
               staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
               attrs: { type: "submit" }
             },
-            [_vm._v("\n        done\n      ")]
+            [_vm._v("\n        " + _vm._s(_vm.$t("message.done")) + "\n      ")]
           )
         ]
       ),
@@ -24973,27 +25031,28 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0)
+      _c("p", { staticClass: "text-muted text-center" }, [
+        _vm._v(
+          "\n      " +
+            _vm._s(_vm.$t("message.i_dont_recieve_emails")) +
+            " !\n      "
+        ),
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                return _vm.resend()
+              }
+            }
+          },
+          [_vm._v(" " + _vm._s(_vm.$t("message.resend")))]
+        )
+      ])
     ]),
     _vm._v(" "),
-    _vm._m(1)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-muted text-center" }, [
-      _vm._v("\n      i don't receive emails ! "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v(" Resend")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hide-st col-md-8" }, [
+    _c("div", { staticClass: "hide-st col-md-8" }, [
       _c("img", {
         staticClass: "back-color",
         attrs: {
@@ -25011,13 +25070,18 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", [
-        _c("h1", { staticClass: "center-help" }, [_vm._v("We Trust")]),
+        _c("h1", { staticClass: "center-help" }, [
+          _vm._v(_vm._s(_vm.$t("message.trust")))
+        ]),
         _vm._v(" "),
-        _c("h1", { staticClass: "center-help text-t7t" }, [_vm._v("We Care")])
+        _c("h1", { staticClass: "center-help text-t7t" }, [
+          _vm._v(_vm._s(_vm.$t("message.care")))
+        ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25753,17 +25817,19 @@ var render = function() {
       "div",
       { staticClass: "col-md-4 pl-5 pt-5", staticStyle: { "z-index": "1" } },
       [
-        _c("h2", { staticClass: "logi" }, [_vm._v("HELP!")]),
+        _c("h2", { staticClass: "logi" }, [
+          _vm._v(_vm._s(_vm.$t("message.help")) + "!")
+        ]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("h4", [_vm._v("Forgot Password!")]),
+        _c("h4", [_vm._v(_vm._s(_vm.$t("message.forget")) + "!")]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("p", { staticClass: "text-muted font-d" }, [
           _vm._v(
-            "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
+            "\n      " + _vm._s(_vm.$t("message.help_paragraph")) + "\n    "
           )
         ]),
         _vm._v(" "),
@@ -25798,7 +25864,7 @@ var render = function() {
               attrs: {
                 type: "text",
                 name: "email",
-                placeholder: "email addres"
+                placeholder: _vm.$t("message.email")
               },
               domProps: { value: _vm.email },
               on: {
@@ -25822,7 +25888,11 @@ var render = function() {
                 staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        Next\n      ")]
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.$t("message.next")) + "\n      "
+                )
+              ]
             )
           ]
         ),
@@ -25833,47 +25903,50 @@ var render = function() {
           "p",
           { staticClass: "text-muted text-center font-d" },
           [
-            _vm._v("\n      i will try again ! "),
-            _c("router-link", { attrs: { to: "login" } }, [_vm._v("Sign in")])
+            _vm._v(
+              "\n      " + _vm._s(_vm.$t("message.I_will_try_again")) + " ! "
+            ),
+            _c("router-link", { attrs: { to: "login" } }, [
+              _vm._v(_vm._s(_vm.$t("message.signin")))
+            ])
           ],
           1
         )
       ]
     ),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hide-st col-md-8" }, [
+    _c("div", { staticClass: "hide-st col-md-8" }, [
       _c("img", {
         staticClass: "back-color",
         attrs: {
           src: "/Web/5.png",
           alt: "Cinque Terre",
           height: "625",
-          width: "904"
+          width: "1366"
         }
       }),
       _vm._v(" "),
-      _c("img", {
-        staticClass: "topleft-help",
-        staticStyle: { width: "110%" },
-        attrs: { src: "/Web/55.png", alt: "over-image" }
-      }),
-      _vm._v(" "),
-      _c("div", [
-        _c("h1", { staticClass: "center-help" }, [_vm._v("We Trust")]),
+      _c("div", {}, [
+        _c("img", {
+          staticClass: "topleft-help",
+          staticStyle: { width: "110%" },
+          attrs: { src: "/Web/55.png", alt: "over-image" }
+        }),
         _vm._v(" "),
-        _c("h1", { staticClass: "center-help text-t7t" }, [_vm._v("We Care")])
+        _c("div", [
+          _c("h1", { staticClass: "center-help" }, [
+            _vm._v(_vm._s(_vm.$t("message.trust")))
+          ]),
+          _vm._v(" "),
+          _c("h1", { staticClass: "center-help text-t7t" }, [
+            _vm._v(_vm._s(_vm.$t("message.care")))
+          ])
+        ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25911,76 +25984,109 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _c("hr"),
+          _vm._m(2),
           _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.resultQuery, function(hospital, i) {
-                return _c(
-                  "div",
-                  {
-                    staticClass: "col-3 mb-5 hospital-click",
-                    on: {
-                      click: function($event) {
-                        return _vm.goTo(hospital.id)
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.hosp, function(hospital, i) {
+              return _c("div", { staticClass: "card-deck col-md-4" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c(
+                    "div",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.goTo(hospital.id)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "card pr-4 h-100" }, [
+                    },
+                    [
+                      _vm._m(3, true),
+                      _vm._v(" "),
                       _c("img", {
-                        staticClass:
-                          "card-img-top card-hospital card-hospital-10",
+                        staticClass: "card-img-top",
                         attrs: {
                           src: hospital.images[0].image,
                           alt: "Card image cap"
                         }
-                      }),
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("p", { staticClass: "card-title text-muted" }, [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(hospital.address) +
+                            "\n            "
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h5", { staticClass: "card-title parg" }, [
-                          _c("span", { staticClass: "d-inline" }, [
-                            _vm._v(
-                              "\n                  " +
-                                _vm._s(hospital.address) +
-                                "\n                "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "float-right d-inline" }, [
-                            _c("img", {
-                              attrs: { src: "Web/179.png", alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "parg" }, [
-                              _vm._v(_vm._s(hospital.distance) + "km")
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text dar" }, [
-                          _vm._v(_vm._s(hospital.name))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-title parg d-inline" }, [
-                          _c("span", {}, [
-                            _vm._v(_vm._s(hospital.region) + " ")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "float-right" }, [
-                            _vm._v(_vm._s(hospital.number_of_views) + " Views")
-                          ])
-                        ])
+                      _c(
+                        "p",
+                        { staticClass: "card-title text-muted ml-auto" },
+                        [
+                          _c("img", { attrs: { src: "Web/179.png", alt: "" } }),
+                          _vm._v(
+                            "\n               " +
+                              _vm._s(hospital.distance) +
+                              "km\n            "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v(_vm._s(hospital.name))
                       ])
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
-          ]),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      [
+                        _c("p", { staticClass: "card-title text-muted" }),
+                        _vm._l(5, function(star) {
+                          return _c("div", [
+                            hospital.rate >= star
+                              ? _c("i", {
+                                  staticClass: "fas fa-star text-warning"
+                                })
+                              : _c("i", {
+                                  staticClass: "far fa-star text-warning"
+                                })
+                          ])
+                        }),
+                        _vm._v(
+                          "\n              (" +
+                            _vm._s(hospital.rate) +
+                            ")\n            "
+                        ),
+                        _c("p"),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "card-title text-muted ml-auto" },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(hospital.number_of_views) +
+                                " views\n            "
+                            )
+                          ]
+                        )
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          ),
           _vm._v(" "),
           _c("br"),
           _c("br"),
@@ -26036,14 +26142,6 @@ var staticRenderFns = [
         _c("span", { staticClass: "text-primary" }, [
           _vm._v(" 7,618 results found in 5ms")
         ])
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("img", { attrs: { src: "Web/search+.png", alt: "" } })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("img", { attrs: { src: "Web/search+.png", alt: "" } })
       ])
     ])
   },
@@ -26063,6 +26161,26 @@ var staticRenderFns = [
       _c("a", { staticClass: "search", attrs: { href: "#" } }, [
         _c("img", { attrs: { src: "Web/gro2.png", alt: "" } })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("input", {
+        staticClass:
+          "col-md-12 form-control border-top-0 border-left-0 border-right-0",
+        attrs: { type: "text", name: "", id: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "text" }, [_vm._v("Preview Hospital")])
     ])
   }
 ]
@@ -26425,60 +26543,107 @@ var render = function() {
                   staticClass: "offset-6 view view-mo",
                   attrs: { to: "hospitals", type: "submit" }
                 },
-                [_vm._v("\n      Browse Hospitals\n      ")]
+                [_vm._v("\n        Browse Hospitals\n      ")]
               )
             ],
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "content mb-5" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.hosp, function(hospital, i) {
-                return _c("div", { staticClass: "col-4" }, [
-                  _c("div", { staticClass: "card pr-4" }, [
+          _c(
+            "div",
+            { staticClass: "card-deck" },
+            _vm._l(_vm.hosp, function(hospital, i) {
+              return _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.goTo("/details/" + hospital.id)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(6, true),
+                    _vm._v(" "),
                     _c("img", {
-                      staticClass: "card-img-top card-hospital",
+                      staticClass: "card-img-top",
                       attrs: {
                         src: hospital.images[0].image,
                         alt: "Card image cap"
                       }
-                    }),
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("p", { staticClass: "card-title text-muted" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(hospital.address) +
+                          "\n            "
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-title parg" }, [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(hospital.address) +
-                            "\n                "
-                        ),
-                        _c("div", { staticClass: "float-right" }, [
-                          _c("img", { attrs: { src: "Web/179.png", alt: "" } }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "parg" }, [
-                            _vm._v(_vm._s(hospital.distance) + "km")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text dar" }, [
-                        _vm._v(_vm._s(hospital.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-title parg" }, [
-                        _vm._v(_vm._s(hospital.region) + " "),
-                        _c("span", { staticClass: "float-right " }, [
-                          _vm._v(_vm._s(hospital.number_of_views) + " Views")
-                        ])
-                      ])
+                    _c("p", { staticClass: "card-title text-muted ml-auto" }, [
+                      _c("img", { attrs: { src: "Web/179.png", alt: "" } }),
+                      _vm._v(
+                        "\n               " +
+                          _vm._s(hospital.distance) +
+                          "km\n            "
+                      )
                     ])
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(hospital.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _c("p", { staticClass: "card-title text-muted" }),
+                      _vm._l(5, function(star) {
+                        return _c("div", [
+                          hospital.rate >= star
+                            ? _c("i", {
+                                staticClass: "fas fa-star text-warning"
+                              })
+                            : _c("i", {
+                                staticClass: "far fa-star text-warning"
+                              })
+                        ])
+                      }),
+                      _vm._v(
+                        "\n              (" +
+                          _vm._s(hospital.rate) +
+                          ")\n            "
+                      ),
+                      _c("p"),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        { staticClass: "card-title text-muted ml-auto" },
+                        [
+                          _vm._v(
+                            "\n               " +
+                              _vm._s(hospital.number_of_views) +
+                              " views\n            "
+                          )
+                        ]
+                      )
+                    ],
+                    2
+                  )
                 ])
-              }),
-              0
-            )
-          ]),
+              ])
+            }),
+            0
+          ),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
@@ -26487,9 +26652,9 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(6),
-            _vm._v(" "),
             _vm._m(7),
+            _vm._v(" "),
+            _vm._m(8),
             _vm._v(" "),
             _c("div", { staticClass: "row head" }, [
               _c("h3", { staticClass: "pr-auto" }, [
@@ -26533,15 +26698,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(8),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
           _vm._m(9),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
@@ -26549,7 +26706,15 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(11)
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(11),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(12)
         ],
         1
       ),
@@ -26636,6 +26801,14 @@ var staticRenderFns = [
     return _c("h3", { staticClass: "font-b" }, [
       _vm._v("Recommended "),
       _c("span", { staticClass: "head2" }, [_vm._v("Hospitals")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "text" }, [_vm._v("Preview Hospital")])
     ])
   },
   function() {
@@ -26840,17 +27013,19 @@ var render = function() {
       "div",
       { staticClass: "col-md-4 pl-5 pt-5", staticStyle: { "z-index": "1" } },
       [
-        _c("h2", { staticClass: "logi" }, [_vm._v("LOGIN")]),
+        _c("h2", { staticClass: "logi" }, [
+          _vm._v(_vm._s(_vm.$t("message.login")))
+        ]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("h4", [_vm._v("Hi there!")]),
+        _c("h4", [_vm._v(_vm._s(_vm.$t("message.hi")) + "!")]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("p", { staticClass: "text-paragraph-login" }, [
           _vm._v(
-            "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
+            "\n      " + _vm._s(_vm.$t("message.login_paragraph")) + "\n    "
           )
         ]),
         _vm._v(" "),
@@ -26889,7 +27064,7 @@ var render = function() {
               attrs: {
                 type: "text",
                 name: "email",
-                placeholder: "email addres"
+                placeholder: _vm.$t("message.email")
               },
               domProps: { value: _vm.email },
               on: {
@@ -26923,7 +27098,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "password",
+                      placeholder: _vm.$t("message.password"),
                       type: "checkbox"
                     },
                     domProps: {
@@ -26966,7 +27141,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "password",
+                      placeholder: _vm.$t("message.password"),
                       type: "radio"
                     },
                     domProps: { checked: _vm._q(_vm.password, null) },
@@ -26988,7 +27163,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "password",
+                      placeholder: _vm.$t("message.password"),
                       type: _vm.passwordType
                     },
                     domProps: { value: _vm.password },
@@ -27041,7 +27216,7 @@ var render = function() {
                     staticClass:
                       "ml-2 mt-n1 checkboox-label text-muted text-center"
                   },
-                  [_vm._v("Remember Me")]
+                  [_vm._v(_vm._s(_vm.$t("message.remember_me")))]
                 ),
                 _vm._v(" "),
                 _c(
@@ -27051,7 +27226,7 @@ var render = function() {
                       "mt-n1 offset-md-4 forget-password-text text-center",
                     attrs: { to: "help" }
                   },
-                  [_vm._v("Forget Password")]
+                  [_vm._v(_vm._s(_vm.$t("message.forget")))]
                 )
               ],
               1
@@ -27070,7 +27245,11 @@ var render = function() {
                 staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        login\n      ")]
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.$t("message.login")) + "\n      "
+                )
+              ]
             ),
             _vm._v(" "),
             _c("br")
@@ -27084,65 +27263,31 @@ var render = function() {
               "text-donthaveaccount offset-md-3 mt-5 text-muted text-center"
           },
           [
-            _vm._v("\n      Don't have an account ? "),
-            _c("router-link", { attrs: { to: "signup" } }, [_vm._v("Sign up")])
+            _vm._v("\n      " + _vm._s(_vm.$t("message.no_account")) + " "),
+            _c("router-link", { attrs: { to: "signup" } }, [
+              _vm._v(_vm._s(_vm.$t("message.sign_up")))
+            ])
           ],
           1
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6 mt-5" }, [
+            _c("p", { staticClass: "text-muted text-center" }, [
+              _vm._v(_vm._s(_vm.$t("message.or_continue_with")))
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
       ]
     ),
     _vm._v(" "),
-    _vm._m(1)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 mt-5" }, [_c("hr")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 mt-5" }, [
-        _c("p", { staticClass: "text-muted text-center" }, [
-          _vm._v("Or continue with")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 mt-5" }, [
-        _c("br"),
-        _vm._v(" "),
-        _c("hr")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4 mt-5" }, [
-          _c("a", [
-            _c("img", { attrs: { src: "Web/Google Button.png", alt: "" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 mt-5" }, [
-          _c("a", [
-            _c("img", { attrs: { src: "Web/Facebook Button.png", alt: "" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 mt-5" }, [
-          _c("a", [
-            _c("img", { attrs: { src: "Web/Apple Button.png", alt: "" } })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8 hidd" }, [
+    _c("div", { staticClass: "col-md-8 hidd" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/511.png", alt: "Cinque Terre" }
@@ -27154,9 +27299,55 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", [
-        _c("h1", { staticClass: "center" }, [_vm._v("We Trust")]),
+        _c("h1", { staticClass: "center" }, [
+          _vm._v(_vm._s(_vm.$t("message.trust")))
+        ]),
         _vm._v(" "),
-        _c("h1", { staticClass: "center text-t7t" }, [_vm._v("We Care")])
+        _c("h1", { staticClass: "center text-t7t" }, [
+          _vm._v(_vm._s(_vm.$t("message.care")))
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3 mt-5" }, [_c("hr")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3 mt-5" }, [
+      _c("br"),
+      _vm._v(" "),
+      _c("hr")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-4 mt-5" }, [
+        _c("a", [
+          _c("img", { attrs: { src: "Web/Google Button.png", alt: "" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4 mt-5" }, [
+        _c("a", [
+          _c("img", { attrs: { src: "Web/Facebook Button.png", alt: "" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4 mt-5" }, [
+        _c("a", [
+          _c("img", { attrs: { src: "Web/Apple Button.png", alt: "" } })
+        ])
       ])
     ])
   }
@@ -27184,18 +27375,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-4 pl-5 pt-5" }, [
-      _c("h1", { staticClass: "logi" }, [_vm._v("HELP!")]),
+      _c("h1", { staticClass: "logi" }, [
+        _vm._v(_vm._s(_vm.$t("message.help")) + "!")
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("h4", [_vm._v("Forgot Password!")]),
+      _c("h4", [_vm._v(_vm._s(_vm.$t("message.forget")) + "!")]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _c("p", { staticClass: "text-muted font-d" }, [
-        _vm._v(
-          "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
-        )
+        _vm._v("\n      " + _vm._s(_vm.$t("message.help_paragraph")) + "\n    ")
       ]),
       _vm._v(" "),
       _c("br"),
@@ -27233,7 +27424,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Password",
+                    placeholder: _vm.$t("message.new_password"),
                     type: "checkbox"
                   },
                   domProps: {
@@ -27277,7 +27468,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Password",
+                    placeholder: _vm.$t("message.new_password"),
                     type: "radio"
                   },
                   domProps: { checked: _vm._q(_vm.password, null) },
@@ -27300,7 +27491,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Password",
+                    placeholder: _vm.$t("message.new_password"),
                     type: _vm.passwordType
                   },
                   domProps: { value: _vm.password },
@@ -27346,7 +27537,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Re-Password",
+                    placeholder: _vm.$t("message.re_new_password"),
                     type: "checkbox"
                   },
                   domProps: {
@@ -27390,7 +27581,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Re-Password",
+                    placeholder: _vm.$t("message.re_new_password"),
                     type: "radio"
                   },
                   domProps: { checked: _vm._q(_vm.password, null) },
@@ -27413,7 +27604,7 @@ var render = function() {
                   attrs: {
                     id: "pass",
                     name: "password",
-                    placeholder: "Re-Password",
+                    placeholder: _vm.$t("message.re_new_password"),
                     type: _vm.passwordType
                   },
                   domProps: { value: _vm.password },
@@ -27439,7 +27630,13 @@ var render = function() {
               staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
               attrs: { type: "submit" }
             },
-            [_vm._v("\n        change password\n      ")]
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(_vm.$t("message.change_password")) +
+                  "\n      "
+              )
+            ]
           )
         ]
       ),
@@ -27448,27 +27645,17 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0)
+      _c("p", { staticClass: "text-muted text-center font-d" }, [
+        _vm._v(
+          "\n      " + _vm._s(_vm.$t("message.i_remember_my_password")) + " !"
+        ),
+        _c("a", { attrs: { href: "#" } }, [
+          _vm._v(_vm._s(_vm.$t("message.signin")))
+        ])
+      ])
     ]),
     _vm._v(" "),
-    _vm._m(1)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-muted text-center font-d" }, [
-      _vm._v("\n      i remember my password !"),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Sing in")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hide-st col-md-8" }, [
+    _c("div", { staticClass: "hide-st col-md-8" }, [
       _c("img", {
         staticClass: "back-color",
         attrs: {
@@ -27486,13 +27673,18 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", [
-        _c("h1", { staticClass: "center-help" }, [_vm._v("We Trust")]),
+        _c("h1", { staticClass: "center-help" }, [
+          _vm._v(_vm._s(_vm.$t("message.trust")))
+        ]),
         _vm._v(" "),
-        _c("h1", { staticClass: "center-help text-t7t" }, [_vm._v("We Care")])
+        _c("h1", { staticClass: "center-help text-t7t" }, [
+          _vm._v(_vm._s(_vm.$t("message.care")))
+        ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28246,17 +28438,19 @@ var render = function() {
       "div",
       { staticClass: "col-md-4 pl-5 pt-5", staticStyle: { "z-index": "1" } },
       [
-        _c("h1", { staticClass: "logi" }, [_vm._v("SIGN up")]),
+        _c("h1", { staticClass: "logi" }, [
+          _vm._v(_vm._s(_vm.$t("message.sign_up")))
+        ]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("h4", [_vm._v("Register new account")]),
+        _c("h4", [_vm._v(_vm._s(_vm.$t("message.register_new_account")))]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("p", { staticClass: "font-d" }, [
           _vm._v(
-            "\n      There are many variations of passages of Lorem Ipsum available, some\n      form .\n    "
+            "\n      " + _vm._s(_vm.$t("message.help_paragraph")) + "\n    "
           )
         ]),
         _vm._v(" "),
@@ -28296,7 +28490,7 @@ var render = function() {
                 type: "text",
                 id: "email",
                 name: "email",
-                placeholder: "Email Address"
+                placeholder: _vm.$t("message.email")
               },
               domProps: { value: _vm.email },
               on: {
@@ -28329,7 +28523,7 @@ var render = function() {
                     attrs: {
                       id: "pass",
                       name: "password",
-                      placeholder: "Password",
+                      placeholder: _vm.$t("message.password"),
                       type: "checkbox"
                     },
                     domProps: {
@@ -28373,7 +28567,7 @@ var render = function() {
                     attrs: {
                       id: "pass",
                       name: "password",
-                      placeholder: "Password",
+                      placeholder: _vm.$t("message.password"),
                       type: "radio"
                     },
                     domProps: { checked: _vm._q(_vm.password, null) },
@@ -28396,7 +28590,7 @@ var render = function() {
                     attrs: {
                       id: "pass",
                       name: "password",
-                      placeholder: "Password",
+                      placeholder: _vm.$t("message.password"),
                       type: _vm.passwordType
                     },
                     domProps: { value: _vm.password },
@@ -28442,7 +28636,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "Re-password",
+                      placeholder: _vm.$t("message.re_password"),
                       type: "checkbox"
                     },
                     domProps: {
@@ -28485,7 +28679,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "Re-password",
+                      placeholder: _vm.$t("message.re_password"),
                       type: "radio"
                     },
                     domProps: { checked: _vm._q(_vm.password, null) },
@@ -28507,7 +28701,7 @@ var render = function() {
                     staticClass: "form-control form-control-lg mb-4",
                     attrs: {
                       name: "password",
-                      placeholder: "Re-password",
+                      placeholder: _vm.$t("message.re_password"),
                       type: _vm.passwordType
                     },
                     domProps: { value: _vm.password },
@@ -28542,7 +28736,7 @@ var render = function() {
                   type: "text",
                   id: "pass",
                   name: "phone",
-                  placeholder: "Phone"
+                  placeholder: _vm.$t("message.phone_number")
                 },
                 domProps: { value: _vm.phone },
                 on: {
@@ -28588,7 +28782,7 @@ var render = function() {
                 _c("label", { staticClass: "ml-3", attrs: { for: "thing" } }),
                 _vm._v(" "),
                 _c("Span", { staticClass: "ml-2 mt-n1 font-d" }, [
-                  _vm._v("i agree to the terms & conditions and privacy policy")
+                  _vm._v(_vm._s(_vm.$t("message.agree")))
                 ])
               ],
               1
@@ -28602,7 +28796,11 @@ var render = function() {
                 staticClass: "btn btn-primary btn-lg btn-block contactus-btn",
                 attrs: { type: "submit" }
               },
-              [_vm._v("\n        sign up\n      ")]
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.$t("message.sign_up")) + "\n      "
+                )
+              ]
             )
           ]
         ),
@@ -28613,23 +28811,19 @@ var render = function() {
           "p",
           { staticClass: "text-muted text-center font-d" },
           [
-            _vm._v("\n      have an account "),
-            _c("router-link", { attrs: { to: "login" } }, [_vm._v(" sign in")])
+            _vm._v(
+              "\n      " + _vm._s(_vm.$t("message.have_an_account")) + " "
+            ),
+            _c("router-link", { attrs: { to: "login" } }, [
+              _vm._v(_vm._s(_vm.$t("message.signin")))
+            ])
           ],
           1
         )
       ]
     ),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8 hide-st" }, [
+    _c("div", { staticClass: "col-md-8 hide-st" }, [
       _c("img", {
         staticClass: "img-fluid w-100 back-color",
         attrs: { src: "/Web/5.png", alt: "Cinque Terre" }
@@ -28641,13 +28835,18 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", [
-        _c("h1", { staticClass: "center" }, [_vm._v("We Trust")]),
+        _c("h1", { staticClass: "center" }, [
+          _vm._v(_vm._s(_vm.$t("message.trust")))
+        ]),
         _vm._v(" "),
-        _c("h1", { staticClass: "center text-t7t" }, [_vm._v("We Care")])
+        _c("h1", { staticClass: "center text-t7t" }, [
+          _vm._v(_vm._s(_vm.$t("message.care")))
+        ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29049,13 +29248,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("footer", { staticClass: "py-5 footer-b" }, [
-        _c("div", { staticClass: "row marg" }, [
-          _c("div", { staticClass: "col-12 col-sm-12 col-md" }, [
-            _c("img", { attrs: { src: "/Web/treat.png", alt: "" } })
+      _c("footer", { staticClass: "pt-5 px-5 footer-b" }, [
+        _c("div", { staticClass: "row pr-6" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-12" }, [
+            _c("img", {
+              staticClass: "d-block m-auto",
+              attrs: { src: "/Web/treat.png", alt: "" }
+            })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-2 col-sm-12 text-white" }, [
             _c("h5", [_vm._v("Commuinity")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -29085,7 +29287,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-2 col-sm-12 text-white" }, [
             _c("h5", [_vm._v("Support")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -29115,7 +29317,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-2 col-sm-12 text-white" }, [
             _c("h5", [_vm._v("Join Us")]),
             _vm._v(" "),
             _c("ul", { staticClass: "list-unstyled text-small" }, [
@@ -29145,7 +29347,7 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-12 col-md text-white" }, [
+          _c("div", { staticClass: "col-md-2 col-sm-12 text-white" }, [
             _c("h5", [_vm._v("Download App")]),
             _vm._v(" "),
             _c("br"),
@@ -29156,10 +29358,13 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      "text-white btn btn-info bg-white text-info col-md-8 mb-2",
+                      "text-white btn btn-info bg-white text-info col-md-12 mb-2",
                     attrs: { href: "#" }
                   },
-                  [_vm._v("Apple IOs")]
+                  [
+                    _c("i", { staticClass: "fab fa-apple" }),
+                    _vm._v("\n              Apple IOs\n              ")
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -29168,10 +29373,13 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass:
-                      " h1 text-white btn btn-info bg-white text-info col-md-8",
+                      "h1 text-white btn btn-info bg-white text-info col-md-12",
                     attrs: { href: "#" }
                   },
-                  [_vm._v("Google Play")]
+                  [
+                    _c("i", { staticClass: "fab fa-android" }),
+                    _vm._v("\n              Google Play\n              ")
+                  ]
                 )
               ])
             ])
@@ -29277,11 +29485,14 @@ var render = function() {
           _c("ul", { staticClass: "navbar-nav ml-auto" }, [
             _c(
               "li",
-              { staticClass: "nav-item active" },
+              { staticClass: "nav-item active font-weight-bold" },
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-dark", attrs: { to: "/" } },
+                  {
+                    staticClass: "p-2 text-dark",
+                    attrs: { exact: "", "active-class": "active", to: "/" }
+                  },
                   [_vm._v(_vm._s(_vm.$t("message.home")))]
                 )
               ],
@@ -29290,11 +29501,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "nav-item" },
+              { staticClass: "nav-item font-weight-bold" },
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-dark", attrs: { to: "blog" } },
+                  {
+                    staticClass: "p-2 text-dark",
+                    attrs: { "active-class": "active", to: "blog" }
+                  },
                   [_vm._v(_vm._s(_vm.$t("message.blog")))]
                 )
               ],
@@ -29303,11 +29517,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "nav-item" },
+              { staticClass: "nav-item font-weight-bold" },
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-dark", attrs: { to: "news" } },
+                  {
+                    staticClass: "p-2 text-dark",
+                    attrs: { "active-class": "active", to: "news" }
+                  },
                   [_vm._v(_vm._s(_vm.$t("message.news")))]
                 )
               ],
@@ -29316,11 +29533,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "nav-item active" },
+              { staticClass: "nav-item active font-weight-bold" },
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-dark", attrs: { to: "aboutus" } },
+                  {
+                    staticClass: "p-2 text-dark",
+                    attrs: { "active-class": "active", to: "aboutus" }
+                  },
                   [_vm._v(_vm._s(_vm.$t("message.about")))]
                 )
               ],
@@ -29329,18 +29549,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
-              {
-                class: "nav-item " + this.$root.active,
-                on: {
-                  click: function($event) {
-                    return _vm.color()
-                  }
-                }
-              },
+              { staticClass: "nav-item font-weight-bold" },
               [
                 _c(
                   "router-link",
-                  { staticClass: "p-2 text-dark", attrs: { to: "contactus" } },
+                  {
+                    staticClass: "p-2 text-dark",
+                    attrs: { "active-class": "active", to: "contactus" }
+                  },
                   [_vm._v(_vm._s(_vm.$t("message.contact")))]
                 )
               ],
@@ -29354,7 +29570,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "user text-dark",
+                staticClass: "user text-dark font-weight-bold",
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
@@ -46191,30 +46407,43 @@ window.messages = {
       contact: 'Contact Us',
       learn: 'Learn Something New',
       every: 'Everyday Anyday Anytime',
+      // login
       login: 'login',
-      email: 'Email',
+      hi: 'Hi there',
+      login_paragraph: 'There are many variations of passages of Lorem Ipsum available, some form .',
+      email: 'Email Address',
       password: 'password',
+      remember_me: 'Remember Me',
       forget: 'forget password',
       signin: 'sign in',
-      or_continue_with: 'or_continue_with',
-      register_new_account: 'register_new_account',
+      no_account: 'Don\'t have an account ?',
+      or_continue_with: 'Or continue with',
+      trust: 'We Trust',
+      care: 'We Care',
+      // help
+      help: 'HELP',
+      help_paragraph: 'There are many variations of passages of Lorem Ipsum available, some form .',
+      //
+      agree: 'i agree to the terms & conditions and privacy policy',
+      register_new_account: 'register new account',
       please_enter_your_data_to_create_account: 'please_enter_your_data_to_create_account',
-      re_password: 're_password',
-      phone_number: 'phone_number',
-      sign_up: 'sign_up',
+      re_password: 're-password',
+      phone_number: 'phone number',
+      sign_up: 'sign up',
       I_have_an_account: 'I_have_an_account',
+      have_an_account: 'have an account',
       please_enter_registered_email_id: 'please_enter_registered_email_id',
       next: 'next',
-      I_will_try_again: 'I_will_try_again?',
+      I_will_try_again: 'I will try again?',
       please_enter_your_verfication_code: 'please_enter_your_verfication_code',
       done: 'done',
-      i_dont_recieve_emails: 'i_don’t_recieve_emails',
+      i_dont_recieve_emails: 'i don’t recieve emails',
       resend: 'resend',
       please_enter_a_new_password: 'please_enter_a_new_password',
-      new_password: 'new_password',
-      re_new_password: 're_new_password',
+      new_password: 'new password',
+      re_new_password: 'renew password',
       change_password: 'change-password',
-      i_remember_my_password: 'i_remember_my_password'
+      i_remember_my_password: 'i remember my password'
     }, _defineProperty(_message, "doctors", 'doctors'), _defineProperty(_message, "laboratories", 'laboratories'), _defineProperty(_message, "x_ray_centers", 'x_ray_centers'), _defineProperty(_message, "hospitals", 'hospitals'), _defineProperty(_message, "pharmacies", 'pharmacies'), _defineProperty(_message, "favorite", 'favorite'), _defineProperty(_message, "settings", 'settings'), _defineProperty(_message, "language", 'language'), _defineProperty(_message, "arabic", 'arabic'), _defineProperty(_message, "terms_and_conditions", 'terms_and_conditions'), _defineProperty(_message, "save", 'save'), _defineProperty(_message, "discount", 'discount'), _defineProperty(_message, "send", 'send'), _defineProperty(_message, "subject", 'subject'), _defineProperty(_message, "your_email", 'your_email'), _defineProperty(_message, "your_name", 'your_name'), _defineProperty(_message, "we_are_happy", 'we_are_happy'), _message)
   },
   ar: {
@@ -46227,12 +46456,24 @@ window.messages = {
       contact: 'تواصل معنا',
       learn: 'تعلم شئ جديد',
       every: 'كل يوم اي يوم اي وقت',
-      login: 'يرجي تسجيل الدخول الي حسابك',
+      // login
+      login: 'تسجيل الدخول',
+      hi: 'اهلا بك',
+      login_paragraph: 'اهلا بك فى تريت ميديكال تعرفغ على افضل الاطباء و المسنشفيات و المعامل و المراكز الطبيه التى تساهم فى حل مشاكلك و الوصول للمطلوب و تشرفنا بك',
+      remember_me: 'تذكرنى',
+      no_account: 'ليس لدى حساب',
       email: 'البريد الالكتروني ',
       password: 'كلمه السر',
       forget: 'نسيت كلمه السر',
       signin: 'تسجيل الدخول',
+      trust: 'نحن نرعاك',
+      care: 'نحن نهتم بك',
       or_continue_with: 'او يمكنك التواصل من خلال',
+      agree: 'انا اوافق على الشروط و الاحكام و خصائص الملكيه',
+      have_an_account: 'لدى حساب',
+      //help
+      help: 'مساعده',
+      help_paragraph: 'هناك العديد من المتغيرات و المستشفيات و المعامل و الاطباء و الحصول على افضل دعم و افضل جوده و رقى و مساعده و مساهمه',
       register_new_account: 'تسجيل حساب جديد',
       please_enter_your_data_to_create_account: 'يرجي ادخال البيانات لتسجيل حساب جديد',
       re_password: 'إعادة كلمة السر',
@@ -46643,9 +46884,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

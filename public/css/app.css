@@ -423,6 +423,23 @@ color: #000;
     margin-left:7%;
 }
 
+.card:hover .overlay {
+    opacity: 1;
+  }
+  .card:hover .card-img-top {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
 @media only screen and (max-width: 600px) {
     .arrow-right {
         margin-left: 0;
@@ -471,33 +488,49 @@ color: #000;
     cursor: pointer;
 }.doc{
     
-}@media only screen and (max-width: 600px) {
-
-.hide-st{
+}@media only screen and (max-width: 1300px) {
+  .hide-st {
     display: none;
-}
+  }
 }
 
 .topleft-help {
-    position: absolute;
-    bottom: 1%;
-    /* left: -17%; */
-    right: 2%;
-    width: 87% !important;
+  position: absolute;
+  bottom: 1%;
+  /* left: -17%; */
+  right: 2%;
+  width: 87% !important;
+}
 
-  }
-
-  .center-help {
+.center-help {
+  position: absolute;
+  top: 30%;
+  /* left: 32%; */
+  right: 33%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  color: white;
+}.active{
+    color: #0782bd !important;
+}
+.overlay {
     position: absolute;
-    top: 30%;
-    /* left: 32%; */
-    right: 33%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
-    color: white;
-  }body{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }  
+body{
     overflow-x: hidden;
 }
+.pr-6 {
+    padding-right: 10% !important;
+  }
 
  /* body{ */
     /* overflow: hidden; */

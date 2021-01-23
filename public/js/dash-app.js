@@ -6849,56 +6849,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/users/" + this.$route.params.id).then(function (result) {
+      _this.user = result.data.data;
       _this.previewImage = result.data.data.image.image;
-      _this.dr.location = result.data.data.location.coordinates[0] + ',' + result.data.data.location.coordinates[1];
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -6907,9 +6864,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       previewImage: [],
-      dr: {},
+      user: {},
       errors: window.obj,
-      success: false
+      success: false,
+      password: ''
     };
   },
   methods: {
@@ -6922,7 +6880,7 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.onload = function (e) {
         _this2.previewImage = e.target.result;
-        _this2.dr.image = _this2.previewImage;
+        _this2.user.image = _this2.previewImage;
         console.log(_this2.image);
         console.log("ssssssssssssssssssss");
       };
@@ -6930,12 +6888,13 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this3 = this;
 
-      axios.put("/admins/doctors/" + this.dr.id, this.dr).then(function (result) {
+      this.user.password = this.password == '' ? null : this.password;
+      axios.put("/admins/users/" + this.user.id, this.user).then(function (result) {
         console.log(result.data); //
 
         _this3.success = true;
         setTimeout(function () {
-          return _this3.$router.push("/doctors/all");
+          return _this3.$router.push("/users/all");
         }, 2000);
       })["catch"](function (err) {
         return _this3.errors.record(err.response.data.errors);
@@ -34811,19 +34770,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.name,
-                      expression: "dr.name"
+                      value: _vm.user.email,
+                      expression: "user.email"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "آسم المستخدم" },
-                  domProps: { value: _vm.dr.name },
+                  attrs: { type: "text", placeholder: "بريد المستخدم" },
+                  domProps: { value: _vm.user.email },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "name", $event.target.value)
+                      _vm.$set(_vm.user, "email", $event.target.value)
                     }
                   }
                 }),
@@ -34831,7 +34790,7 @@ var render = function() {
                 _c("div", { staticClass: "animated bounce infinite rtl" }, [
                   _c("span", {
                     staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("name")) }
+                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
                   })
                 ])
               ]),
@@ -34844,19 +34803,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.phone,
-                      expression: "dr.phone"
+                      value: _vm.user.phone,
+                      expression: "user.phone"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "رقم الهاتف" },
-                  domProps: { value: _vm.dr.phone },
+                  attrs: { type: "text", placeholder: "رقم الهاتف" },
+                  domProps: { value: _vm.user.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "phone", $event.target.value)
+                      _vm.$set(_vm.user, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -34870,144 +34829,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("العنوان")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.address,
-                      expression: "dr.address"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.dr.address },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "address", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("address")) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("الاحداثيات")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.location,
-                      expression: "dr.location"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.dr.location },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "location", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("location"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("الوظيفه")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.position,
-                      expression: "dr.position"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.dr.position },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "position", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("position"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("التقييم")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.rate,
-                      expression: "dr.rate"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "التقييم" },
-                  domProps: { value: _vm.dr.rate },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "rate", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("rate")) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
                 _c("label", { attrs: { for: "name" } }, [
-                  _vm._v("السعر الاولى")
+                  _vm._v("الرقم السرى")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -35015,19 +34838,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dr.basic_price,
-                      expression: "dr.basic_price"
+                      value: _vm.password,
+                      expression: "password"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.dr.basic_price },
+                  attrs: { type: "number", placeholder: "الرقم السرى" },
+                  domProps: { value: _vm.password },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dr, "basic_price", $event.target.value)
+                      _vm.password = $event.target.value
                     }
                   }
                 }),
@@ -35036,78 +34859,8 @@ var render = function() {
                   _c("span", {
                     staticStyle: { color: "red" },
                     domProps: {
-                      textContent: _vm._s(_vm.errors.get("basic_price"))
+                      textContent: _vm._s(_vm.errors.get("password"))
                     }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [
-                  _vm._v("سعر التعامل")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.treat_price,
-                      expression: "dr.treat_price"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.dr.treat_price },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "treat_price", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("treat_price"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12 mb-30" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("الملاحظات")]),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dr.about,
-                      expression: "dr.about"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.dr.about },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.dr, "about", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("about")) }
                   })
                 ])
               ])
@@ -55778,7 +55531,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\treatSys\resources\js\dash-app.js */"./resources/js/dash-app.js");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\dash-app.js */"./resources/js/dash-app.js");
 
 
 /***/ })

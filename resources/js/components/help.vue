@@ -1,13 +1,12 @@
 <template>
   <div class="row">
     <div class="col-md-4 pl-5 pt-5" style="z-index: 1">
-      <h2 class="logi">HELP!</h2>
+      <h2 class="logi">{{$t('message.help')}}!</h2>
       <br />
-      <h4>Forgot Password!</h4>
+      <h4>{{$t('message.forget')}}!</h4>
       <br />
       <p class="text-muted font-d">
-        There are many variations of passages of Lorem Ipsum available, some
-        form .
+        {{$t('message.help_paragraph')}}
       </p>
       <form
         action="#"
@@ -20,19 +19,19 @@
           type="text"
           name="email"
           v-model="email"
-          placeholder="email addres"
+          :placeholder="$t('message.email')"
         />
           <span style="color: red" v-text="error.get('email')"></span>
         <button
           type="submit"
           class="btn btn-primary btn-lg btn-block contactus-btn"
         >
-          Next
+          {{$t('message.next')}}
         </button>
       </form>
       <br />
       <p class="text-muted text-center font-d">
-        i will try again ! <router-link to="login">Sign in</router-link>
+        {{$t('message.I_will_try_again')}} ! <router-link to="login">{{$t('message.signin')}}</router-link>
       </p>
     </div>
     <div class="hide-st col-md-8">
@@ -41,18 +40,20 @@
             class="back-color"
             alt="Cinque Terre"
                 height="625"
-                width="904"
+                width="1366"
           />
-          <img
+          <div class="">
+            <img
         src="/Web/55.png"
         class="topleft-help"
         style="width: 110%"
         alt="over-image"
       />
       <div>
-        <h1 class="center-help">We Trust</h1>
-        <h1 class="center-help text-t7t">We Care</h1>
+        <h1 class="center-help">{{$t('message.trust')}}</h1>
+        <h1 class="center-help text-t7t">{{$t('message.care')}}</h1>
       </div>
+          </div>
     </div>
     <!-- <div class="col-md-8 hide-st"> -->
       
@@ -70,7 +71,6 @@ export default {
   },
   methods: {
     submit() {
-      //this.products = JSON.parse(localStorage.getItem('products'));
       let all = {
         email: this.email,
       };
@@ -80,11 +80,9 @@ export default {
         .then((result) => {
           console.log(result.data);
           sessionStorage.setItem("code-email", this.email);
-
           this.$router.push("/code");
         })
         .catch((err) => {
-          // this.error = "خطأ فى الباسورد او الايميل"
           console.log(err.error);
         });
     },

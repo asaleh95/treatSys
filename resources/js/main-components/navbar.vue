@@ -18,27 +18,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <router-link class="p-2 text-dark" to="/">{{ $t('message.home') }}</router-link>
+        <li class="nav-item active font-weight-bold">
+          <router-link class="p-2 text-dark" exact active-class="active" to="/">{{ $t('message.home') }}</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="p-2 text-dark" to="blog">{{ $t('message.blog') }}</router-link>
+        <li class="nav-item font-weight-bold">
+          <router-link class="p-2 text-dark" active-class="active" to="blog">{{ $t('message.blog') }}</router-link>
         </li>
-         <li class="nav-item">
-          <router-link class="p-2 text-dark" to="news">{{ $t('message.news') }}</router-link>
+         <li class="nav-item font-weight-bold">
+          <router-link class="p-2 text-dark" active-class="active" to="news">{{ $t('message.news') }}</router-link>
         </li>
-        <li class="nav-item active">
-          <router-link class="p-2 text-dark" to="aboutus">{{ $t('message.about') }}</router-link>
+        <li class="nav-item active font-weight-bold">
+          <router-link class="p-2 text-dark" active-class="active" to="aboutus">{{ $t('message.about') }}</router-link>
         </li>
-        <li :class="'nav-item ' + this.$root.active" @click="color()">
-          <router-link class="p-2 text-dark" to="contactus"
+        <li class="nav-item font-weight-bold">
+          <router-link class="p-2 text-dark" active-class="active" to="contactus"
             >{{ $t('message.contact') }}</router-link
           >
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0 ml-md-5">
         <a class="user" href="#"><img src="/Web/globe.png" alt="" /></a>
-        <a class="user text-dark" href="#" @click="setLang()">{{langIcon}}</a>
+        <a class="user text-dark font-weight-bold" href="#" @click="setLang()">{{langIcon}}</a>
 
         <a class="user" href="#"><img src="/Web/user.png" alt="" /></a>
 
