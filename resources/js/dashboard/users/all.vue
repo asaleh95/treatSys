@@ -69,10 +69,10 @@
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
                   <td style="font-family: sans-serif">#{{ user.id }}</td>
                   <td>
-                    <a href="#">{{ dr.email }}</a>
+                    <a href="#">{{ user.email }}</a>
                   </td>
 
-                  <td style="font-family: sans-serif">{{ dr.phone }}</td>
+                  <td style="font-family: sans-serif">{{ user.phone }}</td>
                   <td>
                     <div class="table-action-buttons">
                       <router-link
@@ -155,9 +155,8 @@ export default {
             .split(" ")
             .every(
               (v) =>
-                item.name.toLowerCase().includes(v) ||
                 item.phone.toLowerCase().includes(v)||
-                item.address.toLowerCase().includes(v)
+                item.email.toLowerCase().includes(v)
             );
         });
       } else {

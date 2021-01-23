@@ -24,37 +24,19 @@
 
             <ul>
               <li>
-                <span>اسم المستخدم</span> <span> {{ dr.name }} </span>
+                <span>رقم الموبايل</span> <span>{{ user.phone }} </span>
               </li>
               <li>
-                <span>العنوان</span> <span>{{ dr.address }}</span>
-              </li>
-              <li>
-                <span>رقم الموبايل</span> <span>{{ dr.phone }} </span>
-              </li>
-              <li>
-                <span>التخصص</span> <span>{{ dr.position }}</span>
-              </li>
-              <li>
-                <span>الملاحظات</span> <span>{{ dr.about }}</span>
-              </li>
-              <li>
-                <span>التقييم</span> <span class="btn badge-success">{{dr.rate}}</span>
-              </li>
-              <li>
-                <span>السعر الاولى</span> <span class="btn badge-warning">{{dr.basic_price}}</span>
-              </li>
-              <li>
-                <span>سعر التعامل</span> <span class="btn badge-warning">{{dr.treat_price}}</span>
+                <span> البريد الابكترونى</span> <span>{{ user.email }} </span>
               </li>
             </ul>
           </div>
           <!--Billing Info End-->
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-8" v-if="user.image">
         <img
-          :src="dr.image.image"
+          :src="user.image.image"
           style="
             display: block;
             margin-left: auto;
@@ -72,9 +54,9 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors/" + this.$route.params.id)
+      .get("/admins/users/" + this.$route.params.id)
       .then((result) => {
-        this.dr = result.data.data;
+        this.user = result.data.data;
         console.log(result.data.data);
       })
 
@@ -84,7 +66,7 @@ export default {
   },
   data() {
     return {
-      dr: {},
+      user: {},
     };
   },
 };

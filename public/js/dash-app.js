@@ -6489,121 +6489,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      name: "",
+      email: "",
       phone: "",
-      location: "",
-      address: "",
-      position: "",
-      rate: "",
-      basic_price: "",
-      treat_price: "",
-      about: "",
-      image: "",
-      previewImage: [],
+      password: "",
       errors: window.obj,
       success: false
     };
   },
   methods: {
-    sendImage: function sendImage(e) {
+    submit: function submit() {
       var _this = this;
 
-      var image = e.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(image);
-
-      reader.onload = function (e) {
-        _this.previewImage = e.target.result;
-        _this.image = _this.previewImage;
-        console.log(_this.image);
-        console.log("ssssssssssssssssssss");
-      };
-    },
-    submit: function submit() {
-      var _this2 = this;
-
       var all = {
-        name: this.name,
+        email: this.email,
         phone: this.phone,
-        location: this.location,
-        address: this.address,
-        position: this.position,
-        rate: this.rate,
-        basic_price: this.basic_price,
-        treat_price: this.treat_price,
-        about: this.about,
-        image: this.image
+        password: this.password
       };
       console.log(all);
-      axios.post("/admins/doctors", all).then(function (result) {
+      axios.post("/admins/users", all).then(function (result) {
         console.log(result.data); //
 
-        _this2.success = true;
+        _this.success = true;
         setTimeout(function () {
-          return _this2.$router.push("/doctors/all");
+          return _this.$router.push("/users/all");
         }, 2000);
       })["catch"](function (err) {
-        return _this2.errors.record(err.response.data.errors);
+        return _this.errors.record(err.response.data.errors);
       } //   console.log(err.response.data.errors)
       );
     }
@@ -6774,7 +6688,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$root.search) {
         return this.users.filter(function (item) {
           return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
-            return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
+            return item.phone.toLowerCase().includes(v) || item.email.toLowerCase().includes(v);
           });
         });
       } else {
@@ -7094,30 +7008,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors/" + this.$route.params.id).then(function (result) {
-      _this.dr = result.data.data;
+    axios.get("/admins/users/" + this.$route.params.id).then(function (result) {
+      _this.user = result.data.data;
       console.log(result.data.data);
     })["catch"](function (error) {
       console.log(error);
@@ -7125,7 +7021,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dr: {}
+      user: {}
     };
   }
 });
@@ -34430,19 +34326,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
+                      value: _vm.email,
+                      expression: "email"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "آسم المستخدم" },
-                  domProps: { value: _vm.name },
+                  attrs: { type: "text", placeholder: "بريد المستخدم" },
+                  domProps: { value: _vm.email },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.name = $event.target.value
+                      _vm.email = $event.target.value
                     }
                   }
                 }),
@@ -34450,7 +34346,40 @@ var render = function() {
                 _c("div", { staticClass: "animated bounce infinite rtl" }, [
                   _c("span", {
                     staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("name")) }
+                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "كلمه السر" },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "animated bounce infinite rtl" }, [
+                  _c("span", {
+                    staticStyle: { color: "red" },
+                    domProps: {
+                      textContent: _vm._s(_vm.errors.get("password"))
+                    }
                   })
                 ])
               ]),
@@ -34466,7 +34395,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "رقم الهاتف" },
+                  attrs: { type: "text", placeholder: "رقم الهاتف" },
                   domProps: { value: _vm.phone },
                   on: {
                     input: function($event) {
@@ -34484,267 +34413,10 @@ var render = function() {
                     domProps: { textContent: _vm._s(_vm.errors.get("phone")) }
                   })
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.address,
-                      expression: "address"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "العنوان" },
-                  domProps: { value: _vm.address },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.address = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("address")) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.location,
-                      expression: "location"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "الاحداثيات" },
-                  domProps: { value: _vm.location },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.location = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("location"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.position,
-                      expression: "position"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "الوظيفه" },
-                  domProps: { value: _vm.position },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.position = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("position"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.rate,
-                      expression: "rate"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "number",
-                    min: "0",
-                    max: "5",
-                    placeholder: "التقييم"
-                  },
-                  domProps: { value: _vm.rate },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.rate = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("rate")) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.basic_price,
-                      expression: "basic_price"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "السعر الاولى" },
-                  domProps: { value: _vm.basic_price },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.basic_price = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("basic_price"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-12 mb-30" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.treat_price,
-                      expression: "treat_price"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", placeholder: "سعر التعامل" },
-                  domProps: { value: _vm.treat_price },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.treat_price = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("treat_price"))
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12 mb-30" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.about,
-                      expression: "about"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { placeholder: " الملاحظات" },
-                  domProps: { value: _vm.about },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.about = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("about")) }
-                  })
-                ])
               ])
             ]),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "product-upload-gallery row flex-wrap" }, [
-              _c("div", { staticClass: "col-12 mb-30" }, [
-                _c("img", {
-                  staticClass: "uploading-image",
-                  attrs: { src: _vm.previewImage }
-                }),
-                _vm._v(" "),
-                _c("label", { staticClass: "custom-file-upload" }, [
-                  _c("input", {
-                    staticClass: "uploading-image",
-                    attrs: { type: "file", accept: "image/jpeg" },
-                    on: { change: _vm.sendImage }
-                  }),
-                  _vm._v("\n              ارفق صوره\n            ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "animated bounce infinite rtl" }, [
-                  _c("span", {
-                    staticStyle: { color: "red" },
-                    domProps: { textContent: _vm._s(_vm.errors.get("image")) }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(2)
+            _vm._m(1)
           ]
         )
       ])
@@ -34766,16 +34438,6 @@ var staticRenderFns = [
           ])
         ])
       ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "head", staticStyle: { "text-align": "right" } },
-      [_c("h4", { staticClass: "title" }, [_vm._v("صور المستخدم")])]
     )
   },
   function() {
@@ -34895,14 +34557,14 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(_vm.dr.email))
+                              _vm._v(_vm._s(user.email))
                             ])
                           ]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(_vm.dr.phone))]
+                            [_vm._v(_vm._s(user.phone))]
                           ),
                           _vm._v(" "),
                           _c("td", [
@@ -35573,76 +35235,36 @@ var render = function() {
             _vm._v(" "),
             _c("ul", [
               _c("li", [
-                _c("span", [_vm._v("اسم المستخدم")]),
-                _vm._v(" "),
-                _c("span", [_vm._v(" " + _vm._s(_vm.dr.name) + " ")])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("العنوان")]),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.address))])
-              ]),
-              _vm._v(" "),
-              _c("li", [
                 _c("span", [_vm._v("رقم الموبايل")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.phone) + " ")])
+                _c("span", [_vm._v(_vm._s(_vm.user.phone) + " ")])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("span", [_vm._v("التخصص")]),
+                _c("span", [_vm._v(" البريد الابكترونى")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.position))])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("الملاحظات")]),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.dr.about))])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("التقييم")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "btn badge-success" }, [
-                  _vm._v(_vm._s(_vm.dr.rate))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("السعر الاولى")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.basic_price))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("سعر التعامل")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "btn badge-warning" }, [
-                  _vm._v(_vm._s(_vm.dr.treat_price))
-                ])
+                _c("span", [_vm._v(_vm._s(_vm.user.email) + " ")])
               ])
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-8" }, [
-        _c("img", {
-          staticStyle: {
-            display: "block",
-            "margin-left": "auto",
-            "margin-right": "auto",
-            width: "100%",
-            "max-width": "50%",
-            height: "auto"
-          },
-          attrs: { src: _vm.dr.image.image }
-        })
-      ])
+      _vm.user.image
+        ? _c("div", { staticClass: "col-8" }, [
+            _c("img", {
+              staticStyle: {
+                display: "block",
+                "margin-left": "auto",
+                "margin-right": "auto",
+                width: "100%",
+                "max-width": "50%",
+                height: "auto"
+              },
+              attrs: { src: _vm.user.image.image }
+            })
+          ])
+        : _vm._e()
     ])
   ])
 }
