@@ -23,7 +23,7 @@
       <div class="content">
         <div class="row">
           <div
-            class="col-3 mb-5 pharmacy-click"
+            class="col-3 mb-5 hospital-click"
             v-for="(pharmacy, i) in resultQuery"
             @click="goTo(pharmacy.id)"
           >
