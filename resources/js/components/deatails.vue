@@ -6,29 +6,11 @@
       <div class="row">
         <div class="col-md-8 col-sm-8">
           <img :src="hospital.images[0].image" alt="" class="img0 my-2 w-100" />
-          <div class="row maxWidth">
-            <img
-              :src="hospital.images[1].image"
-              alt=""
-              class="col-md-2 col-sm-2"
-            />
-            <img
-              :src="hospital.images[2].image"
-              alt=""
-              class="col-md-2 col-sm-2"
-            />
-            <img
-              :src="hospital.images[3].image"
-              alt=""
-              class="col-md-2 col-sm-2"
-            />
-            <img
-              :src="hospital.images[4].image"
-              alt=""
-              class="col-md-2 col-sm-2"
-            />
-            <img
-              :src="hospital.images[5].image"
+          <div class="row">
+               <img
+               v-for="(image, i) in hospital.images"
+               v-if="i"
+              :src="image.image"
               alt=""
               class="col-md-2 col-sm-2"
             />
@@ -82,18 +64,10 @@
         </div>
       </div>
       <br />
-      <div class="row">
         <h3 class="font-weight-bold">about</h3>
+      <div class="row">
         <p class="font-d">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
+          {{hospital.about}}
         </p>
         <br />
       </div>

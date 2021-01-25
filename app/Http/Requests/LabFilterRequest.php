@@ -26,7 +26,9 @@ class LabFilterRequest extends FormRequest
         return [
             //
             'name' => 'nullable',
-            'location' => 'nullable'
+            'location' => 'nullable',
+            'like' => 'nullable'
+
         ];
     }
 }

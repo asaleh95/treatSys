@@ -21,3 +21,63 @@
   font-size: 4em;
   color: white;
 }
+
+/*Login & Resister BG*/
+.login-register-bg {
+  background-image: url(../../public/Web/5.png);
+  background-color: #0782bd;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-register-bg .content {
+  display: none;
+  max-width: 420px;
+  padding: 100px 30px;
+}
+
+.login-register-bg .content h1 {
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 15px;
+  color: #27c6e3;
+}
+
+.login-register-bg .content p {
+  margin-bottom: 0;
+  color: #27c6e3;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+  .login-register-bg {
+    min-height: auto;
+  }
+  .login-register-bg .content {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .login-register-bg .content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .login-register-bg .content h1 {
+    font-size: 30px;
+  }
+}

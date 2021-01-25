@@ -26,7 +26,8 @@ class RayFilterRequest extends FormRequest
         return [
             //
             'name' => 'nullable',
-            'location' => 'nullable'
+            'location' => 'nullable',
+            'like' => 'nullable'
         ];
     }
 }

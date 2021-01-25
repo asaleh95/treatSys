@@ -22,6 +22,11 @@ class PharmacyRepositories
             $arr = explode(',', $data['location']);
             $query->distance('location', new Point($arr[0], $arr[1]), 10);
         })
+        ->when(!empty($data['like']), function ($query) use ($data) {
+            $query->whereHas('users', function ($query){
+                $query->where('favourites.user_id', auth()->id());
+            });
+        })
         ->paginate(15);
     }
 

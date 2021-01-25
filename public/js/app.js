@@ -2398,32 +2398,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2681,6 +2655,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -25388,32 +25367,19 @@ var render = function() {
                 attrs: { src: _vm.hospital.images[0].image, alt: "" }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "row maxWidth" }, [
-                _c("img", {
-                  staticClass: "col-md-2 col-sm-2",
-                  attrs: { src: _vm.hospital.images[1].image, alt: "" }
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.hospital.images, function(image, i) {
+                  return i
+                    ? _c("img", {
+                        staticClass: "col-md-2 col-sm-2",
+                        attrs: { src: image.image, alt: "" }
+                      })
+                    : _vm._e()
                 }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "col-md-2 col-sm-2",
-                  attrs: { src: _vm.hospital.images[2].image, alt: "" }
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "col-md-2 col-sm-2",
-                  attrs: { src: _vm.hospital.images[3].image, alt: "" }
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "col-md-2 col-sm-2",
-                  attrs: { src: _vm.hospital.images[4].image, alt: "" }
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "col-md-2 col-sm-2",
-                  attrs: { src: _vm.hospital.images[5].image, alt: "" }
-                })
-              ])
+                0
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4 col-sm-4" }, [
@@ -25529,7 +25495,15 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(0)
+          _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("about")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("p", { staticClass: "font-d" }, [
+              _vm._v("\n        " + _vm._s(_vm.hospital.about) + "\n      ")
+            ]),
+            _vm._v(" "),
+            _c("br")
+          ])
         ],
         1
       ),
@@ -25539,24 +25513,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("about")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-d" }, [
-        _vm._v(
-          "\n        It is a long established fact that a reader will be distracted by the\n        readable content of a page when looking at its layout. The point of\n        using Lorem Ipsum is that it has a more-or-less normal distribution of\n        letters, as opposed to using 'Content here, content here', making it\n        look like readable English. Many desktop publishing packages and web\n        page editors now use Lorem Ipsum as their default model text, and a\n        search for 'lorem ipsum' will uncover many web sites still in their\n        infancy. Various versions have evolved over the years, sometimes by\n        accident, sometimes on purpose (injected humour and the like).\n      "
-        )
-      ]),
-      _vm._v(" "),
-      _c("br")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25973,32 +25930,20 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "hide-st col-md-8" }, [
+    _c("div", { staticClass: "login-register-bg col-md-8 " }, [
       _c("img", {
-        staticClass: "back-color",
-        attrs: {
-          src: "/Web/5.png",
-          alt: "Cinque Terre",
-          height: "625",
-          width: "1366"
-        }
+        staticClass: "topleft-help hide-st",
+        staticStyle: { width: "110%" },
+        attrs: { src: "/Web/55.png", alt: "over-image" }
       }),
       _vm._v(" "),
-      _c("div", {}, [
-        _c("img", {
-          staticClass: "topleft-help",
-          staticStyle: { width: "110%" },
-          attrs: { src: "/Web/55.png", alt: "over-image" }
-        }),
+      _c("div", [
+        _c("h1", { staticClass: "center-help" }, [
+          _vm._v(_vm._s(_vm.$t("message.trust")))
+        ]),
         _vm._v(" "),
-        _c("div", [
-          _c("h1", { staticClass: "center-help" }, [
-            _vm._v(_vm._s(_vm.$t("message.trust")))
-          ]),
-          _vm._v(" "),
-          _c("h1", { staticClass: "center-help text-t7t" }, [
-            _vm._v(_vm._s(_vm.$t("message.care")))
-          ])
+        _c("h1", { staticClass: "center-help text-t7t" }, [
+          _vm._v(_vm._s(_vm.$t("message.care")))
         ])
       ])
     ])
@@ -47011,9 +46956,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

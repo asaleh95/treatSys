@@ -34,14 +34,19 @@
         {{$t('message.I_will_try_again')}} ! <router-link to="login">{{$t('message.signin')}}</router-link>
       </p>
     </div>
-    <div class="hide-st col-md-8">
-      <img
-            src="/Web/5.png"
-            class="back-color"
-            alt="Cinque Terre"
-                height="625"
-                width="1366"
-          />
+    <div class="login-register-bg col-md-8 ">
+                <img
+        src="/Web/55.png"
+        class="topleft-help hide-st"
+        style="width: 110%"
+        alt="over-image"
+      />
+      <div>
+        <h1 class="center-help">{{$t('message.trust')}}</h1>
+        <h1 class="center-help text-t7t">{{$t('message.care')}}</h1>
+      </div>
+            </div>
+    <!-- <div class="hide-st col-md-8">
           <div class="">
             <img
         src="/Web/55.png"
@@ -54,7 +59,7 @@
         <h1 class="center-help text-t7t">{{$t('message.care')}}</h1>
       </div>
           </div>
-    </div>
+    </div> -->
     <!-- <div class="col-md-8 hide-st"> -->
       
     <!-- </div> -->
