@@ -44,8 +44,16 @@
             <i class="fas fa-heart" v-if="fav"  @click="favourite('dislike')"></i>
             <i class="far fa-heart" v-else  @click="favourite('like')"></i>
           </h4>
-          <p class="set0">(15,250)</p>
-          <h6 class="font-weight-bold">
+ <div class="row">
+          <p class="card-title text-muted">
+           <div v-for="star in 5">
+                  <i class="fas fa-star text-warning" v-if="lab.rate >= star"></i>
+                  <i class="far fa-star text-warning" v-else></i>
+                </div>
+            ({{ lab.rate }})
+
+          </p>
+          </div>          <h6 class="font-weight-bold">
             <img :src="lab.logo" alt="" class="logo0" />
             <span> {{ lab.name }}</span>
           </h6>

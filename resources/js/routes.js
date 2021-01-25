@@ -123,7 +123,7 @@ export default {
             }
         },
         {
-            path: '/ray/:id',
+            path: '/xray/:id',
             component: require('./components/xray').default,
             meta: {
                 requiresAuth: true

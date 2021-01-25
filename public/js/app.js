@@ -2053,7 +2053,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     goTo: function goTo(id) {
-      this.$router.push("/details/" + id);
+      this.$router.push("/lab/" + id);
     }
   }
 });
@@ -2414,6 +2414,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2437,7 +2447,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post("/users/" + route + "-hospital", {
-        'hospital_id': this.$route.params.id
+        hospital_id: this.$route.params.id
       }).then(function (result) {
         _this2.fav = !_this2.fav;
         console.log(result.data.data);
@@ -2944,6 +2954,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3839,7 +3857,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     goTo: function goTo(id) {
-      this.$router.push("/details/" + id);
+      this.$router.push("/pharmacy/" + id);
     }
   }
 });
@@ -3948,11 +3966,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/users/pharmacys/" + this.$route.params.id).then(function (result) {
+    axios.get("/users/pharmacy/" + this.$route.params.id).then(function (result) {
       _this.pharmacy = result.data.data;
       _this.fav = result.data.data.like == true ? true : false;
       console.log(result.data.data);
@@ -4248,6 +4274,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -4438,7 +4472,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     goTo: function goTo(id) {
-      this.$router.push("/details/" + id);
+      this.$router.push("/xray/" + id);
     }
   }
 });
@@ -25419,7 +25453,29 @@ var render = function() {
                     })
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "set0" }, [_vm._v("(15,250)")]),
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c("p", { staticClass: "card-title text-muted" }),
+                  _vm._l(5, function(star) {
+                    return _c("div", [
+                      _vm.hospital.rate >= star
+                        ? _c("i", { staticClass: "fas fa-star text-warning" })
+                        : _c("i", { staticClass: "far fa-star text-warning" })
+                    ])
+                  }),
+                  _vm._v(
+                    "\n          (" +
+                      _vm._s(_vm.hospital.rate) +
+                      ")\n\n        "
+                  ),
+                  _c("p")
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("br"),
               _vm._v(" "),
               _c("h6", { staticClass: "font-weight-bold" }, [
                 _c("img", {
@@ -26274,7 +26330,7 @@ var render = function() {
               _c("h4", { staticClass: "font-weight-bold" }, [
                 _c("span", {}, [
                   _vm._v(
-                    "\n            " + _vm._s(_vm.lab.name) + "\n          "
+                    "\n             " + _vm._s(_vm.lab.name) + "\n           "
                   )
                 ]),
                 _vm._v(" "),
@@ -26301,7 +26357,25 @@ var render = function() {
                     })
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "set0" }, [_vm._v("(15,250)")]),
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c("p", { staticClass: "card-title text-muted" }),
+                  _vm._l(5, function(star) {
+                    return _c("div", [
+                      _vm.lab.rate >= star
+                        ? _c("i", { staticClass: "fas fa-star text-warning" })
+                        : _c("i", { staticClass: "far fa-star text-warning" })
+                    ])
+                  }),
+                  _vm._v(
+                    "\n           (" + _vm._s(_vm.lab.rate) + ")\n\n         "
+                  ),
+                  _c("p")
+                ],
+                2
+              ),
               _vm._v(" "),
               _c("h6", { staticClass: "font-weight-bold" }, [
                 _c("img", {
@@ -26330,9 +26404,9 @@ var render = function() {
                   _vm._v("+" + _vm._s(_vm.lab.phone.substring(0, 3)))
                 ]),
                 _vm._v(
-                  "\n          " +
+                  "\n           " +
                     _vm._s(_vm.lab.phone.substring(3, _vm.lab.phone.length)) +
-                    "\n        "
+                    "\n         "
                 )
               ]),
               _vm._v(" "),
@@ -26341,7 +26415,7 @@ var render = function() {
               _c("div", [
                 _c("h6", { staticClass: "font-weight-bold" }, [
                   _c("img", { attrs: { src: "/Web/pin.png", alt: "" } }),
-                  _vm._v(" " + _vm._s(_vm.lab.region) + "\n          ")
+                  _vm._v(" " + _vm._s(_vm.lab.region) + "\n           ")
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "font-d" }, [
@@ -26373,7 +26447,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", { staticClass: "font-d" }, [
         _vm._v(
-          "\n        It is a long established fact that a reader will be distracted by the\n        readable content of a page when looking at its layout. The point of\n        using Lorem Ipsum is that it has a more-or-less normal distribution of\n        letters, as opposed to using 'Content here, content here', making it\n        look like readable English. Many desktop publishing packages and web\n        page editors now use Lorem Ipsum as their default model text, and a\n        search for 'lorem ipsum' will uncover many web sites still in their\n        infancy. Various versions have evolved over the years, sometimes by\n        accident, sometimes on purpose (injected humour and the like).\n      "
+          "\n         It is a long established fact that a reader will be distracted by the\n         readable content of a page when looking at its layout. The point of\n         using Lorem Ipsum is that it has a more-or-less normal distribution of\n         letters, as opposed to using 'Content here, content here', making it\n         look like readable English. Many desktop publishing packages and web\n         page editors now use Lorem Ipsum as their default model text, and a\n         search for 'lorem ipsum' will uncover many web sites still in their\n         infancy. Various versions have evolved over the years, sometimes by\n         accident, sometimes on purpose (injected humour and the like).\n       "
         )
       ]),
       _vm._v(" "),
@@ -28316,9 +28390,9 @@ var render = function() {
               _c("h4", { staticClass: "font-weight-bold" }, [
                 _c("span", {}, [
                   _vm._v(
-                    "\n            " +
+                    "\n             " +
                       _vm._s(_vm.pharmacy.name) +
-                      "\n          "
+                      "\n           "
                   )
                 ]),
                 _vm._v(" "),
@@ -28345,7 +28419,27 @@ var render = function() {
                     })
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "set0" }, [_vm._v("(15,250)")]),
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c("p", { staticClass: "card-title text-muted" }),
+                  _vm._l(5, function(star) {
+                    return _c("div", [
+                      _vm.pharmacy.rate >= star
+                        ? _c("i", { staticClass: "fas fa-star text-warning" })
+                        : _c("i", { staticClass: "far fa-star text-warning" })
+                    ])
+                  }),
+                  _vm._v(
+                    "\n           (" +
+                      _vm._s(_vm.pharmacy.rate) +
+                      ")\n\n         "
+                  ),
+                  _c("p")
+                ],
+                2
+              ),
               _vm._v(" "),
               _c("h6", { staticClass: "font-weight-bold" }, [
                 _c("img", {
@@ -28374,11 +28468,11 @@ var render = function() {
                   _vm._v("+" + _vm._s(_vm.pharmacy.phone.substring(0, 3)))
                 ]),
                 _vm._v(
-                  "\n          " +
+                  "\n           " +
                     _vm._s(
                       _vm.pharmacy.phone.substring(3, _vm.pharmacy.phone.length)
                     ) +
-                    "\n        "
+                    "\n         "
                 )
               ]),
               _vm._v(" "),
@@ -28387,7 +28481,7 @@ var render = function() {
               _c("div", [
                 _c("h6", { staticClass: "font-weight-bold" }, [
                   _c("img", { attrs: { src: "/Web/pin.png", alt: "" } }),
-                  _vm._v(" " + _vm._s(_vm.pharmacy.region) + "\n          ")
+                  _vm._v(" " + _vm._s(_vm.pharmacy.region) + "\n           ")
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "font-d" }, [
@@ -28419,7 +28513,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", { staticClass: "font-d" }, [
         _vm._v(
-          "\n        It is a long established fact that a reader will be distracted by the\n        readable content of a page when looking at its layout. The point of\n        using Lorem Ipsum is that it has a more-or-less normal distribution of\n        letters, as opposed to using 'Content here, content here', making it\n        look like readable English. Many desktop publishing packages and web\n        page editors now use Lorem Ipsum as their default model text, and a\n        search for 'lorem ipsum' will uncover many web sites still in their\n        infancy. Various versions have evolved over the years, sometimes by\n        accident, sometimes on purpose (injected humour and the like).\n      "
+          "\n         It is a long established fact that a reader will be distracted by the\n         readable content of a page when looking at its layout. The point of\n         using Lorem Ipsum is that it has a more-or-less normal distribution of\n         letters, as opposed to using 'Content here, content here', making it\n         look like readable English. Many desktop publishing packages and web\n         page editors now use Lorem Ipsum as their default model text, and a\n         search for 'lorem ipsum' will uncover many web sites still in their\n         infancy. Various versions have evolved over the years, sometimes by\n         accident, sometimes on purpose (injected humour and the like).\n       "
         )
       ]),
       _vm._v(" "),
@@ -28939,7 +29033,7 @@ var render = function() {
               _c("h4", { staticClass: "font-weight-bold" }, [
                 _c("span", {}, [
                   _vm._v(
-                    "\n            " + _vm._s(_vm.xray.name) + "\n          "
+                    "\n             " + _vm._s(_vm.xray.name) + "\n           "
                   )
                 ]),
                 _vm._v(" "),
@@ -28966,7 +29060,25 @@ var render = function() {
                     })
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "set0" }, [_vm._v("(15,250)")]),
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c("p", { staticClass: "card-title text-muted" }),
+                  _vm._l(5, function(star) {
+                    return _c("div", [
+                      _vm.xray.rate >= star
+                        ? _c("i", { staticClass: "fas fa-star text-warning" })
+                        : _c("i", { staticClass: "far fa-star text-warning" })
+                    ])
+                  }),
+                  _vm._v(
+                    "\n           (" + _vm._s(_vm.xray.rate) + ")\n\n         "
+                  ),
+                  _c("p")
+                ],
+                2
+              ),
               _vm._v(" "),
               _c("h6", { staticClass: "font-weight-bold" }, [
                 _c("img", {
@@ -28995,9 +29107,9 @@ var render = function() {
                   _vm._v("+" + _vm._s(_vm.xray.phone.substring(0, 3)))
                 ]),
                 _vm._v(
-                  "\n          " +
+                  "\n           " +
                     _vm._s(_vm.xray.phone.substring(3, _vm.xray.phone.length)) +
-                    "\n        "
+                    "\n         "
                 )
               ]),
               _vm._v(" "),
@@ -29006,7 +29118,7 @@ var render = function() {
               _c("div", [
                 _c("h6", { staticClass: "font-weight-bold" }, [
                   _c("img", { attrs: { src: "/Web/pin.png", alt: "" } }),
-                  _vm._v(" " + _vm._s(_vm.xray.region) + "\n          ")
+                  _vm._v(" " + _vm._s(_vm.xray.region) + "\n           ")
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "font-d" }, [
@@ -29038,7 +29150,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", { staticClass: "font-d" }, [
         _vm._v(
-          "\n        It is a long established fact that a reader will be distracted by the\n        readable content of a page when looking at its layout. The point of\n        using Lorem Ipsum is that it has a more-or-less normal distribution of\n        letters, as opposed to using 'Content here, content here', making it\n        look like readable English. Many desktop publishing packages and web\n        page editors now use Lorem Ipsum as their default model text, and a\n        search for 'lorem ipsum' will uncover many web sites still in their\n        infancy. Various versions have evolved over the years, sometimes by\n        accident, sometimes on purpose (injected humour and the like).\n      "
+          "\n         It is a long established fact that a reader will be distracted by the\n         readable content of a page when looking at its layout. The point of\n         using Lorem Ipsum is that it has a more-or-less normal distribution of\n         letters, as opposed to using 'Content here, content here', making it\n         look like readable English. Many desktop publishing packages and web\n         page editors now use Lorem Ipsum as their default model text, and a\n         search for 'lorem ipsum' will uncover many web sites still in their\n         infancy. Various versions have evolved over the years, sometimes by\n         accident, sometimes on purpose (injected humour and the like).\n       "
         )
       ]),
       _vm._v(" "),
@@ -46822,7 +46934,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   }, {
-    path: '/ray/:id',
+    path: '/xray/:id',
     component: __webpack_require__(/*! ./components/xray */ "./resources/js/components/xray.vue")["default"],
     meta: {
       requiresAuth: true

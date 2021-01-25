@@ -44,7 +44,17 @@
             <i class="fas fa-heart" v-if="fav"  @click="favourite('dislike')"></i>
             <i class="far fa-heart" v-else  @click="favourite('like')"></i>
           </h4>
-          <p class="set0">(15,250)</p>
+          <div class="row">
+          <p class="card-title text-muted">
+           <div v-for="star in 5">
+                  <i class="fas fa-star text-warning" v-if="hospital.rate >= star"></i>
+                  <i class="far fa-star text-warning" v-else></i>
+                </div>
+            ({{ hospital.rate }})
+
+          </p>
+          </div>
+          <br>
           <h6 class="font-weight-bold">
             <img :src="hospital.logo" alt="" class="logo0" />
             <span> {{ hospital.name }}</span>
@@ -113,17 +123,19 @@ export default {
     };
   },
   methods: {
-    favourite(route){
+    favourite(route) {
       axios
-      .post("/users/"+ route+"-hospital", {'hospital_id': this.$route.params.id})
-      .then((result) => {
-        this.fav = !this.fav;
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-  }
+        .post("/users/" + route + "-hospital", {
+          hospital_id: this.$route.params.id,
+        })
+        .then((result) => {
+          this.fav = !this.fav;
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>

@@ -146,7 +146,7 @@ export default {
         });
     },
     goTo(id) {
-      this.$router.push("/details/" + id);
+      this.$router.push("/pharmacy/" + id);
     },
   },
 };
