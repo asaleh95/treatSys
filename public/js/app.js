@@ -2850,6 +2850,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2874,16 +2875,17 @@ __webpack_require__.r(__webpack_exports__);
       sorted: 1,
       current: 1,
       btnRounded: 'btn rounded-circle',
-      primary: 'btn-primary'
+      primary: 'btn-primary',
+      search: ''
     };
   },
   computed: {
     resultQuery: function resultQuery() {
       var _this2 = this;
 
-      if (this.$root.search) {
+      if (this.search) {
         return this.hosp.filter(function (item) {
-          return _this2.$root.search.toLowerCase().split(" ").every(function (v) {
+          return _this2.search.toLowerCase().split(" ").every(function (v) {
             return item.name.toLowerCase().includes(v) || item.phone.toLowerCase().includes(v) || item.address.toLowerCase().includes(v);
           });
         });
@@ -25984,13 +25986,38 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _vm._m(2),
+          _c("div", { staticClass: "row" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass:
+                "col-md-12 form-control border-top-0 border-left-0 border-right-0",
+              attrs: { type: "text", name: "", id: "" },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("br"),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.hosp, function(hospital, i) {
-              return _c("div", { staticClass: "card-deck col-md-4" }, [
+            _vm._l(_vm.resultQuery, function(hospital, i) {
+              return _c("div", { staticClass: "card-deck col-md-4 my-2" }, [
                 _c("div", { staticClass: "card" }, [
                   _c(
                     "div",
@@ -26002,7 +26029,7 @@ var render = function() {
                       }
                     },
                     [
-                      _vm._m(3, true),
+                      _vm._m(2, true),
                       _vm._v(" "),
                       _c("img", {
                         staticClass: "card-img-top",
@@ -26014,7 +26041,7 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "card-body " }, [
                     _c("div", { staticClass: "row" }, [
                       _c("p", { staticClass: "card-title text-muted" }, [
                         _vm._v(
@@ -26161,18 +26188,6 @@ var staticRenderFns = [
       _c("a", { staticClass: "search", attrs: { href: "#" } }, [
         _c("img", { attrs: { src: "Web/gro2.png", alt: "" } })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("input", {
-        staticClass:
-          "col-md-12 form-control border-top-0 border-left-0 border-right-0",
-        attrs: { type: "text", name: "", id: "" }
-      })
     ])
   },
   function() {
@@ -46884,9 +46899,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\css\dash-app.css */"./resources/css/dash-app.css");
+__webpack_require__(/*! F:\treatSys\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! F:\treatSys\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\css\dash-app.css */"./resources/css/dash-app.css");
 
 
 /***/ })

@@ -19,11 +19,12 @@
       </div>
       <!-- <hr /> -->
       <div class="row">
-        <input type="text" class="col-md-12 form-control border-top-0 border-left-0 border-right-0" name="" id="">
+        <input type="text" v-model="search" class="col-md-12 form-control border-top-0 border-left-0 border-right-0" name="" id="">
       </div>
+      <br>
 
       <div class="row">
-      <div class="card-deck col-md-4" v-for="(hospital, i) in hosp">
+      <div class="card-deck col-md-4 my-2" v-for="(hospital, i) in resultQuery">
         <div class="card">
           <div @click="goTo(hospital.id )">
           <div class="overlay">
@@ -35,7 +36,7 @@
             alt="Card image cap"
           />
           </div>
-          <div class="card-body">
+          <div class="card-body ">
             <div class="row">
               <p class="card-title text-muted">
                 {{ hospital.address }}
@@ -102,14 +103,15 @@ export default {
       sorted: 1,
       current: 1,
       btnRounded: 'btn rounded-circle',
-      primary: 'btn-primary'
+      primary: 'btn-primary',
+      search: ''
     };
   },
   computed: {
     resultQuery() {
-      if (this.$root.search) {
+      if (this.search) {
         return this.hosp.filter((item) => {
-          return this.$root.search
+          return this.search
             .toLowerCase()
             .split(" ")
             .every(
