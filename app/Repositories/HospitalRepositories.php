@@ -18,15 +18,20 @@ class HospitalRepositories
     public function all($data)
     {
         $paginate = !empty($data['paginate']) ? $data['paginate'] : 12;
-        return $this->hospital->when(!empty($data['name']), function ($query) use ($data) {
-            $query->where('name', 'like', '%' . $data['name'] . '%');
+
+        return $this->hospital->when(!empty($data['lat']) && !empty($data['lng']), function ($query) use ($data) {
+            $point = new Point($data['lat'], $data['lng']);
+            $query->select(\DB::raw("*,st_distance(`location`,ST_GeomFromText('POINT($point)', 0)) as 'distance'"));
         })
+            ->when(!empty($data['name']), function ($query) use ($data) {
+                $query->where('name', 'like', '%' . $data['name'] . '%');
+            })
             ->when(!empty($data['location']), function ($query) use ($data) {
                 $arr = explode(',', $data['location']);
                 $query->distance('location', new Point($arr[0], $arr[1]), 10);
             })
             ->when(!empty($data['like']), function ($query) use ($data) {
-                $query->whereHas('users', function ($query){
+                $query->whereHas('users', function ($query) {
                     $query->where('favourites.user_id', auth()->id());
                 });
             })

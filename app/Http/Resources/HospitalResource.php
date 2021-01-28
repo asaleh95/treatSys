@@ -17,11 +17,7 @@ class HospitalResource extends JsonResource
     {
 
         $arr = parent::toArray($request);
-        if (!empty($request->lat) && !empty($request->lng)) {
-            $point = new Point($request->lat, $request->lng);
-        }
         $arr['like'] = $this->when($this->users->contains($request->user()), true);
-        $arr['distance'] = (auth()->check() && $point) ?  $this->GetDistance($point): null;
         return $arr;
     }
 }
