@@ -18,4 +18,14 @@ class ContactUsService
     {
         return $this->contactUsRepo->store($data);
     }
+
+    public function all()
+    {
+        return $this->contactUsRepo->all();
+    }
+
+    public function delete($contactus)
+    {
+        $this->contactUsRepo->delete($contactus);
+    }
 }

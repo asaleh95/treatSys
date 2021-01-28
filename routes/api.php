@@ -76,6 +76,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
             Route::resource('pharmacies', 'PharmacyController');
             Route::resource('rays', 'RayController');
             Route::resource('users', 'UserController');
+            Route::get('contactus', 'ContactUsController@index');
+            Route::delete('contactus/{contactus}', 'ContactUsController@destroy');
         });
     });
 });

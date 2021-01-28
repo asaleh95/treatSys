@@ -6315,21 +6315,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/admins/doctors").then(function (result) {
+    axios.get("/admins/contactus").then(function (result) {
       _this.drs = result.data.data;
       _this.prevUrl = result.data.links.prev;
       _this.nextUrl = result.data.links.next;
@@ -6368,7 +6358,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(id, index) {
       var _this3 = this;
 
-      axios["delete"]("/admins/doctors/" + id).then(function (result) {
+      axios["delete"]("/admins/contactus/" + id).then(function (result) {
         _this3.drs.splice(index, 1);
 
         console.log(_this3.drs); // console.log(result.data);
@@ -34037,29 +34027,22 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("td", [
-                            _c("img", {
-                              staticClass: "table-product-image rounded-circle",
-                              attrs: { src: dr.image.image, alt: "" }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
                             _c("a", { attrs: { href: "#" } }, [
-                              _vm._v(_vm._s(dr.name))
+                              _vm._v(_vm._s(dr.first_name))
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(dr.address))]),
+                          _c("td", [_vm._v(_vm._s(dr.last_name))]),
                           _vm._v(" "),
                           _c(
                             "td",
                             { staticStyle: { "font-family": "sans-serif" } },
-                            [_vm._v(_vm._s(dr.phone))]
+                            [_vm._v(_vm._s(dr.email))]
                           ),
                           _vm._v(" "),
                           _c("td", [
                             _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v(_vm._s(dr.rate))
+                              _vm._v(_vm._s(dr.message))
                             ])
                           ]),
                           _vm._v(" "),
@@ -34200,15 +34183,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_c("span", [_vm._v("#")])]),
         _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("صوره الدعم")])]),
+        _c("th", [_c("span", [_vm._v("الاسم الاول")])]),
         _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("اسم الدعم")])]),
+        _c("th", [_c("span", [_vm._v("الاسم الثانى")])]),
         _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("العنوان")])]),
+        _c("th", [_c("span", [_vm._v("الايميل")])]),
         _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("رقم الهاتف")])]),
-        _vm._v(" "),
-        _c("th", [_c("span", [_vm._v("التقييم")])]),
+        _c("th", [_c("span", [_vm._v(" الرساله")])]),
         _vm._v(" "),
         _c("th", [_c("span", [_vm._v("التفاصيل")])]),
         _vm._v(" "),
@@ -36894,6 +36875,19 @@ var render = function() {
                   ])
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "has-sub-menu" },
+                [
+                  _c("router-link", { attrs: { to: "/support/all" } }, [
+                    _c("i", { staticClass: "ti-stamp" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("الدعم")])
+                  ])
+                ],
+                1
               )
             ])
           ]
@@ -36924,7 +36918,12 @@ var staticRenderFns = [
           "margin-bottom": "41px",
           "border-radius": "2.25rem !important"
         },
-        attrs: { src: "/Web/treat2.png", alt: "سله", width: "80", height: "70" }
+        attrs: {
+          src: "/Web/treat2.png",
+          alt: "treat",
+          width: "80",
+          height: "70"
+        }
       })
     ])
   },
@@ -55531,7 +55530,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! H:\arduino-nodemcu-esp2866\sketches\fixtreat\treat\resources\js\dash-app.js */"./resources/js/dash-app.js");
+module.exports = __webpack_require__(/*! F:\treatSys\resources\js\dash-app.js */"./resources/js/dash-app.js");
 
 
 /***/ })

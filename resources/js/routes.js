@@ -185,6 +185,10 @@ export default {
             path: '/news',
             component: require('./components/news').default,
         },
+        {
+            path: '/sky',
+            component: require('./components/sky').default,
+        },
     ],
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y: 0 }

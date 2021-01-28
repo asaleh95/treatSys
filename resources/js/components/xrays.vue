@@ -8,8 +8,6 @@
           | <a class="user" href="#"><img src="Web/home.png" alt="" /></a>>>
           <span class="text-primary"> 7,618 results found in 5ms</span>
         </h5>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
-        <a href="#"><img src="Web/search+.png" alt="" /></a>
       </div>
       <br /><br />
       <div class="row">

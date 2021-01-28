@@ -35,6 +35,11 @@
             >{{ $t('message.contact') }}</router-link
           >
         </li>
+        <li class="nav-item font-weight-bold">
+          <router-link class="p-2 text-dark" active-class="active" to="logout"
+            >{{ $t('message.logout') }}</router-link
+          >
+        </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0 ml-md-5">
         <a class="user" href="#"><img src="/Web/globe.png" alt="" /></a>

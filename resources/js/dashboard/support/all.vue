@@ -43,19 +43,16 @@
                     <span>#</span>
                   </th>
                   <th>
-                    <span>صوره الدعم</span>
+                    <span>الاسم الاول</span>
                   </th>
                   <th>
-                    <span>اسم الدعم</span>
+                    <span>الاسم الثانى</span>
                   </th>
                   <th>
-                    <span>العنوان</span>
+                    <span>الايميل</span>
                   </th>
                   <th>
-                    <span>رقم الهاتف</span>
-                  </th>
-                  <th>
-                    <span>التقييم</span>
+                    <span> الرساله</span>
                   </th>
                   <th>
                     <span>التفاصيل</span>
@@ -71,20 +68,13 @@
                   <!-- <td class="selector"><label class="adomx-checkbox"><input type="checkbox"> <i class="icon"></i></label></td> -->
                   <td style="font-family: sans-serif">#{{ dr.id }}</td>
                   <td>
-                    <img
-                      :src="dr.image.image"
-                      alt
-                      class="table-product-image rounded-circle"
-                    />
-                  </td>
-                  <td>
-                    <a href="#">{{ dr.name }}</a>
+                    <a href="#">{{ dr.first_name }}</a>
                   </td>
 
-                  <td>{{ dr.address }}</td>
-                  <td style="font-family: sans-serif">{{ dr.phone }}</td>
+                  <td>{{ dr.last_name }}</td>
+                  <td style="font-family: sans-serif">{{ dr.email }}</td>
                   <td>
-                    <span class="badge badge-success">{{ dr.rate }}</span>
+                    <span class="badge badge-success">{{ dr.message }}</span>
                   </td>
                   <td>
                     <div class="table-action-buttons">
@@ -126,7 +116,7 @@
 export default {
   mounted() {
     axios
-      .get("/admins/doctors")
+      .get("/admins/contactus")
       .then((result) => {
         this.drs = result.data.data;
         this.prevUrl = result.data.links.prev;
@@ -170,7 +160,7 @@ export default {
   methods: {
     deleteItem(id, index) {
       axios
-        .delete("/admins/doctors/" + id)
+        .delete("/admins/contactus/" + id)
         .then((result) => {
           this.drs.splice(index, 1);
           console.log(this.drs);
