@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DoctorResource extends JsonResource
+class PositionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,9 +14,6 @@ class DoctorResource extends JsonResource
      */
     public function toArray($request)
     {
-        $arr = parent::toArray($request);
-        $arr['like'] = $this->when($this->users->contains($request->user()), true);
-        $arr['position'] = $this->position->position;
-        return $arr;
+        return parent::toArray($request);
     }
 }

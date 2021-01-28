@@ -19,7 +19,7 @@ class CreateDoctorsTable extends Migration
             $table->string('phone')->unique();
             $table->point('location')->nullable();
             $table->string('address')->nullable();
-            $table->string('position');
+            $table->foreignId('position_id')->constrained();
             $table->float('rate', 3 , 1);
             $table->integer('basic_price');
             $table->integer('treat_price');

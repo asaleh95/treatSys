@@ -122,7 +122,7 @@
               <p class="card-title text-muted">
                 {{ hospital.address }}
               </p>
-              <p class="card-title text-muted ml-auto">
+              <p class="card-title text-muted ml-auto" v-if="hospital.distance">
                 <img src="Web/179.png" alt="" />
                  {{ hospital.distance }}km
               </p>
@@ -258,17 +258,7 @@
 <script>
 export default {
   mounted() {
-    axios
-      .get("/users/hospitals")
-      .then((result) => {
-        this.hosp[0] = result.data.data[0];
-        this.hosp[1] = result.data.data[1];
-        this.hosp[2] = result.data.data[2];
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.getLocation();
     axios
       .get("/users/doctors?paginate=5")
       .then((result) => {
@@ -288,6 +278,8 @@ export default {
       prevUrl: false,
       nextUrl: false,
       star: [],
+      lat: null,
+      lng: null,
     };
   },
   methods: {
@@ -306,6 +298,28 @@ export default {
     },
     goTo(url) {
       this.$router.push(url);
+    },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+        console.log(navigator.geolocation);
+        console.log("ddddddddddddddddddddddddddddddd");
+      }
+    },
+    showPosition(position) {
+      console.log(position);
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      console.log(this.lat);
+      axios
+      .get("/users/hospitals?paginate=3&lat=" + this.lat + "&lng=" + this.lng)
+      .then((result) => {
+        this.hosp = result.data.data;
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     },
   },
 };

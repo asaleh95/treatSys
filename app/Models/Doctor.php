@@ -17,7 +17,7 @@ class Doctor extends Model
     protected $with = ['image','users'];
 
     protected $fillable = [
-        'name','phone','location','address','position','rate','basic_price','treat_price','about'
+        'name','phone','location','address','position_id','rate','basic_price','treat_price','about'
     ];
 
     protected $spatialFields = [
@@ -43,6 +43,11 @@ class Doctor extends Model
     public function users()
     {
         return $this->morphToMany(User::class, 'favourites');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
     }
     
 }

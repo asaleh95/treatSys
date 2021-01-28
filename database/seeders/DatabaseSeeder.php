@@ -8,6 +8,7 @@ use App\Models\Hospital;
 use App\Models\Image;
 use App\Models\Lab;
 use App\Models\Pharmacy;
+use App\Models\Position;
 use App\Models\Ray;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
@@ -27,6 +28,26 @@ class DatabaseSeeder extends Seeder
             // DoctorSeeder::class
             // HospitalSeeder::class
         // ]);
+        Position::factory()->create(['position' => 'كلي']);
+        Position::factory()->create(['position' => 'رمد']);
+        Position::factory()->create(['position' => 'جلدية']);
+        Position::factory()->create(['position' => 'اسنان']);
+        Position::factory()->create(['position' => 'عظام']);
+        Position::factory()->create(['position' => 'مخ واعصاب']);
+        Position::factory()->create(['position' => 'نساء وتوليد']);
+        Position::factory()->create(['position' => 'مسالك بولية']);
+        Position::factory()->create(['position' => 'أطفال']);
+        Position::factory()->create(['position' => 'قلب']);
+        Position::factory()->create(['position' => 'صدرية']);
+        Position::factory()->create(['position' => 'انف واذن وحنجرة']);
+        Position::factory()->create(['position' => 'الاوعية الدموية']);
+        Position::factory()->create(['position' => 'سمنة ونحافة']);
+        Position::factory()->create(['position' => 'علاج طبيعي']);
+        Position::factory()->create(['position' => 'جراحة عامة']);
+        Position::factory()->create(['position' => 'تخاطب']);
+        Position::factory()->create(['position' => 'نفسية وعصبية']);
+        Position::factory()->create(['position' => 'اورام']);
+
         Doctor::factory()->count(25)->has(Image::factory())->create();
         Hospital::factory()->count(25)->has(Image::factory(7))->create();
         Pharmacy::factory()->count(25)->has(Image::factory(7))->create();
