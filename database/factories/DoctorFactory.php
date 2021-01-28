@@ -28,7 +28,7 @@ class DoctorFactory extends Factory
             'phone' => '9665' . $this->faker->unique()->randomNumber(5),
             'location' => $this->faker->latitude.','. $this->faker->longitude,
             'address' => $this->faker->streetAddress,
-            'position' => $this->faker->jobTitle,
+            'position_id' => rand(1, 18),
             'rate' => 4.5,
             'basic_price' => 300,
             'treat_price' => 310,

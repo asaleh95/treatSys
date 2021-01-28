@@ -11,8 +11,8 @@
           <p class="font-d"> {{ dr.position }}</p>
           <h3 class="font-weight-bold ">
             {{ dr.name }}
-            <i class="fas fa-heart float-right" v-if="fav"  @click="favourite('dislike')"></i>
-            <i class="far fa-heart float-right" v-else  @click="favourite('like')"></i>
+            <i class="fas fa-heart text-danger float-right" v-if="fav"  @click="favourite('dislike')"></i>
+            <i class="far fa-heart text-danger float-right" v-else  @click="favourite('like')"></i>
           </h3>
           <br /><br />
           <h3 class="number">

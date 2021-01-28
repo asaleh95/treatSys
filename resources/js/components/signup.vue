@@ -129,7 +129,6 @@ export default {
         .post("/signup", all)
         .then((result) => {
           console.log(result);
-          localStorage.setItem("token", JSON.stringify([]));
           this.$router.push("/login");
         })
         .catch((err) => {

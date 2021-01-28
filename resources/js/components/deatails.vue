@@ -23,8 +23,8 @@
               {{ hospital.name }}
             </span>
             <span class="text-primary col-md-4">{{ hospital.discount }}%</span>
-            <i class="fas fa-heart" v-if="fav"  @click="favourite('dislike')"></i>
-            <i class="far fa-heart" v-else  @click="favourite('like')"></i>
+            <i class="fas fa-heart text-danger" v-if="fav"  @click="favourite('dislike')"></i>
+            <i class="far fa-heart text-danger" v-else  @click="favourite('like')"></i>
           </h4>
           <div class="row">
           <p class="card-title text-muted">

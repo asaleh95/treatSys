@@ -67,7 +67,7 @@
       <p class="text-donthaveaccount offset-md-3 mt-5 text-muted text-center">
         {{$t('message.no_account')}} <router-link to="signup">{{$t('message.sign_up')}}</router-link>
       </p>
-      <div class="row">
+      <div class="row hide-st">
         <div class="col-md-3 mt-5">
           <hr />
         </div>
@@ -92,16 +92,16 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8 hidd">
+    <div class="login-register-bg col-md-8 hide-st" style="min-height: 150vh;">
       <img
-        src="/Web/511.png"
-        class="img-fluid w-100 back-color"
-        alt="Cinque Terre"
+        src="/Web/55.png"
+        class="topleft-help"
+        style="width: 120% !important; right: 0;"
+        alt="over-image"
       />
-      <img src="/Web/55.png" class="topleft" alt="over-image" />
       <div>
-        <h1 class="center">{{$t('message.trust')}}</h1>
-        <h1 class="center text-t7t">{{$t('message.care')}}</h1>
+        <h1 class="center">{{ $t("message.trust") }}</h1>
+        <h1 class="center text-t7t">{{ $t("message.care") }}</h1>
       </div>
     </div>
   </div>

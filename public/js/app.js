@@ -2723,6 +2723,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3340,14 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/users/hospitals").then(function (result) {
-      _this.hosp[0] = result.data.data[0];
-      _this.hosp[1] = result.data.data[1];
-      _this.hosp[2] = result.data.data[2];
-      console.log(result.data.data);
-    })["catch"](function (error) {
-      console.log(error);
-    });
+    this.getLocation();
     axios.get("/users/doctors?paginate=5").then(function (result) {
       _this.drs = result.data.data;
       _this.prevUrl = result.data.links.prev;
@@ -3363,7 +3357,9 @@ __webpack_require__.r(__webpack_exports__);
       hosp: [],
       prevUrl: false,
       nextUrl: false,
-      star: []
+      star: [],
+      lat: null,
+      lng: null
     };
   },
   methods: {
@@ -3381,6 +3377,27 @@ __webpack_require__.r(__webpack_exports__);
     },
     goTo: function goTo(url) {
       this.$router.push(url);
+    },
+    getLocation: function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+        console.log(navigator.geolocation);
+        console.log("ddddddddddddddddddddddddddddddd");
+      }
+    },
+    showPosition: function showPosition(position) {
+      var _this3 = this;
+
+      console.log(position);
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      console.log(this.lat);
+      axios.get("/users/hospitals?paginate=3&lat=" + this.lat + "&lng=" + this.lng).then(function (result) {
+        _this3.hosp = result.data.data;
+        console.log(result.data.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -4128,7 +4145,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log(all);
       axios.post("/signup", all).then(function (result) {
         console.log(result);
-        localStorage.setItem("token", JSON.stringify([]));
 
         _this.$router.push("/login");
       })["catch"](function (err) {
@@ -25402,7 +25418,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.fav
                   ? _c("i", {
-                      staticClass: "fas fa-heart",
+                      staticClass: "fas fa-heart text-danger",
                       on: {
                         click: function($event) {
                           return _vm.favourite("dislike")
@@ -25410,7 +25426,7 @@ var render = function() {
                       }
                     })
                   : _c("i", {
-                      staticClass: "far fa-heart",
+                      staticClass: "far fa-heart text-danger",
                       on: {
                         click: function($event) {
                           return _vm.favourite("like")
@@ -25565,7 +25581,7 @@ var render = function() {
                 _vm._v("\n          " + _vm._s(_vm.dr.name) + "\n          "),
                 _vm.fav
                   ? _c("i", {
-                      staticClass: "fas fa-heart float-right",
+                      staticClass: "fas fa-heart text-danger float-right",
                       on: {
                         click: function($event) {
                           return _vm.favourite("dislike")
@@ -25573,7 +25589,7 @@ var render = function() {
                       }
                     })
                   : _c("i", {
-                      staticClass: "far fa-heart float-right",
+                      staticClass: "far fa-heart text-danger float-right",
                       on: {
                         click: function($event) {
                           return _vm.favourite("like")
@@ -25919,7 +25935,9 @@ var render = function() {
           { staticClass: "text-muted text-center font-d" },
           [
             _vm._v(
-              "\n      " + _vm._s(_vm.$t("message.I_will_try_again")) + " ! "
+              "\n      " +
+                _vm._s(_vm.$t("message.I_will_try_again")) +
+                " !\n      "
             ),
             _c("router-link", { attrs: { to: "login" } }, [
               _vm._v(_vm._s(_vm.$t("message.signin")))
@@ -25930,7 +25948,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "login-register-bg col-md-8 " }, [
+    _c("div", { staticClass: "login-register-bg col-md-8" }, [
       _c("img", {
         staticClass: "topleft-help hide-st",
         staticStyle: { width: "110%" },
@@ -26620,14 +26638,22 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("p", { staticClass: "card-title text-muted ml-auto" }, [
-                      _c("img", { attrs: { src: "Web/179.png", alt: "" } }),
-                      _vm._v(
-                        "\n               " +
-                          _vm._s(hospital.distance) +
-                          "km\n            "
-                      )
-                    ])
+                    hospital.distance
+                      ? _c(
+                          "p",
+                          { staticClass: "card-title text-muted ml-auto" },
+                          [
+                            _c("img", {
+                              attrs: { src: "Web/179.png", alt: "" }
+                            }),
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(hospital.distance) +
+                                "km\n            "
+                            )
+                          ]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
@@ -27305,7 +27331,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "row hide-st" }, [
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6 mt-5" }, [
@@ -27321,27 +27347,30 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-8 hidd" }, [
-      _c("img", {
-        staticClass: "img-fluid w-100 back-color",
-        attrs: { src: "/Web/511.png", alt: "Cinque Terre" }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "topleft",
-        attrs: { src: "/Web/55.png", alt: "over-image" }
-      }),
-      _vm._v(" "),
-      _c("div", [
-        _c("h1", { staticClass: "center" }, [
-          _vm._v(_vm._s(_vm.$t("message.trust")))
-        ]),
+    _c(
+      "div",
+      {
+        staticClass: "login-register-bg col-md-8 hide-st",
+        staticStyle: { "min-height": "150vh" }
+      },
+      [
+        _c("img", {
+          staticClass: "topleft-help",
+          staticStyle: { width: "120% !important", right: "0" },
+          attrs: { src: "/Web/55.png", alt: "over-image" }
+        }),
         _vm._v(" "),
-        _c("h1", { staticClass: "center text-t7t" }, [
-          _vm._v(_vm._s(_vm.$t("message.care")))
+        _c("div", [
+          _c("h1", { staticClass: "center" }, [
+            _vm._v(_vm._s(_vm.$t("message.trust")))
+          ]),
+          _vm._v(" "),
+          _c("h1", { staticClass: "center text-t7t" }, [
+            _vm._v(_vm._s(_vm.$t("message.care")))
+          ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
