@@ -62,9 +62,4 @@ class Hospital extends Model
         $arr = explode(',', $value);
         $this->attributes['location'] = new Point($arr[0], $arr[1]);
     }
-
-    public function GetDistance($point)
-    {
-        return $this->distance('location', $point, 'metre')->get();
-    }
 }
