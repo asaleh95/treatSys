@@ -18,7 +18,11 @@ class DoctorRepositories
         $paginate = !empty($data['paginate']) ? $data['paginate'] : 12;
         return $this->doctor->when(!empty($data['name']), function ($query) use($data){
             $query->where('name', 'like', '%'. $data['name'].'%');
-        })->when(!empty($data['location']) ,function ($query) use($data){
+        })
+        ->when(!empty($data['position_id']), function ($query) use($data){
+            $query->where('position_id', $data['position_id']);
+        })
+        ->when(!empty($data['location']) ,function ($query) use($data){
             $arr = explode(',', $data['location']);
             $query->distance('location', new Point($arr[0], $arr[1]), 10);
         })

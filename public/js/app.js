@@ -3341,6 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    this.getHospitals();
     this.getLocation();
     axios.get("/users/doctors?paginate=5").then(function (result) {
       _this.drs = result.data.data;
@@ -3386,13 +3387,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     showPosition: function showPosition(position) {
-      var _this3 = this;
-
       console.log(position);
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
+      this.getHospitals("&lat=" + this.lat + "&lng=" + this.lng);
       console.log(this.lat);
-      axios.get("/users/hospitals?paginate=3&lat=" + this.lat + "&lng=" + this.lng).then(function (result) {
+    },
+    getHospitals: function getHospitals() {
+      var _this3 = this;
+
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      axios.get("/users/hospitals?paginate=3" + url).then(function (result) {
         _this3.hosp = result.data.data;
         console.log(result.data.data);
       })["catch"](function (error) {
@@ -45042,6 +45047,7 @@ __webpack_require__(/*! ./lang */ "./resources/js/lang.js");
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem('token'));
+window.axios.defaults.headers.common['Accept-Language'] = sessionStorage.getItem('lang') == 'ar' ? 'ar' : 'en';
 window.axios.defaults.baseURL = '/api';
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]);

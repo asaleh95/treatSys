@@ -258,6 +258,7 @@
 <script>
 export default {
   mounted() {
+    this.getHospitals();
     this.getLocation();
     axios
       .get("/users/doctors?paginate=5")
@@ -310,16 +311,19 @@ export default {
       console.log(position);
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
+      this.getHospitals("&lat=" + this.lat + "&lng=" + this.lng);
       console.log(this.lat);
+    },
+    getHospitals(url= '') {
       axios
-      .get("/users/hospitals?paginate=3&lat=" + this.lat + "&lng=" + this.lng)
-      .then((result) => {
-        this.hosp = result.data.data;
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .get("/users/hospitals?paginate=3" + url)
+        .then((result) => {
+          this.hosp = result.data.data;
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
