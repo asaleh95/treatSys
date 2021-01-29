@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             //
             // 'name' => 'required|min:3|max:150',
             'email' => ['required','email:rfc', Rule::unique('users')->ignore($this->user->id)],
-            'phone' => ['required', 'phone:AUTO,EG'],
+            'phone' => ['required'],
             'password' => 'nullable|min:8',
             'image' => ['required', new ImageValidationRule]
         ];

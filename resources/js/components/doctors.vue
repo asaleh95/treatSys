@@ -15,10 +15,24 @@
         <a class="search" href="#"><img src="Web/gro.png" alt="" /></a>
         <a class="search" href="#"><img src="Web/gro2.png" alt="" /></a>
       </div>
-      <hr />
+      <select
+        class="form-select form-control font-d"
+        aria-label="Default select example"
+        v-model="select"
+        @change="doctorsByPosition()"
+      >
+        <option v-for="position in positions" :value="position.id" selected>
+          {{ position.position }}
+        </option>
+      </select>
+      <br />
       <div class="content">
         <div class="row">
-          <div class="col-md-2 hospital-click mx-3 mb-2" v-for="(dr, i) in resultQuery"  @click="goTo(dr.id)">
+          <div
+            class="col-md-2 hospital-click mx-3 mb-2"
+            v-for="(dr, i) in resultQuery"
+            @click="goTo(dr.id)"
+          >
             <img :src="dr.image.image" class="doctor" alt="" />
           </div>
         </div>
@@ -27,7 +41,15 @@
       <div class="row mb-5">
         <div class="col-md-12 d-flex justify-content-center">
           <!-- <a href="#" class="btn btn-light rounded-circle" v-show="prevUrl"><</a> -->
-          <button type="button" v-for="num in numOfPages" :class="[btnRounded, (current == num) ? primary : '']" :disabled="current == num"  @click="getDoctors(num)">{{num }}</button>
+          <button
+            type="button"
+            v-for="num in numOfPages"
+            :class="[btnRounded, current == num ? primary : '']"
+            :disabled="current == num"
+            @click="getDoctors(num)"
+          >
+            {{ num }}
+          </button>
           <!-- <a href="#" class="btn btn-primary rounded-circle mr-2">1</a> -->
           <!-- <a href="#" class="btn btn-light rounded-circle" v-show="nextUrl">></a> -->
         </div>
@@ -53,10 +75,20 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+    axios
+      .get("/positions")
+      .then((result) => {
+        this.positions = result.data.data;
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   data() {
     return {
       drs: [],
+      positions: [],
       id: null,
       index: null,
       success: false,
@@ -66,8 +98,9 @@ export default {
       numOfPages: 0,
       sorted: 1,
       current: 1,
-      btnRounded: 'btn rounded-circle',
-      primary: 'btn-primary'
+      btnRounded: "btn rounded-circle",
+      primary: "btn-primary",
+      select: ''
     };
   },
   computed: {
@@ -92,7 +125,7 @@ export default {
   methods: {
     getDoctors(num) {
       axios
-        .get("/users/doctors?paginate=15&page="+ num)
+        .get("/users/doctors?paginate=15&page=" + num)
         .then((result) => {
           this.drs = result.data.data;
           this.current = num;
@@ -101,8 +134,21 @@ export default {
           console.log(error);
         });
     },
-     goTo(id){
-          this.$router.push("/doctor/" + id);
+    goTo(id) {
+      this.$router.push("/doctor/" + id);
+    },
+    doctorsByPosition(){
+      alert()
+      axios
+      .get("/users/doctors?paginate=15&position="+ this.select)
+      .then((result) => {
+        this.drs = result.data.data;
+        this.numOfPages = Math.ceil(result.data.meta.total / 15);
+        console.log(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
   },
 };

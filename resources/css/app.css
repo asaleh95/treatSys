@@ -11,6 +11,7 @@
 @import "./hospitals.css";
 @import "./doctor.css";
 @import "./help.css";
+@import "./profile.css";
 
 .active{
     color: #0782bd !important;

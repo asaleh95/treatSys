@@ -189,6 +189,27 @@ export default {
             path: '/sky',
             component: require('./components/sky').default,
         },
+        {
+            path: '/profile',
+            component: require('./components/profile').default,
+            meta: {
+                requiresAuth: true
+            },
+            beforeEnter: (to, from, next) => {
+                if (to.matched.some(record => record.meta.requiresAuth)) {
+                    if (localStorage.getItem('token') == null) {
+                        next('/login');
+                    } else {
+                        next()
+                    }
+
+                }
+            }
+        },
+        {
+            path: '/logout',
+            component: require('./components/logout').default,
+        },
     ],
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y: 0 }
