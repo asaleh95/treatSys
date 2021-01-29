@@ -10,7 +10,7 @@
               style="margin-bottom: 41px; border-radius: 2.25rem !important"
               src="/Web/treat2.png"
               class="mx-auto d-block"
-              alt="سله"
+              alt="treat"
               width="80"
               height="70"
             />
@@ -43,6 +43,11 @@
               ><i class="ti-layout"></i>
               <span>الصيدليات</span>
             </router-link>
+          </li>
+          <li class="has-sub-menu">
+            <router-link to="/support/all"
+              ><i class="ti-stamp"></i> <span>الدعم</span></router-link
+            >
           </li>
         </ul>
       </nav>

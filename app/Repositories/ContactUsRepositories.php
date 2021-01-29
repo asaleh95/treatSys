@@ -16,4 +16,14 @@ class ContactUsRepositories
     {
         $this->contactUs->create($data);
     }
+
+    public function all()
+    {
+       return $this->contactUs->all();
+    }
+
+    public function delete($contactus)
+    {
+        $contactus->delete();
+    }
 }

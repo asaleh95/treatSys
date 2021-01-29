@@ -13,7 +13,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('contact-us', 'ContactUsController@store')->name('contactUs');
     Route::post('admin/login', 'AdminController@login')->name('admin-login');
     Route::get('countries', 'CountryController@all');
-    Route::get('positions', 'CountryController@all');
+    Route::get('positions', 'PositionController@all');
 
     Route::prefix('users')->group(function (){
         Route::prefix('hospitals')->group(function () {
@@ -77,6 +77,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
             Route::resource('pharmacies', 'PharmacyController');
             Route::resource('rays', 'RayController');
             Route::resource('users', 'UserController');
+            Route::get('contactus', 'ContactUsController@index');
+            Route::delete('contactus/{contactus}', 'ContactUsController@destroy');
         });
     });
 });
