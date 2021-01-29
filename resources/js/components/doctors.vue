@@ -16,11 +16,12 @@
         <a class="search" href="#"><img src="Web/gro2.png" alt="" /></a>
       </div>
       <select
-        class="form-select form-control font-d"
+        class="form-select form-control font-d border-top-0 border-left-0 border-right-0"
         aria-label="Default select example"
         v-model="select"
         @change="doctorsByPosition()"
       >
+        <option value=""></option>
         <option v-for="position in positions" :value="position.id" selected>
           {{ position.position }}
         </option>
@@ -61,20 +62,8 @@
 <script>
 export default {
   mounted() {
-    axios
-      .get("/users/doctors?paginate=15")
-      .then((result) => {
-        this.drs = result.data.data;
-        // this.prevUrl = result.data.links.prev;
-        // this.nextUrl = result.data.links.next;
-        this.numOfPages = Math.ceil(result.data.meta.total / 15);
-        // this.prevUrl = this.numOfPages > 4 ? result.data.links.prev : false;
-        // this.nextUrl = this.numOfPages > 4 ? result.data.links.next : false;
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.getLocation();
+    this.doctors();
     axios
       .get("/positions")
       .then((result) => {
@@ -100,7 +89,7 @@ export default {
       current: 1,
       btnRounded: "btn rounded-circle",
       primary: "btn-primary",
-      select: ''
+      select: "",
     };
   },
   computed: {
@@ -137,19 +126,35 @@ export default {
     goTo(id) {
       this.$router.push("/doctor/" + id);
     },
-    doctorsByPosition(){
-      alert()
+    doctorsByPosition() {
+      this.doctors( "&position_id= " + this.select); 
+    },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      }
+    },
+    showPosition(position) {
+      this.doctors(
+        "&location=" +
+          position.coords.latitude +
+          "," +
+          position.coords.longitude
+      );
+      console.log(position.coords.latitude + "/" + position.coords.longitude);
+    },
+    doctors(url = "") {
       axios
-      .get("/users/doctors?paginate=15&position="+ this.select)
-      .then((result) => {
-        this.drs = result.data.data;
-        this.numOfPages = Math.ceil(result.data.meta.total / 15);
-        console.log(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+        .get("/users/doctors?paginate=15" + url)
+        .then((result) => {
+          this.drs = result.data.data;
+          this.numOfPages = Math.ceil(result.data.meta.total / 15);
+          console.log(result.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

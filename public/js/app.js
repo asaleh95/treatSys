@@ -2602,21 +2602,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/users/doctors?paginate=15").then(function (result) {
-      _this.drs = result.data.data; // this.prevUrl = result.data.links.prev;
-      // this.nextUrl = result.data.links.next;
-
-      _this.numOfPages = Math.ceil(result.data.meta.total / 15); // this.prevUrl = this.numOfPages > 4 ? result.data.links.prev : false;
-      // this.nextUrl = this.numOfPages > 4 ? result.data.links.next : false;
-
-      console.log(result.data.data);
-    })["catch"](function (error) {
-      console.log(error);
-    });
+    this.getLocation();
+    this.doctors();
     axios.get("/positions").then(function (result) {
       _this.positions = result.data.data;
       console.log(result.data.data);
@@ -2639,7 +2631,7 @@ __webpack_require__.r(__webpack_exports__);
       current: 1,
       btnRounded: "btn rounded-circle",
       primary: "btn-primary",
-      select: ''
+      select: ""
     };
   },
   computed: {
@@ -2672,10 +2664,22 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push("/doctor/" + id);
     },
     doctorsByPosition: function doctorsByPosition() {
+      this.doctors("&position_id= " + this.select);
+    },
+    getLocation: function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      }
+    },
+    showPosition: function showPosition(position) {
+      this.doctors("&location=" + position.coords.latitude + "," + position.coords.longitude);
+      console.log(position.coords.latitude + "/" + position.coords.longitude);
+    },
+    doctors: function doctors() {
       var _this4 = this;
 
-      alert();
-      axios.get("/users/doctors?paginate=15&position=" + this.select).then(function (result) {
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      axios.get("/users/doctors?paginate=15" + url).then(function (result) {
         _this4.drs = result.data.data;
         _this4.numOfPages = Math.ceil(result.data.meta.total / 15);
         console.log(result.data.data);
@@ -26012,7 +26016,8 @@ var render = function() {
                   expression: "select"
                 }
               ],
-              staticClass: "form-select form-control font-d",
+              staticClass:
+                "form-select form-control font-d border-top-0 border-left-0 border-right-0",
               attrs: { "aria-label": "Default select example" },
               on: {
                 change: [
@@ -26035,14 +26040,22 @@ var render = function() {
                 ]
               }
             },
-            _vm._l(_vm.positions, function(position) {
-              return _c(
-                "option",
-                { attrs: { selected: "" }, domProps: { value: position.id } },
-                [_vm._v("\n        " + _vm._s(position.position) + "\n      ")]
-              )
-            }),
-            0
+            [
+              _c("option", { attrs: { value: "" } }),
+              _vm._v(" "),
+              _vm._l(_vm.positions, function(position) {
+                return _c(
+                  "option",
+                  { attrs: { selected: "" }, domProps: { value: position.id } },
+                  [
+                    _vm._v(
+                      "\n        " + _vm._s(position.position) + "\n      "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
           ),
           _vm._v(" "),
           _c("br"),
